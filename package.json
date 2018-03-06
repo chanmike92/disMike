@@ -24,7 +24,7 @@
   "devDependencies": {},
   "scripts": {
     "postinstall": "webpack",
-    "webpack": "webpack --watch",
+    "start": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "engines": {
