@@ -23,7 +23,7 @@ ActiveRecord::Schema.define(version: 20180306164311) do
     t.string "img_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["session_token"], name: "index_users_on_session_token"
+    t.index ["session_token"], name: "index_users_on_session_token", unique: true
     t.index ["username", "email"], name: "index_users_on_username_and_email", unique: true
   end
 
