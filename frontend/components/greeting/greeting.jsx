@@ -6,6 +6,7 @@ class Greeting extends React.Component {
 
   render() {
     if (this.props.currentUser) {
+      debugger
       return (
         <div>
           <h1>Welcome, { this.props.currentUser.username } !</h1>

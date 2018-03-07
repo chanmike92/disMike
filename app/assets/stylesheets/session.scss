@@ -1,3 +1,122 @@
 // Place all the styles related to the session controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.session-container {
+  background-color: grey;
+  width: 700px;
+  height: 400px;
+  margin: auto;
+  margin-top: 20vh;
+  display: flex;
+  opacity: 0.95;
+
+}
+
+.logo-font {
+  font-family: "comic-sans";
+}
+
+.left-form {
+  width: 50%;
+  border-right: 1px black;
+  background: hsla(0,0%,100%,.8);
+}
+
+form {
+  padding: 15px;
+}
+
+p {
+  padding: 10px;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  padding: 10px;
+  align-self: center;
+  font-size: 30px;
+  text-align: center;
+  color: skyblue;
+}
+
+label {
+  color: #87909c;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  opacity: 1
+}
+
+.input-field {
+  width: 300px;
+  height: 30px;
+  border: 0;
+  outline: 0;
+  background: transparent;
+  border-bottom: 1px solid black;
+  padding-top: 5px;
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.input-field:focus {
+  border-bottom: 3px solid white;
+}
+
+.logo-text {
+  text-align: center;
+  align-self: center;
+}
+
+
+.right-form {
+  background: rgba(40,43,48,.75);
+  width: 50%
+}
+
+img {
+  max-width: 100%;
+  max-height: 100%;
+  display: block;
+  margin: 0, auto;
+  text-align: center;
+  align-self: center;
+}
+
+h2 {
+  margin: auto;
+}
+
+.input-field {
+
+}
+
+.session-form {
+  margin: auto;
+}
+
+.sessionLinks {
+  color: white;
+  font-weight: bold;
+}
+
+.sessionLinks:hover{
+  text-decoration: underline;
+}
+
+.submit-form {
+  background: #89f;
+  border: none;
+  color: #fff;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  text-align: center;
+}
+
+main {
+  background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
+}

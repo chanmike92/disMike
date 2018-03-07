@@ -8,9 +8,9 @@ import { signup } from '../../actions/session_actions';
 const mapStateToProps = (state, ownProps) => {
   return ({
     errors: state.errors.session,
-    formType: 'signup',
-    link: <Link to={'/login'}>Login</Link>,
-    currentUser: state.session.currentUser
+    formType: 'Sign up',
+    link: <Link className='sessionLinks' to={'/session'}>Login</Link>,
+    currentUser: {username: '', password: '', email: ''}
   });
 };
 
