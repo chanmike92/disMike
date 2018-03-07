@@ -4,39 +4,49 @@
 
 
 
-div.session-container {
+.session-container {
   width: 500px;
   height: auto;
   margin: auto;
   margin-top: 25vh;
   display: flex;
-  border-radius: 20px;
-
-  -webkit-box-direction: normal;
-  -webkit-box-orient: horizontal;
-  flex-direction: row;
+  border-radius: 72px;
+  padding: 20px;
   overflow: hidden;
-  padding: 5px;
+
 }
 
 .left-form {
   width: 35%;
   border-right: 1px black;
-  background: hsla(0,0%,100%, 1);
+  background: hsla(0,0%,100%, .9);
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
 }
 
-form {
-  padding: 15px;
-}
 
 .change-form {
+  color: #87909c;
   font-size: 12px;
+  line-height: 14px;
+  margin-bottom: 0;
   padding: 10px;
   font-family: 'Roboto', sans-serif;
 }
 
+.header {
+  padding: 10px;
+  align-self: center;
+  font-size: 15px;
+  text-align: center;
+  color: white;
+  font-weight: 900;
+  margin: 0, auto;
+}
+
 .logo-text {
-  font-family: 'Roboto', sans-serif;
+
   padding: 10px;
   align-self: center;
   font-size: 30px;
@@ -45,46 +55,47 @@ form {
   margin: 0, auto;
 }
 
-label {
+
+.input-name {
   color: #87909c;
   display: block;
-  font-size: 11px;
+  font-size: 8px;
   font-weight: 700;
   text-transform: uppercase;
 }
 
-input.input-field {
+.input-field {
   width: 300px;
   height: 30px;
   border: 0;
   outline: 0;
   background: transparent;
-  border-bottom: 1px solid black;
-
+  border-bottom: 1px solid #f0f0f0;
+  border-bottom-color: hsla(0,0%,100%,.1);
   margin-bottom: 20px;
-  font-size: 20px;
+  font-size: 15px;
 }
 
-input.input-field:focus {
-  border-bottom: 3px solid white;
+.input-field:focus {
+  border-bottom: 2px solid white;
 }
 
 
 
-ul.errors-list {
+.errors-list {
   height: 25px;
   width: 100%;
   padding: 10px;
 }
 
-li.error-item {
+.error-item {
   font-size: 11px;
   color: red;
 }
 
 
 .right-form {
-  background: rgba(40,43,48,.85);
+  background: rgba(40,43,48,.75);
   width: 65%;
   margin: auto;
   // filter: blur(3px);
@@ -95,15 +106,19 @@ li.error-item {
   z-index: 500;
   filter: none;
   filter: blur(0px);
+  padding: 15px;
 }
 
 .image-container {
+  display: block;
   justify-content: center;
   align-items: center;
   margin: 0, auto;
+  position: relative;
+  top: 50px;
 }
 
-img#dismikelogo {
+#dismikelogo {
   max-width: 100%;
   max-height: 100%;
   display: block;
@@ -114,10 +129,6 @@ img#dismikelogo {
   align-self: center;
 }
 
-
-.input-field {
-
-}
 
 .session-form {
   margin: auto;
@@ -133,7 +144,7 @@ img#dismikelogo {
 }
 
 .submit-form {
-  background: #89f;
+  background: #7289da;
   border: none;
   color: #fff;
   width: 100%;
@@ -142,8 +153,16 @@ img#dismikelogo {
   font-size: 20px;
   font-weight: 500;
   text-align: center;
+  border-radius: 5px;
 }
 
-main {
+.submit-form:hover {
+  background-color: #697ec4
+}
+
+#session-page {
   background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
+  background-size: cover;
+  height: 100%;
+  width: 100%;
 }

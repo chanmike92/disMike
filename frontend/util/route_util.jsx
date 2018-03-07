@@ -11,7 +11,7 @@ const Auth = ({ component: Component, path, loggedIn, exact }) => {
         !loggedIn ? (
           <Component {...props} />
         ) : (
-          <Redirect to="/tweets" />
+          <Redirect to="/session" />
         )}
     />
   )
@@ -23,14 +23,14 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => {
       path={path}
       exact={exact}
       render={props =>
-        loggedIn ? <Component {...props} /> : <Redirect to="/login" />}
+        loggedIn ? <Component {...props} /> : <Redirect to="/session" />}
     />
   )
 }
 
-const mapStateToProps = state => ({
-  loggedIn: Boolean(state.session.id)
-})
+const mapStateToProps = state => {
+  return {loggedIn: Boolean(state.session.currentUser)}
+}
 
 // need withRouter bc Auth and Protected aren't actual routes
 // withRouter passes route props to non-Route components
