@@ -12,11 +12,10 @@ class SessionForm extends React.Component {
     this.handleEmail = this.handleEmail.bind(this);
   }
 
-  componentWillMount() {
-    if (this.props.currentUser) {
-      return <Redirect to='/' />;
-    }
+  componentDidMount() {
+    this.props.clearErrors();
   }
+
 
   handSubmit(e) {
 
@@ -66,36 +65,40 @@ class SessionForm extends React.Component {
       <div className='session-container'>
 
         <div className="left-form">
-          <img src={window.logo} alt='disMike-logo' />
+          <div className="image-container">
+            <img id="dismikelogo" src={window.logo} alt='disMike-logo' />
+          </div>
           <h2 className='logo-text'>DISMIKE</h2>
         </div>
 
         <div className="right-form">
-          <h2>{this.props.formType}</h2>
-          <ul className='sessionErrorContainer'>
-            {this.props.errors.map((error, idx) => (<li key={idx}>{error}</li>))}
-          </ul>
+          <div className="right-form-content">
+            <h2 className='logo-text'>{this.props.formType}</h2>
+            <ul className='errors-list'>
+              {this.props.errors.map((error, idx) => (<li className="error-item" key={idx}>{error}</li>))}
+            </ul>
 
-          <form className='session-form'>
-            <div className='input-wrapper'>
-              <label>Email</label>
-              <input className='input-field' type="text" onChange={this.handleEmail} value={this.state.email}>
-              </input>
-            </div>
-
-            {createUsername}
-
-            <div>
-              <label>Password</label>
-                <input className='input-field' type="password" onChange={this.handlePassword} value={this.state.password}>
+            <form className='session-form'>
+              <div className='input-wrapper'>
+                <label>Email</label>
+                <input className='input-field' type="text" onChange={this.handleEmail} value={this.state.email}>
                 </input>
-            </div>
+              </div>
 
-            <button className='submit-form'    onClick={this.handleSubmit}>{this.props.formType}
-            </button>
-          </form>
+              {createUsername}
 
-          <p>{createLink} {this.props.link}</p>
+              <div>
+                <label>Password</label>
+                  <input className='input-field' type="password" onChange={this.handlePassword} value={this.state.password}>
+                  </input>
+              </div>
+
+              <button className='submit-form'    onClick={this.handleSubmit}>{this.props.formType}
+              </button>
+            </form>
+
+            <p className='change-form'>{createLink} {this.props.link}</p>
+          </div>
         </div>
       </div>
     );

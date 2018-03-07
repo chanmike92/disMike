@@ -1,12 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 
 class Greeting extends React.Component {
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.currentUser === null) {
+      return <Redirect to='/signup' />;
+    }
+    else {
+      return <Redirect to='/' />;
+    }
+  }
 
   render() {
     if (this.props.currentUser) {
-      debugger
       return (
         <div>
           <h1>Welcome, { this.props.currentUser.username } !</h1>

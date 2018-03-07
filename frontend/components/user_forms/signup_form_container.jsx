@@ -1,13 +1,14 @@
 import SessionForm from './session_form';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { signup } from '../../actions/session_actions';
+import { signup, receiveErrors } from '../../actions/session_actions';
 
 
-const mapStateToProps = (state, ownProps) => {
+
+const mapStateToProps = state => {
   return ({
-    errors: state.errors.session,
+    errors: Object.values(state.errors.session),
     formType: 'Sign up',
     link: <Link className='sessionLinks' to={'/session'}>Login</Link>,
     currentUser: {username: '', password: '', email: ''}
@@ -16,8 +17,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-    processForm: (user) => dispatch(signup(user))
+    processForm: (user) => dispatch(signup(user)),
+    clearErrors: () => dispatch(receiveErrors([]))
   });
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SessionForm);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SessionForm));

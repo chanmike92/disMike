@@ -3,7 +3,8 @@ import { logout } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
+  
   return ({
     currentUser: state.session.currentUser
   });
