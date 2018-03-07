@@ -2,31 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#forblur {
-  height: 200px;
-  width: 200px;
-  background-color: blue;
-  margin: auto;
-  -webkit-filter: blur(3px);
-  -moz-filter: blur(3px);
-  -o-filter: blur(3px);
-  -ms-filter: blur(3px);
-  filter: blur(3px);
-  z-index: -1;
-}
 
 
-.session-container {
+div.session-container {
   width: 500px;
   height: auto;
   margin: auto;
-  // margin-top: 20vh;
+  margin-top: 25vh;
   display: flex;
-  border-radius: 5px;
+  border-radius: 20px;
 
   -webkit-box-direction: normal;
   -webkit-box-orient: horizontal;
-  border-radius: 3px;
   flex-direction: row;
   overflow: hidden;
   padding: 5px;
@@ -99,11 +86,15 @@ li.error-item {
 .right-form {
   background: rgba(40,43,48,.85);
   width: 65%;
-  -webkit-filter: blur(1px);
+  margin: auto;
+  // filter: blur(3px);
+  z-index: 1;
 }
 
 .right-form-content {
-  
+  z-index: 500;
+  filter: none;
+  filter: blur(0px);
 }
 
 .image-container {
