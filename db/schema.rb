@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20180308015305) do
   create_table "servers", force: :cascade do |t|
     t.string "name", null: false
     t.string "img_url"
+    t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_servers_on_name", unique: true

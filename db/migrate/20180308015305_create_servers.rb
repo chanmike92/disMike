@@ -3,6 +3,7 @@ class CreateServers < ActiveRecord::Migration[5.1]
     create_table :servers do |t|
       t.string :name, null: false
       t.string :img_url
+      t.integer :owner_id, null: false
 
       t.timestamps
     end
