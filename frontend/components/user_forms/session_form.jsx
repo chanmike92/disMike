@@ -7,10 +7,8 @@ class SessionForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.currentUser;
-    this.handleUsername = this.handleUsername.bind(this);
-    this.handlePassword = this.handlePassword.bind(this);
+    this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEmail = this.handleEmail.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
     this.demoLink = this.demoLink.bind(this);
   }
@@ -48,25 +46,13 @@ class SessionForm extends React.Component {
     this.props.processForm(user).then((user) => (<Redirect to={`/${user.id}`} />));
   }
 
-  handleUsername(e) {
-    this.setState({
-      username: e.currentTarget.value
-    });
+  handleInput(input) {
+    return (e) => {
+      this.setState({
+        [input]: e.currentTarget.value
+      });
+    };
   }
-
-  handlePassword(e) {
-    this.setState({
-      password: e.currentTarget.value
-    });
-  }
-
-  handleEmail(e) {
-    this.setState({
-      email: e.currentTarget.value
-    });
-  }
-
-
 
   createUsername() {
     return (
@@ -75,7 +61,7 @@ class SessionForm extends React.Component {
           <input
             className='input-field'
             type="text"
-            onChange={this.handleUsername}
+            onChange={this.handleInput('username')}
             value={this.state.username}>
           </input>
       </div>
@@ -87,8 +73,7 @@ class SessionForm extends React.Component {
     if (this.props.formType === "Login") {
       return (
         <p className="change-form">
-          Need an account? <Link className='sessionLinks' to="/signup"> Register</Link> or
-          <a className='sessionLinks' onClick={this.guestLogin}> Demo</a>
+          Need an account? <Link className='sessionLinks' to="/signup"> Register</Link> or <a className='sessionLinks' onClick={this.guestLogin}>Demo</a>
         </p>
       );
     } else {
@@ -104,8 +89,9 @@ class SessionForm extends React.Component {
     const headerName = this.props.formType === 'Register' ? "CREATE AN ACCOUNT" : "WELCOME BACK!";
 
     return (
-      <div id='session-page'>
+      <div className='session-page'>
         <div className='session-container'>
+          <div className='blur'></div>
 
           <div className="left-form">
             <div className="image-container">
@@ -113,7 +99,6 @@ class SessionForm extends React.Component {
               <h2 className='logo-text'>DISMIKE</h2>
             </div>
           </div>
-
           <div className="right-form">
             <div className="right-form-content">
               <h2 className='header'>{headerName}</h2>
@@ -124,7 +109,7 @@ class SessionForm extends React.Component {
               <form className='session-form'>
                 <div className='input-wrapper'>
                   <label className="input-name">Email</label>
-                  <input className='input-field email' type="email" onChange={this.handleEmail} value={this.state.email}>
+                  <input className='input-field email' type="email" onChange={this.handleInput('email')} value={this.state.email}>
                   </input>
                 </div>
 
@@ -132,7 +117,7 @@ class SessionForm extends React.Component {
 
                 <div>
                   <label className="input-name">Password</label>
-                    <input className='input-field password' type="password" onChange={this.handlePassword} value={this.state.password}>
+                    <input className='input-field password' type="password" onChange={this.handleInput('password')} value={this.state.password}>
                     </input>
                 </div>
 
