@@ -20,14 +20,14 @@ class SessionForm extends React.Component {
   }
 
   guestLogin() {
-      const guest = {email: 'asdf@asdf.asdf', password: 'asdfasdf'};
+      const guest = {email: 'demoEmail@demo.com', password: 'demoPassword'};
 
       var emailOptions = {
-        strings: ["asdf@asdf.asdf"],
+        strings: ["demoEmail@demo.com"],
         typeSpeed: 40
       };
       var passOptions = {
-        strings: ["asdfasdf"],
+        strings: ["demoPassword"],
         typeSpeed: 40
       };
 
@@ -45,7 +45,7 @@ class SessionForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    this.props.processForm(user);
+    this.props.processForm(user).then((user) => (<Redirect to={`/${user.id}`} />));
   }
 
   handleUsername(e) {

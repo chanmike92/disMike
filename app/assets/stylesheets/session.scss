@@ -7,9 +7,10 @@
 .session-container {
   width: 500px;
   height: auto;
-  margin: auto;
-  margin-top: 25vh;
   display: flex;
+  justify-content: center;
+  flex-direction: row;
+  align-items: center;
   border-radius: 72px;
   padding: 20px;
   overflow: hidden;
@@ -22,6 +23,7 @@
   background: hsla(0,0%,100%, .9);
   justify-content: center;
   align-items: center;
+  height: 317px;
   margin: 0 auto;
 }
 
@@ -170,8 +172,11 @@
 }
 
 #session-page {
+  height: 100vh;
   background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
   background-size: cover;
-  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
