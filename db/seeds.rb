@@ -6,4 +6,21 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+User.destroy_all
+Server.destroy_all
+
 User.create(username: 'demoUser', password: 'demoPassword', email: 'demoEmail@demo.com')
+
+5.times do
+  User.create(username: Faker::Pokemon.unique.name,
+              password: 'asdf1234',
+              email: Faker::Internet.unique.email
+              )
+
+end
+
+5.times do
+  Server.create(name: Faker::Pokemon.unique.move,
+                owner_id: rand(1..30)
+                )
+end

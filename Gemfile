@@ -43,7 +43,7 @@ group :development, :test do
   gem 'pry-rails'
   gem 'annotate'
   gem 'bcrypt'
-
+  gem 'faker'
 end
 
 group :development do

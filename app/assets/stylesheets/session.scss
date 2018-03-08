@@ -32,19 +32,42 @@
   position: relative;
 }
 
-.left-form {
-  // position: absolute;
+.left-form-container-signup {
+  height: 381px;
   width: 35%;
   border-right: 1px black;
   background: hsla(0,0%,100%, .9);
   justify-content: center;
   align-items: stretch;
-  height: 100%;
   z-index: 1;
   margin: 0 auto;
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
+  justify-content: flex-end;
+  background-image: image-url('Discord-Logo-Black.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.left-form-container-login {
+  height: 320px;
+  width: 35%;
+  border-right: 1px black;
+  background: hsla(0,0%,100%, .9);
+  justify-content: center;
+  align-items: stretch;
+  z-index: 1;
+  margin: 0 auto;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: flex-end;
+  background-image: image-url('Discord-Logo-Black.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 
