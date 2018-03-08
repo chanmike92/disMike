@@ -28,7 +28,7 @@
 
 .change-form {
   color: #87909c;
-  font-size: 12px;
+  font-size: 10px;
   line-height: 14px;
   margin-bottom: 0;
   padding: 10px;
@@ -36,12 +36,13 @@
 }
 
 .header {
+  font-family: 'Roboto', sans-serif;
   padding: 10px;
   align-self: center;
   font-size: 15px;
   text-align: center;
   color: white;
-  font-weight: 900;
+  font-weight: 1900;
   margin: 0, auto;
 }
 
@@ -73,13 +74,19 @@
   border-bottom: 1px solid #f0f0f0;
   border-bottom-color: hsla(0,0%,100%,.1);
   margin-bottom: 20px;
-  font-size: 15px;
+  font-size: 13px;
+  color: white;
+  font-weight: 200;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
 
 .input-field:focus {
   border-bottom: 2px solid white;
 }
 
+.input-field:hover {
+  cursor: text;
+}
 
 
 .errors-list {
@@ -141,6 +148,7 @@
 
 .sessionLinks:hover{
   text-decoration: underline;
+  cursor: pointer;
 }
 
 .submit-form {
@@ -157,7 +165,8 @@
 }
 
 .submit-form:hover {
-  background-color: #697ec4
+  background-color: #697ec4;
+  cursor: pointer;
 }
 
 #session-page {

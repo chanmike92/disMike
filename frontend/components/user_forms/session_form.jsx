@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import Typed from 'typed.js';
 
 class SessionForm extends React.Component {
 
@@ -8,13 +9,10 @@ class SessionForm extends React.Component {
     this.state = this.props.currentUser;
     this.handleUsername = this.handleUsername.bind(this);
     this.handlePassword = this.handlePassword.bind(this);
-    this.handleSubmit = this.handSubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleEmail = this.handleEmail.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
-  }
-
-  componentWillMount() {
-
+    this.demoLink = this.demoLink.bind(this);
   }
 
   componentDidMount() {
@@ -22,11 +20,29 @@ class SessionForm extends React.Component {
   }
 
   guestLogin() {
+      const guest = {email: 'asdf@asdf.asdf', password: 'asdfasdf'};
 
-  }
+      var emailOptions = {
+        strings: ["asdf@asdf.asdf"],
+        typeSpeed: 40
+      };
+      var passOptions = {
+        strings: ["asdfasdf"],
+        typeSpeed: 40
+      };
 
-  handSubmit(e) {
+      let demoUsername = setTimeout(() => {
+        new Typed(".email", emailOptions);
+      }, 100);
+      let demoPassword = setTimeout(() => {
+        new Typed(".password", passOptions);
+      }, 1000);
+      let demoSubmit = setTimeout(() => {
+        this.props.processForm(guest);
+      }, 2000);
+    }
 
+  handleSubmit(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
@@ -66,11 +82,26 @@ class SessionForm extends React.Component {
     );
   }
 
+  demoLink() {
+
+    if (this.props.formType === "Login") {
+      return (
+        <p className="change-form">
+          Need an account? <Link className='sessionLinks' to="/signup"> Register</Link> or
+          <a className='sessionLinks' onClick={this.guestLogin}> Demo</a>
+        </p>
+      );
+    } else {
+      return (
+        <p className="change-form">Already have an account? <Link className='sessionLinks' to="/session">Login</Link></p>
+      );
+    }
+  }
+
 
   render() {
     const createUsername = this.props.formType === 'Register' ? this.createUsername() : '';
     const headerName = this.props.formType === 'Register' ? "CREATE AN ACCOUNT" : "WELCOME BACK!";
-    const createLink = this.props.formType === 'Register' ? `Already have an account?` : `Need an account?`;
 
     return (
       <div id='session-page'>
@@ -81,7 +112,6 @@ class SessionForm extends React.Component {
               <img id="dismikelogo" src={window.logo} alt='disMike-logo' />
               <h2 className='logo-text'>DISMIKE</h2>
             </div>
-
           </div>
 
           <div className="right-form">
@@ -94,7 +124,7 @@ class SessionForm extends React.Component {
               <form className='session-form'>
                 <div className='input-wrapper'>
                   <label className="input-name">Email</label>
-                  <input className='input-field' type="text" onChange={this.handleEmail} value={this.state.email}>
+                  <input className='input-field email' type="text" onChange={this.handleEmail} value={this.state.email}>
                   </input>
                 </div>
 
@@ -102,15 +132,14 @@ class SessionForm extends React.Component {
 
                 <div>
                   <label className="input-name">Password</label>
-                    <input className='input-field' type="password" onChange={this.handlePassword} value={this.state.password}>
+                    <input className='input-field password' type="password" onChange={this.handlePassword} value={this.state.password}>
                     </input>
                 </div>
 
                 <button className='submit-form'    onClick={this.handleSubmit}>{this.props.formType}
                 </button>
               </form>
-
-              <p className='change-form'>{createLink} {this.props.link} or <a className='sessionLinks' onClick={this.guestLogin}>Demo</a></p>
+                {this.demoLink()}
             </div>
           </div>
         </div>
