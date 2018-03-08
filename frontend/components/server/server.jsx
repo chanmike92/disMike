@@ -1,14 +1,20 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const Server = ({ server, deleteServer }) => (
-
-  <li className="server">
-    <a href>{server.name}</a>
-    <button onClick={() => deleteServer(server.id)}>
+const Server = ({ server, deleteServer }) => {
+  const rightClick = (e) => {
+    e.preventDefault();
+    return (
+    <button className='delete-server' onClick={() => deleteServer(server.id)}>
       x
     </button>
+  )}
+
+  return (
+  <li className="server-icons" onContextMenu={rightClick}>
+    <a>{server.name}</a>
   </li>
 )
+}
 
 export default withRouter(Server);

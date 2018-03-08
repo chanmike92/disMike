@@ -1,8 +1,12 @@
 class Api::ServersController < ApplicationController
   def index
 
-    @servers = Server.all
-    render 'api/servers/index'
+    @servers = current_user.servers
+    if @servers
+      render 'api/servers/index'
+    else
+      render json: {}
+    end
   end
 
   def create
@@ -38,6 +42,7 @@ class Api::ServersController < ApplicationController
   def destroy
     @server = Server.find(params[:id])
     if @server
+      @server.destroy
       render json: {}
     else
       render json: ['You do not have access'], status: 404

@@ -88,10 +88,11 @@ class SessionForm extends React.Component {
     const createUsername = this.props.match.path === '/signup' ? this.createUsername() : '';
     const headerName = this.props.match.path === '/signup' ? "CREATE AN ACCOUNT" : "WELCOME BACK!";
     const leftFormContainerClass = this.props.match.path === '/signup' ? "left-form-container-signup"   : "left-form-container-login";
+    const background = `background-img-${Math.floor(Math.random() * 8)}`;
     return (
-      <div className='session-page'>
+      <div className={`session-page ${background}`}>
         <div className='session-container'>
-          <div className='blur'></div>
+          <div className={`blur ${background}`}></div>
 
           <div className={leftFormContainerClass}>
             <h2 className='logo-text'>DISMIKE</h2>

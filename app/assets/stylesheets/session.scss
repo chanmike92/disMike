@@ -2,7 +2,46 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.background-img-0 {
+  background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
+}
+.background-img-1 {
+  background-image: url(https://pre00.deviantart.net/961e/th/pre/f/2014/167/d/9/maplestory_background___pantheon_by_thehardworkingaj-d7mmhde.png);
+}
+.background-img-2 {
+  background-image: url(https://images5.alphacoders.com/844/thumb-1920-844969.jpg);
+}
+.background-img-3 {
+  background-image: url(https://images.alphacoders.com/536/thumb-1920-536215.jpg);
+}
+.background-img-4 {
+  background-image: url(https://images3.alphacoders.com/108/thumb-1920-108819.jpg);
+}
+.background-img-5 {
+  background-image: url(https://images.alphacoders.com/789/thumb-1920-789452.jpg);
+}
+.background-img-6 {
+  background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
+}
+.background-img-7 {
+  background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
+}
+.background-img-8 {
+  background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
+}
+
+@-webkit-keyframes fadein {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
 .session-page {
+
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+  -ms-animation: fadein 2s; /* Internet Explorer */
+  -o-animation: fadein 2s; /* Opera < 12.1 */
+  animation: fadein 2s;
   height: 100%;
   width: 100%;
   display: flex;
@@ -10,7 +49,6 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-image: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
   justify-content: center;
   align-items: center;
 }
@@ -220,7 +258,6 @@
 }
 
 .blur {
-  background: url(https://na.leagueoflegends.com/sites/default/files/upload/art/wp_alistar_vs_olaf_1920x1080.jpg);
   background-size: cover;
   z-index: 0;
   filter        : blur(10px);

@@ -46,5 +46,5 @@ export const makeNewServer = (server) => dispatch => {
 };
 
 export const deleteServer = (id) => dispatch => {
-  return APIUtil.deleteServer(id).then(() => dispatch(fetchAllServers()), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.deleteServer(id).then((servers) => dispatch(receiveAllServers(servers)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };

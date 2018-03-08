@@ -17,13 +17,17 @@ class ServerShow extends React.Component {
       );
     });
 
+
+
     return (
-      <div>
-        <button>Add DM</button>
+      <div className='server-container'>
+
+        <button className='direct-message-link server-icons'>Add DM</button>
+        <div className='separator'></div>
         <ul>
           {servers}
         </ul>
-        <button>Add makeNewServer</button>
+        <button className='server-icons'>+</button>
       </div>
     );
   }

@@ -7,7 +7,7 @@ const serverReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ALL_SERVERS:
-      return merge({}, oldState, action.servers);
+      return action.servers;
     case RECEIVE_A_SERVER:
       return merge({}, oldState, { [action.server.id]: action.server });
     default:
