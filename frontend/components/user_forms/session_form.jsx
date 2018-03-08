@@ -124,7 +124,7 @@ class SessionForm extends React.Component {
               <form className='session-form'>
                 <div className='input-wrapper'>
                   <label className="input-name">Email</label>
-                  <input className='input-field email' type="text" onChange={this.handleEmail} value={this.state.email}>
+                  <input className='input-field email' type="email" onChange={this.handleEmail} value={this.state.email}>
                   </input>
                 </div>
 
