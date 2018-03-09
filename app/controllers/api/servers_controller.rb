@@ -12,18 +12,18 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
+    @subscription = Serversubscription.new(user_id: currentUser.id, server_id: @server.id)
+    if @server.save && @subscription.save
 
-    if @server.save
-      Serversubscription.create(user_id: currentUser.id, server_id: @server.id)
       render 'api/servers/show'
     else
-      render json: @server.errors.full_messages, status: 402
+      render json: @server.errors.full_messages + @subscription.errors.full_messages, status: 402
     end
   end
 
   def join
     @server = Server.find_by(name: params[:user][:name])
-    if @server && @server.subscribed_users.includes(current_user.id)
+    if @server && @server.subscribed_users.include?(current_user.id)
 
   end
 
