@@ -10,9 +10,10 @@ const Server = ({ server, deleteServer }) => {
     </button>
   )}
 
+
   return (
   <li className="server-icons" onContextMenu={rightClick}>
-    <a>{server.name}</a>
+    <a>{server.name[0]}</a>
   </li>
 )
 }

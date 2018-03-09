@@ -1,3 +1,1 @@
-json.set! user.id do
-  json.extract! user, :id, :username, :email, :img_url
-end
+json.extract! server, :id, :name, :owner_id, :img_url

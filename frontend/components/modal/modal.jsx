@@ -1,20 +1,19 @@
 import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
-import ServerFormContainer from '../server/server_form_container';
+import ServerCreateContainer from '../server/server_create_container';
 
+const Modal = ({ modal, closeModal }) => {
 
-function Modal({ modal, closeModal }) {
   if (!modal) {
     return null;
   }
   let component;
   switch (modal) {
-    case 'newserver':
-      component = <ServerFormContainer />;
-      break;
-    case 'newchannel':
-      component = <ChannelFormContainer />;
+    case 'createServer':
+
+      component = <ServerCreateContainer />;
+
       break;
     default:
       return null;
@@ -29,13 +28,18 @@ function Modal({ modal, closeModal }) {
 }
 
 const mapStateToProps = state => {
+  const modal = state.ui.modal;
+
+
   return {
-    modal: state.ui.modal
+    modal
   };
 };
 
-mapDispatchToProps = dispatch => {
+const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal())
   };
 };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Modal);

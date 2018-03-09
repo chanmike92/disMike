@@ -41,6 +41,10 @@
   border-radius: 25px;
   margin: 10px;
   border-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
 }
 
 .server-icons:hover {
@@ -50,6 +54,50 @@
 }
 
 .delete-server {
-  z-index: 99;
+  z-index: 5;
   background-color: white;
+}
+
+#create-server-form {
+  border: 1px dashed #535559;
+  background: #1e2124;
+  font-size: 35px;
+  font-weight: 500;
+  color: #535559;
+  line-height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 25px;
+  margin: 10px;
+  height: 50px;
+  width: 50px;
+}
+
+#create-server-form:hover {
+  border-color: white;
+}
+
+.create-sign {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+  line-height: 100%;
+  height: 49px;
+  width: 49px;
+}
+
+.create-sign:hover {
+  color: white;
+  cursor: pointer;
+}
+
+.server-form-container {
+  height: 300px;
+  width: 500px;
+  background-color: #fff;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }

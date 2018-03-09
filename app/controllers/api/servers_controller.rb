@@ -12,6 +12,7 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
+
     if @server.save
       render 'api/servers/show'
     else
@@ -21,7 +22,6 @@ class Api::ServersController < ApplicationController
 
   def show
     @server = Server.new(server_params)
-    @server.owner_id = current_user.id
     if @server.save
       render 'api/servers/show'
     else
