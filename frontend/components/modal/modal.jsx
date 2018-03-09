@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ServerCreateContainer from '../server/server_create_container';
+import ServerJoinContainer from '../server/server_join_container';
 
 const Modal = ({ modal, closeModal }) => {
 
@@ -17,7 +18,7 @@ const Modal = ({ modal, closeModal }) => {
         <div className='modal-title'>OH, ANOTHER SERVER HUH?</div>
         <div className='modal-form-container'>
           <ServerCreateContainer />
-          <ServerCreateContainer />
+          <ServerJoinContainer />
         </div>
       </div>;
 

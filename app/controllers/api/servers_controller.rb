@@ -21,17 +21,19 @@ class Api::ServersController < ApplicationController
   end
 
   def join
-    @server = Server.find_by(name: params[:user][:name])
+
+    @server = Server.find_by(name: params[:server][:name])
     @subscription = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
+
     if @subscription.save
       render 'api/servers/show'
     else
       render json: @subscription.errors.full_messages, status: 402
     end
-
   end
 
   def show
+
     @server = Server.new(server_params)
     if @server.save
       render 'api/servers/show'

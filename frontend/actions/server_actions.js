@@ -45,6 +45,11 @@ export const makeNewServer = (server) => dispatch => {
   return APIUtil.makeNewServer(server).then((server) => dispatch(receiveAServer(server)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
+export const joinServer = (server) => dispatch => {
+
+  return APIUtil.joinServer(server).then((server) => dispatch(receiveAServer(server)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+};
+
 export const deleteServer = (id) => dispatch => {
   return APIUtil.deleteServer(id).then((servers) => dispatch(receiveAllServers(servers)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
