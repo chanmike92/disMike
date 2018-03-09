@@ -6,7 +6,15 @@ class SessionForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props.currentUser;
+    this.state = {
+    username: "",
+    email: "",
+    password: "",
+    demoUsername: "",
+    demoPassword: "",
+    demoEmail: "",
+    background: `background-img-${Math.floor(Math.random() * 8)}`
+    };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
@@ -88,11 +96,11 @@ class SessionForm extends React.Component {
     const createUsername = this.props.match.path === '/signup' ? this.createUsername() : '';
     const headerName = this.props.match.path === '/signup' ? "CREATE AN ACCOUNT" : "WELCOME BACK!";
     const leftFormContainerClass = this.props.match.path === '/signup' ? "left-form-container-signup"   : "left-form-container-login";
-    const background = `background-img-${Math.floor(Math.random() * 8)}`;
+
     return (
-      <div className={`session-page ${background}`}>
+      <div className={`session-page ${this.state.background}`}>
         <div className='session-container'>
-          <div className={`blur ${background}`}></div>
+          <div className={`blur ${this.state.background}`}></div>
 
           <div className={leftFormContainerClass}>
             <h2 className='logo-text'>DISMIKE</h2>
@@ -119,7 +127,7 @@ class SessionForm extends React.Component {
                     </input>
                 </div>
 
-                <button className='submit-form'    onClick={this.handleSubmit}>{this.props.formType}
+                <button className='submit-form' onClick={this.handleSubmit}>{this.props.formType}
                 </button>
               </form>
                 {this.demoLink()}
