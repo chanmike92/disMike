@@ -15,6 +15,10 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :user_id
 
+  has_many :subscribed_servers,
+    through: :subscriptions,
+    source: :server
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)
