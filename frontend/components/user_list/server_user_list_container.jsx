@@ -9,7 +9,7 @@ import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = state => {
   return ({
-    servers: Object.values(state.entities.servers)
+    users: Object.values(state.entities.users)
   });
 };
 

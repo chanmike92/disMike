@@ -113,6 +113,7 @@
   align-items: center;
   flex-direction: column;
   border: 1px solid #87909c;
+  padding: 20px;
   margin: 10px;
   border-radius: 5px;
 }
@@ -143,4 +144,10 @@
 
 .form-title {
   font-weight: 900;
+}
+
+.spaceholder {
+  width: 149px;
+  height: 45px;
+  content: " ";
 }

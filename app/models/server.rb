@@ -15,4 +15,9 @@ class Server < ApplicationRecord
   has_many :subscribed_users,
     through: :subscriptions,
     source: :user
+
+  has_many :channels,
+    class_name: :Channel,
+    primary_key: :id,
+    foreign_key: :server_id
 end

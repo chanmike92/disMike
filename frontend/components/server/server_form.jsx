@@ -40,7 +40,7 @@ class ServerForm extends React.Component {
   }
 
   render() {
-    const createImage = this.props.formType === 'createServer' ? this.createImage() : '';
+    const createImage = this.props.formType === 'createServer' ? this.createImage() : <div className='spaceholder'></div>;
     const header = this.props.formType === 'createServer' ? 'CREATE YOUR SERVER' : 'JOIN A SERVER';
     const buttonName = this.props.formType === 'createServer' ? 'Create' : 'Join';
     return (

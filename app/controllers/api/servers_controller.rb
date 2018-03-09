@@ -23,12 +23,17 @@ class Api::ServersController < ApplicationController
   def join
 
     @server = Server.find_by(name: params[:server][:name])
-    @subscription = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
 
-    if @subscription.save
-      render 'api/servers/show'
+    if @server
+      @subscription = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
+
+      if @subscription.save
+        render 'api/servers/show'
+      else
+        render json: {errors: ['Already have this server']}, status: 402
+      end
     else
-      render json: @subscription.errors.full_messages, status: 402
+      render json: {errors: ['Server does not exist']}, status: 402
     end
   end
 
@@ -54,7 +59,7 @@ class Api::ServersController < ApplicationController
 
   def destroy
     @server = Server.find(params[:id])
-    if @server
+    if @server.owner_id == current_user.id
       @server.destroy
       render json: {}
     else
