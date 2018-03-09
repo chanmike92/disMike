@@ -85,6 +85,7 @@
 }
 
 #create-server-form:hover {
+  color: white;
   border-color: white;
 }
 
@@ -92,14 +93,14 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   color: inherit;
   line-height: 100%;
-  height: 49px;
-  width: 49px;
+  padding: 25;
 }
 
 .create-sign:hover {
-  color: white;
+  color: inherit;
   cursor: pointer;
 }
 
@@ -107,11 +108,13 @@
   height: 300px;
   width: 250px;
   background-color: #fff;
-  border-radius: 5px;
   display: flex;
-  justify-content: space-around;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
+  border: 1px solid #87909c;
+  margin: 10px;
+  border-radius: 5px;
 }
 
 .server-label {
@@ -136,4 +139,8 @@
 
 .server-input-field:focus {
   border-bottom: 2px solid #7289da;
+}
+
+.form-title {
+  font-weight: 900;
 }

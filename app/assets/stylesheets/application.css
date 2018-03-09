@@ -42,3 +42,38 @@
   right: 5px;
   cursor: pointer;
 }
+
+.modal-form-container {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+
+  padding: 10px, 20px, 10px, 20px;
+
+}
+
+.modal-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.modal-title {
+  background-color: white;
+  width: 100%;
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #7289da;
+  font-size: 18px;
+  font-weight: 900;
+}
+
+button:focus {
+  outline: 0;
+}

@@ -11,6 +11,7 @@ const Server = ({ server, deleteServer }) => {
   )}
 
 
+
   return (
   <li unselectable="on" className="server-icons" onContextMenu={rightClick}>
     <a>{server.name[0]}</a>

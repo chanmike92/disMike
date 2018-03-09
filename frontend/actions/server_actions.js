@@ -14,7 +14,7 @@ export const receiveAllServers = (servers) => {
 export const receiveAServer = (server) => {
 
   return {
-    type: RECEIVE_A_SERVERS,
+    type: RECEIVE_A_SERVER,
     server
   };
 };

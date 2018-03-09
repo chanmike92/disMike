@@ -71,7 +71,7 @@
 }
 
 .left-form-container-signup {
-  height: 381px;
+  height: 396px;
   width: 35%;
   border-right: 1px black;
   background: hsla(0,0%,100%, .9);
@@ -90,7 +90,7 @@
 }
 
 .left-form-container-login {
-  height: 320px;
+  height: 335px;
   width: 35%;
   border-right: 1px black;
   background: hsla(0,0%,100%, .9);
@@ -120,7 +120,7 @@
 
 .header {
   font-family: 'Roboto', sans-serif;
-  padding: 10px;
+  margin: 10px;
   align-self: center;
   font-size: 15px;
   text-align: center;
@@ -176,6 +176,11 @@
   height: 25px;
   width: 100%;
   padding: 10px;
+  margin-bottom: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .error-item {

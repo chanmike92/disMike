@@ -15,6 +15,7 @@ export const fetchAServer = (id) => {
 };
 
 export const makeNewServer = (server) => {
+
   return $.ajax({
     url: 'api/servers',
     method: 'POST',

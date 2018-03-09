@@ -12,7 +12,14 @@ const Modal = ({ modal, closeModal }) => {
   switch (modal) {
     case 'createServer':
 
-      component = <ServerCreateContainer />;
+      component =
+      <div className='modal-container'>
+        <div className='modal-title'>OH, ANOTHER SERVER HUH?</div>
+        <div className='modal-form-container'>
+          <ServerCreateContainer />
+          <ServerCreateContainer />
+        </div>
+      </div>;
 
       break;
     default:
