@@ -67,7 +67,7 @@ class SessionForm extends React.Component {
       <div className='input-wrapper'>
         <label className="input-name">Username</label>
           <input
-            className='input-field'
+            className='input-field name'
             type="text"
             onChange={this.handleInput('username')}
             value={this.state.username}>
@@ -121,7 +121,7 @@ class SessionForm extends React.Component {
 
                 {createUsername}
 
-                <div>
+                <div className='input-wrapper'>
                   <label className="input-name">Password</label>
                     <input className='input-field password' type="password" onChange={this.handleInput('password')} value={this.state.password}>
                     </input>

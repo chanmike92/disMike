@@ -71,7 +71,7 @@
 }
 
 .left-form-container-signup {
-  height: 396px;
+  height: 423px;
   width: 35%;
   border-right: 1px black;
   background: hsla(0,0%,100%, .9);
@@ -90,7 +90,7 @@
 }
 
 .left-form-container-login {
-  height: 335px;
+  height: 353px;
   width: 35%;
   border-right: 1px black;
   background: hsla(0,0%,100%, .9);
@@ -273,5 +273,8 @@
   width: 100%;
   height: 100%;
   content: " ";
+}
 
+.input-wrapper {
+  height: 70px;
 }

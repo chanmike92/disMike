@@ -19,7 +19,7 @@ class ServerForm extends React.Component {
     e.preventDefault();
     const server = Object.assign({}, this.state);
 
-    this.props.processForm(server).then(() => this.setState({name: '', img_url: ''}));
+    this.props.processForm(server).then(this.props.closeModal);
   }
 
   handleInput(input) {

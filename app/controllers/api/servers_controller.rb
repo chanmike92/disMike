@@ -2,7 +2,6 @@ class Api::ServersController < ApplicationController
   def index
 
     @servers = current_user.subscribed_servers
-    debugger
     if @servers
       render 'api/servers/index'
     else
@@ -13,18 +12,17 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
-    @subscription = Serversubscription.new(user_id: currentUser.id, server_id: @server.id)
-    if @server.save && @subscription.save
-
+    if @server.save
+      Serversubscription.create(user_id: current_user.id, server_id: @server.id)
       render 'api/servers/show'
     else
-      render json: @server.errors.full_messages + @subscription.errors.full_messages, status: 402
+      render json: @server.errors.full_messages, status: 402
     end
   end
 
   def join
     @server = Server.find_by(name: params[:user][:name])
-    @subscription = Serversubscription.new(user_id: currentUser.id, server_id: @server.id)
+    @subscription = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
     if @subscription.save
       render 'api/servers/show'
     else
