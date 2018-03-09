@@ -8,16 +8,13 @@ import { connect } from 'react-redux';
 
 const mapStateToProps = state => {
   return ({
-    errors: Object.values(state.errors.session),
-    formType: 'Login',
-    link: <Link className='sessionLinks' to={'/signup'}>Register</Link>,
-    currentUser: {email: '', password: ''}
+    formType: 'update',
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return ({
-    processForm: (user) => dispatch(login(user)),
+    processForm: (server) => dispatch(makeNewServer(server)),
     clearErrors: () => dispatch(receiveErrors([]))
   });
 };
