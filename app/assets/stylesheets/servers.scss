@@ -45,6 +45,11 @@
   align-items: center;
   justify-content: center;
   color: white;
+
+}
+
+.server-icons:focus {
+  outline: 0;
 }
 
 .server-icons:hover {
@@ -72,6 +77,11 @@
   margin: 10px;
   height: 50px;
   width: 50px;
+
+}
+
+#create-server-form:focus {
+  outline: 0;
 }
 
 #create-server-form:hover {
@@ -95,9 +105,35 @@
 
 .server-form-container {
   height: 300px;
-  width: 500px;
+  width: 250px;
   background-color: #fff;
   border-radius: 5px;
   display: flex;
+  justify-content: space-around;
+  align-items: center;
   flex-direction: column;
+}
+
+.server-label {
+  color: #87909c;
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.server-input-field {
+  height: 30px;
+  border: 0;
+  outline: 0;
+  border-bottom: 1px solid black;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: black;
+  font-weight: 400;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.server-input-field:focus {
+  border-bottom: 2px solid #7289da;
 }

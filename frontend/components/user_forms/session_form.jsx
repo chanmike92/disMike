@@ -13,7 +13,7 @@ class SessionForm extends React.Component {
     demoUsername: "",
     demoPassword: "",
     demoEmail: "",
-    background: `background-img-${Math.floor(Math.random() * 8)}`
+    background: `background-img-${Math.floor(Math.random(1) * 9)}`
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);

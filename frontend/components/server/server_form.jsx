@@ -29,17 +29,21 @@ class ServerForm extends React.Component {
   }
 
   render() {
-    const header = this.formType === 'createServer' ? 'CREATE YOUR SERVER' : 'JOIN A SERVER';
-    const buttonName = this.formType === 'createServer' ? 'Create a Server' : 'Join a Server';
+    const header = this.props.formType === 'createServer' ? 'CREATE YOUR SERVER' : 'JOIN A SERVER';
+    const buttonName = this.props.formType === 'createServer' ? 'Create' : 'Join';
     return (
       <div className='server-form-container'>
-        <h1>{header} <div onClick={this.props.closeModal} className="close-x">X</div></h1>
+        <h1 className='form-title'>{header}</h1>
         <form onSubmit={this.handleSubmit} className="server-form">
-          <label className='server-label'>Name</label>
-          <input className='server-input-field' type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
-          <label className='server-label'>Image URL</label>
-          <input className='server-input-field' type='text' onChange={this.handleInput('img_url')} value={this.state.img_url}></input>
-          <button className='server-form-button' type='submit'>{buttonName}</button>
+          <div className='input-container'>
+            <label className='server-label'>Name</label>
+            <input className='server-input-field' type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
+          </div>
+          <div>
+            <label className='server-label'>Image URL</label>
+            <input className='server-input-field' type='text' onChange={this.handleInput('img_url')} value={this.state.img_url}></input>
+          </div>
+          <button className='submit-form' type='submit'>{buttonName}</button>
         </form>
       </div>
     );
