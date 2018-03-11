@@ -26,7 +26,6 @@ class Api::ServersController < ApplicationController
 
     if @server
       @subscription = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
-
       if @subscription.save
         render 'api/servers/show'
       else
@@ -39,8 +38,8 @@ class Api::ServersController < ApplicationController
 
   def show
 
-    @server = Server.new(server_params)
-    if @server.save
+    @server = Server.find(params[:id])
+    if @server
       render 'api/servers/show'
     else
       render json: @server.errors.full_messages, status: 402
@@ -48,7 +47,7 @@ class Api::ServersController < ApplicationController
   end
 
   def update
-    @server = Server.find(params[:id])
+    @server = Server.find(params[:server][:id])
     @server.img_url = params[:server][:img_url]
     if @server.save
       render 'api/servers/show'

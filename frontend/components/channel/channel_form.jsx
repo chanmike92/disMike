@@ -6,7 +6,7 @@ class ChannelForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {name: '', server_id: ''};
+    this.state = this.props.currentState;
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -17,7 +17,6 @@ class ChannelForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    this.setState({server_id: this.props.currentServerId});
     const channel = Object.assign({}, this.state);
 
     this.props.processForm(channel).then(() => this.props.closeModal());
@@ -32,7 +31,8 @@ class ChannelForm extends React.Component {
   }
 
   render() {
-    debugger
+    const formName = this.props.formType === 'createChannel' ? 'Create Channel' : 'Update Channel';
+
     return (
       <div className='server-form-container'>
         <h1 className='form-title'>Create a Channel</h1>
@@ -41,7 +41,7 @@ class ChannelForm extends React.Component {
             <label className='server-label'>Name</label>
             <input className='server-input-field' type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
-          <button className='submit-form' type='submit'>Create Channel</button>
+          <button className='submit-form' type='submit'>{formName}</button>
         </form>
       </div>
     );

@@ -19,14 +19,14 @@ class ServerShow extends React.Component {
       );
     });
 
-    
+
 
     return (
       <div className='server-container'>
 
         <button className='direct-message-link server-icons'>Add DM</button>
         <div className='separator'></div>
-        <ul>
+        <ul className='server-list'>
           {servers}
         </ul>
         <button id='create-server-form' onClick={this.props.createForm}>

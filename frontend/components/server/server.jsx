@@ -14,7 +14,7 @@ const Server = ({ server, currentUser, fetchAServer, deleteServer }) => {
 
   return (
   <li unselectable="on" className="server-icons" onContextMenu={rightClick}>
-    <Link onClick={() => fetchAServer(server.id)} className='server-links' to={`/${currentUser.id}/server/${server.id}/channel`}>{server.name[0]}</Link>
+    <Link className='server-links' to={`/${currentUser.id}/server/${server.id}/channel`}>{server.name[0]}</Link>
   </li>
 )
 }

@@ -28,9 +28,9 @@ export const receiveErrors = (errors) => {
 };
 
 
-export const fetchAllChannels = () => dispatch => {
+export const fetchAllChannels = (id) => dispatch => {
 
-  return APIUtil.fetchAllChannels().then((channels) => dispatch(receiveAllChannels(channels)), (errors) => {
+  return APIUtil.fetchAllChannels(id).then((channels) => dispatch(receiveAllChannels(channels)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
 };

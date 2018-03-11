@@ -4,7 +4,7 @@
 
 .server-container {
   width: 88px;
-  height: 95%;
+  height: 100%;
   background-color: #202225;
   display: flex;
   flex-direction: column;
@@ -12,12 +12,19 @@
   align-items: center;
 }
 
-// .server-item {
-//   // background-color: #2f3136;
-//   display: flex;
-//   flex-direction: row;
-//   justify-content: space-between;
-// }
+.server-list {
+  height: 500px;
+  display: flex;;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  &::-webkit-scrollbar{
+     display: none;
+   }
+}
+
 .separator {
   background-color: rgb(47, 49, 54);
   height: 2px;
@@ -32,7 +39,9 @@
 }
 
 .server-icons {
+  position: relative;
   height: 50px;
+  min-height: 50px;
   width: 50px;
   background-color: rgb(47, 49, 54);
   // background-color: #2f3136;
@@ -57,6 +66,13 @@
   background-color: rgb(114, 137, 218);
   transition: border-radius 1s ease, background-color 1s ease;
 }
+
+.server-icons:focus {
+  border-radius: 15px;
+  background-color: rgb(114, 137, 218);
+  transition: border-radius 1s ease, background-color 1s ease;
+}
+
 
 .delete-server {
   z-index: 5;
