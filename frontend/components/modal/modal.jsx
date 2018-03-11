@@ -2,6 +2,7 @@ import React from 'react';
 import { closeModal } from '../../actions/modal_actions';
 import { connect } from 'react-redux';
 import ServerCreateContainer from '../server/server_create_container';
+import ChannelCreateContainer from '../channel/channel_create_container';
 import ServerJoinContainer from '../server/server_join_container';
 
 const Modal = ({ modal, closeModal }) => {
@@ -12,7 +13,6 @@ const Modal = ({ modal, closeModal }) => {
   let component;
   switch (modal) {
     case 'createServer':
-
       component =
       <div className='modal-container'>
         <div className='modal-title'>OH, ANOTHER SERVER HUH?</div>
@@ -21,7 +21,13 @@ const Modal = ({ modal, closeModal }) => {
           <ServerJoinContainer />
         </div>
       </div>;
-
+      break;
+      case 'createChannel':
+      component =
+        <div className='modal-container'>
+          <div className='modal-title'>Create Channel</div>
+          <ChannelCreateContainer />
+        </div>;
       break;
     default:
       return null;

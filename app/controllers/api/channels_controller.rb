@@ -13,7 +13,7 @@ class Api::ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     if @channel.save
-      render 'api/servers/show'
+      render 'api/channels/show'
     else
       render json: @channel.errors.full_messages, status: 402
     end
@@ -24,19 +24,19 @@ class Api::ChannelsController < ApplicationController
 
     @channel = Channel.find_by(params[:id])
     if @channel
-      render 'api/servers/show'
+      render 'api/channels/show'
     else
       render json: {errors: ['Channel does not exist']}, status: 402
     end
   end
 
   def update
-    @server = Server.find(params[:id])
-    @server.img_url = params[:server][:img_url]
-    if @server.save
-      render 'api/servers/show'
+    @channel = Channel.find(params[:id])
+    @channel.name = params[:channel][:name]
+    if @channel.save
+      render 'api/channels/show'
     else
-      render json: @server.errors.full_messages, status: 402
+      render json: @channel.errors.full_messages, status: 402
     end
   end
 

@@ -27,6 +27,14 @@ export const receiveErrors = (errors) => {
   };
 };
 
+export const receiveCurrentServer = (currentServer) => {
+
+  return {
+    type: RECEIVE_CURRENT_SERVER,
+    currentServer
+  };
+};
+
 
 export const fetchAllServers = () => dispatch => {
 

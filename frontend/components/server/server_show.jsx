@@ -12,12 +12,14 @@ class ServerShow extends React.Component {
     const servers = this.props.servers.map(server => { return (<Server
       server={server}
       key={server.id}
+      currentUser={this.props.currentUser}
       deleteServer={this.props.deleteServer}
+      fetchAServer={this.props.fetchAServer}
       />
       );
     });
 
-
+    
 
     return (
       <div className='server-container'>

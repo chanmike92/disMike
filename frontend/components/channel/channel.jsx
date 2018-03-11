@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const Server = ({ server, currentUser, fetchAServer, deleteServer }) => {
+const Server = ({ server, deleteServer }) => {
   const rightClick = (e) => {
     e.preventDefault();
     return (
@@ -14,7 +14,7 @@ const Server = ({ server, currentUser, fetchAServer, deleteServer }) => {
 
   return (
   <li unselectable="on" className="server-icons" onContextMenu={rightClick}>
-    <Link onClick={() => fetchAServer(server.id)} className='server-links' to={`/${currentUser.id}/server/${server.id}/channel`}>{server.name[0]}</Link>
+    <a># {server.name[0]}</a>
   </li>
 )
 }
