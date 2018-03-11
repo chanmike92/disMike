@@ -7,16 +7,16 @@ class Server < ApplicationRecord
     primary_key: :id,
     foreign_key: :owner_id
 
-  has_many :subscriptions,
+  has_many :subscriptions, dependent: :destroy,
     class_name: :Serversubscription,
     primary_key: :id,
     foreign_key: :server_id
 
-  has_many :subscribed_users,
+  has_many :subscribed_users, dependent: :destroy,
     through: :subscriptions,
     source: :user
 
-  has_many :channels,
+  has_many :channels, dependent: :destroy,
     class_name: :Channel,
     primary_key: :id,
     foreign_key: :server_id

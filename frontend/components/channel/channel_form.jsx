@@ -35,7 +35,6 @@ class ChannelForm extends React.Component {
 
     return (
       <div className='server-form-container'>
-        <h1 className='form-title'>Create a Channel</h1>
         <form onSubmit={this.handleSubmit} className="server-form">
           <div className='input-container'>
             <label className='server-label'>Name</label>

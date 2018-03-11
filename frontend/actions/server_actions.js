@@ -2,6 +2,7 @@ import * as APIUtil from '../util/server_api_util';
 export const RECEIVE_A_SERVER = 'RECEIVE_A_SERVER';
 export const RECEIVE_ALL_SERVERS = 'RECEIVE_ALL_SERVERS';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
+export const RECEIVE_CURRENT_SERVER = 'RECEIVE_CURRENT_SERVER';
 
 export const receiveAllServers = (servers) => {
 

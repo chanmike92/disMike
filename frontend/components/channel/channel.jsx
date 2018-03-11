@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const Channel = ({ channel, updateForm, deleteChannel }) => {
+const Channel = ({ channel, updateForm, currentServer, currentUser, deleteChannel }) => {
   const rightClick = (e) => {
     e.preventDefault();
     return (
@@ -16,11 +16,11 @@ const Channel = ({ channel, updateForm, deleteChannel }) => {
   return (
   <li unselectable="on" className="channel-item-container" onContextMenu={rightClick}>
     <div className='channel-name-container'>
-      <a className='channel-link-item'># {channel.name}</a>
+      <Link to={`/${currentUser.id}/server/${currentServer.id}/channel/${channel.id}`} className='channel-link-item'># {channel.name}</Link>
     </div>
     <div className='channel-controls'>
       <button onClick={updateForm}>+</button>
-      <button onClick={ () => deleteChannel(channel.id) }>-</button>
+      <button onClick={() => deleteChannel(channel.id) }>-</button>
     </div>
   </li>
 );

@@ -70,10 +70,10 @@
 }
 
 .left-form-container-signup {
-  height: 555px;
-  width: 35%;
+  height: 484px;
+  width: 228px;
   border-right: 1px black;
-  background: hsla(0,0%,100%, .9);
+  background: hsla(0%,0%,100%, .75);
   justify-content: center;
   align-items: stretch;
   z-index: 1;
@@ -81,18 +81,17 @@
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  justify-content: flex-end;
-  background-image: image-url('Discord-Logo-Black.png');
+  background-image: image-url('dismike-logo.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
 }
 
 .left-form-container-login {
-  height: 465px;
-  width: 35%;
+  height: 394px;
+  width: 228px;
   border-right: 1px black;
-  background: hsla(0,0%,100%, .9);
+  background: hsla(0,0%,100%, .75);
   justify-content: center;
   align-items: stretch;
   z-index: 1;
@@ -100,8 +99,7 @@
   display: flex;
   box-sizing: border-box;
   flex-direction: column;
-  justify-content: flex-end;
-  background-image: image-url('Discord-Logo-Black.png');
+  background-image: image-url('dismike-logo.png');
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
@@ -126,27 +124,35 @@
   color: white;
   font-weight: 1900;
   margin: 0, auto;
+  padding-bottom: 4px;
 }
 
 .logo-text {
 
-  padding: 10px;
+  padding: 100px;
   align-self: center;
   font-size: 30px;
   text-align: center;
   color: skyblue;
-  margin: 0, auto;
+  margin-top: 200px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-image: url('dismike-font.png');
 }
 
 
 .input-name {
   color: #87909c;
+  text-transform: uppercase;
   display: block;
   font-size: 11px;
   font-weight: 700;
   padding-bottom: 10px;
   text-transform: uppercase;
 }
+
+
 
 .input-field {
   width: 350px;
@@ -263,6 +269,11 @@
   cursor: pointer;
 }
 
+.spacer {
+  height: 100%;
+  width: 100%
+}
+
 .blur {
   background-size: cover;
   z-index: 0;
@@ -279,4 +290,10 @@
 .input-wrapper {
   height: 70px;
   margin-top: 20px
+}
+
+.input-error {
+  color: red;
+  text-transform: uppercase;
+  font-weight: 700;
 }

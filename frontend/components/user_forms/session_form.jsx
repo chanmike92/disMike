@@ -19,6 +19,7 @@ class SessionForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.guestLogin = this.guestLogin.bind(this);
     this.demoLink = this.demoLink.bind(this);
+    this.renderErrors = this.renderErrors.bind(this);
   }
 
   componentDidMount() {
@@ -37,13 +38,13 @@ class SessionForm extends React.Component {
         typeSpeed: 40
       };
 
-      let demoUsername = setTimeout(() => {
+      setTimeout(() => {
         new Typed(".email", emailOptions);
       }, 100);
-      let demoPassword = setTimeout(() => {
+      setTimeout(() => {
         new Typed(".password", passOptions);
       }, 1000);
-      let demoSubmit = setTimeout(() => {
+      setTimeout(() => {
         this.props.processForm(guest);
       }, 2000);
     }
@@ -62,10 +63,20 @@ class SessionForm extends React.Component {
     };
   }
 
+  renderErrors(field) {
+
+    if (this.props.errors[field].length === 0) {
+      return <label className="input-name">{field}</label>;
+    }
+    else {
+      return <label className="input-name input-error">{this.props.errors[field][0]}</label>;
+    }
+  }
+
   createUsername() {
     return (
       <div className='input-wrapper'>
-        <label className="input-name">Username</label>
+        {this.renderErrors("username")}
           <input
             className='input-field name'
             type="text"
@@ -103,18 +114,15 @@ class SessionForm extends React.Component {
           <div className={`blur ${this.state.background}`}></div>
 
           <div className={leftFormContainerClass}>
-            <h2 className='logo-text'>DISMIKE</h2>
+            <h2 className='logo-text'></h2>
           </div>
           <div className="right-form">
             <div className="right-form-content">
               <h2 className='header'>{headerName}</h2>
-              <ul className='errors-list'>
-                {this.props.errors.map((error, idx) => (<li className="error-item" key={idx}>{error}</li>))}
-              </ul>
-
+              <div className='spacer'></div>
               <form className='session-form'>
                 <div className='input-wrapper'>
-                  <label className="input-name">Email</label>
+                {this.renderErrors("email")}
                   <input className='input-field email' type="email" onChange={this.handleInput('email')} value={this.state.email}>
                   </input>
                 </div>
@@ -122,7 +130,7 @@ class SessionForm extends React.Component {
                 {createUsername}
 
                 <div className='input-wrapper'>
-                  <label className="input-name">Password</label>
+                  {this.renderErrors("password")}
                     <input className='input-field password' type="password" onChange={this.handleInput('password')} value={this.state.password}>
                     </input>
                 </div>
