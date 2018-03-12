@@ -1,3 +1,114 @@
 // Place all the styles related to the messages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.message-container {
+  height: 100%;
+  background-color: #36393e;
+  width: calc(100% - 70px - 240px);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.channel-title-name-container {
+  width: 100%;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(0,0,0,.2), 0 2px 0 rgba(0,0,0,.06);
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  height: 48px;
+  padding: 0 12px 0 16px;
+  transition: background-color .15s ease;
+  z-index: 3;
+  position: relative;
+  font-size: 100%;
+  font-style: inherit;
+  justify-content: space-between;
+}
+
+.channel-title-name {
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  -webkit-box-flex: 1;
+  flex: 1;
+  font-size: 16px;
+  line-height: 48px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #fff;
+  border: 0;
+  font-family: inherit;
+  font-size: 100%;
+  font-style: inherit;
+  font-weight: inherit;
+  margin: 0;
+  outline: 0;
+  padding: 0;
+  vertical-align: baseline
+}
+
+.bottom-message-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100%;
+  margin: 0;
+  outline: 0;
+  border: 0;
+  width: 100%;
+}
+
+.message-list-container {
+  height: 100%;
+  padding: 5px;
+  display: flex;;
+  flex-direction: column;
+  align-items: center;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  box-sizing: border-box;
+  &::-webkit-scrollbar{
+     display: none;
+   }
+}
+
+.message-form {
+  width: 100%;
+  height: auto;
+}
+
+.message-body {
+  border-top: 1px solid rgba(79,84,92,.6);
+  box-sizing: border-box;
+  padding: 30px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(32,34,37,.3);
+  color: white;
+  width: 100%;
+}
+
+.message-input-field {
+  background: #484B53;
+  width: 100%;
+  margin-left: 10px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  color: white;
+  min-height: 40px;
+  font-size: 14px;
+  font-weight: 400;
+  resize: none;
+}

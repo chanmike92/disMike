@@ -1,10 +1,12 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_A_SERVER } from '../actions/server_actions';
+import { RECEIVE_A_CHANNEL } from '../actions/channel_actions';
 import { merge } from 'lodash';
 
 const _nullState = {
   currentUser: null,
-  currentServer: null
+  currentServer: null,
+  currentChannel: null
 };
 
 const sessionReducer = (oldState = _nullState, action) => {
@@ -14,6 +16,8 @@ const sessionReducer = (oldState = _nullState, action) => {
       return merge({}, oldState, { currentUser: action.currentUser });
     case RECEIVE_A_SERVER:
       return merge({}, oldState, { currentServer: action.server});
+    case RECEIVE_A_CHANNEL:
+      return merge({}, oldState, { currentChannel: action.channel});
     default:
       return oldState;
   }

@@ -3,7 +3,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const Message = ({ message }) => {
   return (
-    <li unselectable="on" className="message-item-container" onContextMenu={rightClick}>
+    <li className="message-item-container">
       <div className='message-name-container'>
         <h1>{message.body}</h1>
       </div>

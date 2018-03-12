@@ -7,7 +7,6 @@ class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = this.props.currentServer;
-    this.handleServerDelete.bind(this);
   }
 
   componentDidMount() {
@@ -18,13 +17,10 @@ class ChannelShow extends React.Component {
 
   componentWillReceiveProps(newProps){
 
-  if(newProps.match.params.serverId !== this.props.match.params.serverId){
-    this.props.fetchAllChannels(newProps.match.params.serverId);
-    this.props.fetchAServer(newProps.match.params.serverId);
-  }
-}
-  handleServerDelete() {
-
+    if(newProps.match.params.serverId !== this.props.match.params.serverId){
+      this.props.fetchAllChannels(newProps.match.params.serverId);
+      this.props.fetchAServer(newProps.match.params.serverId);
+    }
   }
 
   render() {

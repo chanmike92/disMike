@@ -3,11 +3,11 @@ import { merge } from 'lodash';
 
 
 const messageReducer = (oldState = {}, action) => {
-
+  debugger
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ALL_MESSAGES:
-      return action.messages;
+      return merge({}, oldState, action.messages)
     case RECEIVE_A_MESSAGE:
       return merge({}, oldState, { [action.message.id]: action.message });
     default:

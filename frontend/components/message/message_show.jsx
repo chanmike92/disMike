@@ -5,28 +5,29 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class MessageShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.currentChannel;
-    this.handleChannelDelete.bind(this);
+    this.state = {body: '', author_id: this.props.currentUser.id, channel_id: this.props.match.params.channelId};
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleInput = this.handleInput.bind(this);
   }
 
   componentDidMount() {
-
+    debugger
     this.props.fetchAChannel(this.props.match.params.channelId);
-    this.props.fetchAllChannels(this.props.match.params.channelId);
+    this.props.fetchAllMessages(this.props.match.params.channelId);
   }
 
   componentWillReceiveProps(newProps){
-    if(newProps.match.params.channelId !== this.props.match.params.channelId){
-      this.props.fetchAllChannels(newProps.match.params.channelId);
+    if(newProps !== this.props) {
+      this.props.fetchAllMessages(newProps.match.params.channelId);
       this.props.fetchAChannel(newProps.match.params.channelId);
     }
   }
 
   handleSubmit(e) {
     e.preventDefault();
-    const message = Object.assign({}, this.state);
-
-    this.props.processForm(message).then(this.setState({body: ''}));
+    this.setState({author_id: this.props.currentUser.id});
+    debugger
+    this.props.makeNewMessage(this.state).then(() => this.setState({body: ''}));
   }
 
   handleInput(input) {
@@ -47,21 +48,18 @@ class MessageShow extends React.Component {
 
     const currentChannel = this.props.currentChannel ? this.props.currentChannel.name : "";
     const currentChannelId = this.props.currentChannel ? this.props.currentChannel.id : "";
-
     return (
-      <div className='channel-container'>
-        <div className='channel-name-container'>
-          <div className='channel-name'># {currentChannel}</div>
+      <div className='message-container'>
+        <div className='channel-title-name-container'>
+          <div className='channel-title-name'># {currentChannel}</div>
         </div>
-        <div className='bottom-channels-container'>
-          <div className='text-channel-container'>
+        <div className='bottom-message-container'>
             <ul className='message-list-container'>
               {messages}
             </ul>
-          </div>
-          <div>
-            <form onSubmit={this.handleSubmit} className="message-form">
-              <input className='message-input-field' type='text' onChange={this.handleInput('name')} value={this.state.body} placeholder={`Message ${currentChannel}`}></input>
+          <div className='message-body'>
+            <form className='message-form' onSubmit={this.handleSubmit}>
+            <input type='text' className='message-input-field' onChange={this.handleInput('body')} value={this.state.body} placeholder={`Message ${currentChannel}`}></input>
             </form>
           </div>
         </div>

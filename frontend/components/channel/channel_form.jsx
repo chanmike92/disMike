@@ -38,7 +38,7 @@ class ChannelForm extends React.Component {
         <form onSubmit={this.handleSubmit} className="server-form">
           <div className='input-container'>
             <label className='server-label'>Name</label>
-            <input className='server-input-field' type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
+            <input className='server-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
           <button className='submit-form' type='submit'>{formName}</button>
         </form>

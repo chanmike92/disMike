@@ -8,10 +8,11 @@ export const fetchAllChannels = (id) => {
 };
 
 export const fetchAChannel = (id) => {
-
+  
   return $.ajax({
     method: 'GET',
     url: `api/channels/${id}`,
+    data: {id}
   });
 };
 
@@ -34,8 +35,10 @@ export const updateChannel = (channel) => {
 };
 
 export const deleteChannel = (id) => {
+
   return $.ajax({
     url: `api/channels/${id}`,
     method: 'DELETE',
+    data: {id}
   });
 };

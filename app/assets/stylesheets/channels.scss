@@ -137,6 +137,15 @@
 
 .channel-link-item {
   font-size: 16px;
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.channel-name-container {
+  position: relative;
 }
 
 .greeting-container {
@@ -161,4 +170,8 @@
   outline: 0;
   border: 0;
   width: 240px;
+}
+
+.channel-control {
+  z-index: 5;
 }

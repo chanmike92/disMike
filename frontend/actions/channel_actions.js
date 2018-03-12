@@ -12,7 +12,7 @@ export const receiveAllChannels = (channels) => {
 };
 
 export const receiveAChannel = (channel) => {
-
+  
   return {
     type: RECEIVE_A_CHANNEL,
     channel
@@ -46,5 +46,6 @@ export const makeNewChannel = (channel) => dispatch => {
 };
 
 export const deleteChannel = (id) => dispatch => {
+
   return APIUtil.deleteChannel(id).then((channels) => dispatch(receiveAllChannels(channels)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
