@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const Message = ({ message }) => {
+const MessageIndex = ({ message }) => {
   return (
     <li className="message-item-container">
       <div className='message-name-container'>
@@ -11,4 +11,4 @@ const Message = ({ message }) => {
   );
 };
 
-export default withRouter(Message);
+export default withRouter(MessageIndex);

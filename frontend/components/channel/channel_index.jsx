@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const Channel = ({ channel, updateForm, currentServer, currentUser, deleteChannel }) => {
+const ChannelIndex = ({ channel, updateForm, currentServer, currentUser, deleteChannel }) => {
   const rightClick = (e) => {
     e.preventDefault();
     return (
@@ -26,4 +26,4 @@ const Channel = ({ channel, updateForm, currentServer, currentUser, deleteChanne
 );
 };
 
-export default withRouter(Channel);
+export default withRouter(ChannelIndex);

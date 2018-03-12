@@ -1,10 +1,16 @@
 import React from 'react';
-import Server from './server';
+import ServerIndex from './server_index';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class ServerShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllServers();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props !== nextProps) {
+      this.props.fetchAllServers();
+    }
   }
 
   render() {

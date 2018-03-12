@@ -1,5 +1,5 @@
 import React from 'react';
-import Message from './message';
+import MessageIndex from './message_index';
 import MessageFormContainer from './message_form_container';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
@@ -7,19 +7,17 @@ class MessageShow extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetchAChannel(this.props.match.params.channelId);
     this.props.fetchAllMessages(this.props.match.params.channelId);
   }
 
   componentWillReceiveProps(newProps){
     if(newProps !== this.props) {
       this.props.fetchAllMessages(newProps.match.params.channelId);
-      this.props.fetchAChannel(newProps.match.params.channelId);
     }
   }
 
   render() {
-    const messages = this.props.messages.map(message => { return (<Message
+    const messages = this.props.messages.map(message => { return (<MessageIndex
       message={message}
       key={message.id}
       />

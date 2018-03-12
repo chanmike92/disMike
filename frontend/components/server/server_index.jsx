@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const Server = ({ server, currentUser, fetchAServer, deleteServer }) => {
+const ServerIndex = ({ server, currentUser, fetchAServer, deleteServer }) => {
   const rightClick = (e) => {
     e.preventDefault();
     return (
@@ -20,4 +20,4 @@ const Server = ({ server, currentUser, fetchAServer, deleteServer }) => {
 );
 };
 
-export default withRouter(Server);
+export default withRouter(ServerIndex);

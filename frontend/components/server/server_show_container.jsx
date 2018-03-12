@@ -11,7 +11,10 @@ const mapStateToProps = state => {
 
   return ({
     currentUser: state.session.currentUser,
-    servers: Object.values(state.entities.servers)
+    currentChannel: state.session.currentChannel,
+    currentServer: state.session.currentServer,
+    servers: Object.values(state.entities.servers),
+    errors: state.errors.server
   });
 };
 
