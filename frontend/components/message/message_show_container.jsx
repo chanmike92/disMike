@@ -22,7 +22,6 @@ const mapDispatchToProps = dispatch => {
     fetchAllChannels: (id) => dispatch(fetchAllChannels(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),
     fetchAllMessages: (id) => dispatch(fetchAllMessages(id)),
-    makeNewMessage: (message) => dispatch(makeNewMessage(message)),
   });
 };
 

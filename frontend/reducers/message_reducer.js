@@ -3,7 +3,7 @@ import { merge } from 'lodash';
 
 
 const messageReducer = (oldState = {}, action) => {
-  debugger
+  
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ALL_MESSAGES:

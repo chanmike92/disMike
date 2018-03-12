@@ -4,7 +4,7 @@ class Api::MessagesController < ApplicationController
   def index
 
     @messages = Channel.find(params[:id]).messages
-    debugger
+    
     if @messages
       render 'api/messages/index'
     else
@@ -14,7 +14,7 @@ class Api::MessagesController < ApplicationController
 
   def create
     @message = Message.new(message_params)
-    debugger
+    
     if @message.save
       render 'api/message/show'
     else

@@ -15,9 +15,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    fetchAllServers: () => dispatch(fetchAllServers()),
-    deleteServer: (id) => dispatch(deleteServer(id)),
-    createForm: () => dispatch(openModal('createServer'))
+    fetchAllUsers: () => dispatch(fetchAllUsers())
   });
 };
 

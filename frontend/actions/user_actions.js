@@ -20,4 +20,7 @@ export const receiveAllUsers = (users) => {
 
 
 export const fetchAllUsers = () => {
+  return APIUtil.fetchAllUsers().then((users) => dispatch(receiveAllUsers(users)), (errors) => {
+
+    return dispatch(receiveErrors(errors.responseJSON));});
 };
