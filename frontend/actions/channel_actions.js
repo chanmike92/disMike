@@ -12,7 +12,7 @@ export const receiveAllChannels = (channels) => {
 };
 
 export const receiveAChannel = (channel) => {
-  
+
   return {
     type: RECEIVE_A_CHANNEL,
     channel

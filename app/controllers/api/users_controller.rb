@@ -1,5 +1,23 @@
 class Api::UsersController < ApplicationController
 
+  def index
+    @users = Server.find(params[:id]).subscribed_users
+    if @users
+      render 'api/users/index'
+    else
+      render json: {}
+    end
+  end
+
+  def show
+    @user = User.find_by(username: params[:username])
+    if @user
+      render 'api/users/index'
+    else
+      render ['Invalid User']
+    end
+  end
+
   def create
     @user = User.new(user_params)
 

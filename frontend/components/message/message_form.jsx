@@ -6,20 +6,35 @@ class MessageForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props.currentState;
+    this.state = {body: '', channel_id: ''};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    this.props.clearErrors();
+
+    this.props.fetchAChannel(this.props.match.params.channelId).
+    then(() => {
+      this.setState({ channel_id: this.props.currentChannel.id });
+    });
+    this.props.fetchAllMessages(this.props.match.params.channelId);
+  }
+
+  componentWillReceiveProps(newProps) {
+    if(newProps.match.params.channelId !== this.props.match.params.channelId) {
+      this.props.fetchAChannel(this.props.match.params.channelId).
+      then(() => {
+        this.setState({ channel_id: this.props.currentChannel.id });
+      });
+      this.props.fetchAllMessages(this.props.match.params.channelId);
+    }
   }
 
   handleSubmit(e) {
     e.preventDefault();
     const message = Object.assign({}, this.state);
-
-    this.props.processForm(message);
+    this.props.processForm(message).
+    then(this.setState({body: ''}));
   }
 
   handleInput(input) {
@@ -31,11 +46,20 @@ class MessageForm extends React.Component {
   }
 
   render() {
+    const currentChannel = this.props.currentChannel ?
+    this.props.currentChannel.name : "";
+    const currentChannelId = this.props.currentChannel ?
+    this.props.currentChannel.id : "";
 
     return (
       <div className='message-body'>
         <form className='message-form' onSubmit={this.handleSubmit}>
-          <input type='text' className='message-input-field' onChange={this.handleInput('body')} value={this.state.body} placeholder={`Message ${currentChannel}`}></input>
+          <input type='text'
+              className='message-input-field'
+              onChange={this.handleInput('body')}
+              value={this.state.body}
+              placeholder={`Message #${currentChannel}`}>
+          </input>
         </form>
       </div>
     );

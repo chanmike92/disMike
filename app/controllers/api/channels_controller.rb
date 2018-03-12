@@ -21,7 +21,7 @@ class Api::ChannelsController < ApplicationController
 
 
   def show
-    @channel = Channel.find_by(params[:id])
+    @channel = Channel.find(params[:id])
 
     if @channel
       render 'api/channels/show'

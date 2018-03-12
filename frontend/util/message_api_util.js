@@ -1,5 +1,5 @@
 export const fetchAllMessages = (id) => {
-  
+
   return $.ajax({
     method: 'GET',
     url: 'api/messages',
@@ -10,7 +10,7 @@ export const fetchAllMessages = (id) => {
 
 
 export const makeNewMessage = (message) => {
-  
+
   return $.ajax({
     url: 'api/messages',
     method: 'POST',

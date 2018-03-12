@@ -5,17 +5,13 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class ServerShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllServers();
+
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props !== nextProps) {
-      this.props.fetchAllServers();
-    }
-  }
 
   render() {
 
-    const servers = this.props.servers.map(server => { return (<Server
+    const servers = this.props.servers.map(server => { return (<ServerIndex
       server={server}
       key={server.id}
       currentUser={this.props.currentUser}

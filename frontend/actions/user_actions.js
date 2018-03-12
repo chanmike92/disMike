@@ -1,11 +1,11 @@
-import * as APIUtil from '../util/users_api_util';
+import * as APIUtil from '../util/user_api_util';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
-export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
+export const RECEIVE_A_USER = 'RECEIVE_A_USER';
 
-export const receiveCurrentUser = (user) => {
+export const receiveAUser = (user) => {
 
   return {
-    type: RECEIVE_CURRENT_USER,
+    type: RECEIVE_A_USER,
     user
   };
 };
@@ -13,14 +13,18 @@ export const receiveCurrentUser = (user) => {
 export const receiveAllUsers = (users) => {
 
   return {
-    type: RECEIVE_SESSION_ERRORS,
+    type: RECEIVE_ALL_USERS,
     users
   };
 };
 
 
-export const fetchAllUsers = () => {
-  return APIUtil.fetchAllUsers().then((users) => dispatch(receiveAllUsers(users)), (errors) => {
+export const fetchAllUsers = () => dispatch => {
+  return APIUtil.fetchAllUsers().then((users) =>
+  dispatch(receiveAllUsers(users)));
+};
 
-    return dispatch(receiveErrors(errors.responseJSON));});
+export const fetchAUser = () => dispatch => {
+  return APIUtil.fetchAUser().then((user) =>
+  dispatch(receiveAUser(user)));
 };

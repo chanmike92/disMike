@@ -7,9 +7,8 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-
+  
   return ({
-    currentState: {name: '', server_id: state.session.currentServer.id},
     currentServerId: state.session.currentServer.id,
     currentServer: state.session.currentServer,
     formType: 'updateChannel',

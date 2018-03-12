@@ -6,28 +6,31 @@ import GreetingContainer from '../greeting/greeting_container';
 class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = this.props.currentServer;
   }
 
   componentDidMount() {
+
+    this.props.fetchAServer(this.props.match.params.serverId);
     this.props.fetchAllChannels(this.props.match.params.serverId);
   }
 
   componentWillReceiveProps(newProps){
 
-    if(newProps !== this.props){
+    if(newProps.match.params.serverId !== this.props.match.params.serverId){
       this.props.fetchAllChannels(newProps.match.params.serverId);
+      this.props.fetchAServer(newProps.match.params.serverId);
     }
   }
 
   render() {
-    const channels = this.props.channels.map(channel => { return (<Channel
+    const channels = this.props.channels.map(channel => { return (<ChannelIndex
       channel={channel}
       key={channel.id}
       currentUser={this.props.currentUser}
       currentServer={this.props.currentServer}
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
+      fetchAChannel={this.props.fetchAChannel}
       />
       );
     });

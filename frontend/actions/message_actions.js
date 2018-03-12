@@ -30,12 +30,10 @@ export const receiveErrors = (errors) => {
 
 export const fetchAllMessages = (id) => dispatch => {
 
-  return APIUtil.fetchAllMessages(id).then((messages) => dispatch(receiveAllMessages(messages)), (errors) => {
-
-    return dispatch(receiveErrors(errors.responseJSON));});
+  return APIUtil.fetchAllMessages(id).then((messages) => dispatch(receiveAllMessages(messages)))
 };
 
 export const makeNewMessage = (message) => dispatch => {
 
-  return APIUtil.makeNewMessage(message).then((message) => dispatch(receiveAMessage(message)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.makeNewMessage(message).then((message) => dispatch(receiveAMessage(message)));
 };
