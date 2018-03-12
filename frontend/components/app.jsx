@@ -12,16 +12,14 @@ import Modal from './modal/modal';
 
 const App = () => (
   <div className='app'>
-    <Switch>
-      <AuthRoute exact path='/signup' component={ SignupFormContainer } />
-      <AuthRoute path='/' component={ SessionFormContainer }/>
-    </Switch>
 
+    <AuthRoute exact path='/signup' component={ SignupFormContainer } />
+    <AuthRoute exact path='/session' component={ SessionFormContainer }/>
 
     <ProtectedRoute path={`/:userId/server`} component={ ServerShowContainer } />
-    <ProtectedRoute path={`/:userId/server/:serverId/channel`} component= { ChannelShowContainer } />
-    <ProtectedRoute path={`/:userId/server/:serverId/channel/:channelId`} component= { MessageShowContainer } />
-    <ProtectedRoute path={`/:userId/server/:serverId/channel`} component= { UserShowContainer } />
+    <ProtectedRoute path={`/:userId/server/:serverId/channel`} component={ ChannelShowContainer } />
+    <ProtectedRoute exact path={`/:userId/server/:serverId/channel/:channelId`} component={ MessageShowContainer } />
+    <ProtectedRoute path={`/:userId/server/:serverId/channel`} component={ UserShowContainer } />
 
     <Modal />
   </div>

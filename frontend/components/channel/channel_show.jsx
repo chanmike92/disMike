@@ -9,7 +9,6 @@ class ChannelShow extends React.Component {
   }
 
   componentDidMount() {
-
     this.props.fetchAServer(this.props.match.params.serverId);
     this.props.fetchAllChannels(this.props.match.params.serverId);
   }
@@ -23,11 +22,16 @@ class ChannelShow extends React.Component {
   }
 
   render() {
+    const currentUserId = this.props.currentUser ? this.props.currentUser.id : "";
+    const currentServer = this.props.currentServer ? this.props.currentServer.name : "";
+    const currentServerId = this.props.currentServer ? this.props.currentServer.id : "";
+
     const channels = this.props.channels.map(channel => { return (<ChannelIndex
       channel={channel}
       key={channel.id}
       currentUser={this.props.currentUser}
-      currentServer={this.props.currentServer}
+      currentServer={ currentServer }
+      currentServerId={ currentServerId }
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
       fetchAChannel={this.props.fetchAChannel}
@@ -35,8 +39,6 @@ class ChannelShow extends React.Component {
       );
     });
 
-    const currentServer = this.props.currentServer ? this.props.currentServer.name : "";
-    const currentServerId = this.props.currentServer ? this.props.currentServer.id : "";
 
     return (
       <div className='channel-container'>

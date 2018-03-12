@@ -22,9 +22,9 @@ class SessionForm extends React.Component {
     this.renderErrors = this.renderErrors.bind(this);
   }
 
-  componentDidMount() {
-    this.props.clearErrors();
-  }
+  // componentDidMount() {
+  //   this.props.clearErrors();
+  // }
 
   guestLogin() {
       const guest = {email: 'demoEmail@demo.com', password: 'demoPassword'};

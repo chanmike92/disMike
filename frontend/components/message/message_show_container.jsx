@@ -14,7 +14,8 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     messages: Object.values(state.entities.messages),
     currentChannel: state.session.currentChannel,
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    currentServer: state.session.currentServer
   });
 };
 

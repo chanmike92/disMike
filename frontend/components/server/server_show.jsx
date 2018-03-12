@@ -5,7 +5,6 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class ServerShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllServers();
-
   }
 
 

@@ -9,12 +9,12 @@ class MessageShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllUsers(this.props.match.params.serverId);
     this.props.fetchAChannel(this.props.match.params.channelId);
     this.props.fetchAllMessages(this.props.match.params.channelId);
   }
 
   componentWillReceiveProps(newProps){
+
     if(newProps.match.params.channelId !== this.props.match.params.channelId) {
       this.props.fetchAChannel(this.props.match.params.channelId);
       this.props.fetchAllMessages(this.props.match.params.channelId);
@@ -22,6 +22,9 @@ class MessageShow extends React.Component {
   }
 
   render() {
+    const currentChannelName = this.props.currentChannel ?
+     this.props.currentChannel.name : "";
+
     const messages = this.props.messages.map(message => {
       return (<MessageIndex
         message={message}
@@ -30,13 +33,12 @@ class MessageShow extends React.Component {
       );
     });
 
-    const currentChannel = this.props.currentChannel ?
-     this.props.currentChannel.name : "";
+
 
     return (
       <div className='message-container'>
         <div className='channel-title-name-container'>
-          <div className='channel-title-name'># {currentChannel}</div>
+          <div className='channel-title-name'># {currentChannelName}</div>
         </div>
         <div className='bottom-message-container'>
           <ul className='message-list-container'>

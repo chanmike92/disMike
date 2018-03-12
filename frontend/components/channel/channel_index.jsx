@@ -1,26 +1,14 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const ChannelIndex = ({ channel, updateForm, fetchAChannel,
-  currentServer, currentUser, deleteChannel }) => {
-  const rightClick = (e) => {
-    e.preventDefault();
-    return (
-    <button className='delete-channel' onClick={() => deleteServer(channel.id)}>
-      x
-    </button>
-  );
-};
-
-
+const ChannelIndex = ({ channel, updateForm, fetchAChannel, currentUserId,
+  currentServer, currentServerId, currentUser, deleteChannel }) => {
 
   return (
-  <li unselectable="on"
-      className="channel-item-container"
-      onContextMenu={rightClick}>
+  <li className="channel-item-container">
     <div className='channel-name-container'>
       <Link
-        to={`/${currentUser.id}/server/${currentServer.id}/channel/${channel.id}`}
+        to={`/${currentUserId}/server/${currentServerId}/channel/${channel.id}`}
         className='channel-link-item'>
         # {channel.name}
       </Link>

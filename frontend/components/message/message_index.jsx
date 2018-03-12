@@ -7,7 +7,7 @@ const MessageIndex = ({ message }) => {
       <div className='message-name-container'>
         <div className='message-header'>
           <div className='message-name'>
-            {message.username}
+            {message.author}
           </div>
           <div className='message-date'>
             {message.created_at}

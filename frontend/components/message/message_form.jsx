@@ -17,7 +17,6 @@ class MessageForm extends React.Component {
     then(() => {
       this.setState({ channel_id: this.props.currentChannel.id });
     });
-    this.props.fetchAllMessages(this.props.match.params.channelId);
   }
 
   componentWillReceiveProps(newProps) {
@@ -26,7 +25,6 @@ class MessageForm extends React.Component {
       then(() => {
         this.setState({ channel_id: this.props.currentChannel.id });
       });
-      this.props.fetchAllMessages(this.props.match.params.channelId);
     }
   }
 

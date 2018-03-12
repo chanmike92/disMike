@@ -10,7 +10,8 @@ import { connect } from 'react-redux';
 const mapStateToProps = state => {
   return ({
     currentUser: state.session.currentUser,
-    currentChannel: state.session.currentChannel
+    currentChannel: state.session.currentChannel,
+    currentServer: state.session.currentServer
   });
 };
 
