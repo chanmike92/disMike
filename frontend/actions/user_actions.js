@@ -19,8 +19,8 @@ export const receiveAllUsers = (users) => {
 };
 
 
-export const fetchAllUsers = () => dispatch => {
-  return APIUtil.fetchAllUsers().then((users) =>
+export const fetchAllUsers = (id) => dispatch => {
+  return APIUtil.fetchAllUsers(id).then((users) =>
   dispatch(receiveAllUsers(users)));
 };
 

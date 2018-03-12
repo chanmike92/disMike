@@ -14,9 +14,11 @@ class UserShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+
     if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
+
       this.props.fetchAServer(nextProps.match.params.serverId);
-      this.props.fetchAllUsers(nextProps.props.match.params.serverId);
+      this.props.fetchAllUsers(nextProps.match.params.serverId);
     }
   }
 
@@ -35,7 +37,7 @@ class UserShow extends React.Component {
 
     return (
       <div className='user-container'>
-        <div>ONLINE-{this.props.users.count}</div>
+        <div>ONLINE-{users.length}</div>
         <ul>
           {users}
         </ul>

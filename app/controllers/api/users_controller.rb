@@ -2,6 +2,7 @@ class Api::UsersController < ApplicationController
 
   def index
     @users = Server.find(params[:id]).subscribed_users
+
     if @users
       render 'api/users/index'
     else
