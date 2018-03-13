@@ -2,6 +2,8 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
+
+
 class MessageForm extends React.Component {
 
   constructor(props) {
@@ -52,12 +54,13 @@ class MessageForm extends React.Component {
     return (
       <div className='message-body'>
         <form className='message-form' onSubmit={this.handleSubmit}>
-          <input type='text'
+          <textarea type='text'
+              id='textareaInput'
               className='message-input-field'
               onChange={this.handleInput('body')}
               value={this.state.body}
               placeholder={`Message #${currentChannel}`}>
-          </input>
+          </textarea>
         </form>
       </div>
     );

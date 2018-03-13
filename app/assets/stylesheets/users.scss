@@ -5,7 +5,26 @@
 .profile-picture {
   height: 25px;
   width: 25px;
+  margin-right: 20px;
   box-sizing: border-box;
   border-radius: 12.5px;
   background: black;
+}
+
+.user-container {
+  width: 300px;
+}
+
+.user-icons {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.owner-icon {
+  height: 15px;
+  width: 15px;
+  margin-left: 5px;
 }

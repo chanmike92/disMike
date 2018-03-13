@@ -2,11 +2,12 @@
 <html>
   <head>
     <title>disMike</title>
-    <img className='title-icon' src={user.image_url} />
+    <%= favicon_link_tag asset_path("favicon-32x32.png"), :rel => 'icon', :type=>'image/png' %>
     <%= csrf_meta_tags %>
     <%= action_cable_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">
   </head>

@@ -141,6 +141,8 @@
   user-select: text;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  min-height: 50px;
+  padding: 10px;
 }
 
 .message-content {
