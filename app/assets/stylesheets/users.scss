@@ -15,7 +15,7 @@
   box-sizing: border-box;
   padding-left: 10px;
   padding-right: 10px;
-  width: 250px;
+  width: 240px;
   background-color: #2F3136;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
 }
@@ -26,18 +26,23 @@
   width: 100%;
   padding: 5px;
   display: flex;
+  width: 100%;
   justify-content: space-between;
 }
 
 .user-image-name {
-  align-items: center;
-  font-size: 25px;
+  font-size: 20px;
+  overflow: hidden;
+  width: 240px;
+  display: flex;
+  justify-content: start;
+  align-items: center
 }
 
 .user-icons {
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: start;
   align-items: center;
 }
 
@@ -58,10 +63,20 @@
 }
 
 .user-counter {
-  height: 48px;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  font-size: 40px;
-  border-bottom: 1px solid black;
+  width: 100%;
+      align-items: center;
+      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
+      box-sizing: border-box;
+      color: #fff;
+      display: flex;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 500;
+      height: 48px;
+      padding: 0 12px 0 16px;
+      transition: background-color .15s ease;
+      z-index: 3;
+      position: relative;
+      font-size: 100%;
+      font-style: inherit;
+      justify-content: space-between;
 }

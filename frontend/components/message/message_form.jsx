@@ -64,7 +64,8 @@ class MessageForm extends React.Component {
     this.props.currentChannel.id : "";
 
     return (
-        <form className='message-form' onKeyPress={this.handleSubmit}>
+      <div className='message-form'>
+        <form className='form-input' onKeyPress={this.handleSubmit}>
           <textarea type='text'
               id='textareaInput'
               className='message-input-field'
@@ -73,6 +74,7 @@ class MessageForm extends React.Component {
               placeholder={`Message #${currentChannel}`}>
           </textarea>
         </form>
+      </div>
     );
   }
 }
