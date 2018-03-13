@@ -1,23 +1,20 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const ServerIndex = ({ server, currentUser, fetchAServer, deleteServer }) => {
-  const rightClick = (e) => {
-    e.preventDefault();
+class ServerIndex extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+
+  render () {
     return (
-      <button className='delete-server' onClick={() => deleteServer(server.id)}>
-        x
-      </button>
-    );
-  };
-
-
-
-  return (
-    <li unselectable="on" className="server-icons" onContextMenu={rightClick}>
-      <Link className='server-links' to={`/${currentUser.id}/server/${server.id}/channel`}>{server.name[0]}</Link>
+    <li className="server-icons">
+      <Link className='server-links'
+        to={`/${this.props.currentUser.id}/server/${this.props.server.id}/channel`}>{this.props.server.name[0]}
+      </Link>
     </li>
-);
-};
+  );}
+}
 
 export default withRouter(ServerIndex);

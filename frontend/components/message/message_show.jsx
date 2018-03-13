@@ -11,13 +11,19 @@ class MessageShow extends React.Component {
   componentDidMount() {
     this.props.fetchAChannel(this.props.match.params.channelId);
     this.props.fetchAllMessages(this.props.match.params.channelId);
+    App.cable.subscriptions.create(
+      {channel: 'ChatChannel', id: this.props.match.params.channelId},
+      { received: (data) => { this.props.receiveAMessage(data) }});
   }
 
-  componentWillReceiveProps(newProps){
+  componentWillReceiveProps(newProps) {
 
-    if(newProps.match.params.channelId !== this.props.match.params.channelId) {
-      this.props.fetchAChannel(this.props.match.params.channelId);
-      this.props.fetchAllMessages(this.props.match.params.channelId);
+    if (newProps.match.params.channelId !== this.props.match.params.channelId) {
+      this.props.fetchAChannel(newProps.match.params.channelId);
+      this.props.fetchAllMessages(newProps.match.params.channelId);
+      App.cable.subscriptions.create(
+        {channel: 'ChatChannel', id: this.props.match.params.channelId},
+        { received: (data) => { this.props.receiveAMessage(data) }});
     }
   }
 

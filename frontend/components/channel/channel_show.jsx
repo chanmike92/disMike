@@ -23,13 +23,15 @@ class ChannelShow extends React.Component {
 
   render() {
     const currentUserId = this.props.currentUser ? this.props.currentUser.id : "";
+    const currentUser = this.props.currentUser ? this.props.currentUser : "";
     const currentServer = this.props.currentServer ? this.props.currentServer.name : "";
     const currentServerId = this.props.currentServer ? this.props.currentServer.id : "";
 
     const channels = this.props.channels.map(channel => { return (<ChannelIndex
       channel={channel}
       key={channel.id}
-      currentUser={this.props.currentUser}
+      currentUser={currentUser}
+      currentUserId={currentUserId}
       currentServer={ currentServer }
       currentServerId={ currentServerId }
       updateForm={this.props.updateForm}
@@ -46,7 +48,7 @@ class ChannelShow extends React.Component {
         <div className='server-name-container'>
           <div className='server-name'>{currentServer}</div>
           <button onClick={() => this.props.deleteServer(currentServerId).then(() => {
-              this.props.history.push('/')
+              this.props.history.push(`/${currentUserId}/servers/`)
             })}>X</button>
         </div>
         <div className='bottom-channels-container'>

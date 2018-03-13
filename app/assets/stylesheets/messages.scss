@@ -73,7 +73,7 @@
   flex-direction: column;
   align-items: left;
   overflow-x: hidden;
-  overflow-y: scroll;
+  overflow-y: auto;
   width: 100%;
   box-sizing: border-box;
   &::-webkit-scrollbar-track{
@@ -121,6 +121,9 @@
   font-size: 14px;
   font-weight: 400;
   resize: none;
+  user-select: text;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .message-header {
@@ -136,6 +139,7 @@
   margin-right: 6px;
   padding: 20px 0;
   user-select: text;
+  overflow-wrap: break-word;
   word-wrap: break-word;
 }
 

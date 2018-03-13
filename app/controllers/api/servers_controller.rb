@@ -22,18 +22,13 @@ class Api::ServersController < ApplicationController
   end
 
   def join
-
+    
     @server = Server.find_by(name: params[:server][:name])
-
-    if @server
-      @subscription = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
-      if @subscription.save
-        render 'api/servers/show'
-      else
-        render json: {errors: ['Already have this server']}, status: 402
-      end
+    @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
+    if @server && @sub.save
+      render 'api/servers/show'
     else
-      render json: {errors: ['Server does not exist']}, status: 402
+      render json: {errors: ['Error joining server']}, status: 402
     end
   end
 

@@ -34,6 +34,6 @@ export const fetchAllMessages = (id) => dispatch => {
 };
 
 export const makeNewMessage = (message) => dispatch => {
-
+  
   return APIUtil.makeNewMessage(message).then((message) => dispatch(receiveAMessage(message)));
 };

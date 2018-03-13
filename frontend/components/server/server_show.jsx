@@ -8,6 +8,8 @@ class ServerShow extends React.Component {
   }
 
 
+
+
   render() {
 
     const servers = this.props.servers.map(server => { return (<ServerIndex

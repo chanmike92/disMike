@@ -17,11 +17,14 @@ class Api::MessagesController < ApplicationController
     @message.author_id = current_user.id
 
     if @message.save
-      # ActionCable.server.broadcast 'chat_channel',
-      #   body: @message.body,
-      #   author: @message.author.username
-      #   created_at: @message.created_at
-      render 'api/messages/show'
+
+      ChatChannel.broadcast_to(@message.channel,
+        JSON.parse(render('/api/messages/_message.json.jbuilder',
+          locals: { message: @message })))
+      head :ok
+
+      # render 'api/messages/show'
+
     else
       render json: @message.errors.full_messages, status: 402
     end

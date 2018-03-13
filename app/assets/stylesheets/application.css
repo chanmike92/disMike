@@ -13,11 +13,19 @@
  *= require_tree .
  *= require_self
  */
+ .title-icon {
+   height: 15px;
+   width: 15px;
+   box-sizing: border-box;
+   border-radius: 7.5px;
+   background-image: url('dismike-logo.png');
+ }
 
 .app {
   height: 100%;
   width: 100%;
   display: flex;
+  justify-content: flex-start;
 }
 
 .modal-background {

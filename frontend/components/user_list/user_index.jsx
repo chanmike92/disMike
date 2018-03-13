@@ -6,6 +6,7 @@ const UserIndex = ({ currentServer, user }) => {
   return (
     <li className="user-icons">
       <div>
+        <img className='profile-picture' src={user.image_url} />
         { user.username }
       </div>
     </li>
