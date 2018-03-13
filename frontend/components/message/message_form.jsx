@@ -11,6 +11,7 @@ class MessageForm extends React.Component {
     this.state = {body: '', channel_id: ''};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.scrollBottom = this.scrollBottom.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +20,7 @@ class MessageForm extends React.Component {
     then(() => {
       this.setState({ channel_id: this.props.currentChannel.id });
     });
+    this.scrollBottom();
   }
 
   componentWillReceiveProps(newProps) {
@@ -33,10 +35,18 @@ class MessageForm extends React.Component {
   handleSubmit(e) {
     // e.preventDefault();
       if (e.key === 'Enter') {
+      const element = document.getElementById("messages");
+      element.scrollTop = element.scrollHeight;
       const message = Object.assign({}, this.state);
-      this.props.processForm(message).
-      then(this.setState({body: ''}));
+      this.props.processForm(message).then(this.setState({body: ''})).
+      then(this.scrollBottom());
+
     }
+  }
+
+  scrollBottom() {
+    const element = document.getElementById("messages");
+    element.scrollTop = element.scrollHeight;
   }
 
   handleInput(input) {

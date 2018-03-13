@@ -6,6 +6,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class MessageShow extends React.Component {
   constructor(props) {
     super(props);
+    this.scrollBottom = this.scrollBottom.bind(this);
   }
 
   componentDidMount() {
@@ -14,6 +15,7 @@ class MessageShow extends React.Component {
     App.cable.subscriptions.create(
       {channel: 'ChatChannel', id: this.props.match.params.channelId},
       { received: (data) => { this.props.receiveAMessage(data) }});
+    this.scrollBottom();
   }
 
   componentWillReceiveProps(newProps) {
@@ -24,7 +26,13 @@ class MessageShow extends React.Component {
       App.cable.subscriptions.create(
         {channel: 'ChatChannel', id: this.props.match.params.channelId},
         { received: (data) => { this.props.receiveAMessage(data) }});
+        this.scrollBottom();
     }
+  }
+
+  scrollBottom() {
+    const element = document.getElementById("messages");
+    element.scrollTop = element.scrollHeight;
   }
 
   render() {
@@ -47,7 +55,7 @@ class MessageShow extends React.Component {
           <div className='channel-title-name'># {currentChannelName}</div>
         </div>
         <div className='bottom-message-container'>
-          <ul className='message-list-container'>
+          <ul id='messages' className='message-list-container'>
             {messages}
           </ul>
         <div className='message-body'>
