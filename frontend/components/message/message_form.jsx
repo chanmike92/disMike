@@ -31,10 +31,12 @@ class MessageForm extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
-    const message = Object.assign({}, this.state);
-    this.props.processForm(message).
-    then(this.setState({body: ''}));
+    // e.preventDefault();
+      if (e.key === 'Enter') {
+      const message = Object.assign({}, this.state);
+      this.props.processForm(message).
+      then(this.setState({body: ''}));
+    }
   }
 
   handleInput(input) {
@@ -52,8 +54,7 @@ class MessageForm extends React.Component {
     this.props.currentChannel.id : "";
 
     return (
-      <div className='message-body'>
-        <form className='message-form' onSubmit={this.handleSubmit}>
+        <form className='message-form' onKeyPress={this.handleSubmit}>
           <textarea type='text'
               id='textareaInput'
               className='message-input-field'
@@ -62,7 +63,6 @@ class MessageForm extends React.Component {
               placeholder={`Message #${currentChannel}`}>
           </textarea>
         </form>
-      </div>
     );
   }
 }

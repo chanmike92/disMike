@@ -25,6 +25,7 @@ class ChannelShow extends React.Component {
     const currentUserId = this.props.currentUser ? this.props.currentUser.id : "";
     const currentUser = this.props.currentUser ? this.props.currentUser : "";
     const currentServer = this.props.currentServer ? this.props.currentServer.name : "";
+    const currentServerOwnerId = this.props.currentServer ? this.props.currentServer.owner_id : "";
     const currentServerId = this.props.currentServer ? this.props.currentServer.id : "";
 
     const channels = this.props.channels.map(channel => { return (<ChannelIndex
@@ -41,15 +42,19 @@ class ChannelShow extends React.Component {
       );
     });
 
+    const deletebutton = (currentUserId === currentServerOwnerId) ?
+      <button onClick={() => this.props.deleteServer(currentServerId).then(() => {
+          this.props.history.push(`/${currentUserId}/servers/`)
+        })}>X</button>
+      :
+      ""
 
     return (
       <div className='channel-container'>
 
         <div className='server-name-container'>
           <div className='server-name'>{currentServer}</div>
-          <button onClick={() => this.props.deleteServer(currentServerId).then(() => {
-              this.props.history.push(`/${currentUserId}/servers/`)
-            })}>X</button>
+          {deletebutton}
         </div>
         <div className='bottom-channels-container'>
           <div className='text-channel-container'>

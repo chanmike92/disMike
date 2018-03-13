@@ -22,7 +22,7 @@ class Api::ServersController < ApplicationController
   end
 
   def join
-    
+
     @server = Server.find_by(name: params[:server][:name])
     @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
     if @server && @sub.save

@@ -68,8 +68,9 @@
 
 .message-list-container {
   height: 100%;
-  padding: 5px;
-  display: flex;;
+  box-sizing: border-box;
+  padding: 20px;
+  display: flex;
   flex-direction: column;
   align-items: left;
   overflow-x: hidden;
@@ -80,8 +81,11 @@
      -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
    }
   &::-webkit-scrollbar {
+    padding-top: 50px;
+    padding-bottom: 50px;
      width: 10px;
      border-right: 10px;
+     border-radius: 20px;
    }
   &::-webkit-scrollbar-thumb {
     border-radius: 10px;
@@ -93,35 +97,41 @@
 .message-form {
   width: 100%;
   height: auto;
+  box-shadow: 0 -1px 0 hsla(0,0%,100%,.06);
 }
 
 .message-body {
-  border-top: 1px solid rgba(79,84,92,.6);
+  // box-shadow: 0 -1px 0 hsla(0,0%,100%,.06);
   box-sizing: border-box;
-  padding: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 20px;
+  padding-top: 6px;
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(32,34,37,.3);
+  // background-color: rgba(32,34,37,.3);
   color: white;
   width: 100%;
-
 }
 
 .message-input-field {
+  box-sizing: border-box;
+  padding: 10px;
   background: #484B53;
   width: 100%;
-  margin-left: 10px;
+  margin-top: 10px;
   border-radius: 5px;
   border: none;
   outline: none;
   color: white;
-  min-height: 40px;
+  min-height: 34px;
   font-size: 14px;
   font-weight: 400;
   resize: none;
   user-select: text;
+  -ms-overflow-style: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }
@@ -136,13 +146,13 @@
 .message-item-container {
   display: flex;
   margin-left: 20px;
-  margin-right: 6px;
+  margin-right: 10px;
   padding: 20px 0;
   user-select: text;
   overflow-wrap: break-word;
   word-wrap: break-word;
   min-height: 50px;
-  padding: 10px;
+  // padding: 10px;
 }
 
 .message-content {

@@ -33,10 +33,10 @@ class UserShow extends React.Component {
 
     return (
       <div className='user-container'>
-        <div>
+        <div className='user-counter'>
           Users-{users.length}
         </div>
-        <ul>
+        <ul className='user-list-container'>
           {users}
         </ul>
       </div>
