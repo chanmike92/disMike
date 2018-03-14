@@ -35,6 +35,29 @@ class MessageShow extends React.Component {
     element.scrollTop = element.scrollHeight;
   }
 
+
+  generateDate(date) {
+    const today = new Date();
+    let yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+
+    let time;
+    if (today.getMonth() === date.getMonth()
+      && today.getDate() === date.getDate()
+      && today.getYear() === date.getYear()) {
+      time = "Today";
+    } else if (yesterday.getMonth() === date.getMonth()
+      && yesterday.getDate() === date.getDate()
+      && yesterday.getYear() === date.getYear()) {
+      time = "Yesterday";
+    } else {
+      const thisMonth = "January February March April May June July August September October November December".split(' ')[date.getMonth()];
+      const thisDay = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(' ')[date.getDay()];
+      time = `${thisDay}, ${thisMonth} ${date.getDate()}`;
+    }
+    return time;
+  }
+
   render() {
     const currentChannelName = this.props.currentChannel ?
      this.props.currentChannel.name : "";

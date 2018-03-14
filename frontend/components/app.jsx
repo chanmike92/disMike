@@ -19,7 +19,7 @@ const App = () => (
 
     <ProtectedRoute path={`/:userId/server`} component={ ServerShowContainer } />
     <ProtectedRoute path={`/:userId/server/:serverId/channel`} component={ ChannelShowContainer } />
-    <ProtectedRoute exact path={`/:userId/server/:serverId/channel/:channelId`} component={ MessageShowContainer } />
+    <ProtectedRoute path={`/:userId/server/:serverId/channel/:channelId`} component={ MessageShowContainer } />
     <ProtectedRoute path={`/:userId/server/:serverId/channel`} component={ UserShowContainer } />
 
     <EditModal />
