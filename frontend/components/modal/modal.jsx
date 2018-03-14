@@ -31,14 +31,6 @@ const Modal = ({ modal, currentServer, closeModal }) => {
           <ChannelCreateContainer />
         </div>;
       break;
-      case 'updateChannel':
-
-      component =
-        <div className='modal-container'>
-          <div className='modal-title'>Update Channel</div>
-          <ChannelUpdateContainer />
-        </div>;
-        break;
     default:
       return null;
   }

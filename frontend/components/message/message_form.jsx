@@ -58,7 +58,7 @@ class MessageForm extends React.Component {
   }
 
   render() {
-    debugger
+
     const currentChannel = this.props.currentChannel ?
     this.props.currentChannel.name : "";
     const currentChannelId = this.props.currentChannel ?

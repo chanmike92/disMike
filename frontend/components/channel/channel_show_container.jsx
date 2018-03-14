@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { fetchAllChannels, fetchAChannel, deleteChannel, receiveErrors } from '../../actions/channel_actions';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
-import { openModal } from '../../actions/modal_actions';
+import { openModal, openEditModal } from '../../actions/modal_actions';
 
 
 
@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => {
     deleteChannel: (id) => dispatch(deleteChannel(id)),
     deleteServer: (id) => dispatch(deleteServer(id)),
     createForm: () => dispatch(openModal('createChannel')),
-    updateForm: () => dispatch(openModal('updateChannel')),
+    updateForm: (channel) => dispatch(openEditModal(channel)),
   });
 };
 

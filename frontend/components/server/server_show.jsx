@@ -4,7 +4,11 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class ServerShow extends React.Component {
   componentDidMount() {
-    this.props.fetchAllServers();
+    const that = this
+    this.props.fetchAllServers().then((servers) => {
+      console.log(that);
+      // this.props.fetchAllChannels
+    })
   }
 
 

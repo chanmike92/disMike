@@ -7,7 +7,6 @@ class ChannelIndex extends React.Component {
   }
 
   render () {
-
     return (
       <li className="channel-item-container">
         <div className='channel-name-container'>
@@ -18,7 +17,7 @@ class ChannelIndex extends React.Component {
           </Link>
         </div>
         <div className='channel-controls'>
-          <button onClick={this.props.updateForm}>+</button>
+          <button onClick={() => this.props.updateForm(this.props.channel)}>+</button>
           <button onClick={() => this.props.deleteChannel(this.props.channel.id) }>-</button>
         </div>
       </li>

@@ -6,13 +6,15 @@ class ChannelForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = this.props.currentState;
+    this.state = {name: ''};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
+
     this.props.clearErrors();
+    this.setState(this.props.currentState)
   }
 
   handleSubmit(e) {

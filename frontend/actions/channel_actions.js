@@ -45,6 +45,10 @@ export const makeNewChannel = (channel) => dispatch => {
   return APIUtil.makeNewChannel(channel).then((channel) => dispatch(receiveAChannel(channel)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
+export const updateChannel = (channel) => dispatch => {
+  return APIUtil.updateChannel(channel).then((channel) => dispatch(receiveAChannel(channel)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+};
+
 export const deleteChannel = (id) => dispatch => {
 
   return APIUtil.deleteChannel(id).then((channels) => dispatch(receiveAllChannels(channels)), (errors) => dispatch(receiveErrors(errors.responseJSON)));

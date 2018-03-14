@@ -3,13 +3,13 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { updateChannel, receiveErrors, fetchAChannel } from '../../actions/channel_actions';
 import { connect } from 'react-redux';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { openModal, closeModal, openEditModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
 
   return ({
-    currentState: state.session.currentChannel,
+    currentState: ownProps.currentState,
     currentServer: state.session.currentServer,
     formType: 'updateChannel',
     // errors: Object.values(state.errors.channels),

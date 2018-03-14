@@ -9,6 +9,7 @@ import UserShowContainer from './user_list/user_show_container';
 import SessionFormContainer from './user_forms/login_form_container';
 import SignupFormContainer from './user_forms/signup_form_container';
 import Modal from './modal/modal';
+import EditModal from './modal/edit_modal';
 
 const App = () => (
   <div className='app'>
@@ -21,6 +22,7 @@ const App = () => (
     <ProtectedRoute exact path={`/:userId/server/:serverId/channel/:channelId`} component={ MessageShowContainer } />
     <ProtectedRoute path={`/:userId/server/:serverId/channel`} component={ UserShowContainer } />
 
+    <EditModal />
     <Modal />
   </div>
 );

@@ -37,7 +37,7 @@ class UserShow extends React.Component {
           Users-{users.length}
         </div>
         <ul className='user-list-container'>
-          {users}
+          {this.props.currentServer && users}
         </ul>
       </div>
     );
