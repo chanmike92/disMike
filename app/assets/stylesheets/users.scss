@@ -31,12 +31,13 @@
 }
 
 .user-image-name {
-  font-size: 16px;
+  font-size: 14px;
   overflow: hidden;
   width: 240px;
   display: flex;
   justify-content: start;
-  align-items: center
+  align-items: center;
+  color: lightgray;
 }
 
 .user-icons {
@@ -78,5 +79,6 @@
       position: relative;
       font-size: 100%;
       font-style: inherit;
-      justify-content: space-between;
+      justify-content: center;
+      align-items: center;
 }
