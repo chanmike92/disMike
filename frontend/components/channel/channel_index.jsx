@@ -17,8 +17,12 @@ class ChannelIndex extends React.Component {
           </Link>
         </div>
         <div className='channel-controls'>
-          <button onClick={() => this.props.updateForm(this.props.channel)}>+</button>
-          <button onClick={() => this.props.deleteChannel(this.props.channel.id) }>-</button>
+          <button className='fafaicons-container' onClick={() => this.props.updateForm(this.props.channel)}>
+            <i className="fas fa-edit"></i>
+          </button>
+          <button className='fafaicons-container' onClick={() => this.props.deleteChannel(this.props.channel.id) }>
+            <i className="far fa-trash-alt"></i>
+          </button>
         </div>
       </li>
     )};

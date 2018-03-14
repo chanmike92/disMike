@@ -43,9 +43,11 @@ class ChannelShow extends React.Component {
     });
 
     const deletebutton = (currentUserId === currentServerOwnerId) ?
-      <button onClick={() => this.props.deleteServer(currentServerId).then(() => {
+      <button className='fafaicons-container' onClick={() => this.props.deleteServer(currentServerId).then(() => {
           this.props.history.push(`/${currentUserId}/servers/`)
-        })}>X</button>
+        })}>
+        <i class="far fa-times-circle"></i>
+      </button>
       :
       ""
 
@@ -60,7 +62,9 @@ class ChannelShow extends React.Component {
           <div className='text-channel-container'>
             <div className='text-channel-item-container'>
               <div className='text-channel-name'>TEXT CHANNELS</div>
-              <button onClick={this.props.createForm}>+</button>
+              <button className='fafaplus' onClick={this.props.createForm}>
+                <i className="fas fa-plus"></i>
+              </button>
             </div>
             <ul className='channel-list-container'>
               {channels}

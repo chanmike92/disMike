@@ -13,7 +13,9 @@ class Greeting extends React.Component {
             <img className='profile-picture' src={ this.props.currentUser.image_url } />
             <h1>{ this.props.currentUser.username }</h1>
           </div>
-          <button onClick={ this.props.logout }>Logout</button>
+          <button className='fafaicons-container' onClick={ this.props.logout }>
+            <i class="fas fa-sign-out-alt"></i>
+          </button>
         </div>
       );
     } else {
