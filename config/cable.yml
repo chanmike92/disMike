@@ -6,5 +6,5 @@ test:
 
 production:
   adapter: redis
-  url: redis://localhost:6379/1
+  url: redis://redistogo:6225b4cc92ce5696af101c969e2f905c@soldierfish.redistogo.com:11131/
   channel_prefix: converse_production
