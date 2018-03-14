@@ -9,7 +9,10 @@ class Greeting extends React.Component {
     if (this.props.currentUser) {
       return (
         <div className='greeting-container'>
-          <h1>{ this.props.currentUser.username }</h1>
+          <div className='user-image-name'>
+            <img className='profile-picture' src={ this.props.currentUser.image_url } />
+            <h1>{ this.props.currentUser.username }</h1>
+          </div>
           <button onClick={ this.props.logout }>Logout</button>
         </div>
       );
