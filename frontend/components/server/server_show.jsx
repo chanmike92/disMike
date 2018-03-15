@@ -28,8 +28,6 @@ class ServerShow extends React.Component {
       );
     });
 
-
-
     return (
       <div className='server-container'>
 

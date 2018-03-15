@@ -180,3 +180,15 @@
   white-space: pre-wrap;
   word-wrap: break-word;
 }
+
+.message-name {
+  display: flex;
+  flex-direction: row;
+  margin-right: 10px;
+  color: gray;
+}
+
+.need-space {
+  margin-right: 20px;
+  color: teal;
+}

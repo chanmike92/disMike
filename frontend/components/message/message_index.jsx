@@ -1,27 +1,24 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import moment from 'moment';
+
 
 const MessageIndex = (props) => {
+  const date = moment(props.message.created_at).format("MM-DD-YYYY");
   return props.message ? (
       <li className="message-item-container">
-        <div className='message-name-container'>
-          <div className='message-header'>
-            <div className={props.message ? "null" : "hidden"}>
-              <img className='profile-picture' src={ props.message.profilepic } />
+        <div className={props.message ? "null" : "hidden"}>
+          <img className='profile-picture' src={ props.message.profilepic } />
+        </div>
+        <div>
+          <div className='message-name'>
+            <div className='need-space'>
+            { props.message.author }
             </div>
+            { date }
           </div>
           <div>
-            <div>
-              <div className='message-name'>
-                { props.message.author }
-              </div>
-              <div className='message-date'>
-                { props.message.created_at }
-              </div>
-            </div>
-            <div>
-              <h1 className='message-content'>{ props.message.body }</h1>
-            </div>
+            <h1 className='message-content'>{ props.message.body }</h1>
           </div>
         </div>
       </li>
