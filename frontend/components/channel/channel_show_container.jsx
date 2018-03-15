@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { fetchAllChannels, fetchAChannel, deleteChannel, receiveErrors } from '../../actions/channel_actions';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
-import { openModal, openEditModal } from '../../actions/modal_actions';
+import { openModal } from '../../actions/modal_actions';
 
 
 
@@ -14,11 +14,9 @@ const mapStateToProps = (state, ownProps) => {
   const currentUser = state.session.currentUser || {};
   const currentChannel = state.entities.channels[ownProps.match.params.channelId] || {};
   const channelIds = currentServer.channel_ids || [];
-  const currentUserId = state.session.currentUser.id || "";
+  const currentUserId = currentUser.id || "";
 
 //I have the channel ids and I'm going to transform them into objects
-  const relevantChannels = Object.values(channels).filter((channel) => (
-    channelIds.includes(channel.id)))
 
 
 // channel_item_ids: [4,2,3]
@@ -27,10 +25,10 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     currentServerName: currentServer.name || "",
     currentServerOwnerId: currentServer.owner_id || "",
-    currentUserId: currentUser.id,
+    currentUserId,
     currentServerId: currentServer.id || "",
     channelIds,
-    relevantChannels,
+    channels,
 
   });
 };
@@ -43,7 +41,7 @@ const mapDispatchToProps = dispatch => {
     deleteChannel: (id) => dispatch(deleteChannel(id)),
     deleteServer: (id) => dispatch(deleteServer(id)),
     createForm: () => dispatch(openModal('createChannel')),
-    updateForm: (channel) => dispatch(openEditModal(channel)),
+    updateForm: () => dispatch(openModal('updateChannel')),
   });
 };
 

@@ -12,7 +12,7 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
-    debugger
+
     if @channel.save
       render 'api/channels/show'
     else
@@ -42,10 +42,10 @@ class Api::ChannelsController < ApplicationController
 
   def destroy
     @channel = Channel.find(params[:id])
-
     if @channel.server.owner_id == current_user.id
+      @channels = @channel.server.channels
       @channel.destroy!
-      render 'api/channels/show'
+      render 'api/channels/index'
     else
       render json: ['You do not have access'], status: 404
     end

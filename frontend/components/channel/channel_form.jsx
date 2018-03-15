@@ -12,7 +12,7 @@ class ChannelForm extends React.Component {
   }
 
   componentDidMount() {
-
+    debugger
     this.props.clearErrors();
     this.setState(this.props.currentState)
   }
@@ -20,10 +20,10 @@ class ChannelForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const channel = Object.assign({}, this.state);
-    debugger
-    this.props.processForm(channel).then(() => {
 
-      this.props.closeModal()});
+    this.props.processForm(channel)
+    .then(() => this.props.fetchAServer(this.props.currentServerId))
+        .then(() => {this.props.closeModal()});
   }
 
   handleInput(input) {

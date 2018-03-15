@@ -1,15 +1,16 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const UserIndex = ({ currentServer, user }) => {
+const UserIndex = ({ currentServerOwnerId, user }) => {
 
-  const owner = (currentServer.owner_id === user.id) ?
+  const owner = (currentServerOwnerId === user.id) ?
   <div className='owner-icon'>
   </div>
     :
   <div className='not-owner-icon'></div>;
 
-  
+
+
   return (
     <li className="user-items">
       <div className='user-icons'>

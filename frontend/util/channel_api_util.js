@@ -17,7 +17,7 @@ export const fetchAChannel = (id) => {
 };
 
 export const makeNewChannel = (channel) => {
-  debugger
+
   return $.ajax({
     url: 'api/channels',
     method: 'POST',
@@ -35,7 +35,7 @@ export const updateChannel = (channel) => {
 };
 
 export const deleteChannel = (id) => {
-
+  
   return $.ajax({
     url: `api/channels/${id}`,
     method: 'DELETE',

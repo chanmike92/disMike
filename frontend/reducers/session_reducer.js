@@ -16,8 +16,9 @@ const sessionReducer = (oldState = nullState, action) => {
     case RECEIVE_CURRENT_USER:
       return merge({}, nullState, oldState, { currentUser: action.currentUser });
     case RECEIVE_A_SERVER:
-      const thing = merge({}, nullState, oldState, { currentServer: action.payload.server });
-      debugger
+
+      const thing = Object.assign({}, nullState, oldState, { currentServer: action.payload.server });
+
       return thing;
     case RECEIVE_A_CHANNEL:
       return merge({}, nullState, oldState, { currentChannel: action.payload.channel });

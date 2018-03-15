@@ -7,16 +7,17 @@ const ChannelIndex = (props) => {
       <li className="channel-item-container">
         <div className='channel-name-container'>
           <Link
-            to={`/${props.currentUserId}/server/${props.currentServerId}/channel/${props.channelId}`}
+            to={`/${props.currentUserId}/server/${props.currentServerId}/channel/${props.channel.id}`}
             className='channel-link-item'>
             # {props.channel.name}
           </Link>
         </div>
         <div className='channel-controls'>
-          <button className='fafaicons-container' onClick={() => props.updateForm(channel)}>
+          <button className='fafaicons-container' onClick={() => props.fetchAChannel(props.channel.id).then(() => props.updateForm()) }>
             <i className="fas fa-edit"></i>
           </button>
-          <button className='fafaicons-container' onClick={() => props.deleteChannel(props.channelId) }>
+          <button className='fafaicons-container' onClick={() =>
+              props.deleteChannel(props.channel.id) }>
             <i className="far fa-trash-alt"></i>
           </button>
         </div>

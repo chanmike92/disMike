@@ -22,38 +22,15 @@ class MessageShow extends React.Component {
     if (newProps.match.params.channelId !== this.props.match.params.channelId) {
       this.props.fetchAChannel(newProps.match.params.channelId);
       App.cable.subscriptions.create(
-        {channel: 'ChatChannel', id: this.props.match.params.channelId},
+        {channel: 'ChatChannel', id: newProps.match.params.channelId},
         { received: (data) => { this.props.receiveAMessage(data) }});
-        this.scrollBottom();
+
     }
   }
 
   scrollBottom() {
     const element = document.getElementById("messages");
     element.scrollTop = element.scrollHeight;
-  }
-
-
-  generateDate(date) {
-    const today = new Date();
-    let yesterday = new Date();
-    yesterday.setDate(today.getDate() - 1);
-
-    let time;
-    if (today.getMonth() === date.getMonth()
-      && today.getDate() === date.getDate()
-      && today.getYear() === date.getYear()) {
-      time = "Today";
-    } else if (yesterday.getMonth() === date.getMonth()
-      && yesterday.getDate() === date.getDate()
-      && yesterday.getYear() === date.getYear()) {
-      time = "Yesterday";
-    } else {
-      const thisMonth = "January February March April May June July August September October November December".split(' ')[date.getMonth()];
-      const thisDay = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(' ')[date.getDay()];
-      time = `${thisDay}, ${thisMonth} ${date.getDate()}`;
-    }
-    return time;
   }
 
   render() {
@@ -73,7 +50,7 @@ class MessageShow extends React.Component {
     return (
       <div className='message-container'>
         <div className='channel-title-name-container'>
-          <div className='channel-title-name'># {currentChannelName}</div>
+          <div className='channel-title-name'># {this.props.currentChannelName}</div>
         </div>
         <div className='bottom-message-container'>
           <ul id='messages' className='message-list-container'>

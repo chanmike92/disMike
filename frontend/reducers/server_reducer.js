@@ -9,7 +9,7 @@ const serverReducer = (oldState = {}, action) => {
     case RECEIVE_ALL_SERVERS:
       return action.servers;
     case RECEIVE_A_SERVER:
-      return merge({}, oldState, { [action.payload.server.id]: action.payload.server });
+      return Object.assign({}, oldState, { [action.payload.server.id]: action.payload.server });
     default:
       return oldState;
   }

@@ -17,6 +17,7 @@ class Api::ServersController < ApplicationController
     if @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
       Channel.create(name: "general", server_id: @server.id)
+
       @server_channels = @server.channels
       @server_users = @server.subscribed_users
 
@@ -31,10 +32,15 @@ class Api::ServersController < ApplicationController
     @server = Server.find_by(name: params[:server][:name])
     @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
     if @server && @sub.save
+
       render 'api/servers/show'
     else
       render json: {errors: ['Error joining server']}, status: 402
     end
+  end
+
+  def leave
+
   end
 
   def show

@@ -1,24 +1,29 @@
 import ChannelForm from './channel_form';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { fetchAServer } from '../../actions/server_actions';
 import { updateChannel, receiveErrors, fetchAChannel } from '../../actions/channel_actions';
 import { connect } from 'react-redux';
 import { openModal, closeModal, openEditModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  const currentState = state.session.currentChannel || {};
+  const currentServer = state.session.currentServer || {};
+  const currentServerId = currentServer.id || "";
 
+  // errors: state.errors.channels,
+  debugger
   return ({
-    currentState: ownProps.currentState,
-    currentServer: state.session.currentServer,
+    currentState,
+    currentServerId,
     formType: 'updateChannel',
-    // errors: Object.values(state.errors.channels),
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return ({
-    fetchAChannel: (id) => dispatch(fetchAChannel(id)),
+    fetchAServer: (id) => dispatch(fetchAServer(id)),
     processForm: (channel) => dispatch(updateChannel(channel)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())

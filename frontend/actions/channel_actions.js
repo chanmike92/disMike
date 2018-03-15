@@ -51,5 +51,5 @@ export const updateChannel = (channel) => dispatch => {
 
 export const deleteChannel = (id) => dispatch => {
 
-  return APIUtil.deleteChannel(id).then((channel) => dispatch(receiveAChannel({})), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.deleteChannel(id).then((channels) => dispatch(receiveAllChannels(channels)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };

@@ -9,21 +9,19 @@ class ChannelShow extends React.Component {
     this.props.fetchAServer(this.props.match.params.serverId);
   }
 
-  componentWillReceiveProps(newProps) {
-    debugger
-    if(newProps.match.params.serverId !== this.props.match.params.serverId) {
-      this.props.fetchAServer(newProps.match.params.serverId);
-
-    }
-  }
+  // componentWillReceiveProps(newProps) {
+  //
+  //   if(newProps.match.params.channelId !== this.props.match.params.channelId) {
+  //     this.props.fetchAChannel(newProps.match.params.channelId);
+  //   }
+  // }
 
   render() {
-
-    const channels = this.props.relevantChannels.map((channel, idx) => { return (<ChannelIndex
+    const channels = this.props.channelIds.map((id, idx) => { return (<ChannelIndex
       key={ idx }
       currentUserId={ this.props.currentUserId }
       currentServerId={ this.props.currentServerId }
-      channel={ channel }
+      channel={ this.props.channels[id] }
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
       fetchAChannel={this.props.fetchAChannel}
@@ -69,4 +67,4 @@ class ChannelShow extends React.Component {
   }
 }
 
-export default ChannelShow;
+export default withRouter(ChannelShow);

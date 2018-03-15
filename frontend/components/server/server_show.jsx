@@ -7,11 +7,11 @@ class ServerShow extends React.Component {
     this.props.fetchAllServers();
   }
 
-  componentWillReceiveProps(nextProps) {
-  if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-      this.props.fetchAServers(nextProps.match.params.serverId);
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  // if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
+  //     this.props.fetchAServers(nextProps.match.params.serverId);
+  //   }
+  // }
 
 
 

@@ -10,21 +10,21 @@ class UserShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllUsers(this.props.match.params.serverId);
   }
-
+  //
   componentWillReceiveProps(nextProps) {
 
     if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-      this.props.fetchAllUsers(nextProps.match.params.serverId);
+      this.props.fetchAServer(nextProps.match.params.serverId);
     }
   }
 
 
   render() {
 
-    const users = this.props.users.map(user => { return (<UserIndex
-      user={user}
-      key={user.id}
-      currentServer={this.props.currentServer}
+    const users = this.props.userIds.map((userId, idx) => { return (<UserIndex
+      user={ this.props.users[userId] }
+      key={ idx }
+      currentServerOwnerId={this.props.currentServerOwnerId}
       />
       );
     });
@@ -37,7 +37,7 @@ class UserShow extends React.Component {
           Members - {users.length}
         </div>
         <ul className='user-list-container'>
-          {this.props.currentServer && users}
+          { users }
         </ul>
       </div>
     );

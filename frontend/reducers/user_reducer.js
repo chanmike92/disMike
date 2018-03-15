@@ -12,7 +12,6 @@ const userReducer = (oldState = {}, action) => {
     case RECEIVE_A_USER:
       return merge({}, oldState, { [action.user.id]: action.user });
     case RECEIVE_A_SERVER:
-      ;
       return merge({}, oldState, action.payload.users);
     default:
       return oldState;
