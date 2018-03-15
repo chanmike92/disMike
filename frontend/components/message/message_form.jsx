@@ -8,7 +8,7 @@ class MessageForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {body: '', channel_id: ''};
+    this.state = {body: '', channel_id: this.props.currentChannelId};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.scrollBottom = this.scrollBottom.bind(this);
@@ -16,19 +16,14 @@ class MessageForm extends React.Component {
 
   componentDidMount() {
 
-    this.props.fetchAChannel(this.props.match.params.channelId).
-    then(() => {
-      this.setState({ channel_id: this.props.currentChannel.id });
-    });
+    this.props.fetchAChannel(this.props.match.params.channelId);
     this.scrollBottom();
   }
 
   componentWillReceiveProps(newProps) {
     if(newProps.match.params.channelId !== this.props.match.params.channelId) {
-      this.props.fetchAChannel(this.props.match.params.channelId).
-      then(() => {
-        this.setState({ channel_id: this.props.currentChannel.id });
-      });
+      this.setState({channel_id: newProps.currentChannelId});
+      this.props.fetchAChannel(newProps.match.params.channelId)
     }
   }
 
@@ -52,17 +47,13 @@ class MessageForm extends React.Component {
   handleInput(input) {
     return (e) => {
       this.setState({
-        [input]: e.currentTarget.value
+        [input]: e.currentTarget.value,
+        channel_id: this.props.currentChannelId
       });
     };
   }
 
   render() {
-
-    const currentChannel = this.props.currentChannel ?
-    this.props.currentChannel.name : "";
-    const currentChannelId = this.props.currentChannel ?
-    this.props.currentChannel.id : "";
 
     return (
       <div className='message-form'>
@@ -72,7 +63,7 @@ class MessageForm extends React.Component {
               className='message-input-field'
               onChange={this.handleInput('body')}
               value={this.state.body}
-              placeholder={`Message #${currentChannel}`}>
+              placeholder={`Message #${this.props.currentChannelName}`}>
           </textarea>
         </form>
       </div>

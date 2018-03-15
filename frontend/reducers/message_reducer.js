@@ -11,7 +11,8 @@ const messageReducer = (oldState = {}, action) => {
     case RECEIVE_ALL_MESSAGES:
       return action.messages;
     case RECEIVE_A_MESSAGE:
-      return merge({}, oldState, { [action.message.id]: action.message });
+      const newnew = merge({}, oldState, { [action.message.id]: action.message });
+      return newnew ;
     case RECEIVE_A_CHANNEL:
       return merge({}, oldState, action.payload.messages);
     case RECEIVE_A_USER:

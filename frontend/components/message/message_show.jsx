@@ -10,21 +10,19 @@ class MessageShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAChannel(this.props.match.params.channelId);
+    // this.props.fetchAChannel(this.props.match.params.channelId);
+    this.props.fetchAllMessages(this.props.match.params.channelId);
     App.cable.subscriptions.create(
       {channel: 'ChatChannel', id: this.props.match.params.channelId},
       { received: (data) => { this.props.receiveAMessage(data) }});
-    this.scrollBottom();
   }
 
   componentWillReceiveProps(newProps) {
 
     if (newProps.match.params.channelId !== this.props.match.params.channelId) {
-      this.props.fetchAChannel(newProps.match.params.channelId);
       App.cable.subscriptions.create(
         {channel: 'ChatChannel', id: newProps.match.params.channelId},
-        { received: (data) => { this.props.receiveAMessage(data) }});
-
+        { received: (data) => { newProps.receiveAMessage(data) }});
     }
   }
 
@@ -34,13 +32,12 @@ class MessageShow extends React.Component {
   }
 
   render() {
-    const currentChannelName = this.props.currentChannel ?
-     this.props.currentChannel.name : "";
 
-    const messages = this.props.messages.map(message => {
+    const messages = this.props.messageIds.map((messageId, idx) => {
+
       return (<MessageIndex
-        message={message}
-        key={message.id}
+        message={ this.props.messages[messageId] }
+        key={ idx }
       />
       );
     });

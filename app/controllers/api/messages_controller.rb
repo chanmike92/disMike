@@ -17,7 +17,6 @@ class Api::MessagesController < ApplicationController
     @message.author_id = current_user.id
 
     if @message.save
-
       ChatChannel.broadcast_to(@message.channel,
         JSON.parse(render('/api/messages/_message.json.jbuilder',
           locals: { message: @message })))

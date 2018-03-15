@@ -8,10 +8,19 @@ import { connect } from 'react-redux';
 
 
 const mapStateToProps = state => {
+  const currentUser = state.session.currentUser || {};
+  const currentChannel = state.session.currentChannel || {};
+  const currentServer = state.session.currentServer || {};
+  const currentChannelId = currentChannel.id || "";
+  const currentChannelName = currentChannel.name || "";
+  const currentState = {body: "", channel_id: currentChannelId} || {};
   return ({
-    currentUser: state.session.currentUser,
-    currentChannel: state.session.currentChannel,
-    currentServer: state.session.currentServer
+    currentState,
+    currentChannelId,
+    currentChannelName,
+    currentUser,
+    currentChannel,
+    currentServer,
   });
 };
 

@@ -12,7 +12,7 @@ class ChannelForm extends React.Component {
   }
 
   componentDidMount() {
-    debugger
+    
     this.props.clearErrors();
     this.setState(this.props.currentState)
   }

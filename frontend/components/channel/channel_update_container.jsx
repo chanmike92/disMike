@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentServerId = currentServer.id || "";
 
   // errors: state.errors.channels,
-  debugger
+  
   return ({
     currentState,
     currentServerId,
