@@ -2,19 +2,24 @@ class Api::ServersController < ApplicationController
   def index
 
     @servers = current_user.subscribed_servers
+
     if @servers
       render 'api/servers/index'
     else
-      render json: {}
+      render json: @servers.errors, status: 422
     end
   end
 
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
+
     if @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
       Channel.create(name: "general", server_id: @server.id)
+      @server_channels = @server.channels
+      @server_users = @server.subscribed_users
+
       render 'api/servers/show'
     else
       render json: @server.errors.full_messages, status: 402
@@ -35,6 +40,8 @@ class Api::ServersController < ApplicationController
   def show
 
     @server = Server.find(params[:id])
+    @server_channels = @server.channels
+    @server_users = @server.subscribed_users
     if @server
       render 'api/servers/show'
     else
@@ -60,7 +67,6 @@ class Api::ServersController < ApplicationController
       @servers = current_user.subscribed_servers
       render 'api/servers/index'
     else
-
       render json: ['You do not have access'], status: 404
     end
   end

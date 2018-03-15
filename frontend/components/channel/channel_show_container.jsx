@@ -9,13 +9,29 @@ import { openModal, openEditModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  const currentServer = state.session.currentServer || {};
+  const channels = state.entities.channels || {};
+  const currentUser = state.session.currentUser || {};
+  const currentChannel = state.entities.channels[ownProps.match.params.channelId] || {};
+  const channelIds = currentServer.channel_ids || [];
+  const currentUserId = state.session.currentUser.id || "";
+
+//I have the channel ids and I'm going to transform them into objects
+  const relevantChannels = Object.values(channels).filter((channel) => (
+    channelIds.includes(channel.id)))
+
+
+// channel_item_ids: [4,2,3]
+// channel_item_ids: [{id: 4, name: general}, {id: 2, name: sadf}]
 
   return ({
+    currentServerName: currentServer.name || "",
+    currentServerOwnerId: currentServer.owner_id || "",
+    currentUserId: currentUser.id,
+    currentServerId: currentServer.id || "",
+    channelIds,
+    relevantChannels,
 
-    channels: Object.values(state.entities.channels),
-    currentServer: state.session.currentServer,
-    currentUser: state.session.currentUser,
-    currentChannel: state.session.currentChannel
   });
 };
 

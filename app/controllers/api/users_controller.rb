@@ -12,7 +12,9 @@ class Api::UsersController < ApplicationController
 
   def show
     @user = User.find_by(username: params[:username])
+    @user_messages = @user.messages
     if @user
+
       render 'api/users/index'
     else
       render ['Invalid User']
@@ -23,6 +25,8 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
+      @server = Server.create(owner_id: @user.id, name: @user.username)
+      @channel = Channel.create(name: "general", server_id: @server.id)
       login(@user)
       render 'api/users/show'
     else

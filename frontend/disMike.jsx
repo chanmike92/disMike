@@ -12,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const root = document.getElementById('root');
   let store;
   let preloadedState = {};
+
   if (window.currentUser) {
     preloadedState = merge(preloadedState,
       { session: { currentUser: window.currentUser } });

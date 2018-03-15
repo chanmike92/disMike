@@ -12,6 +12,7 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
+    debugger
     if @channel.save
       render 'api/channels/show'
     else
@@ -22,7 +23,7 @@ class Api::ChannelsController < ApplicationController
 
   def show
     @channel = Channel.find(params[:id])
-
+    @channel_messages = @channel.messages
     if @channel
       render 'api/channels/show'
     else
@@ -44,7 +45,7 @@ class Api::ChannelsController < ApplicationController
 
     if @channel.server.owner_id == current_user.id
       @channel.destroy!
-      render json: {}
+      render 'api/channels/show'
     else
       render json: ['You do not have access'], status: 404
     end

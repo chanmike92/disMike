@@ -1,32 +1,29 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-class ChannelIndex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const ChannelIndex = (props) => {
 
-  render () {
     return (
       <li className="channel-item-container">
         <div className='channel-name-container'>
           <Link
-            to={`/${this.props.currentUserId}/server/${this.props.currentServerId}/channel/${this.props.channel.id}`}
+            to={`/${props.currentUserId}/server/${props.currentServerId}/channel/${props.channelId}`}
             className='channel-link-item'>
-            # {this.props.channel.name}
+            # {props.channel.name}
           </Link>
         </div>
         <div className='channel-controls'>
-          <button className='fafaicons-container' onClick={() => this.props.updateForm(this.props.channel)}>
+          <button className='fafaicons-container' onClick={() => props.updateForm(channel)}>
             <i className="fas fa-edit"></i>
           </button>
-          <button className='fafaicons-container' onClick={() => this.props.deleteChannel(this.props.channel.id) }>
+          <button className='fafaicons-container' onClick={() => props.deleteChannel(props.channelId) }>
             <i className="far fa-trash-alt"></i>
           </button>
         </div>
       </li>
-    )};
+    )
 }
+
 
 
 export default withRouter(ChannelIndex);

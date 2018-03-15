@@ -12,11 +12,11 @@ export const receiveAllServers = (servers) => {
   };
 };
 
-export const receiveAServer = (server) => {
+export const receiveAServer = (payload) => {
 
   return {
     type: RECEIVE_A_SERVER,
-    server
+    payload
   };
 };
 
@@ -46,17 +46,19 @@ export const fetchAllServers = () => dispatch => {
 
 export const fetchAServer = (id) => dispatch => {
 
-  return APIUtil.fetchAServer(id).then((server) => dispatch(receiveAServer(server)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.fetchAServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
+
+    dispatch(receiveErrors(errors.responseJSON))});
 };
 
 export const makeNewServer = (server) => dispatch => {
 
-  return APIUtil.makeNewServer(server).then((server) => dispatch(receiveAServer(server)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.makeNewServer(server).then((payload) => dispatch(receiveAServer(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const joinServer = (server) => dispatch => {
 
-  return APIUtil.joinServer(server).then((server) => dispatch(receiveAServer(server)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.joinServer(server).then((payload) => dispatch(receiveAServer(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const deleteServer = (id) => dispatch => {

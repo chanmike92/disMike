@@ -17,7 +17,7 @@ export const fetchAChannel = (id) => {
 };
 
 export const makeNewChannel = (channel) => {
-
+  debugger
   return $.ajax({
     url: 'api/channels',
     method: 'POST',

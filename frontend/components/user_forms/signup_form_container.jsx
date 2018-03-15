@@ -10,7 +10,7 @@ const mapStateToProps = state => {
   return ({
     errors: state.errors.session,
     formType: 'Register',
-    link: <Link className='sessionLinks' to={'/session'}>Login</Link>,
+    link: <Link className='sessionLinks' to={'/'}>Login</Link>,
     currentUser: {username: '', password: '', email: ''}
   });
 };

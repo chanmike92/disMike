@@ -5,6 +5,7 @@ const serverErrorsReducer = (oldState = [], action) => {
 
   switch (action.type) {
     case RECEIVE_SERVER_ERRORS:
+
       return action.errors;
     case RECEIVE_A_SERVER:
       return [];

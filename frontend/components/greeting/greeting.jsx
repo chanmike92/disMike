@@ -14,7 +14,7 @@ class Greeting extends React.Component {
             <h1>{ this.props.currentUser.username }</h1>
           </div>
           <button className='fafaicons-container' onClick={ this.props.logout }>
-            <i class="fas fa-sign-out-alt"></i>
+            <i className="fas fa-sign-out-alt"></i>
           </button>
         </div>
       );

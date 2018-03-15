@@ -20,8 +20,10 @@ class ChannelForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const channel = Object.assign({}, this.state);
+    debugger
+    this.props.processForm(channel).then(() => {
 
-    this.props.processForm(channel).then(() => this.props.closeModal());
+      this.props.closeModal()});
   }
 
   handleInput(input) {

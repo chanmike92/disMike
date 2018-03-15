@@ -10,15 +10,17 @@ const nullState = {
 };
 
 const sessionReducer = (oldState = nullState, action) => {
+
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       return merge({}, nullState, oldState, { currentUser: action.currentUser });
     case RECEIVE_A_SERVER:
-      const hello = merge({}, nullState, oldState, { currentServer: action.server });
-      return hello;
+      const thing = merge({}, nullState, oldState, { currentServer: action.payload.server });
+      debugger
+      return thing;
     case RECEIVE_A_CHANNEL:
-      return merge({}, nullState, oldState, { currentChannel: action.channel });
+      return merge({}, nullState, oldState, { currentChannel: action.payload.channel });
     default:
       return oldState;
   }

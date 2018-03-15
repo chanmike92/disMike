@@ -4,19 +4,21 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class ServerShow extends React.Component {
   componentDidMount() {
-    const that = this
-    this.props.fetchAllServers().then((servers) => {
-      console.log(that);
-      // this.props.fetchAllChannels
-    })
+    this.props.fetchAllServers();
   }
 
+  componentWillReceiveProps(nextProps) {
+  if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
+      this.props.fetchAServers(nextProps.match.params.serverId);
+    }
+  }
 
 
 
   render() {
 
-    const servers = this.props.servers.map(server => { return (<ServerIndex
+    const servers = this.props.servers.map(server => {
+      return (<ServerIndex
       server={server}
       key={server.id}
       currentUser={this.props.currentUser}

@@ -9,7 +9,7 @@ const UserIndex = ({ currentServer, user }) => {
     :
   <div className='not-owner-icon'></div>;
 
-
+  
   return (
     <li className="user-items">
       <div className='user-icons'>
