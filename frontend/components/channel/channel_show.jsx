@@ -8,7 +8,7 @@ class ChannelShow extends React.Component {
   componentDidMount() {
     this.props.fetchAServer(this.props.match.params.serverId).then(
       (action) => {
-        
+
         const channels = Object.values(action.payload.channels)
         if (channels.length > 0 && this.props.currentUser) {
           const channelId = channels[0].id
@@ -34,6 +34,8 @@ class ChannelShow extends React.Component {
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
       fetchAChannel={this.props.fetchAChannel}
+      currentServerOwnerId={this.props.currentServerOwnerId}
+      currentUserId={this.props.currentUserId}
       />
       );
     });

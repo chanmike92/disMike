@@ -97,7 +97,7 @@ class SessionForm extends React.Component {
       );
     } else {
       return (
-        <p className="change-form">Already have an account? <Link className='sessionLinks' to="/session">Login</Link></p>
+        <p className="change-form">Already have an account? <Link className='sessionLinks' to="/">Login</Link></p>
       );
     }
   }

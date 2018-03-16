@@ -58,7 +58,8 @@ class MessageShow extends React.Component {
     if (this.props.match.params.channelId === undefined) {
 
       return (<div className='message-container'></div>)
-    } else {
+    }
+    else {
 
     return (
         <div className='message-container'>
