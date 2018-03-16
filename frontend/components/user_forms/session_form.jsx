@@ -27,7 +27,7 @@ class SessionForm extends React.Component {
   }
 
   guestLogin() {
-      const guest = {email: 'demoEmail@demo.com', password: 'demoPassword'};
+      const guest = {email: 'demoEmail@demo.com', password: 'asdfasdf'};
 
       var emailOptions = {
         strings: ["demoEmail@demo.com"],
