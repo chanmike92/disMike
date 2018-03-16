@@ -20,12 +20,16 @@ class MessageShow extends React.Component {
 
     if (newProps.match.params.channelId !== this.props.match.params.channelId) {
       this.subscription.unsubscribe();
-      debugger
+
       this.subscription = App.cable.subscriptions.create(
         {channel: 'ChatChannel', id: newProps.match.params.channelId},
         { received: (data) => { newProps.receiveAMessage(data) }});
-        debugger
+
     }
+  }
+
+  componentWillUnmount() {
+    this.subscription.unsubscribe();
   }
 
   scrollBottom() {
