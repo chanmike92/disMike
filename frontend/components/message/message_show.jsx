@@ -10,9 +10,8 @@ class MessageShow extends React.Component {
   }
 
   componentDidMount() {
-    // this.props.fetchAChannel(this.props.match.params.channelId);
     this.props.fetchAllMessages(this.props.match.params.channelId);
-    App.cable.subscriptions.create(
+    this.subscription = App.cable.subscriptions.create(
       {channel: 'ChatChannel', id: this.props.match.params.channelId},
       { received: (data) => { this.props.receiveAMessage(data) }});
   }
@@ -20,9 +19,12 @@ class MessageShow extends React.Component {
   componentWillReceiveProps(newProps) {
 
     if (newProps.match.params.channelId !== this.props.match.params.channelId) {
-      App.cable.subscriptions.create(
+      this.subscription.unsubscribe();
+      debugger
+      this.subscription = App.cable.subscriptions.create(
         {channel: 'ChatChannel', id: newProps.match.params.channelId},
         { received: (data) => { newProps.receiveAMessage(data) }});
+        debugger
     }
   }
 
@@ -43,23 +45,27 @@ class MessageShow extends React.Component {
     });
 
 
+    if (this.props.match.params.channelId === undefined) {
+
+      return (<div className='message-container'></div>)
+    } else {
 
     return (
-      <div className='message-container'>
-        <div className='channel-title-name-container'>
-          <div className='channel-title-name'># {this.props.currentChannelName}</div>
+        <div className='message-container'>
+          <div className='channel-title-name-container'>
+            <div className='channel-title-name'># {this.props.currentChannelName}</div>
+          </div>
+          <div className='bottom-message-container'>
+            <ul id='messages' className='message-list-container'>
+              {messages}
+            </ul>
+          <div className='message-body'>
+            <MessageFormContainer />
+          </div>
         </div>
-        <div className='bottom-message-container'>
-          <ul id='messages' className='message-list-container'>
-            {messages}
-          </ul>
-        <div className='message-body'>
-          <MessageFormContainer />
         </div>
-      </div>
-      </div>
-
-    );
+      );
+    }
   }
 }
 

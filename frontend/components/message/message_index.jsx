@@ -4,7 +4,7 @@ import moment from 'moment';
 
 
 const MessageIndex = (props) => {
-  const date = moment(props.message.created_at).format("MM-DD-YYYY");
+
   return props.message ? (
       <li className="message-item-container">
         <div className={props.message ? "null" : "hidden"}>
@@ -15,7 +15,7 @@ const MessageIndex = (props) => {
             <div className='need-space'>
             { props.message.author }
             </div>
-            { date }
+            { moment(props.message.created_at).format("MM-DD-YYYY") }
           </div>
           <div>
             <h1 className='message-content'>{ props.message.body }</h1>
