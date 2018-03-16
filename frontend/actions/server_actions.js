@@ -48,7 +48,7 @@ export const fetchAServer = (id) => dispatch => {
 
   return APIUtil.fetchAServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
 
-    dispatch(receiveErrors(errors.responseJSON))});
+    dispatch(receiveErrors(errors.responseJSON));});
 };
 
 export const makeNewServer = (server) => dispatch => {

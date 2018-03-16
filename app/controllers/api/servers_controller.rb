@@ -23,20 +23,25 @@ class Api::ServersController < ApplicationController
 
       render 'api/servers/show'
     else
-      render json: @server.errors.full_messages, status: 402
+      render json: {create: ['Server already exists']}, status: 402
     end
   end
 
   def join
 
     @server = Server.find_by(name: params[:server][:name])
-    @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
-    if @server && @sub.save
+    if @server
+      @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
+    end
+    if @server && @sub && @sub.save
       @server_channels = @server.channels
       @server_users = @server.subscribed_users
       render 'api/servers/show'
+    elsif @server
+      render json: {joinErrors: ['Already joined server']}, status: 402
     else
-      render json: {errors: ['Error joining server']}, status: 402
+
+      render json: {joinErrors: ['Server does not exist']}, status: 402
     end
   end
 

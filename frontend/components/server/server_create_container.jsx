@@ -7,10 +7,12 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = state => {
+  const serverErrors = state.errors.servers || {};
+  const createErrors = serverErrors.create || [];
 
   return ({
     formType: 'createServer',
-    errors: Object.values(state.errors.servers),
+    errors: createErrors,
   });
 };
 

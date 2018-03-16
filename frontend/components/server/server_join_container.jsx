@@ -7,10 +7,12 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = state => {
+  const serverErrors = state.errors.servers || {};
+  const joinErrors = serverErrors.joinErrors || [];
 
   return ({
     formType: 'joinServer',
-    errors: Object.values(state.errors.servers),
+    errors: joinErrors,
   });
 };
 

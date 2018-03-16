@@ -43,12 +43,13 @@ class ServerForm extends React.Component {
     const createImage = this.props.formType === 'createServer' ? this.createImage() : <div className='spaceholder'></div>;
     const header = this.props.formType === 'createServer' ? 'CREATE YOUR SERVER' : 'JOIN A SERVER';
     const buttonName = this.props.formType === 'createServer' ? 'Create' : 'Join';
+
     return (
       <div className='server-form-container'>
         <h1 className='form-title'>{header}</h1>
-          <ul className='errors-list'>
-            {this.props.errors.map((error, idx) => (<li className="error-item" key={idx}>{error}</li>))}
-          </ul>
+          <div className='errors-list error-item'>
+            { this.props.errors }
+          </div>
         <form onSubmit={this.handleSubmit} className="server-form">
           <div className='input-container'>
             <label className='server-label'>Name</label>
