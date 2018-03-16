@@ -34,7 +34,7 @@ class SessionForm extends React.Component {
         typeSpeed: 40
       };
       var passOptions = {
-        strings: ["demoPassword"],
+        strings: ["asdfasdf"],
         typeSpeed: 40
       };
 
