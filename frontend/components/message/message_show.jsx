@@ -14,9 +14,13 @@ class MessageShow extends React.Component {
     this.subscription = App.cable.subscriptions.create(
       {channel: 'ChatChannel', id: this.props.match.params.channelId},
       { received: (data) => { this.props.receiveAMessage(data) }});
+    this.scrollBottom();
   }
 
   componentWillReceiveProps(newProps) {
+    if (JSON.stringify(this.props.messageIds) !== JSON.stringify(newProps.messageIds)) {
+      this.scrollBottom();
+    }
 
     if (newProps.match.params.channelId !== this.props.match.params.channelId) {
       this.subscription.unsubscribe();
@@ -33,8 +37,10 @@ class MessageShow extends React.Component {
   }
 
   scrollBottom() {
-    const element = document.getElementById("messages");
-    element.scrollTop = element.scrollHeight;
+    setTimeout(() => {
+      const element = document.getElementById("messages");
+      element.scrollTop = element.scrollHeight;
+    }, 10)
   }
 
   render() {
