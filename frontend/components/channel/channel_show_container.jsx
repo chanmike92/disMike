@@ -29,6 +29,7 @@ const mapStateToProps = (state, ownProps) => {
     currentServerId: currentServer.id || "",
     channelIds,
     channels,
+    currentUser,
 
   });
 };

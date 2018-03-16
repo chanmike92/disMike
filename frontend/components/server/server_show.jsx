@@ -4,7 +4,15 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class ServerShow extends React.Component {
   componentDidMount() {
-    this.props.fetchAllServers();
+    this.props.fetchAllServers().then(
+      (action) => {
+        const servers = Object.values(action.servers)
+        if (servers.length > 0 && this.props.currentUser) {
+          const serverId = servers[0].id
+          this.props.history.replace(`/${this.props.currentUser.id}/server/${serverId}/channel`)
+        }
+      }
+    )
   }
 
   // componentWillReceiveProps(nextProps) {

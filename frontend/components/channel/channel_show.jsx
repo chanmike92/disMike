@@ -6,7 +6,16 @@ import GreetingContainer from '../greeting/greeting_container';
 class ChannelShow extends React.Component {
 
   componentDidMount() {
-    this.props.fetchAServer(this.props.match.params.serverId);
+    this.props.fetchAServer(this.props.match.params.serverId).then(
+      (action) => {
+        
+        const channels = Object.values(action.payload.channels)
+        if (channels.length > 0 && this.props.currentUser) {
+          const channelId = channels[0].id
+          this.props.history.replace(`/${this.props.currentUserId}/server/${this.props.currentServerId}/channel/${channelId}`)
+        }
+      }
+    );
   }
 
   // componentWillReceiveProps(newProps) {
