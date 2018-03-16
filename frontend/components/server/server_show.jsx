@@ -39,7 +39,9 @@ class ServerShow extends React.Component {
     return (
       <div className='server-container'>
 
-        <button className='direct-message-link server-icons'>Add DM</button>
+        <button className='direct-message-link server-icons'>
+          <i class="fas fa-users"></i>
+        </button>
         <div className='separator'></div>
         <ul className='server-list'>
           {servers}

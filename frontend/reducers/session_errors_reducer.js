@@ -26,7 +26,7 @@ const parseErrors = (railsErrors = []) => {
       case "PASSWORD (PASSWORD DOES NOT MATCH)":
         return errors.password.push("PASSWORD (PASSWORD DOES NOT MATCH)");
       case "Password is too short (minimum is 6 characters)":
-        return errors.password.push("PASSWORD (MUST BE BETWEEN 6 AND 128 IN LENGTH.)");
+        return errors.password.push("PASSWORD (MUST BE BETWEEN 6 AND 128 IN LENGTH)");
       default:
         return null;
     }

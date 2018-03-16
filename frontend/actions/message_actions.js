@@ -2,6 +2,7 @@ import * as APIUtil from '../util/message_api_util';
 export const RECEIVE_ALL_MESSAGES = 'RECEIVE_ALL_MESSAGES';
 export const RECEIVE_A_MESSAGE = 'RECEIVE_A_MESSAGE';
 export const RECEIVE_MESSAGE_ERRORS = 'RECEIVE_MESSAGE_ERRORS';
+export const CLEAR_MESSAGES = 'CLEAR_MESSAGES';
 
 export const receiveAllMessages = (messages) => {
 
@@ -23,6 +24,13 @@ export const receiveErrors = (errors) => {
   return {
     type: RECEIVE_MESSAGE_ERRORS,
     errors
+  };
+};
+
+export const clearMessages = () => {
+
+  return {
+    type: CLEAR_MESSAGES
   };
 };
 

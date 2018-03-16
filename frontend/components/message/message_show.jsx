@@ -10,6 +10,7 @@ class MessageShow extends React.Component {
   }
 
   componentDidMount() {
+
     this.props.fetchAllMessages(this.props.match.params.channelId);
     this.subscription = App.cable.subscriptions.create(
       {channel: 'ChatChannel', id: this.props.match.params.channelId},
@@ -21,7 +22,6 @@ class MessageShow extends React.Component {
     if (JSON.stringify(this.props.messageIds) !== JSON.stringify(newProps.messageIds)) {
       this.scrollBottom();
     }
-
     if (newProps.match.params.channelId !== this.props.match.params.channelId) {
       this.subscription.unsubscribe();
 
@@ -33,6 +33,7 @@ class MessageShow extends React.Component {
   }
 
   componentWillUnmount() {
+    this.props.clearMessages();
     this.subscription.unsubscribe();
   }
 

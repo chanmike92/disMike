@@ -18,12 +18,6 @@ class ChannelShow extends React.Component {
     );
   }
 
-  // componentWillReceiveProps(newProps) {
-  //
-  //   if(newProps.match.params.channelId !== this.props.match.params.channelId) {
-  //     this.props.fetchAChannel(newProps.match.params.channelId);
-  //   }
-  // }
 
   render() {
     const channels = this.props.channelIds.map((id, idx) => { return (<ChannelIndex
@@ -51,6 +45,13 @@ class ChannelShow extends React.Component {
       :
       ""
 
+    const createButton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
+      <button className='fafaplus' onClick={this.props.createForm}>
+        <i className="fas fa-plus"></i>
+      </button>
+      :
+      ""
+
     return (
       <div className='channel-container'>
 
@@ -62,9 +63,7 @@ class ChannelShow extends React.Component {
           <div className='text-channel-container'>
             <div className='text-channel-item-container'>
               <div className='text-channel-name'>TEXT CHANNELS</div>
-              <button className='fafaplus' onClick={this.props.createForm}>
-                <i className="fas fa-plus"></i>
-              </button>
+              {createButton}
             </div>
             <ul className='channel-list-container'>
               {channels}

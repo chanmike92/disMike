@@ -1,4 +1,4 @@
-import { RECEIVE_ALL_MESSAGES, RECEIVE_A_MESSAGE } from '../actions/message_actions';
+import { RECEIVE_ALL_MESSAGES, RECEIVE_A_MESSAGE, CLEAR_MESSAGES } from '../actions/message_actions';
 import { RECEIVE_A_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_A_USER } from '../actions/user_actions';
 import { merge } from 'lodash';
@@ -10,6 +10,8 @@ const messageReducer = (oldState = {}, action) => {
   switch(action.type) {
     case RECEIVE_ALL_MESSAGES:
       return action.messages;
+    case CLEAR_MESSAGES:
+      return {};
     case RECEIVE_A_MESSAGE:
       return merge({}, oldState, { [action.message.id]: action.message });
     case RECEIVE_A_CHANNEL:
