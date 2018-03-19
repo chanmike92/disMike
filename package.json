@@ -23,7 +23,9 @@
   "directories": {
     "test": "test"
   },
-  "devDependencies": {},
+  "devDependencies": {
+  "redux-logger": "^3.0.6"
+},
   "scripts": {
     "postinstall": "webpack",
     "start": "webpack --watch",
