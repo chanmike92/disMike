@@ -1,25 +1,32 @@
-# README
+#disMike
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+disMike is a clone of the popular team voice chatting and messaging app, Discord. It features servers that users can create and own. Channels within the servers help maintain different conversations that users may have with each other. Check for the live version [here](www.dismike-herokuapp.com)!
 
-Things you may want to cover:
+## Instructions
 
-* Ruby version
+* Users can create server which already generate the channel 'general'
+* Other uses can join servers using the join form, entering the correct name of the server
+* Users can then join channels and relay messages to each other
+* Users in the channel will get live updates of messages
 
-* System dependencies
+##Technologies Used
 
-* Configuration
+* Ruby on Rails for backend functionality
+* Postgresql for backend database
+* Javascript for User interaction and single page rendering
+* HTML for basic web page structuring
+* CSS for web page styling
 
-* Database creation
+## Library Used
 
-* Database initialization
+* ActionCable for real time messaging between two users
+* Moment for parsing date and time
+* Paperclip for storing data and images online using AWS
 
-* How to run the test suite
+## To-do/Future Features
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-# disMike
+* Friend lists
+* Direct Messaging
+* Team Direct Messaging
+* Updating Profile Picture of Servers
+* Uploading/Updating Profile Picture of Users
