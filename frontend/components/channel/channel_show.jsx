@@ -17,10 +17,10 @@ class ChannelShow extends React.Component {
       }
     );
   }
-  //
+
   // componentWillReceiveProps(nextProps) {
   //   if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-  //
+  //      debugger
   //     nextProps.fetchAServer(nextProps.match.params.serverId).then(
   //       (action) => {
   //

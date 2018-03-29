@@ -137,15 +137,19 @@
 
 .channel-link-item {
   font-size: 16px;
+  display: block;
   position: relative;
-  width: 100%;
-  display: flex;
-  align-items: flex-end;
+  width: 150px;
+  height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   justify-content: space-between;
 }
 
 .channel-name-container {
   position: relative;
+  height: 20px;
 }
 
 .greeting-container {
@@ -174,4 +178,11 @@
 
 .channel-control {
   z-index: 5;
+}
+
+.link-item-name {
+  width: 80px;
+  overflow: hidden;
+  height: 20px;
+  display: inline;
 }
