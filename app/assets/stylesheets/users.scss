@@ -65,20 +65,25 @@
 
 .user-counter {
   width: 100%;
-      align-items: center;
-      box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
-      box-sizing: border-box;
-      color: #fff;
-      display: flex;
-      font-family: 'Roboto', sans-serif;
-      font-weight: 500;
-      height: 48px;
-      padding: 0 12px 0 16px;
-      transition: background-color .15s ease;
-      z-index: 3;
-      position: relative;
-      font-size: 100%;
-      font-style: inherit;
-      justify-content: center;
-      align-items: center;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  color: #72767d;
+  font-size: 12px;
+  font-weight: 500;
+  height: 48px;
+  padding: 0 12px 0 16px;
+  transition: background-color .15s ease;
+  z-index: 3;
+  position: relative;
+  font-style: inherit;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.user-list-container {
+
 }

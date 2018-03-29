@@ -13,6 +13,7 @@ class SessionForm extends React.Component {
     demoUsername: "",
     demoPassword: "",
     demoEmail: "",
+    demologin: false,
     background: `background-img-${Math.floor(Math.random(1) * 9)}`
     };
     this.handleInput = this.handleInput.bind(this);
@@ -27,8 +28,8 @@ class SessionForm extends React.Component {
   }
 
   guestLogin() {
+    if (!this.state.demologin) {
       const guest = {email: 'demoEmail@demo.com', password: 'asdfasdf'};
-
       var emailOptions = {
         strings: ["demoEmail@demo.com"],
         typeSpeed: 40
@@ -37,6 +38,16 @@ class SessionForm extends React.Component {
         strings: ["asdfasdf"],
         typeSpeed: 40
       };
+      this.setState({
+        username: "",
+        email: "",
+        password: "",
+      });
+      this.setState({demologin: true});
+      let form = document.querySelector('.session-form');
+      let inputs = Array.from(document.querySelectorAll('.input-field'));
+      form.setAttribute('disabled', true);
+      inputs.forEach(el => {el.setAttribute('disabled', true);});
 
       setTimeout(() => {
         new Typed(".email", emailOptions);
@@ -48,19 +59,24 @@ class SessionForm extends React.Component {
         this.props.processForm(guest);
       }, 2000);
     }
+    }
 
   handleSubmit(e) {
     e.preventDefault();
+    if (!this.state.demologin) {
     const user = Object.assign({}, this.state);
     this.props.processForm(user);
   }
+  }
 
   handleInput(input) {
+    if (!this.state.demologin) {
     return (e) => {
       this.setState({
         [input]: e.currentTarget.value
       });
     };
+  }
   }
 
   renderErrors(field) {
@@ -80,6 +96,7 @@ class SessionForm extends React.Component {
           <input
             className='input-field name'
             type="text"
+            autoComplete='username'
             onChange={this.handleInput('username')}
             value={this.state.username}>
           </input>
@@ -92,7 +109,7 @@ class SessionForm extends React.Component {
     if (this.props.formType === "Login") {
       return (
         <p className="change-form">
-          Need an account? <Link className='sessionLinks' to="/signup"> Register</Link> or <a className='sessionLinks' onClick={this.guestLogin}>Demo</a>
+          Need an account? <Link className='sessionLinks' to="/signup"> Register</Link> or <a id="guest" className='sessionLinks' onClick={this.guestLogin}>Demo</a>
         </p>
       );
     } else {
@@ -120,10 +137,10 @@ class SessionForm extends React.Component {
             <div className="right-form-content">
               <h2 className='header'>{headerName}</h2>
               <div className='spacer'></div>
-              <form className='session-form'>
+              <form id='session-form' className='session-form' autoComplete="off">
                 <div className='input-wrapper'>
                 {this.renderErrors("email")}
-                  <input className='input-field email' type="email" onChange={this.handleInput('email')} value={this.state.email}>
+                  <input className='input-field email' type="email" autoComplete='email' onChange={this.handleInput('email')} value={this.state.email}>
                   </input>
                 </div>
 
@@ -131,7 +148,7 @@ class SessionForm extends React.Component {
 
                 <div className='input-wrapper'>
                   {this.renderErrors("password")}
-                    <input className='input-field password' type="password" onChange={this.handleInput('password')} value={this.state.password}>
+                    <input className='input-field password' type="password" autoComplete='current-password' onChange={this.handleInput('password')} value={this.state.password}>
                     </input>
                 </div>
 
