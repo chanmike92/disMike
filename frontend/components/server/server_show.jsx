@@ -61,9 +61,7 @@ class ServerShow extends React.Component {
           <i className="fas fa-users"></i>
         </button>
         <div className='separator'></div>
-        <ul className='server-list'>
           {servers}
-        </ul>
         <button id='create-server-form' onClick={this.props.createForm}>
           <span className='create-sign'>+</span>
         </button>

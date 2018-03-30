@@ -10,7 +10,11 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  &::-webkit-scrollbar{
+     display: none;
+   }
 }
 
 .server-list {
