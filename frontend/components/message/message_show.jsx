@@ -65,7 +65,7 @@ class MessageShow extends React.Component {
     return (
         <div className='message-container'>
           <div className='channel-title-name-container'>
-            <div className='channel-title-name'># {this.props.currentChannelName}</div>
+            <div className='channel-title-name'># <div className='channel-actual-name'>{this.props.currentChannelName}</div></div>
           </div>
           <div className='bottom-message-container'>
             <ul id='messages' className='message-list-container'>

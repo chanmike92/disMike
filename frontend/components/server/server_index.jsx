@@ -12,7 +12,7 @@ class ServerIndex extends React.Component {
     return (
     <li className="server-icons">
       <Link className='server-links'
-        to={`/${this.props.currentUser.id}/server/${this.props.server.id}/channel/`}>
+        to={`/@me/${this.props.server.id}/${this.props.server.channel_ids[0]}`}>
         { this.props.server.name[0] }
       </Link>
 

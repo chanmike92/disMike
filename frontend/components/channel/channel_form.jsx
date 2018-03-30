@@ -12,9 +12,9 @@ class ChannelForm extends React.Component {
   }
 
   componentDidMount() {
-    
+
     this.props.clearErrors();
-    this.setState(this.props.currentState)
+    this.setState(this.props.currentState);
   }
 
   handleSubmit(e) {

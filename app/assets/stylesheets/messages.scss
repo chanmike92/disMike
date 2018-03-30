@@ -32,6 +32,15 @@
   justify-content: space-between;
 }
 
+.channel-actual-name {
+  color: white;
+  margin-left: 10px;
+  max-width: 1300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 .channel-title-name {
   width: 100%;
   font-family: 'Roboto', sans-serif;
@@ -42,7 +51,7 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  color: #fff;
+  color: #72767d;
   border: 0;
   font-family: inherit;
   font-size: 100%;
@@ -52,7 +61,8 @@
   outline: 0;
   padding: 0;
   vertical-align: baseline;
-  max-width: 700px;
+  max-width: 1300px;
+  display: inline-flex;
 }
 
 .bottom-message-container {

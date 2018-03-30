@@ -4,18 +4,33 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class ServerShow extends React.Component {
   componentDidMount() {
-    this.props.fetchAllServers().then(
-      (action) => {
-        const servers = Object.values(action.servers)
-        debugger
-        if (servers.length > 0 && this.props.currentUser) {
-          const serverId = servers[0].id
-          const firstChannel = servers[0].channel_ids[0]
-          debugger
-          this.props.history.replace(`/${this.props.currentUser.id}/server/${serverId}/channel/${firstChannel}`)
+    const channelId = this.props.location.pathname.split('/')[3];
+    if (channelId) {
+      this.props.fetchAllServers()
+      // .then(
+      //   (action) => {
+      //     const servers = Object.values(action.servers);
+      //     if (servers.length > 0 && this.props.currentUser) {
+      //       const serverId = servers[0].id;
+      //       const firstChannel = this.props.match.params.channelId;
+      //       debugger
+      //       this.props.history.replace(`/${this.props.currentUser.id}/server/${serverId}/channel/${channelId}`);
+      //     }
+      //   }
+      // )
+    } else {
+      this.props.fetchAllServers().then(
+        (action) => {
+          const servers = Object.values(action.servers);
+          if (servers.length > 0 && this.props.currentUser) {
+            const serverId = servers[0].id;
+            const firstChannel = servers[0].channel_ids[0];
+
+            this.props.history.replace(`/@me/${serverId}/${firstChannel}`);
+          }
         }
-      }
-    )
+      )
+    }
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -53,6 +68,9 @@ class ServerShow extends React.Component {
           <span className='create-sign'>+</span>
         </button>
         <div className='separator'></div>
+        <a href='https://www.github.com/chanmike92' className='server-icons'><i className="fab fa-github"></i></a>
+        <a href='https://www.linkedin.com/in/chanmike92' className='server-icons'><i className="fab fa-linkedin-in"></i></a>
+        <a href='https://mikechan.me' className='server-icons'><i className="fas fa-briefcase"></i></a>
       </div>
     );
   }

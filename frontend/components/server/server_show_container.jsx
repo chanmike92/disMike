@@ -8,7 +8,7 @@ import { openModal } from '../../actions/modal_actions';
 
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
 
 
   return ({

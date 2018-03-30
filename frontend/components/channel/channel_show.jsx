@@ -6,16 +6,17 @@ import GreetingContainer from '../greeting/greeting_container';
 class ChannelShow extends React.Component {
 
   componentDidMount() {
-    this.props.fetchAServer(this.props.match.params.serverId).then(
-      (action) => {
-
-        const channels = Object.values(action.payload.channels)
-        if (channels.length > 0 && this.props.currentUser) {
-          const channelId = channels[0].id
-          this.props.history.replace(`/${this.props.currentUserId}/server/${this.props.currentServerId}/channel/${channelId}`)
-        }
-      }
-    );
+    this.props.fetchAServer(this.props.match.params.serverId)
+    // .then(
+    //   (action) => {
+    //
+    //     const channels = Object.values(action.payload.channels)
+    //     if (channels.length > 0 && this.props.currentUser) {
+    //       const channelId = channels[0].id
+    //       this.props.history.replace(`/${this.props.currentUserId}/server/${this.props.currentServerId}/channel/${channelId}`)
+    //     }
+    //   }
+    // );
   }
 
   // componentWillReceiveProps(nextProps) {
@@ -64,33 +65,37 @@ class ChannelShow extends React.Component {
 
     const createButton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
       <button className='fafaplus' onClick={this.props.createForm}>
-        <i className="fas fa-plus"></i>
+        +
       </button>
       :
-      ""
+      "";
 
+    if (!this.props.currentServerId) {
+      return (<div></div>);
+    } else {
     return (
-      <div className='channel-container'>
+        <div className='channel-container'>
 
-        <div className='server-name-container'>
-          <div className='server-name'>{this.props.currentServerName}</div>
-          {deletebutton}
-        </div>
-        <div className='bottom-channels-container'>
-          <div className='text-channel-container'>
-            <div className='text-channel-item-container'>
-              <div className='text-channel-name'>TEXT CHANNELS</div>
-              {createButton}
-            </div>
-            <ul className='channel-list-container'>
-              {channels}
-            </ul>
+          <div className='server-name-container'>
+            <div className='server-name'>{this.props.currentServerName}</div>
+            {deletebutton}
           </div>
-          <GreetingContainer />
+          <div className='bottom-channels-container'>
+            <div className='text-channel-container'>
+              <div className='text-channel-item-container'>
+                <div className='text-channel-name'>TEXT CHANNELS</div>
+                {createButton}
+              </div>
+              <ul className='channel-list-container'>
+                {channels}
+              </ul>
+            </div>
+            <GreetingContainer />
+          </div>
         </div>
-      </div>
 
-    );
+      );
+    }
   }
 }
 

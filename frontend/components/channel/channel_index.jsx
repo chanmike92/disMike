@@ -20,7 +20,7 @@ const ChannelIndex = (props) => {
       <li className="channel-item-container">
         <div className='channel-name-container'>
           <Link
-            to={`/${props.currentUserId}/server/${props.currentServerId}/channel/${props.channel.id}`}
+            to={`/@me/${props.currentServerId}/${props.channel.id}`}
             className='channel-link-item'>
             # {props.channel.name}
           </Link>

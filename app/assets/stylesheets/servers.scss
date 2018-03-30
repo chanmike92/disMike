@@ -10,6 +10,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  overflow: scroll;
 }
 
 .server-list {
@@ -31,6 +32,7 @@
   z-index: 20;
   content: " ";
   width: 30px;
+  margin: 5px;
 }
 
 .direct-message-link {
@@ -48,7 +50,7 @@
   background-position: center;
   background-repeat: no-repeat;
   border-radius: 25px;
-  margin: 10px;
+  margin: 5px;
   border-style: none;
   display: flex;
   align-items: center;
