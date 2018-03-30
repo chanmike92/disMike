@@ -7,9 +7,12 @@ class ServerShow extends React.Component {
     this.props.fetchAllServers().then(
       (action) => {
         const servers = Object.values(action.servers)
+        debugger
         if (servers.length > 0 && this.props.currentUser) {
           const serverId = servers[0].id
-          this.props.history.replace(`/${this.props.currentUser.id}/server/${serverId}/channel`)
+          const firstChannel = servers[0].channel_ids[0]
+          debugger
+          this.props.history.replace(`/${this.props.currentUser.id}/server/${serverId}/channel/${firstChannel}`)
         }
       }
     )
