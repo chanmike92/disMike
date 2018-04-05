@@ -61,7 +61,7 @@ class ChannelShow extends React.Component {
 
     const deletebutton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
       <button className='fafaicons-container' onClick={() => this.props.deleteServer(this.props.currentServerId).then(() => {
-          this.props.history.push(`/${this.props.currentUserId}/server/`)
+          this.props.history.push(`/@me/`)
         })}>
         <i className="far fa-times-circle"></i>
       </button>
