@@ -38,8 +38,11 @@ class ChannelShow extends React.Component {
 
 
   render() {
-    const channels = this.props.channelIds.map((id, idx) => { return (<ChannelIndex
+    const channels = this.props.channelIds.map((id, idx) => {
+      if (this.props.channels[id]) {
+      return (<ChannelIndex
       key={ idx }
+      id={ id }
       currentUserId={ this.props.currentUserId }
       currentServerId={ this.props.currentServerId }
       channel={ this.props.channels[id] }
@@ -50,6 +53,7 @@ class ChannelShow extends React.Component {
       currentUserId={this.props.currentUserId}
       />
       );
+    }
     });
 
 

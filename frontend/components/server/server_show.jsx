@@ -6,7 +6,7 @@ class ServerShow extends React.Component {
   componentDidMount() {
     const channelId = this.props.location.pathname.split('/')[3];
     if (channelId) {
-      this.props.fetchAllServers()
+      this.props.fetchAllServers();
       // .then(
       //   (action) => {
       //     const servers = Object.values(action.servers);
@@ -27,9 +27,11 @@ class ServerShow extends React.Component {
             const firstChannel = servers[0].channel_ids[0];
 
             this.props.history.replace(`/@me/${serverId}/${firstChannel}`);
+            // () => {this.props.history.replace(`/@me/`);
           }
-        }
-      )
+      // );
+      }
+    );
     }
   }
 
