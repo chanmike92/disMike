@@ -45,7 +45,7 @@ class MessageShow extends React.Component {
   }
 
   render() {
-
+    debugger
     const messages = this.props.messageIds.map((messageId, idx) => {
 
       return (<MessageIndex

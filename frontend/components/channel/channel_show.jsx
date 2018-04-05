@@ -49,6 +49,7 @@ class ChannelShow extends React.Component {
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
       fetchAChannel={this.props.fetchAChannel}
+      currentServer={this.props.currentServer}
       currentServerOwnerId={this.props.currentServerOwnerId}
       currentUserId={this.props.currentUserId}
       />

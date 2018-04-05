@@ -2,14 +2,18 @@ import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const ChannelIndex = (props) => {
-
   const iconButtons = (props.currentUserId === props.currentServerOwnerId) ?
     <div className='channel-controls'>
-      <button className='fafaicons-container' onClick={() => props.fetchAChannel(props.id).then(() => props.updateForm()) }>
+      <button className='fafaicons-container' onClick={() => {
+          props.history.push(`/@me/${props.currentServerId}/${props.id}`)
+          props.fetchAChannel(props.id).then(() => props.updateForm())
+        } }>
         <i className="fas fa-edit"></i>
       </button>
       <button className='fafaicons-container' onClick={() =>
-          props.deleteChannel(props.id) }>
+          props.deleteChannel(props.id).then(() => {
+            props.history.push(`/@me/${props.currentServerId}/${props.currentServer.channel_ids[0]}`)}
+          )}>
         <i className="far fa-trash-alt"></i>
       </button>
     </div>
