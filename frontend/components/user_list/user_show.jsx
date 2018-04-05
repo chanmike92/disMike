@@ -21,7 +21,7 @@ class UserShow extends React.Component {
 
   render() {
 
-    const users = this.props.userIds.filter((userid) => userid !== this.props.currentServerOwnerId ).map((userId, idx) => { return (<UserIndex
+    const users = this.props.userIds.map((userId, idx) => { return (<UserIndex
       user={ this.props.users[userId] }
       key={ idx }
       currentServerOwnerId={this.props.currentServerOwnerId}
