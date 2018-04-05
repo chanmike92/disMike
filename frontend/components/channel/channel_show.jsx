@@ -38,8 +38,13 @@ class ChannelShow extends React.Component {
 
 
   render() {
-    const channels = this.props.channelIds.map((id, idx) => { return (<ChannelIndex
+    const channels = this.props.channelIds.map((id, idx) => {
+      if (this.props.channels[id]) {
+      return (<ChannelIndex
       key={ idx }
+      id={ id }
+      history={ this.props.history }
+      currentServer={ this.props.currentServer }
       currentUserId={ this.props.currentUserId }
       currentServerId={ this.props.currentServerId }
       channel={ this.props.channels[id] }
@@ -50,13 +55,14 @@ class ChannelShow extends React.Component {
       currentUserId={this.props.currentUserId}
       />
       );
+    }
     });
 
 
 
     const deletebutton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
       <button className='fafaicons-container' onClick={() => this.props.deleteServer(this.props.currentServerId).then(() => {
-          this.props.history.push(`/${this.props.currentUserId}/server/`)
+          this.props.history.push(`/@me/`)
         })}>
         <i className="far fa-times-circle"></i>
       </button>

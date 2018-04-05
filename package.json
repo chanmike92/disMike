@@ -24,8 +24,8 @@
     "test": "test"
   },
   "devDependencies": {
-  "redux-logger": "^3.0.6"
-},
+    "redux-logger": "^3.0.6"
+  },
   "scripts": {
     "postinstall": "webpack",
     "start": "webpack --watch",

@@ -2,7 +2,6 @@ import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const UserIndex = ({ currentServerOwnerId, user }) => {
-
   const owner = (currentServerOwnerId === user.id) ?
   <div className='owner-icon'>
   </div>

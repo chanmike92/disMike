@@ -2,14 +2,16 @@ import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const ChannelIndex = (props) => {
-
+  debugger
   const iconButtons = (props.currentUserId === props.currentServerOwnerId) ?
     <div className='channel-controls'>
-      <button className='fafaicons-container' onClick={() => props.fetchAChannel(props.channel.id).then(() => props.updateForm()) }>
+      <button className='fafaicons-container' onClick={() => props.fetchAChannel(props.id)
+          .then(() => props.updateForm()) }>
         <i className="fas fa-edit"></i>
       </button>
       <button className='fafaicons-container' onClick={() =>
-          props.deleteChannel(props.channel.id) }>
+          props.deleteChannel(props.id).then(() => {
+              props.history.push(`/@me/${props.currentServerId}`) })}>
         <i className="far fa-trash-alt"></i>
       </button>
     </div>
@@ -20,14 +22,14 @@ const ChannelIndex = (props) => {
       <li className="channel-item-container">
         <div className='channel-name-container'>
           <Link
-            to={`/@me/${props.currentServerId}/${props.channel.id}`}
+            to={`/@me/${props.currentServerId}/${props.id}`}
             className='channel-link-item'>
             # {props.channel.name}
           </Link>
         </div>
         {iconButtons}
       </li>
-    )
+    );
 }
 
 
