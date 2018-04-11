@@ -12,7 +12,13 @@ const ChannelIndex = (props) => {
       </button>
       <button className='fafaicons-container' onClick={() =>
           props.deleteChannel(props.id).then(() => {
-            props.history.push(`/@me/${props.currentServerId}/${props.currentServer.channel_ids[0]}`)}
+            if (props.currentServer.channel_ids.length > 0) {
+            props.history.push(`/@me/${props.currentServerId}/${props.currentServer.channel_ids[0]}`);
+          }
+          else {
+            props.history.replace(`/@me/${props.currentServerId}/`);
+          }
+        }
           )}>
         <i className="far fa-trash-alt"></i>
       </button>

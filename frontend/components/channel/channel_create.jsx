@@ -24,7 +24,7 @@ class ChannelCreate extends React.Component {
     this.props.processForm(channel)
     .then(() => this.props.fetchAServer(this.props.currentServerId))
       .then(() => {
-        let newchannel = this.props.currentServer.channel_ids.last;
+        let newchannel = this.props.currentServer.channel_ids[this.props.currentServer.channel_ids.length - 1];
         return this.props.history.push(`/@me/${this.props.currentServerId}/${newchannel}`)
       })
         .then(() => {this.props.closeModal()});

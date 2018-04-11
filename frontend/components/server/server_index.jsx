@@ -9,10 +9,12 @@ class ServerIndex extends React.Component {
 
 
   render () {
+
+    const firstChannel = this.props.server.channel_ids[0] ? this.props.server.channel_ids[0] : "";
     return (
     <li className="server-icons">
       <Link className='server-links'
-        to={`/@me/${this.props.server.id}/${this.props.server.channel_ids[0]}`}>
+        to={`/@me/${this.props.server.id}/${firstChannel}`}>
         { this.props.server.name[0] }
       </Link>
 

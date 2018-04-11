@@ -27,4 +27,4 @@ const mapDispatchToProps = dispatch => {
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelCreate));
