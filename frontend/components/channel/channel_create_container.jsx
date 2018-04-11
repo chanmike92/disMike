@@ -1,4 +1,4 @@
-import ChannelForm from './channel_form';
+import ChannelCreate from './channel_create';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { makeNewChannel, receiveErrors } from '../../actions/channel_actions';
@@ -14,8 +14,7 @@ const mapStateToProps = (state, ownProps) => {
   return ({
     currentState,
     currentServerId,
-    formType: 'createChannel',
-    // errors: Object.values(state.errors.channels),
+    currentServer,
   });
 };
 

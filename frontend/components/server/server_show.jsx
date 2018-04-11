@@ -13,7 +13,7 @@ class ServerShow extends React.Component {
       //     if (servers.length > 0 && this.props.currentUser) {
       //       const serverId = servers[0].id;
       //       const firstChannel = this.props.match.params.channelId;
-      //       debugger
+      //
       //       this.props.history.replace(`/${this.props.currentUser.id}/server/${serverId}/channel/${channelId}`);
       //     }
       //   }
@@ -24,10 +24,14 @@ class ServerShow extends React.Component {
           const servers = Object.values(action.servers);
           if (servers.length > 0 && this.props.currentUser) {
             const serverId = servers[0].id;
-            const firstChannel = servers[0].channel_ids[0];
+            if (servers[0].channel_ids.length > 0) {
+              const firstChannel = servers[0].channel_ids[0];
 
-            this.props.history.replace(`/@me/${serverId}/${firstChannel}`);
+              this.props.history.replace(`/@me/${serverId}/${firstChannel}`);
             // () => {this.props.history.replace(`/@me/`);
+            } else {
+              this.props.history.push(`/@me/${serverId}/`);
+            }
           }
       // );
       }

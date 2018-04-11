@@ -22,8 +22,6 @@ class Api::MessagesController < ApplicationController
           locals: { message: @message })))
       head :ok
 
-      # render 'api/messages/show'
-
     else
       render json: @message.errors.full_messages, status: 402
     end

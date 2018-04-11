@@ -2,7 +2,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-class ChannelForm extends React.Component {
+class ChannelCreate extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,6 +23,10 @@ class ChannelForm extends React.Component {
 
     this.props.processForm(channel)
     .then(() => this.props.fetchAServer(this.props.currentServerId))
+      .then(() => {
+        let newchannel = this.props.currentServer.channel_ids.last;
+        return this.props.history.push(`/@me/${this.props.currentServerId}/${newchannel}`)
+      })
         .then(() => {this.props.closeModal()});
   }
 
@@ -43,11 +47,11 @@ class ChannelForm extends React.Component {
             <label className='server-label'>Name</label>
             <input className='server-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
-          <button className='submit-form' type='submit'>Update Channel</button>
+          <button className='submit-form' type='submit'>Create Channel</button>
         </form>
       </div>
     );
   }
 }
 
-export default withRouter(ChannelForm);
+export default withRouter(ChannelCreate);

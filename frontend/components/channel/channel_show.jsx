@@ -19,22 +19,12 @@ class ChannelShow extends React.Component {
     // );
   }
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-  //      debugger
-  //     nextProps.fetchAServer(nextProps.match.params.serverId).then(
-  //       (action) => {
+  componentWillReceiveProps(nextProps) {
+    if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
   //
-  //         const channels = Object.values(action.payload.channels)
-  //
-  //         if (channels.length > 0 && nextProps.currentUser) {
-  //           const channelId = channels[0].id
-  //           nextProps.history.replace(`/${nextProps.currentUserId}/server/${nextProps.match.params.serverId}/channel/${channelId}`)
-  //         }
-  //       }
-  //     );
-  //   }
-  // }
+      this.props.fetchAServer(nextProps.match.params.serverId)
+    }
+  }
 
 
   render() {
