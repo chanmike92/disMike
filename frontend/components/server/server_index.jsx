@@ -23,7 +23,3 @@ class ServerIndex extends React.Component {
 }
 
 export default withRouter(ServerIndex);
-
-
-// instead of link, display container with all channels for that server
-// from the backend, pass array of channelids --> apply it to servers and same for channels/messages

@@ -48,9 +48,9 @@ export const fetchAChannel = (id) => dispatch => {
   return APIUtil.fetchAChannel(id).then((payload) => dispatch(receiveAChannel(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
-export const makeNewChannel = (channel) => dispatch => {
+export const makeNewChannel = (channel, id) => dispatch => {
 
-  return APIUtil.makeNewChannel(channel).then((payload) => dispatch(receiveAChannel(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.makeNewChannel(channel, id).then((payload) => dispatch(receiveAChannel(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const updateChannel = (channel) => dispatch => {

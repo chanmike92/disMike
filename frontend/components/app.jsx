@@ -14,13 +14,16 @@ const App = () => (
   <div className='app'>
 
     <AuthRoute exact path='/signup' component={ SignupFormContainer } />
-    <AuthRoute exact path='/' component={ SessionFormContainer }/>
+    <AuthRoute exact path='/login' component={ SessionFormContainer }/>
 
 
     <ProtectedRoute path={`/`} component={ ServerShowContainer } />
-    <ProtectedRoute path={`/:serverId/:channelId`} component={ ChannelShowContainer } />
+    <ProtectedRoute path={`/:serverId/`} component={ ChannelShowContainer } />
+    <Switch>
     <ProtectedRoute path={`/:serverId/:channelId`} component={ MessageShowContainer } />
-    <ProtectedRoute path={`/:serverId/:channelId`} component={ UserShowContainer } />
+    <ProtectedRoute exact path={`/:serverId/`} component={ MessageShowContainer } />
+    </Switch>
+    <ProtectedRoute path={`/:serverId/`} component={ UserShowContainer } />
     <Modal />
   </div>
 );

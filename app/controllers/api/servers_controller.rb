@@ -16,8 +16,8 @@ class Api::ServersController < ApplicationController
 
     if @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
-      Channel.create(name: "general", server_id: @server.id)
-
+      channel = Channel.create(name: "general")
+      Serverchannel.create(server_id: @server.id, channel_id: channel.id)
       @server_channels = @server.channels
       @server_users = @server.subscribed_users
 
@@ -46,7 +46,13 @@ class Api::ServersController < ApplicationController
   end
 
   def leave
-
+    @sub = Serversubscription.find_by(user_id: current_user.id, server_id: params[:id])
+    if @sub
+      @sub.destroy
+      render json: {}
+    else
+      render json: ['You do not have this server'], status: 404
+    end
   end
 
   def show

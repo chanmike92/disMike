@@ -65,7 +65,7 @@ class ChannelShow extends React.Component {
       :
       "";
 
-    if (!this.props.currentServerId) {
+    if (!this.props.match.params.serverId === '/me/') {
       return (<div></div>);
     } else {
     return (

@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    processForm: (channel) => dispatch(makeNewChannel(channel)),
+    processForm: (channel, id) => dispatch(makeNewChannel(channel, id)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal()),
     fetchAServer: (id) => dispatch(fetchAServer(id)),
