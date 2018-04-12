@@ -21,7 +21,7 @@ const channelReducer = (oldState = {}, action) => {
       return merge({}, oldState, { [action.payload.channel.id]: action.payload.channel });
     case REMOVE_A_CHANNEL:
       const newState = merge({}, oldState);
-      delete newState[action.channel.id];
+      delete newState[action.channelId];
       return newState;
     default:
       return oldState;

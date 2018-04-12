@@ -10,12 +10,13 @@ class MessageShow extends React.Component {
   }
 
   componentDidMount() {
-
-    this.props.fetchAllMessages(this.props.match.params.channelId);
-    this.subscription = App.cable.subscriptions.create(
-      {channel: 'ChatChannel', id: this.props.match.params.channelId},
-      { received: (data) => { this.props.receiveAMessage(data) }});
-    this.scrollBottom();
+    if (this.props.match.params.channelId) {
+      this.props.fetchAllMessages(this.props.match.params.channelId);
+      this.subscription = App.cable.subscriptions.create(
+        {channel: 'ChatChannel', id: this.props.match.params.channelId},
+        { received: (data) => { this.props.receiveAMessage(data) }});
+      this.scrollBottom();
+    }
   }
 
   componentWillReceiveProps(newProps) {
@@ -58,7 +59,7 @@ class MessageShow extends React.Component {
 
     if (this.props.match.params.channelId === undefined) {
 
-      return (<div className='message-container'></div>)
+      return (<div className='message-container'>No Text Channel</div>)
     }
     else {
 

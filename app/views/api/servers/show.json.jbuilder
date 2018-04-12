@@ -1,5 +1,4 @@
 if @server
-
   json.server do
     json.partial! 'api/servers/server', server: @server
     json.channel_ids @server.channels.pluck(:id)

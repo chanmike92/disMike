@@ -16,11 +16,6 @@ const mapStateToProps = (state, ownProps) => {
   const channelIds = currentServer.channel_ids || [];
   const currentUserId = currentUser.id || "";
 
-//I have the channel ids and I'm going to transform them into objects
-
-
-// channel_item_ids: [4,2,3]
-// channel_item_ids: [{id: 4, name: general}, {id: 2, name: sadf}]
 
   return ({
     currentServerName: currentServer.name || "",

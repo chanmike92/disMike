@@ -73,13 +73,17 @@ class Api::ServersController < ApplicationController
 
   def destroy
     @server = Server.find(params[:id])
-
-    if @server.owner_id == current_user.id
-      @server.destroy!
-      @servers = current_user.subscribed_servers
-      render 'api/servers/index'
+    if @server
+      if @server.owner_id == current_user.id
+        @server.destroy!
+        # @servers = current_user.subscribed_servers
+        # render 'api/servers/index'
+        render json: {}
+      else
+        render json: ['You do not have access'], status: 404
+      end
     else
-      render json: ['You do not have access'], status: 404
+      render json: ['Server does not exist'], status: 404
     end
   end
 

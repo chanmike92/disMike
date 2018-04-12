@@ -1,4 +1,4 @@
-import { RECEIVE_A_SERVER, RECEIVE_ALL_SERVERS } from '../actions/server_actions';
+import { RECEIVE_A_SERVER, REMOVE_A_SERVER, RECEIVE_ALL_SERVERS } from '../actions/server_actions';
 import { merge } from 'lodash';
 
 
@@ -10,6 +10,10 @@ const serverReducer = (oldState = {}, action) => {
       return action.servers;
     case RECEIVE_A_SERVER:
       return Object.assign({}, oldState, { [action.payload.server.id]: action.payload.server });
+    case REMOVE_A_SERVER:
+      const newState = merge({}, oldState);
+      delete newState[action.serverId];
+      return newState;
     default:
       return oldState;
   }

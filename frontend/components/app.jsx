@@ -16,11 +16,11 @@ const App = () => (
     <AuthRoute exact path='/signup' component={ SignupFormContainer } />
     <AuthRoute exact path='/' component={ SessionFormContainer }/>
 
-    <ProtectedRoute path={`/@me/`} component={ ServerShowContainer } />
 
-    <ProtectedRoute path={`/@me/:serverId/:channelId`} component={ ChannelShowContainer } />
-    <ProtectedRoute path={`/@me/:serverId/:channelId`} component={ MessageShowContainer } />
-    <ProtectedRoute path={`/@me/:serverId/:channelId`} component={ UserShowContainer } />
+    <ProtectedRoute path={`/`} component={ ServerShowContainer } />
+    <ProtectedRoute path={`/:serverId/:channelId`} component={ ChannelShowContainer } />
+    <ProtectedRoute path={`/:serverId/:channelId`} component={ MessageShowContainer } />
+    <ProtectedRoute path={`/:serverId/:channelId`} component={ UserShowContainer } />
     <Modal />
   </div>
 );

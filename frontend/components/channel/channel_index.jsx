@@ -5,20 +5,24 @@ const ChannelIndex = (props) => {
   const iconButtons = (props.currentUserId === props.currentServerOwnerId) ?
     <div className='channel-controls'>
       <button className='fafaicons-container' onClick={() => {
-          props.history.push(`/@me/${props.currentServerId}/${props.id}`)
+          props.history.push(`/${props.currentServerId}/${props.id}`)
           props.fetchAChannel(props.id).then(() => props.updateForm())
         } }>
         <i className="fas fa-edit"></i>
       </button>
       <button className='fafaicons-container' onClick={() =>
-          props.deleteChannel(props.id).then(() => {
-            if (props.currentServer.channel_ids.length > 0) {
-            props.history.push(`/@me/${props.currentServerId}/${props.currentServer.channel_ids[0]}`);
-          }
-          else {
-            props.history.replace(`/@me/${props.currentServerId}/`);
-          }
-        }
+          props.deleteChannel(props.id)
+          .then(() => props.fetchAServer(props.currentServerId))
+              .then(() => {
+                return props.currentServer.channel_ids[0] === undefined ?
+                  props.history.replace(`/${props.currentServerId}`) :
+                  props.history.push(`/${props.currentServerId}/${props.currentServer.channel_ids[0]}`)
+            //       if (props.currentServer.channel_ids[0] === undefined) {
+            //         props.history.push(`/@me/${props.currentServerId}`)
+            //       } else {
+            //       props.history.push(`/@me/${props.currentServerId}/${props.currentServer.channel_ids[0]}`);
+            //     })
+            }
           )}>
         <i className="far fa-trash-alt"></i>
       </button>

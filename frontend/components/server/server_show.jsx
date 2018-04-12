@@ -27,10 +27,10 @@ class ServerShow extends React.Component {
             if (servers[0].channel_ids.length > 0) {
               const firstChannel = servers[0].channel_ids[0];
 
-              this.props.history.replace(`/@me/${serverId}/${firstChannel}`);
+              this.props.history.push(`/${serverId}/${firstChannel}`);
             // () => {this.props.history.replace(`/@me/`);
             } else {
-              this.props.history.push(`/@me/${serverId}/`);
+              this.props.history.push(`/${serverId}/`);
             }
           }
       // );
@@ -63,9 +63,9 @@ class ServerShow extends React.Component {
     return (
       <div className='server-container'>
 
-        <button className='direct-message-link server-icons'>
+        <Link className='direct-message-link server-icons' to={`/@me/`}>
           <i className="fas fa-users"></i>
-        </button>
+        </Link>
         <div className='separator'></div>
           {servers}
         <button id='create-server-form' onClick={this.props.createForm}>

@@ -42,12 +42,16 @@ class Api::ChannelsController < ApplicationController
 
   def destroy
     @channel = Channel.find(params[:id])
-    if @channel.server.owner_id == current_user.id
-      @channels = @channel.server.channels
-      @channel.destroy!
-      render 'api/channels/index'
+    if @channel
+      if @channel.server.owner_id == current_user.id
+        # @channels = @channel.server.channels
+        @channel.destroy!
+        render json: {}
+      else
+        render json: ['You do not have access'], status: 404
+      end
     else
-      render json: ['You do not have access'], status: 404
+      render json: ['Channel does not exist'], status: 404
     end
   end
 

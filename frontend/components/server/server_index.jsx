@@ -14,7 +14,7 @@ class ServerIndex extends React.Component {
     return (
     <li className="server-icons">
       <Link className='server-links'
-        to={`/@me/${this.props.server.id}/${firstChannel}`}>
+        to={`/${this.props.server.id}/${firstChannel}`}>
         { this.props.server.name[0] }
       </Link>
 

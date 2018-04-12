@@ -21,7 +21,6 @@ class ChannelShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-  //
       this.props.fetchAServer(nextProps.match.params.serverId)
     }
   }
@@ -39,6 +38,7 @@ class ChannelShow extends React.Component {
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
       fetchAChannel={this.props.fetchAChannel}
+      fetchAServer={this.props.fetchAServer}
       currentServer={this.props.currentServer}
       currentServerOwnerId={this.props.currentServerOwnerId}
       currentUserId={this.props.currentUserId}

@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/server_api_util';
 export const RECEIVE_A_SERVER = 'RECEIVE_A_SERVER';
+export const REMOVE_A_SERVER = 'REMOVE_A_SERVER';
 export const RECEIVE_ALL_SERVERS = 'RECEIVE_ALL_SERVERS';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 export const RECEIVE_CURRENT_SERVER = 'RECEIVE_CURRENT_SERVER';
@@ -17,6 +18,14 @@ export const receiveAServer = (payload) => {
   return {
     type: RECEIVE_A_SERVER,
     payload
+  };
+};
+
+export const removeAServer = (serverId) => {
+
+  return {
+    type: REMOVE_A_SERVER,
+    serverId
   };
 };
 
@@ -61,6 +70,6 @@ export const joinServer = (server) => dispatch => {
   return APIUtil.joinServer(server).then((payload) => dispatch(receiveAServer(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
-export const deleteServer = (id) => dispatch => {
-  return APIUtil.deleteServer(id).then((servers) => dispatch(receiveAllServers(servers)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+export const deleteServer = (serverId) => dispatch => {
+  return APIUtil.deleteServer(serverId).then(() => dispatch(removeAServer(serverId)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
