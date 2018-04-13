@@ -12,6 +12,10 @@ Serversubscription.destroy_all
 Channel.destroy_all
 Message.destroy_all
 
+ActiveRecord::Base.connection.tables.each do |t|
+  ActiveRecord::Base.connection.reset_pk_sequence!(t)
+end
+
 User.create(username: 'demoUser', password: 'asdfasdf', email: 'demoEmail@demo.com')
 User.create(username: 'Lucio', password: 'asdfasdf', email: 'Lucio@demo.com')
 User.create(username: 'Tracer', password: 'asdfasdf', email: 'Tracer@demo.com')
@@ -63,19 +67,19 @@ Channel.create(name: "Florence")
 Channel.create(name: 'Grand Temple')
 Channel.create(name: "Masyaf")
 
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
-Serverchannel.create(channel_id: 7, server_id: 4)
+Serverchannel.create(channel_id: 1, server_id: 1)
+Serverchannel.create(channel_id: 2, server_id: 1)
+Serverchannel.create(channel_id: 3, server_id: 2)
+Serverchannel.create(channel_id: 4, server_id: 2)
+Serverchannel.create(channel_id: 5, server_id: 2)
+Serverchannel.create(channel_id: 6, server_id: 2)
+Serverchannel.create(channel_id: 7, server_id: 3)
+Serverchannel.create(channel_id: 8, server_id: 3)
+Serverchannel.create(channel_id: 9, server_id: 3)
+Serverchannel.create(channel_id: 10, server_id: 3)
+Serverchannel.create(channel_id: 11, server_id: 4)
+Serverchannel.create(channel_id: 12, server_id: 4)
+Serverchannel.create(channel_id: 13, server_id: 4)
 
 Message.create(body: "First Message", author_id: 1, channel_id: 1)
 Message.create(body: "First Message", author_id: 1, channel_id: 2)

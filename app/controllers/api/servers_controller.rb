@@ -19,6 +19,7 @@ class Api::ServersController < ApplicationController
       channel = Channel.create(name: "general")
       Serverchannel.create(server_id: @server.id, channel_id: channel.id)
       @server_channels = @server.channels
+      
       @server_users = @server.subscribed_users
 
       render 'api/servers/show'
