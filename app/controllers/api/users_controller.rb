@@ -25,8 +25,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
 
     if @user.save
-      @server = Server.create(owner_id: @user.id, name: @user.username)
-      @channel = Channel.create(name: "general", server_id: @server.id)
+      @server = Server.create(owner_id: @user.id, name: @user.username, is_dm: true)
       login(@user)
       render 'api/users/show'
     else

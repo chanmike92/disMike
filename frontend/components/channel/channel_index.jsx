@@ -15,7 +15,7 @@ const ChannelIndex = (props) => {
           .then(() => props.fetchAServer(props.currentServerId))
               .then(() => {
                 return props.currentServer.channel_ids[0] === undefined ?
-                  props.history.push(`/${props.currentServerId}`) :
+                  props.history.push(`/${props.currentServerId}/`) :
                   props.history.push(`/${props.currentServerId}/${props.currentServer.channel_ids[0]}`)
             //       if (props.currentServer.channel_ids[0] === undefined) {
             //         props.history.push(`/@me/${props.currentServerId}`)
@@ -31,6 +31,7 @@ const ChannelIndex = (props) => {
    <div></div>;
 
     if (props.id) {
+
     return (
       <li className="channel-item-container">
         <div className='channel-name-container'>

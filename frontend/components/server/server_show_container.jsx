@@ -13,6 +13,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     currentUser: state.session.currentUser || {},
+    // dmserver: Object.values(state.entities.servers.filter((server) => server.isDM === true))
     servers: Object.values(state.entities.servers) || [],
     errors: state.errors.server || []
   });

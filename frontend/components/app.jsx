@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import { AuthRoute, ProtectedRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute, PersonalRoute } from '../util/route_util';
 import GreetingContainer from './greeting/greeting_container';
 import ServerShowContainer from './server/server_show_container';
 import ChannelShowContainer from './channel/channel_show_container';
@@ -23,7 +23,7 @@ const App = () => (
     <ProtectedRoute path={`/:serverId/:channelId`} component={ MessageShowContainer } />
     <ProtectedRoute exact path={`/:serverId/`} component={ MessageShowContainer } />
     </Switch>
-    <ProtectedRoute path={`/:serverId/`} component={ UserShowContainer } />
+    <PersonalRoute path={`/:serverId/`} component={ UserShowContainer } />
     <Modal />
   </div>
 );

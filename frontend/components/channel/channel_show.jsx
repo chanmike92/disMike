@@ -6,7 +6,11 @@ import GreetingContainer from '../greeting/greeting_container';
 class ChannelShow extends React.Component {
 
   componentDidMount() {
-    this.props.fetchAServer(this.props.match.params.serverId)
+    if (this.props.match.params.serverId === '/@me/') {
+
+    } else {
+      this.props.fetchAServer(this.props.match.params.serverId)
+    }
     // .then(
     //   (action) => {
     //
@@ -21,7 +25,11 @@ class ChannelShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-      this.props.fetchAServer(nextProps.match.params.serverId)
+      if (this.props.match.params.serverId === '/@me/') {
+
+      } else {
+        this.props.fetchAServer(nextProps.match.params.serverId)
+      }
     }
   }
 
@@ -42,9 +50,8 @@ class ChannelShow extends React.Component {
       currentServer={this.props.currentServer}
       currentServerOwnerId={this.props.currentServerOwnerId}
       currentUserId={this.props.currentUserId}
-      />
-      );
-    }
+      />);
+      }
     });
 
 
@@ -65,7 +72,7 @@ class ChannelShow extends React.Component {
       :
       "";
 
-    if (!this.props.match.params.serverId === '/me/') {
+    if (!this.props.match.params.serverId === '/@me/') {
       return (<div></div>);
     } else {
     return (

@@ -1,6 +1,7 @@
 class Server < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :owner_id, presence: true
+  validates :is_dm, inclusion: { in: [true, false]}
 
   belongs_to :owner,
     class_name: :User,

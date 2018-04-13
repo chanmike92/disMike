@@ -4,8 +4,9 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class ServerShow extends React.Component {
   componentDidMount() {
-    const channelId = this.props.location.pathname.split('/')[3];
-    if (channelId) {
+    const serverId = this.props.location.pathname.split('/')[1];
+
+    if (serverId) {
       this.props.fetchAllServers();
       // .then(
       //   (action) => {
@@ -19,23 +20,25 @@ class ServerShow extends React.Component {
       //   }
       // )
     } else {
-      this.props.fetchAllServers().then(
-        (action) => {
-          const servers = Object.values(action.servers);
-          if (servers.length > 0 && this.props.currentUser) {
-            const serverId = servers[0].id;
-            if (servers[0].channel_ids.length > 0) {
-              const firstChannel = servers[0].channel_ids[0];
-
-              this.props.history.push(`/${serverId}/${firstChannel}`);
-            // () => {this.props.history.replace(`/@me/`);
-            } else {
-              this.props.history.push(`/${serverId}/`);
-            }
-          }
-      // );
-      }
-    );
+      this.props.fetchAllServers()
+        .then(() => this.props.history.push(`/@me/`))
+      // .then(
+    //     (action) => {
+    //       const servers = Object.values(action.servers);
+    //       if (servers.length > 0 && this.props.currentUser) {
+    //         const serverId = servers[0].id;
+    //         if (servers[0].channel_ids.length > 0) {
+    //           const firstChannel = servers[0].channel_ids[0];
+    //
+    //           this.props.history.push(`/${serverId}/${firstChannel}`);
+    //         // () => {this.props.history.replace(`/@me/`);
+    //         } else {
+    //           this.props.history.push(`/${serverId}/`);
+    //         }
+    //       }
+    //   // );
+    //   }
+    // );
     }
   }
 
