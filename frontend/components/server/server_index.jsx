@@ -7,6 +7,10 @@ class ServerIndex extends React.Component {
     super(props);
   }
 
+  // componentWillReceiveProps(nextProps) {
+  //   if (this.props.match.params.channelId === )
+  // }
+
 
   render () {
 

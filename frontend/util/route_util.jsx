@@ -32,7 +32,6 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => {
 
 const Personal = ({ component: Component, path, loggedIn, exact }) => {
   const pathroute = path.split('/');
-  debugger
   if (pathroute[1] !== '@me') {
     return (
       <Route

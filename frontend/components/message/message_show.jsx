@@ -1,6 +1,7 @@
 import React from 'react';
 import MessageIndex from './message_index';
 import MessageFormContainer from './message_form_container';
+import UserShowContainer from '../user_list/user_show_container';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class MessageShow extends React.Component {
@@ -76,13 +77,16 @@ class MessageShow extends React.Component {
           <div className='channel-title-name-container'>
             <div className='channel-title-name'># <div className='channel-actual-name'>{this.props.currentChannelName}</div></div>
           </div>
-          <div className='bottom-message-container'>
-            <ul id='messages' className='message-list-container'>
-              {messages}
-            </ul>
-          <div className='message-body'>
-            <MessageFormContainer />
+          <div className='bottom-container'>
+            <div className='bottom-message-container'>
+              <ul id='messages' className='message-list-container'>
+                {messages}
+              </ul>
+            <div className='message-body'>
+              <MessageFormContainer />
+            </div>
           </div>
+          <UserShowContainer />
         </div>
         </div>
       );

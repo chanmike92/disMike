@@ -1,7 +1,7 @@
 import ServerForm from './server_form';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { makeNewServer } from '../../actions/server_actions';
+import { makeNewServer, receiveErrors } from '../../actions/server_actions';
 import { connect } from 'react-redux';
 
 

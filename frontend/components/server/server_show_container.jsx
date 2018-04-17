@@ -1,5 +1,6 @@
 import ServerShow from './server_show';
 import React from 'react';
+import { getServerIds } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAllServers, deleteServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
 import { fetchAllChannels } from '../../actions/channel_actions';
@@ -10,11 +11,11 @@ import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
 
-
+  const servers =  state.entities.servers || {};
   return ({
     currentUser: state.session.currentUser || {},
-    // dmserver: Object.values(state.entities.servers.filter((server) => server.isDM === true))
-    servers: Object.values(state.entities.servers) || [],
+    serverIds: getServerIds(servers) || [],
+    servers,
     errors: state.errors.server || []
   });
 };

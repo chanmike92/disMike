@@ -10,14 +10,6 @@ class UserShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllUsers(this.props.match.params.serverId);
   }
-  //
-  componentWillReceiveProps(nextProps) {
-
-    if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-      this.props.fetchAServer(nextProps.match.params.serverId);
-    }
-  }
-
 
   render() {
 
@@ -28,8 +20,6 @@ class UserShow extends React.Component {
       />
       );
     });
-
-
 
     return (
       <div className='user-container'>

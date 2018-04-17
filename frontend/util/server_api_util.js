@@ -7,7 +7,7 @@ export const fetchAllServers = () => {
 };
 
 export const fetchAServer = (id) => {
-  
+
   return $.ajax({
     method: 'GET',
     url: `api/servers/${id}`,
@@ -23,12 +23,12 @@ export const makeNewServer = (server) => {
   });
 };
 
-export const joinServer = (server) => {
+export const joinServer = (id) => {
 
   return $.ajax({
     url: 'api/servers/join',
     method: 'POST',
-    data: {server}
+    data: {id}
   });
 };
 

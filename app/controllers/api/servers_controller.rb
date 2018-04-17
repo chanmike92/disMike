@@ -13,13 +13,14 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
+    @server.is_dm = false
 
     if @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
-      channel = Channel.create(name: "general")
-      Serverchannel.create(server_id: @server.id, channel_id: channel.id)
+      @channel = Channel.create(name: "general")
+      Serverchannel.create(server_id: @server.id, channel_id: @channel.id)
+
       @server_channels = @server.channels
-      
       @server_users = @server.subscribed_users
 
       render 'api/servers/show'
@@ -30,10 +31,12 @@ class Api::ServersController < ApplicationController
 
   def join
 
-    @server = Server.find_by(name: params[:server][:name])
+    @server = Server.find_by(id: params[:id], is_dm: false)
     if @server
       @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
     end
+
+
     if @server && @sub && @sub.save
       @server_channels = @server.channels
       @server_users = @server.subscribed_users
@@ -41,7 +44,6 @@ class Api::ServersController < ApplicationController
     elsif @server
       render json: {joinErrors: ['Already joined server']}, status: 402
     else
-
       render json: {joinErrors: ['Server does not exist']}, status: 402
     end
   end

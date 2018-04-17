@@ -8,8 +8,6 @@ class User < ApplicationRecord
 
   after_initialize :ensure_session_token
 
-
-
   has_many :owned_servers,
     class_name: :Server,
     primary_key: :id,

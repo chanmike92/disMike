@@ -52,16 +52,20 @@ class ServerShow extends React.Component {
 
   render() {
 
-    const servers = this.props.servers.map(server => {
+
+    const servers = this.props.serverIds.map((id, idx) => {
+      if (this.props.servers[id].is_dm === false) {
       return (<ServerIndex
-      server={server}
-      key={server.id}
+      server={this.props.servers[id]}
+      key={ idx }
+      id={ id }
       currentUser={this.props.currentUser}
-      deleteServer={this.props.deleteServer}
       fetchAServer={this.props.fetchAServer}
       />
       );
+    }
     });
+
 
     return (
       <div className='server-container'>

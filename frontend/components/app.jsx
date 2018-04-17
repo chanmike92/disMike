@@ -23,7 +23,6 @@ const App = () => (
     <ProtectedRoute path={`/:serverId/:channelId`} component={ MessageShowContainer } />
     <ProtectedRoute exact path={`/:serverId/`} component={ MessageShowContainer } />
     </Switch>
-    <PersonalRoute path={`/:serverId/`} component={ UserShowContainer } />
     <Modal />
   </div>
 );

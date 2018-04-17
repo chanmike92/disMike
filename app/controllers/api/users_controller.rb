@@ -24,8 +24,11 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.save
+    if @user.valid?
       @server = Server.create(owner_id: @user.id, name: @user.username, is_dm: true)
+      Serversubscription.create(user_id: current_user.id, server_id: @server.id)
+      @user.personalserver = @server.id
+      @user.save
       login(@user)
       render 'api/users/show'
     else

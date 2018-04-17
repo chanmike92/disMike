@@ -24,9 +24,10 @@
 .user-items {
   height: 25px;
   width: 100%;
-  padding: 5px;
+  padding-bottom: 5px;
+  padding-top: 5px;
   display: flex;
-  width: 100%;
+  // width: 100%;
   justify-content: space-between;
 }
 
@@ -85,5 +86,34 @@
 }
 
 .user-list-container {
-
+  height: auto;
+  box-sizing: border-box;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  overflow-y: auto;
+  width: 100%;
+  box-sizing: border-box;
+  &::-webkit-scrollbar-track{
+     border-radius: 20px;
+     margin-top: 5px;
+     margin-bottom: 10px;
+     left: 20px;
+     background-color: #2F3136;
+     border: 3px solid #36393E;
+   }
+  &::-webkit-scrollbar {
+     width: 14px;
+     border-right: 10px;
+     border-radius: 20px;
+   }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background: #202225;
+    border: 3px solid #36393e;
+  }
 }

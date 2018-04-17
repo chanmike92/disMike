@@ -6,7 +6,8 @@ import GreetingContainer from '../greeting/greeting_container';
 class ChannelShow extends React.Component {
 
   componentDidMount() {
-    if (this.props.match.params.serverId === '/@me/') {
+    debugger
+    if (this.props.match.params.serverId === '@me') {
 
     } else {
       this.props.fetchAServer(this.props.match.params.serverId)
@@ -25,8 +26,8 @@ class ChannelShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-      if (this.props.match.params.serverId === '/@me/') {
-
+      if (nextProps.match.params.serverId === '@me') {
+        this.props.fetchAServer(this.props.dmId)
       } else {
         this.props.fetchAServer(nextProps.match.params.serverId)
       }
