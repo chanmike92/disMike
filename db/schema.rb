@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20180417215726) do
     t.integer "friend2", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["friend1", "friend2"], name: "index_friendships_on_friend1_and_friend2", unique: true
   end
 
   create_table "messages", force: :cascade do |t|

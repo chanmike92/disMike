@@ -1,14 +1,15 @@
 import React from 'react';
 import ChannelIndex from './channel_index';
-import { withRouter, Link, Redirect } from 'react-router-dom';
+import { Route, withRouter, Link, Redirect } from 'react-router-dom';
+import MessageShowContainer from '../message/message_show_container';
 import GreetingContainer from '../greeting/greeting_container';
 
 class ChannelShow extends React.Component {
 
   componentDidMount() {
-    debugger
-    if (this.props.match.params.serverId === '@me') {
 
+    if (this.props.match.params.serverId === '@me') {
+      this.props.fetchAServer(this.props.currentUserPersonalServer)
     } else {
       this.props.fetchAServer(this.props.match.params.serverId)
     }
@@ -27,7 +28,7 @@ class ChannelShow extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
       if (nextProps.match.params.serverId === '@me') {
-        this.props.fetchAServer(this.props.dmId)
+        this.props.fetchAServer(nextProps.currentUserPersonalServer)
       } else {
         this.props.fetchAServer(nextProps.match.params.serverId)
       }
@@ -73,12 +74,15 @@ class ChannelShow extends React.Component {
       :
       "";
 
-    if (!this.props.match.params.serverId === '/@me/') {
-      return (<div></div>);
+    if (this.props.match.params.serverId === '@me') {
+      return (
+        <div className='channel-container'>
+        </div>
+      );
     } else {
     return (
         <div className='channel-container'>
-
+          <Route path={`/${this.props.match.url}/:channelId`} component={ MessageShowContainer }></Route>
           <div className='server-name-container'>
             <div className='server-name'>{this.props.currentServerName}</div>
             {deletebutton}

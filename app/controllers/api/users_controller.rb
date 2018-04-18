@@ -2,7 +2,6 @@ class Api::UsersController < ApplicationController
 
   def index
     @users = Server.find(params[:id]).subscribed_users
-
     if @users
       render 'api/users/index'
     else
@@ -24,9 +23,9 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
 
-    if @user.valid?
+    if @user.save
       @server = Server.create(owner_id: @user.id, name: @user.username, is_dm: true)
-      Serversubscription.create(user_id: current_user.id, server_id: @server.id)
+      Serversubscription.create(user_id: @user.id, server_id: @server.id)
       @user.personalserver = @server.id
       @user.save
       login(@user)

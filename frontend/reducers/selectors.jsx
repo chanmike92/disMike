@@ -1,13 +1,13 @@
 
 export const getDMServer = (servers) => {
 	let result = [];
-	debugger
+
 	for (let id in servers) {
 		if (servers[id].is_dm === true) {
 			result.push(id);
 		}
 	}
-		debugger
+
 	return result[0];
 
 };
