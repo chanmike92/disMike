@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :users, only: [:index, :show, :create, :update]
     resource :session, only: [:create, :destroy]
     resources :servers, only: [:index, :show, :create, :update, :destroy]
+    resources :friendships, only: [:index, :create, :show, :destroy]
     post 'servers/join', to: 'servers#join'
     delete 'servers/leave', to: 'servers#leave'
     resources :channels, only: [:index, :create, :show, :update, :destroy]
