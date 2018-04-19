@@ -20,8 +20,8 @@ const App = () => (
     <ProtectedRoute path={`/`} component={ ServerShowContainer } />
     <ProtectedRoute path={`/:serverId/`} component={ ChannelShowContainer } />
     <Switch>
-    // <ProtectedRoute path={`/:serverId/:channelId`} component={ MessageShowContainer } />
-    // <ProtectedRoute exact path={`/:serverId/`} component={ MessageShowContainer } />
+      <ProtectedRoute path={`/:serverId/:channelId`} component={ MessageShowContainer } />
+      <ProtectedRoute exact path={`/:serverId/`} component={ MessageShowContainer } />
     </Switch>
     <Modal />
   </div>

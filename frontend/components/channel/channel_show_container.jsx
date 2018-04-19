@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = currentUser.id || "";
   const currentUserPersonalServer = currentUser.personalserver || "";
   const dmId = getDMServer(state.session.servers) || "";
-  debugger
+
   return ({
 
     currentServerName: currentServer.name || "",

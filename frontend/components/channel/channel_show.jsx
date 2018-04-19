@@ -82,7 +82,7 @@ class ChannelShow extends React.Component {
     } else {
     return (
         <div className='channel-container'>
-          <Route path={`/${this.props.match.url}/:channelId`} component={ MessageShowContainer }></Route>
+
           <div className='server-name-container'>
             <div className='server-name'>{this.props.currentServerName}</div>
             {deletebutton}
@@ -99,6 +99,7 @@ class ChannelShow extends React.Component {
             </div>
             <GreetingContainer />
           </div>
+          <Route path={`/${this.props.match.url}/:channelId`} component={ MessageShowContainer }></Route>
         </div>
 
       );

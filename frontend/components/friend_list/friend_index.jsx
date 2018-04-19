@@ -1,8 +1,8 @@
 import React from 'react';
-import UserIndex from './user_index';
+import FriendShow from './friend_show';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-class UserShow extends React.Component {
+class FriendIndex extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -10,6 +10,8 @@ class UserShow extends React.Component {
   componentDidMount() {
     this.props.fetchAllUsers(this.props.match.params.serverId);
   }
+
+  componentWillReceiveProps(nextProps) {}
 
   render() {
 
