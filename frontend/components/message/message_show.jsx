@@ -36,6 +36,10 @@ class MessageShow extends React.Component {
       if (JSON.stringify(this.props.messageIds) !== JSON.stringify(newProps.messageIds)) {
         this.scrollBottom();
       }
+    } else {
+      if (this.subscription) {
+      this.subscription.unsubscribe();
+      }
     }
 
   }
@@ -48,10 +52,12 @@ class MessageShow extends React.Component {
   }
 
   scrollBottom() {
-    setTimeout(() => {
-      const element = document.getElementById("messages");
-      element.scrollTop = element.scrollHeight;
-    }, 10)
+    const element = document.getElementById("messages");
+    if (element) {
+      setTimeout(() => {
+        element.scrollTop = element.scrollHeight;
+      }, 10)
+    }
   }
 
   render() {
