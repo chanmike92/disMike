@@ -10,13 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417215726) do
+ActiveRecord::Schema.define(version: 20180423213716) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "channels", force: :cascade do |t|
     t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "server_id"
+    t.index ["server_id"], name: "index_channels_on_server_id"
+  end
+
+  create_table "dmchannels", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "dmsubscribers", force: :cascade do |t|
+    t.integer "dm_id", null: false
+    t.integer "user_id", null: false
+    t.boolean "subscribed", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -37,21 +52,12 @@ ActiveRecord::Schema.define(version: 20180417215726) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "serverchannels", force: :cascade do |t|
-    t.integer "server_id", null: false
-    t.integer "channel_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["channel_id", "server_id"], name: "index_serverchannels_on_channel_id_and_server_id", unique: true
-  end
-
   create_table "servers", force: :cascade do |t|
     t.string "name", null: false
     t.string "img_url"
     t.integer "owner_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_dm"
     t.index ["name"], name: "index_servers_on_name", unique: true
   end
 

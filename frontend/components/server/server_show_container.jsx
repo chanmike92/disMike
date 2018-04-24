@@ -1,6 +1,5 @@
 import ServerShow from './server_show';
 import React from 'react';
-import { getServerIds } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAllServers, deleteServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
 import { fetchAllChannels } from '../../actions/channel_actions';
@@ -15,7 +14,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     currentUser: state.session.currentUser || {},
-    serverIds: getServerIds(servers) || [],
+    serverIds: Object.keys(servers),
     servers,
     errors: state.errors.server || []
   });

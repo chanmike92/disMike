@@ -13,12 +13,10 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
-    @server.is_dm = false
 
     if @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
-      @channel = Channel.create(name: "general")
-      Serverchannel.create(server_id: @server.id, channel_id: @channel.id)
+      @channel = Channel.create(name: "general", server_id: @server.id)
 
       @server_channels = @server.channels
       @server_users = @server.subscribed_users
@@ -31,7 +29,7 @@ class Api::ServersController < ApplicationController
 
   def join
 
-    @server = Server.find_by(id: params[:id], is_dm: false)
+    @server = Server.find(params[:id])
     if @server
       @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
     end
@@ -60,8 +58,7 @@ class Api::ServersController < ApplicationController
 
   def show
 
-    @server = Server.find(params[:id])
-    @server_channels = @server.channels
+    @server = current_user.subscribed_servers.find(params[:id])
     @server_users = @server.subscribed_users
     if @server
       render 'api/servers/show'

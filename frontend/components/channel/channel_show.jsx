@@ -9,7 +9,6 @@ class ChannelShow extends React.Component {
   componentDidMount() {
 
     if (this.props.match.params.serverId === '@me') {
-      this.props.fetchAServer(this.props.currentUserPersonalServer)
     } else {
       this.props.fetchAServer(this.props.match.params.serverId)
     }
@@ -28,7 +27,6 @@ class ChannelShow extends React.Component {
   componentWillReceiveProps(nextProps) {
     if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
       if (nextProps.match.params.serverId === '@me') {
-        this.props.fetchAServer(nextProps.currentUserPersonalServer)
       } else {
         this.props.fetchAServer(nextProps.match.params.serverId)
       }
@@ -99,7 +97,6 @@ class ChannelShow extends React.Component {
             </div>
             <GreetingContainer />
           </div>
-          <Route path={`/${this.props.match.url}/:channelId`} component={ MessageShowContainer }></Route>
         </div>
 
       );

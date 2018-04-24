@@ -7,7 +7,8 @@ class ServerShow extends React.Component {
     const serverId = this.props.location.pathname.split('/')[1];
 
     if (serverId) {
-      this.props.fetchAllServers();
+      this.props.fetchAllServers()
+        .then(() => this.props.history.push(`/${serverId}/`));
       // .then(
       //   (action) => {
       //     const servers = Object.values(action.servers);
@@ -54,7 +55,6 @@ class ServerShow extends React.Component {
 
 
     const servers = this.props.serverIds.map((id, idx) => {
-      if (this.props.servers[id].is_dm === false) {
       return (<ServerIndex
       server={this.props.servers[id]}
       key={ idx }
@@ -63,7 +63,6 @@ class ServerShow extends React.Component {
       fetchAServer={this.props.fetchAServer}
       />
       );
-    }
     });
 
 

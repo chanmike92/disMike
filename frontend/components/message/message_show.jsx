@@ -73,12 +73,10 @@ class MessageShow extends React.Component {
 
 
     if (this.props.match.params.channelId === undefined) {
-
       return (<div className='message-container'>No Text Channel</div>)
     }
     else {
-
-    return (
+      return (
         <div className='message-container'>
           <div className='channel-title-name-container'>
             <div className='channel-title-name'># <div className='channel-actual-name'>{this.props.currentChannelName}</div></div>
@@ -92,7 +90,7 @@ class MessageShow extends React.Component {
               <MessageFormContainer />
             </div>
           </div>
-          <UserShowContainer />
+          <UserShowContainer serverId={ this.props.match.params.serverId }/>
         </div>
         </div>
       );

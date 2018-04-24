@@ -18,11 +18,6 @@ class User < ApplicationRecord
     primary_key: :id,
     foreign_key: :user_id
 
-  has_one :personalserver, -> { where(is_dm: true)},
-    class_name: :Server,
-    primary_key: :id,
-    foreign_key: :owner_id
-
   has_many :subscribed_servers,
     through: :subscriptions,
     source: :server

@@ -1,7 +1,6 @@
 class Server < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :owner_id, presence: true
-  validates :is_dm, inclusion: { in: [true, false]}
 
   belongs_to :owner,
     class_name: :User,
@@ -13,8 +12,8 @@ class Server < ApplicationRecord
     primary_key: :id,
     foreign_key: :server_id
 
-  has_many :channelsubs, dependent: :destroy,
-    class_name: :Serverchannel,
+  has_many :channels, dependent: :destroy,
+    class_name: :Channel,
     primary_key: :id,
     foreign_key: :server_id
 
@@ -22,7 +21,5 @@ class Server < ApplicationRecord
     through: :subscriptions,
     source: :user
 
-  has_many :channels, dependent: :destroy,
-    through: :channelsubs,
-    source: :channel
+
 end

@@ -12,9 +12,10 @@ class UserShow extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-
-    if (this.props.match.params.serverId !== newProps.match.params.serverId)
-    this.props.fetchAllUsers(newProps.match.params.serverId);
+    debugger
+    if (this.props.serverId !== newProps.serverId ) {
+      this.props.fetchAllUsers(newProps.serverId);
+    }
   }
 
   render() {

@@ -17,8 +17,6 @@ const mapStateToProps = (state, ownProps) => {
   const currentChannel = state.entities.channels[ownProps.match.params.channelId] || {};
   const channelIds = currentServer.channel_ids || [];
   const currentUserId = currentUser.id || "";
-  const currentUserPersonalServer = currentUser.personalserver || "";
-  const dmId = getDMServer(state.session.servers) || "";
 
   return ({
 
@@ -30,8 +28,6 @@ const mapStateToProps = (state, ownProps) => {
     channelIds,
     channels,
     currentUser,
-    currentUserPersonalServer,
-    dmId,
 
   });
 };

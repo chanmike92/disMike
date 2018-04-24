@@ -6,12 +6,8 @@ class Channel < ApplicationRecord
     primary_key: :id,
     foreign_key: :channel_id
 
-  has_many :serversub, dependent: :destroy,
-    class_name: :Serverchannel,
+  belongs_to :servers,
+    class_name: :Server,
     primary_key: :id,
-    foreign_key: :channel_id
-
-  has_many :servers,
-    through: :serversub,
-    source: :server
+    foreign_key: :server_id
 end
