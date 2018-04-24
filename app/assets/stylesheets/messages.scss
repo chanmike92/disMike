@@ -2,11 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.bottom-container-divider {
+  height: 100%;
+  width: 100%;
+  display: flex;
+}
 
 .message-container {
   height: 100%;
   background-color: #36393e;
-  width: calc(100% - 70px - 240px);
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

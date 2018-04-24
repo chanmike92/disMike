@@ -19,6 +19,7 @@ const mapStateToProps = (state, ownProps) => {
     currentServerOwnerId : currentServer.owner_id || "",
     currentUserId: currentUser.id || "",
     userIds,
+    serverId: ownProps.currentServerId,
   });
 };
 

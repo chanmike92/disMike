@@ -7,16 +7,15 @@ class UserShow extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchAllUsers(this.props.match.params.serverId);
-  }
-
-  componentWillReceiveProps(newProps) {
-    debugger
-    if (this.props.serverId !== newProps.serverId ) {
-      this.props.fetchAllUsers(newProps.serverId);
-    }
-  }
+  // componentDidMount() {
+  //   this.props.fetchAllUsers(this.props.serverId);
+  // }
+  //
+  // componentWillReceiveProps(newProps) {
+  //   if (this.props.serverId !== newProps.serverId ) {
+  //     this.props.fetchAllUsers(newProps.serverId);
+  //   }
+  // }
 
   render() {
 

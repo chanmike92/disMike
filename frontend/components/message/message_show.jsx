@@ -11,10 +11,10 @@ class MessageShow extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.match.params.channelId) {
-      this.props.fetchAllMessages(this.props.match.params.channelId);
+    if (this.props.channelId) {
+      this.props.fetchAChannel(this.props.channelId);
       this.subscription = App.cable.subscriptions.create(
-        {channel: 'ChatChannel', id: this.props.match.params.channelId},
+        {channel: 'ChatChannel', id: this.props.channelId},
         { received: (data) => { this.props.receiveAMessage(data) }});
       this.scrollBottom();
     }
@@ -22,16 +22,17 @@ class MessageShow extends React.Component {
 
   componentWillReceiveProps(newProps) {
 
-    if (newProps.match.params.channelId)  {
-      if (newProps.match.params.channelId !== this.props.match.params.channelId) {
+    if (newProps.channelId)  {
+      if (newProps.channelId !== this.props.channelId) {
         if (this.subscription) {
         this.subscription.unsubscribe();
         }
 
         this.subscription = App.cable.subscriptions.create(
-          {channel: 'ChatChannel', id: newProps.match.params.channelId},
+          {channel: 'ChatChannel', id: newProps.channelId},
           { received: (data) => { newProps.receiveAMessage(data) }});
 
+        this.props.fetchAChannel(newProps.channelId)
       }
       if (JSON.stringify(this.props.messageIds) !== JSON.stringify(newProps.messageIds)) {
         this.scrollBottom();
@@ -72,27 +73,30 @@ class MessageShow extends React.Component {
     });
 
 
-    if (this.props.match.params.channelId === undefined) {
+    if (!this.props.channelId) {
       return (<div className='message-container'>No Text Channel</div>)
     }
     else {
       return (
-        <div className='message-container'>
-          <div className='channel-title-name-container'>
-            <div className='channel-title-name'># <div className='channel-actual-name'>{this.props.currentChannelName}</div></div>
-          </div>
-          <div className='bottom-container'>
-            <div className='bottom-message-container'>
-              <ul id='messages' className='message-list-container'>
-                {messages}
-              </ul>
-            <div className='message-body'>
-              <MessageFormContainer />
+          <div className='message-container'>
+            <div className='channel-title-name-container'>
+              <div className='channel-title-name'># <div className='channel-actual-name'>{this.props.currentChannelName}</div></div>
+            </div>
+            <div className='bottom-container'>
+              <div className='bottom-container-divider'>
+                <div className='bottom-message-container'>
+                  <ul id='messages' className='message-list-container'>
+                    {messages}
+                  </ul>
+                  <div className='message-body'>
+                    <MessageFormContainer />
+                  </div>
+                </div>
+              <UserShowContainer serverId={ this.props.currentServerId }/>
             </div>
           </div>
-          <UserShowContainer serverId={ this.props.match.params.serverId }/>
-        </div>
-        </div>
+          </div>
+
       );
     }
   }

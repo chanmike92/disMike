@@ -13,18 +13,19 @@ const mapStateToProps = (state, ownProps) => {
 
   const messages = state.entities.messages || {};
   const currentChannel = state.session.currentChannel || {};
-  const currentChannelId = currentChannel.id || "";
+  const currentChannelId = ownProps.channelId;
   const currentChannelName = currentChannel.name || "";
   const channels = state.entities.channels || {};
   const relevantChannel = channels[currentChannelId] || {};
   const messageIds = relevantChannel.message_ids || [];
   const currentUser = state.session.currentUser || {};
-  const currentServer = state.session.currentServer || {};
+  const currentServerId = ownProps.serverId;
 
   return ({
     messages,
     currentChannelName,
     messageIds,
+    currentServerId,
   });
 };
 

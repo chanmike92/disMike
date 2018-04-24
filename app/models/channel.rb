@@ -6,7 +6,7 @@ class Channel < ApplicationRecord
     primary_key: :id,
     foreign_key: :channel_id
 
-  belongs_to :servers,
+  belongs_to :server,
     class_name: :Server,
     primary_key: :id,
     foreign_key: :server_id

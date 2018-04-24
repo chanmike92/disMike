@@ -5,12 +5,15 @@ import MessageShowContainer from '../message/message_show_container';
 import GreetingContainer from '../greeting/greeting_container';
 
 class ChannelShow extends React.Component {
+  constructor(props) {
+    super(props);
+  }
 
   componentDidMount() {
 
-    if (this.props.match.params.serverId === '@me') {
+    if (this.props.currentServerId === '@me') {
     } else {
-      this.props.fetchAServer(this.props.match.params.serverId)
+      this.props.fetchAServer(this.props.currentServerId)
     }
     // .then(
     //   (action) => {
@@ -25,10 +28,10 @@ class ChannelShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-      if (nextProps.match.params.serverId === '@me') {
+    if (this.props.currentServerId !== nextProps.currentServerId) {
+      if (nextProps.currentServerId === '@me') {
       } else {
-        this.props.fetchAServer(nextProps.match.params.serverId)
+        this.props.fetchAServer(nextProps.currentServerId)
       }
     }
   }
@@ -72,13 +75,29 @@ class ChannelShow extends React.Component {
       :
       "";
 
-    if (this.props.match.params.serverId === '@me') {
+    if (this.props.currentServerId === '@me') {
       return (
-        <div className='channel-container'>
+        <div className='subcomponent-container'>
+          <div className='channel-container'>
+            <div className='server-name-container'>
+              DROPDOWN FOR SEARCH
+            </div>
+            <div className='bottom-channels-container'>
+              <div className='text-channel-container'>
+                <div className='text-channel-item-container'>
+                  <div className='text-channel-name'>DIRECT MESSAGES</div>
+                </div>
+                <ul className='channel-list-container'>
+
+                </ul>
+              </div>
+            </div>
+          </div>
         </div>
       );
     } else {
     return (
+      <div className='subcomponent-container'>
         <div className='channel-container'>
 
           <div className='server-name-container'>
@@ -97,6 +116,11 @@ class ChannelShow extends React.Component {
             </div>
             <GreetingContainer />
           </div>
+        </div>
+        <MessageShowContainer
+          serverId={ this.props.serverId }
+          channelId={ this.props.channelId }
+        />
         </div>
 
       );

@@ -59,6 +59,7 @@ class Api::ServersController < ApplicationController
   def show
 
     @server = current_user.subscribed_servers.find(params[:id])
+    @server_channels = @server.channels
     @server_users = @server.subscribed_users
     if @server
       render 'api/servers/show'

@@ -13,6 +13,28 @@
  *= require_tree .
  *= require_self
  */
+
+ .maincomponent-container {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: flex-start;
+ }
+
+ .subcomponent-container {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: flex-start;
+ }
+
+ .subcomponent-container2 {
+   height: 100%;
+   width: 100%;
+   display: flex;
+   justify-content: flex-start;
+ }
+
  .title-icon {
    height: 15px;
    width: 15px;

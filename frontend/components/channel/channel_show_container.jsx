@@ -17,6 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentChannel = state.entities.channels[ownProps.match.params.channelId] || {};
   const channelIds = currentServer.channel_ids || [];
   const currentUserId = currentUser.id || "";
+  const currentServerId = ownProps.serverId;
 
   return ({
 
@@ -24,7 +25,7 @@ const mapStateToProps = (state, ownProps) => {
     currentServerOwnerId: currentServer.owner_id || "",
     currentUserId,
     currentServer,
-    currentServerId: currentServer.id || "",
+    currentServerId,
     channelIds,
     channels,
     currentUser,

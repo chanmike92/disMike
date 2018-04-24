@@ -1,8 +1,13 @@
 import React from 'react';
 import ServerIndex from './server_index';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import ChannelShowContainer from '../channel/channel_show_container';
 
 class ServerShow extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
   componentDidMount() {
     const serverId = this.props.location.pathname.split('/')[1];
 
@@ -67,20 +72,26 @@ class ServerShow extends React.Component {
 
 
     return (
-      <div className='server-container'>
+      <div className='maincomponent-container'>
+        <div className='server-container'>
 
-        <Link className='direct-message-link server-icons' to={`/@me/`}>
-          <i className="fas fa-users"></i>
-        </Link>
-        <div className='separator'></div>
-          {servers}
-        <button id='create-server-form' onClick={this.props.createForm}>
-          <span className='create-sign'>+</span>
-        </button>
-        <div className='separator'></div>
-        <a href='https://www.github.com/chanmike92' className='server-icons'><i className="fab fa-github"></i></a>
-        <a href='https://www.linkedin.com/in/chanmike92' className='server-icons'><i className="fab fa-linkedin-in"></i></a>
-        <a href='http://mikechan.me' className='server-icons'><i className="fas fa-briefcase"></i></a>
+          <Link className='direct-message-link server-icons' to={`/@me/`}>
+            <i className="fas fa-users"></i>
+          </Link>
+          <div className='separator'></div>
+            {servers}
+          <button id='create-server-form' onClick={this.props.createForm}>
+            <span className='create-sign'>+</span>
+          </button>
+          <div className='separator'></div>
+          <a href='https://www.github.com/chanmike92' className='server-icons'><i className="fab fa-github"></i></a>
+          <a href='https://www.linkedin.com/in/chanmike92' className='server-icons'><i className="fab fa-linkedin-in"></i></a>
+          <a href='http://mikechan.me' className='server-icons'><i className="fas fa-briefcase"></i></a>
+        </div>
+          <ChannelShowContainer
+            serverId={ this.props.location.pathname.split('/')[1] }
+            channelId={ this.props.location.pathname.split('/')[2] }
+            />
       </div>
     );
   }
