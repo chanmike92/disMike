@@ -36,6 +36,15 @@ class User < ApplicationRecord
     through: :friendship,
     source: :friend
 
+  has_many :dmsubscriptions,
+    class_name: :dmsubscriber,
+    primary_key: :id,
+    foreign_key: :user_id
+
+  has_many :dmchannels,
+    through: :dmsubscriptions,
+    source: :dmchannel
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

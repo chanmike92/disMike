@@ -28,7 +28,6 @@ class Api::ServersController < ApplicationController
   end
 
   def join
-
     @server = Server.find(params[:id])
     if @server
       @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)

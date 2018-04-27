@@ -23,6 +23,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     messages,
+    currentChannel,
     currentChannelName,
     messageIds,
     currentServerId,

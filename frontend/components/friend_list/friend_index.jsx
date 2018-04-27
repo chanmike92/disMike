@@ -8,31 +8,22 @@ class FriendIndex extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAllUsers(this.props.match.params.serverId);
+    this.props.fetchAllFriends();
   }
-
-  componentWillReceiveProps(nextProps) {}
 
   render() {
 
-    const users = this.props.userIds.map((userId, idx) => { return (<UserIndex
+    const friends = this.props.userIds.map((userId, idx) => { return (<FriendShow
       user={ this.props.users[userId] }
       id= { userId }
       key={ idx }
-      currentServerOwnerId={this.props.currentServerOwnerId}
       />
       );
     });
 
     return (
       <div className='user-container'>
-        <div className='user-counter'>
-          Members - {users.length}
-        </div>
 
-        <ul className='user-list-container'>
-          { users }
-        </ul>
       </div>
     );
   }

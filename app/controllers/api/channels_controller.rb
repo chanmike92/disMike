@@ -12,9 +12,8 @@ class Api::ChannelsController < ApplicationController
 
   def create
     @channel = Channel.new(channel_params)
-
+    @channel.server_id = params[:id]
     if @channel.save
-      Serverchannel.create(server_id: params[:id], channel_id: @channel.id)
       render 'api/channels/show'
     else
       render json: @channel.errors.full_messages, status: 402

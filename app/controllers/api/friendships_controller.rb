@@ -7,7 +7,7 @@ class Api::FriendshipsController
 
   def create
 
-    @user = User.find(params[:id])
+    @user = params[:id][0] == '#' ? User.find(params[:id]) : User.find_by(username: params[:id])
     if @user
       @friendship1 = Friendship.new(friend1: current_user.id, friend2: params[:id])
       @friendship2 = Friendship.new(friend2: current_user.id, friend1: params[:id])

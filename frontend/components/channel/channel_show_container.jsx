@@ -38,8 +38,8 @@ const mapDispatchToProps = dispatch => {
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),
     fetchAllChannels: (id) => dispatch(fetchAllChannels(id)),
-    deleteChannel: (id) => dispatch(deleteChannel(id)),
-    deleteServer: (id) => dispatch(deleteServer(id)),
+    deleteChannel: () => dispatch(openModal('deleteChannel')),
+    deleteServer: () => dispatch(openModal('deleteServer')),
     createForm: () => dispatch(openModal('createChannel')),
     updateForm: () => dispatch(openModal('updateChannel')),
   });

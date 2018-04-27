@@ -13,18 +13,18 @@ class ChannelShow extends React.Component {
 
     if (this.props.currentServerId === '@me') {
     } else {
+
       this.props.fetchAServer(this.props.currentServerId)
-    }
-    // .then(
-    //   (action) => {
-    //
-    //     const channels = Object.values(action.payload.channels)
-    //     if (channels.length > 0 && this.props.currentUser) {
-    //       const channelId = channels[0].id
-    //       this.props.history.replace(`/${this.props.currentUserId}/server/${this.props.currentServerId}/channel/${channelId}`)
-    //     }
-    //   }
-    // );
+      .then(
+        (action) => {
+        const channels = Object.values(action.payload.channels)
+        if (channels.length > 0 && this.props.currentUser) {
+          const channelId = channels[0].id
+          this.props.history.replace(`/${this.props.currentServerId}/${channelId}`)
+        }
+      }
+    );
+  }
   }
 
   componentWillReceiveProps(nextProps) {
@@ -60,16 +60,14 @@ class ChannelShow extends React.Component {
 
 
     const deletebutton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
-      <button className='fafaicons-container' onClick={() => this.props.deleteServer(this.props.currentServerId).then(() => {
-          this.props.history.push(`/@me/`)
-        })}>
+      <button className='fafaicons-container' onClick={ this.props.deleteServer }>
         <i className="far fa-times-circle"></i>
       </button>
       :
       ""
 
     const createButton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
-      <button className='fafaplus' onClick={this.props.createForm}>
+      <button className='fafaplus' onClick={ this.props.createForm }>
         +
       </button>
       :
@@ -80,7 +78,7 @@ class ChannelShow extends React.Component {
         <div className='subcomponent-container'>
           <div className='channel-container'>
             <div className='server-name-container'>
-              DROPDOWN FOR SEARCH
+              <input type='text'></input>
             </div>
             <div className='bottom-channels-container'>
               <div className='text-channel-container'>
@@ -91,6 +89,7 @@ class ChannelShow extends React.Component {
 
                 </ul>
               </div>
+                <GreetingContainer />
             </div>
           </div>
         </div>
