@@ -32,6 +32,39 @@ const ChannelIndex = (props) => {
    :
    <div></div>;
 
+    // POTENTIAL DROPDOWN MENU OPTION
+    //  const updateChannel =
+    //    <button className='fafaicons-container' onClick={() => {
+    //        props.history.push(`/${props.currentServerId}/${props.id}`);
+    //        props.fetchAChannel(props.id).then(() => props.updateForm());
+    //      } }>
+    //      <i className="fas fa-edit"></i>
+    //    </button>;
+    //
+    //    const deleteChannel =
+    //    <button className='fafaicons-container' onClick={() => {
+    //        props.fetchAChannel(props.id).then(() => props.deleteChannel());
+    //      }}>
+    //      <i className="far fa-trash-alt"></i>
+    //    </button>;
+    //
+    //  const dropDownMenu =
+    //    <div class="dropdown">
+    //    <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+    //    <div id="myDropdown" class="dropdown-content">
+    //      { updateChannel }
+    //      { deleteChannel }
+    //    </div>
+    //  </div>;
+    //
+    // const inputButton = (props.currentUserId === props.currentServerOwnerId) ?
+    //  dropDownMenu : <div></div>;
+    //
+    //  const dropDown = (e) => {
+    //    e.preventDefault();
+    //    getElementById("myDropdown")
+    //  }
+
     if (props.id) {
 
     return (

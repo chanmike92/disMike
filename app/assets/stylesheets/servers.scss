@@ -182,7 +182,29 @@
 
 }
 
+.active-personal-server {
+  border-radius: 15px;
+  background-color: rgb(114, 137, 218);
+}
+
 .active-server {
   border-radius: 15px;
   background-color: rgb(114, 137, 218);
+}
+
+.active-server::before {
+  height: 50px;
+  width: 10px;
+  background: #fff;
+  border-radius: 20px;
+  height: 40px;
+  margin-top: -20px;
+  transition: height .25s ease-in-out,margin-top .25s ease-in-out;
+  border-radius: 20px;
+  content: " ";
+  left: -15px;
+  margin-top: -20px;
+  position: absolute;
+  top: 50%;
+
 }

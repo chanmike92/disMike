@@ -71,12 +71,13 @@ class ServerShow extends React.Component {
       );
     });
 
+    const activeServer = this.props.serverId === '@me' ? "server-icons active-personal-server" : "server-icons";
 
     return (
       <div className='maincomponent-container'>
         <div className='server-container'>
 
-          <Link className='direct-message-link server-icons' to={`/@me/`}>
+          <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
             <i className="fas fa-users"></i>
           </Link>
           <div className='separator'></div>

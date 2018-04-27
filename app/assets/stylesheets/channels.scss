@@ -18,7 +18,8 @@
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   height: 48px;
-  padding: 0 12px 0 16px;
+  padding-left: 8px;
+  padding-right: 8px;
   transition: background-color .15s ease;
   z-index: 3;
   position: relative;
@@ -34,7 +35,6 @@
 .server-name {
   font-family: 'Roboto', sans-serif;
   -webkit-box-flex: 1;
-  flex: 1;
   font-size: 16px;
   line-height: 48px;
   overflow: hidden;

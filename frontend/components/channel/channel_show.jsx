@@ -64,7 +64,23 @@ class ChannelShow extends React.Component {
         <i className="far fa-times-circle"></i>
       </button>
       :
-      ""
+      "";
+
+      const dropDownMenu =
+        <div class="dropdown">
+        <button onclick="myFunction()" class="dropbtn">
+          <i className="fas fa-angle-down"></i>
+        </button>
+        <div id="myDropdown" class="dropdown-content">
+
+        </div>
+      </div>;
+
+
+      const dropDown = (e) => {
+        e.preventDefault();
+        document.getElementById("myDropdown");
+      };
 
     const createButton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
       <button className='fafaplus' onClick={ this.props.createForm }>
@@ -99,9 +115,11 @@ class ChannelShow extends React.Component {
       <div className='subcomponent-container'>
         <div className='channel-container'>
 
-          <div className='server-name-container'>
-            <div className='server-name'>{this.props.currentServerName}</div>
-            {deletebutton}
+          <div className='server-name-container dropdown'>
+            <button className="server-name-container dropbtn">
+              <div className='server-name'>{this.props.currentServerName}</div>
+              <i className="fas fa-angle-down"></i>
+            </button>
           </div>
           <div className='bottom-channels-container'>
             <div className='text-channel-container'>
