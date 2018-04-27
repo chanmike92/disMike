@@ -2,28 +2,19 @@ import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { ChannelShowContainer } from '../channel/channel_show_container';
 
-class ServerIndex extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+const ServerIndex = (props) => {
 
-  // componentWillReceiveProps(nextProps) {
-  //   if (this.props.match.params.channelId === )
-  // }
+  const iconClass = props.active ? "server-icons active-server" : "server-icons";
+  const firstChannel = props.server.channel_ids[0] ? props.server.channel_ids[0] : "";
 
-
-  render () {
-
-    const firstChannel = this.props.server.channel_ids[0] ? this.props.server.channel_ids[0] : "";
     return (
-    <li className="server-icons">
+    <li className={ iconClass }>
       <Link className='server-links'
-        to={`/${this.props.server.id}/${firstChannel}`}>
-        { this.props.server.name[0] }
+        to={`/${props.server.id}/${firstChannel}`}>
+        { props.server.name[0] }
       </Link>
-
     </li>
-  );}
-}
+  );
+};
 
 export default withRouter(ServerIndex);

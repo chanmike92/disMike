@@ -9,11 +9,10 @@ class ServerShow extends React.Component {
   }
 
   componentDidMount() {
-    const serverId = this.props.location.pathname.split('/')[1];
 
-    if (serverId) {
+    if (this.props.serverId) {
       this.props.fetchAllServers()
-        .then(() => this.props.history.push(`/${serverId}/`));
+        .then(() => this.props.history.push(`/${this.props.serverId}/`));
       // .then(
       //   (action) => {
       //     const servers = Object.values(action.servers);
@@ -60,12 +59,14 @@ class ServerShow extends React.Component {
 
 
     const servers = this.props.serverIds.map((id, idx) => {
+      const active = this.props.serverId === id ? true : false;
       return (<ServerIndex
       server={this.props.servers[id]}
       key={ idx }
       id={ id }
       currentUser={this.props.currentUser}
       fetchAServer={this.props.fetchAServer}
+      active={ active }
       />
       );
     });
@@ -89,8 +90,8 @@ class ServerShow extends React.Component {
           <a href='http://mikechan.me' className='server-icons'><i className="fas fa-briefcase"></i></a>
         </div>
           <ChannelShowContainer
-            serverId={ this.props.location.pathname.split('/')[1] }
-            channelId={ this.props.location.pathname.split('/')[2] }
+            serverId={ this.props.serverId }
+            channelId={ this.props.channelId }
             />
       </div>
     );
