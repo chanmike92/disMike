@@ -1,7 +1,6 @@
 export const OPEN_MODAL = 'OPEN_MODAL';
 export const CLOSE_MODAL = 'CLOSE_MODAL';
-export const OPEN_EDIT_MODAL = 'OPEN_EDIT_MODAL';
-export const CLOSE_EDIT_MODAL = 'CLOSE_EDIT_MODAL';
+export const OPEN_PAGE_MODAL = 'OPEN_PAGE_MODAL';
 
 export const openModal = modal => {
 
@@ -17,12 +16,12 @@ export const closeModal = () => {
   };
 };
 
-// export const openEditModal = modal => {
-//   return {
-//     type: OPEN_EDIT_MODAL,
-//     modal: Object.assign(modal, { type: OPEN_EDIT_MODAL }),
-//   };
-// };
+export const openPageModal = modal => {
+  return {
+    type: OPEN_PAGE_MODAL,
+    modal: Object.assign(modal, { type: OPEN_PAGE_MODAL }),
+  };
+};
 //
 // export const closeEditModal = () => {
 //   return {
