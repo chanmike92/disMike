@@ -40,8 +40,8 @@
 }
 
 .fa-sign-out-alt {
-  font-size: 30px;
-  color: orange;
+  // font-size: 30px;
+  // color: orange;
 }
 
 .fa-users {
@@ -52,6 +52,39 @@
 .fa-user-friends {
   color: white;
   font-size: 15px;
+}
+
+//
+.fa-plus:hover{
+  cursor: pointer;
+}
+
+.fa-trash-alt:hover {
+  cursor: pointer;
+}
+
+.fa-edit:hover {
+  cursor: pointer;
+}
+
+.fa-times-circle:hover {
+  cursor: pointer;
+}
+
+.fa-sign-out-alt:hover {
+  cursor: pointer;
+}
+
+.fa-users:hover {
+  cursor: pointer;
+}
+
+.fa-user-friends:hover {
+  cursor: pointer;;
+}
+
+.fa-cogs:hover {
+  cursor: pointer;
 }
 
 

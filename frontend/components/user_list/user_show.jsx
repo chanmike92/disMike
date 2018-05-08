@@ -18,7 +18,7 @@ class UserShow extends React.Component {
   // }
 
   render() {
-    debugger
+
     const users = this.props.userIds.map((userId, idx) => {
       if (this.props.users[userId]) {
       return (<UserIndex

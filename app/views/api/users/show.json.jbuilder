@@ -2,7 +2,6 @@
 if @user
   json.user do
     json.partial! 'api/users/user', user: @user
-    json.friends_id @user.friends.pluck(:id)
   end
 
 end

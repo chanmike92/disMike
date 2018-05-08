@@ -42,15 +42,21 @@ const Modal = ({ modal, currentServer, closeModal }) => {
       break;
       case 'updateChannel':
         component =
-        <div className='modal-container' on>
+        <div className='modal-container'>
           <div className='modal-title'>Update Channel</div>
           <ChannelUpdateContainer />
         </div>;
       break;
       case 'deleteChannel':
         component =
-        <div className='modal-container' on>
+        <div className='modal-container'>
           <div className='modal-title'>Delete Channel</div>
+          <ChannelDeleteContainer />
+        </div>;
+      break;
+      case 'addDM':
+        component =
+        <div className='modal-container'>
           <ChannelDeleteContainer />
         </div>;
       break;

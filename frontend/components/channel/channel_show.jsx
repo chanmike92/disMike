@@ -96,7 +96,6 @@ class ChannelShow extends React.Component {
       "";
 
     if (this.props.currentServerId === '@me') {
-      const friendCount = this.props.currentUser.friends_id.length;
       return (
         <div className='subcomponent-container'>
           <div className='channel-container'>
@@ -106,7 +105,7 @@ class ChannelShow extends React.Component {
             <div className='bottom-channels-container'>
               <div className='text-channel-container'>
                 <div className='friends-logo'>
-                  Friends - { friendCount }
+                  Friends - { this.props.friendCount }
                 </div>
                 <div className='text-channel-item-container'>
 
