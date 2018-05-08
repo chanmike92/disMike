@@ -10,6 +10,9 @@ User.destroy_all
 Server.destroy_all
 Serversubscription.destroy_all
 Channel.destroy_all
+Friendship.destroy_all
+Dmchannel.destroy_all
+Dmsubscriber.destroy_all
 Message.destroy_all
 
 ActiveRecord::Base.connection.tables.each do |t|
@@ -66,6 +69,18 @@ Channel.create(name: 'New York', server_id: 4)
 Channel.create(name: "Florence", server_id: 4)
 Channel.create(name: 'Grand Temple', server_id: 4)
 Channel.create(name: "Masyaf", server_id: 4)
+
+Friendship.create(friend1: 1, friend2: 2)
+Friendship.create(friend1: 1, friend2: 3)
+Friendship.create(friend1: 1, friend2: 4)
+Friendship.create(friend1: 1, friend2: 5)
+Friendship.create(friend1: 2, friend2: 1)
+Friendship.create(friend1: 2, friend2: 3)
+Friendship.create(friend1: 2, friend2: 4)
+Friendship.create(friend1: 3, friend2: 1)
+Friendship.create(friend1: 3, friend2: 2)
+Friendship.create(friend1: 4, friend2: 1)
+Friendship.create(friend1: 4, friend2: 2)
 
 Message.create(body: "First Message", author_id: 1, channel_id: 1)
 Message.create(body: "First Message", author_id: 1, channel_id: 2)

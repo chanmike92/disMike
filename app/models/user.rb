@@ -33,7 +33,7 @@ class User < ApplicationRecord
     foreign_key: :friend1
 
   has_many :friends,
-    through: :friendship,
+    through: :friendships,
     source: :friend
 
   has_many :dmsubscriptions,

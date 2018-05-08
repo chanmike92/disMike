@@ -1,22 +1,22 @@
-import * as APIUtil from '../util/channel_api_util';
+import * as APIUtil from '../util/friend_api_util';
 export const RECEIVE_A_FRIEND = 'RECEIVE_A_FRIEND';
 export const REMOVE_A_FRIEND = 'REMOVE_A_FRIEND';
 export const RECEIVE_ALL_FRIENDS = 'RECEIVE_ALL_FRIENDS';
 export const RECEIVE_FRIEND_ERRORS = 'RECEIVE_FRIEND_ERRORS';
 
-export const receiveAllFriends = (friends) => {
-
+export const receiveAllFriends = (users) => {
+  debugger
   return {
     type: RECEIVE_ALL_FRIENDS,
-    friends
+    users
   };
 };
 
-export const receiveAFriend = (payload) => {
+export const receiveAFriend = (user) => {
 
   return {
     type: RECEIVE_A_FRIEND,
-    payload
+    user
   };
 };
 
@@ -38,14 +38,14 @@ export const removeAFriend = (id) => {
 
 export const fetchAllFriends = () => dispatch => {
 
-  return APIUtil.fetchAllFriends().then((friends) => dispatch(receiveAllFriends(friends)), (errors) => {
+  return APIUtil.fetchAllFriends().then((users) => dispatch(receiveAllFriends(users)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
 };
 
 export const addNewFriend = (id) => dispatch => {
 
-  return APIUtil.addNewFriend(id).then((payload) => dispatch(receiveAFriend(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.addNewFriend(id).then((user) => dispatch(receiveAFriend(user)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 

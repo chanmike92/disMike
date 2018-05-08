@@ -2,14 +2,14 @@ export const fetchAllFriends = () => {
 
   return $.ajax({
     method: 'GET',
-    url: 'api/channels',
+    url: 'api/friendships',
   });
 };
 
 export const addNewFriend = (id) => {
 
   return $.ajax({
-    url: 'api/channels',
+    url: 'api/friendships',
     method: 'POST',
     data: { id }
   });
@@ -18,7 +18,7 @@ export const addNewFriend = (id) => {
 export const deleteFriend = (id) => {
 
   return $.ajax({
-    url: `api/channels/${id}`,
+    url: `api/friendships/${id}`,
     method: 'DELETE',
     data: { id }
   });

@@ -20,26 +20,26 @@ class MessageShow extends React.Component {
     }
   }
 
-  componentWillReceiveProps(newProps) {
+  componentWillReceiveProps(nextProps) {
 
-    if (newProps.channelId)  {
-      if (newProps.channelId !== this.props.channelId) {
+    if (nextProps.channelId)  {
+      if (nextProps.channelId !== this.props.channelId) {
         if (this.subscription) {
         this.subscription.unsubscribe();
         }
 
         this.subscription = App.cable.subscriptions.create(
-          {channel: 'ChatChannel', id: newProps.channelId},
-          { received: (data) => { newProps.receiveAMessage(data) }});
+          {channel: 'ChatChannel', id: nextProps.channelId},
+          { received: (data) => { nextProps.receiveAMessage(data) }});
 
-        this.props.fetchAChannel(newProps.channelId)
+        this.props.fetchAChannel(nextProps.channelId)
       }
-      if (JSON.stringify(this.props.messageIds) !== JSON.stringify(newProps.messageIds)) {
+      if (JSON.stringify(this.props.messageIds) !== JSON.stringify(nextProps.messageIds)) {
         this.scrollBottom();
       }
     } else {
       if (this.subscription) {
-      this.subscription.unsubscribe();
+        this.subscription.unsubscribe();
       }
     }
 
@@ -59,6 +59,10 @@ class MessageShow extends React.Component {
         element.scrollTop = element.scrollHeight;
       }, 10)
     }
+  }
+
+  componentDidUnmount() {
+    this.subscription.unsubscribe();
   }
 
   render() {

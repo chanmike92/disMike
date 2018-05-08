@@ -4,6 +4,7 @@ import { getDMServer } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAllChannels, fetchAChannel, deleteChannel, receiveErrors } from '../../actions/channel_actions';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
+import { fetchAllFriends } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
   const currentServer = state.session.currentServer || {};
   const channels = state.entities.channels || {};
   const currentUser = state.session.currentUser || {};
-  const currentChannel = state.entities.channels[ownProps.match.params.channelId] || {};
+  const currentChannel = state.entities.channels[ownProps.channelId] || {};
+  const channelId = ownProps.channelId;
   const channelIds = currentServer.channel_ids || [];
   const currentUserId = currentUser.id || "";
   const currentServerId = ownProps.serverId;
@@ -27,6 +29,7 @@ const mapStateToProps = (state, ownProps) => {
     currentServer,
     currentServerId,
     channelIds,
+    channelId,
     channels,
     currentUser,
 
@@ -38,6 +41,7 @@ const mapDispatchToProps = dispatch => {
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),
     fetchAllChannels: (id) => dispatch(fetchAllChannels(id)),
+    fetchAllFriends: () => dispatch(fetchAllFriends()),
     deleteChannel: () => dispatch(openModal('deleteChannel')),
     deleteServer: () => dispatch(openModal('deleteServer')),
     createForm: () => dispatch(openModal('createChannel')),

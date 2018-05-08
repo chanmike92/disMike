@@ -65,15 +65,18 @@ const ChannelIndex = (props) => {
     //    getElementById("myDropdown")
     //  }
 
-    if (props.id) {
 
+    if (props.id) {
+    const channelClass = Number(props.channelId) === props.id ? "channel-item-container active-channel" : "channel-item-container";
+    const channelNameClass = Number(props.channelId) === props.id ? "active-name-channel channel-name-item" : "channel-name-item";
+    debugger
     return (
-      <li className="channel-item-container">
+      <li className={ channelClass }>
         <div className='channel-name-container'>
           <Link
             to={`/${props.currentServerId}/${props.id}`}
             className='channel-link-item'>
-            # {props.channel.name}
+            # <div className={ channelNameClass }>{props.channel.name}</div>
           </Link>
         </div>
         {iconButtons}

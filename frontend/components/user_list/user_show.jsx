@@ -18,14 +18,17 @@ class UserShow extends React.Component {
   // }
 
   render() {
-
-    const users = this.props.userIds.map((userId, idx) => { return (<UserIndex
+    debugger
+    const users = this.props.userIds.map((userId, idx) => {
+      if (this.props.users[userId]) {
+      return (<UserIndex
       user={ this.props.users[userId] }
       id= { userId }
       key={ idx }
       currentServerOwnerId={this.props.currentServerOwnerId}
       />
       );
+      }
     });
 
     return (

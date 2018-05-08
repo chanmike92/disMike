@@ -12,6 +12,7 @@ class ChannelShow extends React.Component {
   componentDidMount() {
 
     if (this.props.currentServerId === '@me') {
+      this.props.fetchAllFriends()
     } else {
 
       this.props.fetchAServer(this.props.currentServerId)
@@ -28,8 +29,10 @@ class ChannelShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
+    debugger
     if (this.props.currentServerId !== nextProps.currentServerId) {
       if (nextProps.currentServerId === '@me') {
+        this.props.fetchAllFriends()
       } else {
         this.props.fetchAServer(nextProps.currentServerId)
       }
@@ -39,12 +42,14 @@ class ChannelShow extends React.Component {
 
   render() {
     const channels = this.props.channelIds.map((id, idx) => {
-      if (this.props.channels[id]) {
+        const active = this.props.channelId === id ? true : false;
+
       return (<ChannelIndex
       key={ idx }
       id={ id }
       currentUserId={ this.props.currentUserId }
       currentServerId={ this.props.currentServerId }
+      channelId={ this.props.channelId }
       channel={ this.props.channels[id] }
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
@@ -53,9 +58,10 @@ class ChannelShow extends React.Component {
       currentServer={this.props.currentServer}
       currentServerOwnerId={this.props.currentServerOwnerId}
       currentUserId={this.props.currentUserId}
+      active={ active }
       />);
       }
-    });
+    );
 
 
 
@@ -90,15 +96,18 @@ class ChannelShow extends React.Component {
       "";
 
     if (this.props.currentServerId === '@me') {
+      const friendCount = this.props.currentUser.friends_id.length;
       return (
         <div className='subcomponent-container'>
           <div className='channel-container'>
             <div className='server-name-container'>
-              <input type='text'></input>
+              <input className='user-search' type='text' placeholder="Find or start a conversation"></input>
             </div>
             <div className='bottom-channels-container'>
               <div className='text-channel-container'>
-                <div className='friends-logo'>Friends</div>
+                <div className='friends-logo'>
+                  Friends - { friendCount }
+                </div>
                 <div className='text-channel-item-container'>
 
                   <div className='text-channel-name'>DIRECT MESSAGES</div>
