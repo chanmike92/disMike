@@ -1,8 +1,7 @@
-import ChannelShow from './channel_show';
+import FriendIndex from './friend_index';
 import React from 'react';
 import { getDMServer } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
-import { fetchAllChannels, fetchAChannel, deleteChannel, receiveErrors } from '../../actions/channel_actions';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
 import { fetchAllFriends } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
@@ -15,14 +14,12 @@ const mapStateToProps = (state, ownProps) => {
   const currentServer = state.session.currentServer || {};
   const channels = state.entities.channels || {};
   const currentUser = state.session.currentUser || {};
-  const friendList = currentUser.friends_id || [];
-  const friendCount = friendList.length || "";
+  const users = state.entities.users || {};
   const currentChannel = state.entities.channels[ownProps.channelId] || {};
   const channelId = ownProps.channelId;
   const channelIds = currentServer.channel_ids || [];
   const currentUserId = currentUser.id || "";
   const currentServerId = ownProps.serverId;
-
   return ({
 
     currentServerName: currentServer.name || "",
@@ -34,24 +31,15 @@ const mapStateToProps = (state, ownProps) => {
     channelId,
     channels,
     currentUser,
-    friendList,
-    friendCount,
-
+    users,
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return ({
-    fetchAServer: (id) => dispatch(fetchAServer(id)),
-    fetchAChannel: (id) => dispatch(fetchAChannel(id)),
-    fetchAllChannels: (id) => dispatch(fetchAllChannels(id)),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
-    deleteChannel: () => dispatch(openModal('deleteChannel')),
-    deleteServer: () => dispatch(openModal('deleteServer')),
-    createForm: () => dispatch(openModal('createChannel')),
-    updateForm: () => dispatch(openModal('updateChannel')),
-    addFriend: () => dispatch(openModal('addFriend'))
+    // addFriend: () => dispatch(openModal('addFriend'))
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelShow));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FriendIndex));

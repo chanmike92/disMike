@@ -13,20 +13,32 @@ class FriendIndex extends React.Component {
 
   render() {
 
-    const friends = this.props.userIds.map((userId, idx) => { return (<FriendShow
+    const friends = this.props.friendList.map((userId, idx) => {
+      if (this.props.users[userId]) {
+      return (<FriendShow
       user={ this.props.users[userId] }
       id= { userId }
       key={ idx }
       />
-      );
+        );
+      }
     });
 
     return (
-      <div className='user-container'>
-
+      <div className='message-container'>
+        <div className='friend-nav-bar'>
+          <div className='friend-selector'>
+            <div>All</div>
+            <div>Online</div>
+            <div>Pending</div>
+          </div>
+        </div>
+        <div >
+          {friends}
+        </div>
       </div>
     );
   }
 }
 
-export default UserShow;
+export default FriendIndex;

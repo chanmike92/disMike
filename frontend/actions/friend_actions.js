@@ -5,7 +5,7 @@ export const RECEIVE_ALL_FRIENDS = 'RECEIVE_ALL_FRIENDS';
 export const RECEIVE_FRIEND_ERRORS = 'RECEIVE_FRIEND_ERRORS';
 
 export const receiveAllFriends = (users) => {
-  debugger
+
   return {
     type: RECEIVE_ALL_FRIENDS,
     users

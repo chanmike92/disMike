@@ -2,6 +2,7 @@ import React from 'react';
 import ChannelIndex from './channel_index';
 import { Route, withRouter, Link, Redirect } from 'react-router-dom';
 import MessageShowContainer from '../message/message_show_container';
+import FriendIndexContainer from '../friend_list/friend_index_container';
 import GreetingContainer from '../greeting/greeting_container';
 
 class ChannelShow extends React.Component {
@@ -29,7 +30,7 @@ class ChannelShow extends React.Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    debugger
+
     if (this.props.currentServerId !== nextProps.currentServerId) {
       if (nextProps.currentServerId === '@me') {
         this.props.fetchAllFriends()
@@ -118,6 +119,10 @@ class ChannelShow extends React.Component {
                 <GreetingContainer />
             </div>
           </div>
+          <FriendIndexContainer
+            friendList={ this.props.friendList }
+            channelId={ this.props.channelId }
+          />
         </div>
       );
     } else {

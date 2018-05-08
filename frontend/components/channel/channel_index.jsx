@@ -69,7 +69,7 @@ const ChannelIndex = (props) => {
     if (props.id) {
     const channelClass = Number(props.channelId) === props.id ? "channel-item-container active-channel" : "channel-item-container";
     const channelNameClass = Number(props.channelId) === props.id ? "active-name-channel channel-name-item" : "channel-name-item";
-    debugger
+
     return (
       <li className={ channelClass }>
         <div className='channel-name-container'>

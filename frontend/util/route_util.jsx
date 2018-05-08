@@ -30,19 +30,20 @@ const Protected = ({ component: Component, path, loggedIn, exact }) => {
   );
 };
 
-const Personal = ({ component: Component, path, loggedIn, exact }) => {
-  const pathroute = path.split('/');
-  if (pathroute[1] !== '@me') {
-    return (
-      <Route
-        path={path}
-        exact={exact}
-        render={props =>
-          loggedIn ? <Component {...props} /> : <Redirect to="/login" />}
-      />
-  );
-  }
-};
+// class Protected extends React.Component = ({ component: Component, path, loggedIn, exact }) => {
+//
+//
+//   return (
+//     <Route
+//       path={path}
+//       exact={exact}
+//       render={props =>
+//         loggedIn ? <Component {...props} /> : <Redirect to="/login" />}
+//     />
+//   );
+// };
+
+
 
 const mapStateToProps = (state, ownProps) => {
   const location = ownProps.location.pathname;
@@ -56,8 +57,4 @@ export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));
 
 export const ProtectedRoute = withRouter(
   connect(mapStateToProps)(Protected)
-);
-
-export const PersonalRoute = withRouter(
-  connect(mapStateToProps)(Personal)
 );
