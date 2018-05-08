@@ -6,7 +6,8 @@ const ServerIndex = (props) => {
 
   const iconClass = props.active ? "server-icons active-server" : "server-icons";
   const firstChannel = props.server.channel_ids[0] ? props.server.channel_ids[0] : "";
-
+  const nameArr = props.server.name.split(" ");
+  // const iconPic = () =>
     return (
     <li className={ iconClass }>
       <Link className='server-links'

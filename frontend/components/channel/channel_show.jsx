@@ -98,7 +98,7 @@ class ChannelShow extends React.Component {
             </div>
             <div className='bottom-channels-container'>
               <div className='text-channel-container'>
-                <div>Friends</div>
+                <div className='friends-logo'>Friends</div>
                 <div className='text-channel-item-container'>
 
                   <div className='text-channel-name'>DIRECT MESSAGES</div>

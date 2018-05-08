@@ -16,10 +16,10 @@ export const closeModal = () => {
   };
 };
 
-export const openPageModal = modal => {
+export const openPageModal = pageModal => {
   return {
     type: OPEN_PAGE_MODAL,
-    modal: Object.assign(modal, { type: OPEN_PAGE_MODAL }),
+    modal: Object.assign(pageModal, { type: OPEN_PAGE_MODAL }),
   };
 };
 //

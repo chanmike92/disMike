@@ -10,18 +10,6 @@ class Api::DmsController < ApplicationController
     end
   end
 
-  def createclass Api::ChannelsController < ApplicationController
-
-  def index
-
-    @channels = Server.find(params[:id]).channels
-    if @channels
-      render 'api/channels/index'
-    else
-      render json: {}
-    end
-  end
-
   def create
     @channel = Channel.new(channel_params)
 

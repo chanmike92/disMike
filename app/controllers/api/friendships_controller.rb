@@ -1,7 +1,8 @@
 class Api::FriendshipsController
 
   def index
-    @friendships = Friendship.find_by(friend1: current_user.id)
+    # @friendships = Friendship.find_by(friend1: current_user.id)
+    @friends = User.find(current_user.id).friends
     render 'api/friendship/index'
   end
 
@@ -17,7 +18,7 @@ class Api::FriendshipsController
         render json: ['Already added as a friend']
       end
     else
-      render json: ['User ID not found']
+      render json: ['User not found']
     end
   end
 
