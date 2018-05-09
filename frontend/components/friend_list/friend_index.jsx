@@ -26,16 +26,25 @@ class FriendIndex extends React.Component {
 
     return (
       <div className='message-container'>
-        <div className='friend-nav-bar'>
-          <div className='friend-selector'>
-            <div>All</div>
-            <div>Online</div>
-            <div>Pending</div>
+        <div className='friend-selector'>
+          <div className='add-friend-button'>Add Friend</div>
+          <div className='verticle-separator'></div>
+          <div className='friend-selector-item'>All</div>
+          <div className='friend-selector-item'>Online</div>
+          <div className='friend-selector-item'>Pending</div>
+        </div>
+        <div className='friend-list-container'>
+          <div className='friend-table-header'>
+            <div className='friend-table-tab'>NAME</div>
+            <div className='verticle-separator'></div>
+            <div className='friend-table-tab'>STATUS</div>
+            <div className='verticle-separator'></div>
+          </div>
+          <div className='friend-index-container'>
+            {friends}
           </div>
         </div>
-        <div >
-          {friends}
-        </div>
+
       </div>
     );
   }

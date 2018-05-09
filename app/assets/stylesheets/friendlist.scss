@@ -41,6 +41,74 @@
 
 .friend-selector {
   width: 100%;
-  display: flex;
   align-items: center;
+  box-shadow: 0 1px 0 rgba(0,0,0,.2), 0 2px 0 rgba(0,0,0,.06);
+  box-sizing: border-box;
+  color: #fff;
+  display: flex;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 500;
+  height: 48px;
+  padding: 0 12px 0 16px;
+  transition: background-color .15s ease;
+  z-index: 3;
+  position: relative;
+  font-size: 100%;
+  font-style: inherit;
+  // justify-content: space-between;
+}
+
+.add-friend-button {
+  background-color: #7289da;
+  box-sizing: border-box;
+  padding: 5px;
+  border-radius: 3px;
+}
+
+.friend-selector-item {
+  line-height: 18px;
+  margin: 0 8px;
+  min-width: 40px;
+  padding: 2px 8px;
+  border-radius: 5px;
+  text-align: center;
+  color: hsla(0,0%,100%,.6);
+}
+
+.friend-selector-item:hover {
+  cursor: pointer;
+  background-color: rgba(32, 34, 37, 0.6);
+}
+
+.verticle-separator {
+  height: 22px;
+  content: "";
+  width: 1px;
+  background-color: hsla(0,0%,100%,.1);
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.friend-list-container {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  flex-direction: column;
+}
+
+.friend-table-header {
+  display: flex;
+  width: 100%;
+  flex-direction: row;
+  padding: 10px;
+
+}
+
+.friend-table-tab {
+  width: 200px;
+}
+
+.friend-index-container {
+  display: flex;
+  flex-direction: column;
 }
