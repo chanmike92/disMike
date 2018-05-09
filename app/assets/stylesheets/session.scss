@@ -30,6 +30,32 @@
   background-image: url(https://wallpapercave.com/wp/Yv9IMNq.jpg);
 }
 
+.loading-logo {
+  background-image: image-url('tenor.gif');
+  width: 500px;
+  height: 500px;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.loading-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: #202225;
+  justify-content: center;
+}
+
+.loading-message {
+  margin: 0 auto;
+  z-index: 100;
+  bottom: 300px;
+}
+
 @-webkit-keyframes fadein {
     from { opacity: 0; }
     to   { opacity: 1; }

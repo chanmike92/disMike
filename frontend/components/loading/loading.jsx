@@ -3,9 +3,17 @@ import React from 'react';
 const Loading = () => {
 
   return (
-    <div className='loading-container'>Loading
-      <div class="tenor-gif-embed" data-postid="11230336" data-share-method="host" data-width="100%" data-aspect-ratio="1.0"></div>
-      <div className='loading-object'></div>
+    <div className='loading-container'>
+      <video loop autoplay>
+        <source src='../assets/images/discord-load1.webm' type='video/webm'></source>
+        <source src='../assets/images/discord-load2.mp4' type='video/webm'></source>
+      </video>
+
+      <div className='loading-message'>
+        <div>Loading</div>
+        <div>Message</div>
+      </div>
+
     </div>
   );
 };
