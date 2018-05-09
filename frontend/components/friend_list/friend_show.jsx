@@ -3,13 +3,16 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const FriendShow = (props) => {
 
-  debugger
+
   // const iconPic = () =>
+
     return (
     <li className="">
-      <Link className=''
+      <Link className='friend-link-item'
         to={`/@me/`}>
-        { props.user.username }
+        <img className='profile-picture' src={ props.user.img_url ? props.user.image_url : ""} />
+        <div>{ props.user.username }</div>
+        <div></div>
       </Link>
     </li>
   );
