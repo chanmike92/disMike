@@ -5,6 +5,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class FriendIndex extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {selector: ""};
   }
 
   componentDidMount() {
@@ -14,7 +15,7 @@ class FriendIndex extends React.Component {
   render() {
 
     const friends = this.props.friendList.map((userId, idx) => {
-      if (this.props.users[userId]) {
+      if (this.props.users[userId] && this.props.user) {
       return (<FriendShow
       user={ this.props.users[userId] }
       id= { userId }
@@ -35,9 +36,9 @@ class FriendIndex extends React.Component {
         </div>
         <div className='friend-list-container'>
           <div className='friend-table-header'>
-            <div className='friend-table-tab'>NAME</div>
+            <div className='friend-table-tab'>Name</div>
             <div className='verticle-separator'></div>
-            <div className='friend-table-tab'>STATUS</div>
+            <div className='friend-table-tab'>Status</div>
             <div className='verticle-separator'></div>
           </div>
           <div className='friend-index-container'>

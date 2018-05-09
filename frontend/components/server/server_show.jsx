@@ -2,17 +2,20 @@ import React from 'react';
 import ServerIndex from './server_index';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import ChannelShowContainer from '../channel/channel_show_container';
+import LoadingContainer from '../loading/loading_container';
 
 class ServerShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {loaded: false};
   }
 
   componentDidMount() {
 
     if (this.props.serverId) {
       this.props.fetchAllServers()
-        .then(() => this.props.history.push(`/${this.props.serverId}/`));
+        .then(() => this.props.history.push(`/${this.props.serverId}/`))
+          .then(setTimeout(() => this.setState({loaded: true}), 3000));
       // .then(
       //   (action) => {
       //     const servers = Object.values(action.servers);
@@ -56,7 +59,13 @@ class ServerShow extends React.Component {
 
 
   render() {
-
+    if (this.state.loaded === false) {
+      return (
+        <LoadingContainer
+          />
+      )
+    }
+    else {
 
     const servers = this.props.serverIds.map((id, idx) => {
       const active = this.props.serverId === id ? true : false;
@@ -97,6 +106,7 @@ class ServerShow extends React.Component {
       </div>
     );
   }
+}
 }
 
 export default ServerShow;
