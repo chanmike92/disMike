@@ -70,7 +70,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 // const mapStateToProps = (state, ownProps) => {
-//   debugger
+//
 //   const location = ownProps.location.pathname;
 //   const locationsplit = location.split('/');
 //   const serverId = locationsplit[1];

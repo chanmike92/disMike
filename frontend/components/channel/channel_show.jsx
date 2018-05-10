@@ -44,23 +44,24 @@ class ChannelShow extends React.Component {
   render() {
     const channels = this.props.channelIds.map((id, idx) => {
         const active = this.props.channelId === id ? true : false;
-
-      return (<ChannelIndex
-      key={ idx }
-      id={ id }
-      currentUserId={ this.props.currentUserId }
-      currentServerId={ this.props.currentServerId }
-      channelId={ this.props.channelId }
-      channel={ this.props.channels[id] }
-      updateForm={this.props.updateForm}
-      deleteChannel={this.props.deleteChannel}
-      fetchAChannel={this.props.fetchAChannel}
-      fetchAServer={this.props.fetchAServer}
-      currentServer={this.props.currentServer}
-      currentServerOwnerId={this.props.currentServerOwnerId}
-      currentUserId={this.props.currentUserId}
-      active={ active }
-      />);
+      if (this.props.channels[id]) {
+        return (<ChannelIndex
+        key={ idx }
+        id={ id }
+        currentUserId={ this.props.currentUserId }
+        currentServerId={ this.props.currentServerId }
+        channelId={ this.props.channelId }
+        channel={ this.props.channels[id] }
+        updateForm={this.props.updateForm}
+        deleteChannel={this.props.deleteChannel}
+        fetchAChannel={this.props.fetchAChannel}
+        fetchAServer={this.props.fetchAServer}
+        currentServer={this.props.currentServer}
+        currentServerOwnerId={this.props.currentServerOwnerId}
+        currentUserId={this.props.currentUserId}
+        active={ active }
+        />);
+        }
       }
     );
 

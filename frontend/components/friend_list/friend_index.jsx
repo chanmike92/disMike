@@ -15,7 +15,7 @@ class FriendIndex extends React.Component {
   render() {
 
     const friends = this.props.friendList.map((userId, idx) => {
-      if (this.props.users[userId] && this.props.user) {
+      if (this.props.users[userId]) {
       return (<FriendShow
       user={ this.props.users[userId] }
       id= { userId }
