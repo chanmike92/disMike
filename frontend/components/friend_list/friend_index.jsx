@@ -28,7 +28,7 @@ class FriendIndex extends React.Component {
     return (
       <div className='message-container'>
         <div className='friend-selector'>
-          <div className='add-friend-button'>Add Friend</div>
+          <div className='add-friend-button' onClick={ this.props.addFriend }>Add Friend</div>
           <div className='verticle-separator'></div>
           <div className='friend-selector-item'>All</div>
           <div className='friend-selector-item'>Online</div>

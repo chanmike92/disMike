@@ -18,7 +18,7 @@ const FriendShow = (props) => {
         </div>
         <div className='status-container'>
           <div className={ onlineStatus }></div>
-          <div>{ onlineStatusName }</div>
+          <div className="status-name">{ onlineStatusName }</div>
         </div>
         <div className='friend-controls-container'>
         </div>

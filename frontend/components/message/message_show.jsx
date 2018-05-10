@@ -57,12 +57,8 @@ class MessageShow extends React.Component {
     if (element) {
       setTimeout(() => {
         element.scrollTop = element.scrollHeight;
-      }, 10)
+      }, 10);
     }
-  }
-
-  componentWillUnmount() {
-    this.subscription.unsubscribe();
   }
 
   render() {
@@ -78,7 +74,17 @@ class MessageShow extends React.Component {
 
 
     if (!this.props.channelId) {
-      return (<div className='message-container'>No Text Channel</div>)
+      return (<div className='message-container'>
+        <div>
+          <div>
+            image
+          </div>\
+          <div>
+            <div>No Text Channel</div>
+            <div>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
+          </div>
+        </div>
+      </div>)
     }
     else {
       return (

@@ -11,8 +11,11 @@ class ServerShow extends React.Component {
   }
 
   componentDidMount() {
-
-    if (this.props.serverId) {
+    if (this.props.serverId && this.props.channelId) {
+      this.props.fetchAllServers()
+        .then(setTimeout(() => this.setState({loaded: true}), 3000));;
+    }
+    else if (this.props.serverId) {
       this.props.fetchAllServers()
         .then(() => this.props.history.push(`/${this.props.serverId}/`))
           .then(setTimeout(() => this.setState({loaded: true}), 3000));
@@ -30,6 +33,7 @@ class ServerShow extends React.Component {
     } else {
       this.props.fetchAllServers()
         .then(() => this.props.history.push(`/@me/`))
+          .then(setTimeout(() => this.setState({loaded: true}), 3000));
       // .then(
     //     (action) => {
     //       const servers = Object.values(action.servers);

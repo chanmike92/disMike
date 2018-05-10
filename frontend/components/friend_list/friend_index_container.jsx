@@ -38,7 +38,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     fetchAllFriends: () => dispatch(fetchAllFriends()),
-    // addFriend: () => dispatch(openModal('addFriend'))
+    addFriend: () => dispatch(openModal('addFriend'))
   });
 };
 

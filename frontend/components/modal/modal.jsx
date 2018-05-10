@@ -60,6 +60,12 @@ const Modal = ({ modal, currentServer, closeModal }) => {
           <ChannelDeleteContainer />
         </div>;
       break;
+      case 'addFriend':
+        component =
+        <div className='modal-container'>
+          <FriendAddContainer />
+        </div>;
+      break;
     default:
       return null;
   }
