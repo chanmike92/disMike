@@ -18,6 +18,40 @@
   align-items: center;
 }
 
+
+.empty-channel-container {
+  margin: 0 auto;
+    height: 100%;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    max-width: 440px;
+    justify-content: center;
+
+}
+
+.empty-channel-icon {
+  background-image: url('empty-channel.svg');
+  flex: 0 1 auto;
+    width: 272px;
+    height: 222px;
+    margin: 0 auto;
+    margin-bottom: 40px;
+}
+
+.empty-channel-text {
+  margin: 0 auto;
+  align-items: center;
+}
+
+.no-channel-text {
+  text-align: center;
+}
+
+.empty-channel-message {
+  text-align: center;
+}
+
 .channel-title-name-container {
   width: 100%;
   align-items: center;

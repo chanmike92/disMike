@@ -75,13 +75,12 @@ class MessageShow extends React.Component {
 
     if (!this.props.channelId) {
       return (<div className='message-container'>
-        <div>
-          <div>
-            image
-          </div>\
-          <div>
-            <div>No Text Channel</div>
-            <div>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
+        <div className='empty-channel-container'>
+          <div className='empty-channel-icon'>
+          </div>
+          <div className='empty-channel-text'>
+            <div className='no-channel-text'>No Text Channel</div>
+            <div className='empty-channel-message'>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
           </div>
         </div>
       </div>)

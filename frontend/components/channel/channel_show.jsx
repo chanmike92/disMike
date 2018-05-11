@@ -32,10 +32,14 @@ class ChannelShow extends React.Component {
   componentWillReceiveProps(nextProps) {
 
     if (this.props.currentServerId !== nextProps.currentServerId) {
-      if (nextProps.currentServerId === '@me') {
-        this.props.fetchAllFriends()
-      } else {
+      if (parseInt(nextProps.currentServerId)) {
         this.props.fetchAServer(nextProps.currentServerId)
+      }
+      else if (nextProps.currentServerId === '@me') {
+        this.props.fetchAllFriends()
+      }
+      else {
+        this.props.history.replace(`/@me/`)
       }
     }
   }

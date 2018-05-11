@@ -11,54 +11,21 @@ class ServerShow extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.serverId && this.props.channelId) {
+    if (parseInt(this.props.serverId) && parseInt(this.props.channelId)) {
       this.props.fetchAllServers()
-        .then(setTimeout(() => this.setState({loaded: true}), 3000));;
+        .then(setTimeout(() => this.setState({loaded: true}), 3000));
     }
-    else if (this.props.serverId) {
+    else if (parseInt(this.props.serverId)) {
       this.props.fetchAllServers()
         .then(() => this.props.history.push(`/${this.props.serverId}/`))
           .then(setTimeout(() => this.setState({loaded: true}), 3000));
-      // .then(
-      //   (action) => {
-      //     const servers = Object.values(action.servers);
-      //     if (servers.length > 0 && this.props.currentUser) {
-      //       const serverId = servers[0].id;
-      //       const firstChannel = this.props.match.params.channelId;
-      //
-      //       this.props.history.replace(`/${this.props.currentUser.id}/server/${serverId}/channel/${channelId}`);
-      //     }
-      //   }
-      // )
     } else {
       this.props.fetchAllServers()
         .then(() => this.props.history.push(`/@me/`))
           .then(setTimeout(() => this.setState({loaded: true}), 3000));
-      // .then(
-    //     (action) => {
-    //       const servers = Object.values(action.servers);
-    //       if (servers.length > 0 && this.props.currentUser) {
-    //         const serverId = servers[0].id;
-    //         if (servers[0].channel_ids.length > 0) {
-    //           const firstChannel = servers[0].channel_ids[0];
-    //
-    //           this.props.history.push(`/${serverId}/${firstChannel}`);
-    //         // () => {this.props.history.replace(`/@me/`);
-    //         } else {
-    //           this.props.history.push(`/${serverId}/`);
-    //         }
-    //       }
-    //   // );
-    //   }
-    // );
     }
   }
 
-  // componentWillReceiveProps(nextProps) {
-  // if (this.props.match.params.serverId !== nextProps.match.params.serverId) {
-  //     this.props.fetchAServers(nextProps.match.params.serverId);
-  //   }
-  // }
 
 
 

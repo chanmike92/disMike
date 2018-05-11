@@ -31,7 +31,6 @@
 }
 
 .loading-logo {
-  background-image: image-url('tenor.gif');
   width: 500px;
   height: 500px;
   background-repeat: no-repeat;
@@ -48,6 +47,49 @@
   flex-direction: column;
   background-color: #202225;
   justify-content: center;
+}
+
+@-webkit-keyframes rotating {
+  from {
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+@keyframes rotating {
+  from {
+    -ms-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -webkit-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  to {
+    -ms-transform: rotate(360deg);
+    -moz-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    -o-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+.loading-logo {
+  // background-image: url('dismike-logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  max-width: 150px;
+  max-height: 150px;
+  // -webkit-animation: rotating 2s linear infinite;
+  // -moz-animation: rotating 2s linear infinite;
+  // -ms-animation: rotating 2s linear infinite;
+  // -o-animation: rotating 2s linear infinite;
+  // animation: rotating 2s linear infinite;
+  padding-bottom: 25px;
 }
 
 .loading-message {
