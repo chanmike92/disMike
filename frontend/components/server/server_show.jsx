@@ -2,6 +2,7 @@ import React from 'react';
 import ServerIndex from './server_index';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import ChannelShowContainer from '../channel/channel_show_container';
+import DmChannelShowContainer from '../dmchannel/dmchannel_show_container';
 import LoadingContainer from '../loading/loading_container';
 
 class ServerShow extends React.Component {
@@ -52,6 +53,13 @@ class ServerShow extends React.Component {
     });
 
     const activeServer = this.props.serverId === '@me' ? "server-icons active-personal-server" : "server-icons";
+    const nextComponent = this.props.serverId === '@me' ? <DmChannelShowContainer serverId={ this.props.serverId }
+    channelId={ this.props.channelId } />
+    :
+    <ChannelShowContainer
+      serverId={ this.props.serverId }
+      channelId={ this.props.channelId }
+      />;
 
     return (
       <div className='maincomponent-container'>
@@ -70,10 +78,7 @@ class ServerShow extends React.Component {
           <a href='https://www.linkedin.com/in/chanmike92' className='server-icons'><i className="fab fa-linkedin-in"></i></a>
           <a href='http://mikechan.me' className='server-icons'><i className="fas fa-briefcase"></i></a>
         </div>
-          <ChannelShowContainer
-            serverId={ this.props.serverId }
-            channelId={ this.props.channelId }
-            />
+          { nextComponent }
       </div>
     );
   }

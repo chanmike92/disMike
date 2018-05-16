@@ -1,6 +1,6 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_A_SERVER } from '../actions/server_actions';
-import { RECEIVE_A_CHANNEL, RECEIVE_ALL_CHANNELS } from '../actions/channel_actions';
+import { RECEIVE_A_CHANNEL, RECEIVE_ALL_CHANNELS, CLEAR_STATE } from '../actions/channel_actions';
 import { RECEIVE_A_MESSAGE } from '../actions/message_actions';
 import { merge } from 'lodash';
 
@@ -20,6 +20,8 @@ const sessionReducer = (oldState = nullState, action) => {
       return Object.assign({}, nullState, oldState, { currentServer: action.payload.server });
     case RECEIVE_A_CHANNEL:
       return Object.assign({}, nullState, oldState, { currentChannel: action.payload.channel });
+    case CLEAR_STATE:
+      return Object.assign({}, nullState, oldState, { currentServer: null });
     default:
       return oldState;
   }

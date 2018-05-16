@@ -2,7 +2,6 @@ import React from 'react';
 import ChannelIndex from './channel_index';
 import { Route, withRouter, Link, Redirect } from 'react-router-dom';
 import MessageShowContainer from '../message/message_show_container';
-import FriendIndexContainer from '../friend_list/friend_index_container';
 import GreetingContainer from '../greeting/greeting_container';
 
 class ChannelShow extends React.Component {
@@ -11,22 +10,17 @@ class ChannelShow extends React.Component {
   }
 
   componentDidMount() {
-
-    if (this.props.currentServerId === '@me') {
-      this.props.fetchAllFriends()
-    } else {
-
-      this.props.fetchAServer(this.props.currentServerId)
-      .then(
-        (action) => {
-        const channels = Object.values(action.payload.channels)
-        if (channels.length > 0 && this.props.currentUser) {
-          const channelId = channels[0].id
-          this.props.history.replace(`/${this.props.currentServerId}/${channelId}`)
-        }
+    this.props.fetchAServer(this.props.currentServerId)
+    .then(
+      (action) => {
+      const channels = Object.values(action.payload.channels)
+      if (channels.length > 0 && this.props.currentUser) {
+        const channelId = channels[0].id
+        this.props.history.replace(`/${this.props.currentServerId}/${channelId}`)
       }
-    );
-  }
+    }
+  );
+
   }
 
   componentWillReceiveProps(nextProps) {
@@ -42,6 +36,10 @@ class ChannelShow extends React.Component {
         this.props.history.replace(`/@me/`)
       }
     }
+  }
+
+  componentWillUnmount() {
+    this.props.clearState();
   }
 
 
@@ -103,37 +101,6 @@ class ChannelShow extends React.Component {
       :
       "";
 
-    if (this.props.currentServerId === '@me') {
-      return (
-        <div className='subcomponent-container'>
-          <div className='channel-container'>
-            <div className='server-name-container'>
-              <input className='user-search' type='text' placeholder="Find or start a conversation"></input>
-            </div>
-            <div className='bottom-channels-container'>
-              <div className='text-channel-container'>
-                <div className='friends-logo'>
-                  Friends - { this.props.friendCount }
-                </div>
-                <div className='text-channel-item-container'>
-
-                  <div className='text-channel-name'>DIRECT MESSAGES</div>
-                </div>
-                <ul className='channel-list-container'>
-
-                </ul>
-              </div>
-                <GreetingContainer />
-            </div>
-          </div>
-          <FriendIndexContainer
-            friendList={ this.props.friendList }
-            channelId={ this.props.channelId }
-          />
-        </div>
-      );
-    } else {
-
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>
@@ -164,6 +131,5 @@ class ChannelShow extends React.Component {
       );
     }
   }
-}
 
 export default withRouter(ChannelShow);

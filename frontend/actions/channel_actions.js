@@ -29,11 +29,10 @@ export const receiveErrors = (errors) => {
   };
 };
 
-export const clearState = (errors) => {
+export const clearState = () => {
 
   return {
     type: CLEAR_STATE,
-    errors
   };
 };
 
