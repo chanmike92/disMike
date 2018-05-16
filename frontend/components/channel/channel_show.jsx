@@ -45,6 +45,8 @@ class ChannelShow extends React.Component {
   }
 
 
+
+
   render() {
     const channels = this.props.channelIds.map((id, idx) => {
         const active = this.props.channelId === id ? true : false;
@@ -131,10 +133,10 @@ class ChannelShow extends React.Component {
         </div>
       );
     } else {
+
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>
-
           <div className='server-name-container dropdown'>
             <button className="server-name-container dropbtn">
               <div className='server-name'>{this.props.currentServerName}</div>
@@ -159,7 +161,6 @@ class ChannelShow extends React.Component {
           channelId={ this.props.channelId }
         />
         </div>
-
       );
     }
   }

@@ -2,7 +2,7 @@ import ChannelShow from './channel_show';
 import React from 'react';
 import { getDMServer } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
-import { fetchAllChannels, fetchAChannel, deleteChannel, receiveErrors } from '../../actions/channel_actions';
+import { fetchAllChannels, fetchAChannel, deleteChannel, receiveErrors, clearState } from '../../actions/channel_actions';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
 import { fetchAllFriends } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
@@ -42,6 +42,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    clearState: () => dispatch(clearState()),
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),
     fetchAllChannels: (id) => dispatch(fetchAllChannels(id)),

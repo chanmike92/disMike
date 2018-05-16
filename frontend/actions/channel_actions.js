@@ -1,6 +1,7 @@
 import * as APIUtil from '../util/channel_api_util';
 export const RECEIVE_A_CHANNEL = 'RECEIVE_A_CHANNEL';
 export const REMOVE_A_CHANNEL = 'REMOVE_A_CHANNEL';
+export const CLEAR_STATE = 'CLEAR_STATE';
 export const RECEIVE_ALL_CHANNELS = 'RECEIVE_ALL_CHANNELS';
 export const RECEIVE_CHANNEL_ERRORS = 'RECEIVE_CHANNEL_ERRORS';
 
@@ -24,6 +25,14 @@ export const receiveErrors = (errors) => {
 
   return {
     type: RECEIVE_CHANNEL_ERRORS,
+    errors
+  };
+};
+
+export const clearState = (errors) => {
+
+  return {
+    type: CLEAR_STATE,
     errors
   };
 };
