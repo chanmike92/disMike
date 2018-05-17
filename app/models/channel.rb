@@ -1,10 +1,7 @@
 class Channel < ApplicationRecord
   validates :name, presence: true
 
-  has_many :messages, dependent: :destroy,
-    class_name: :Message,
-    primary_key: :id,
-    foreign_key: :channel_id
+  has_many :messages, as: :messagable, dependent: :destroy
 
   belongs_to :server,
     class_name: :Server,

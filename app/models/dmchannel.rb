@@ -9,9 +9,21 @@ class Dmchannel < ApplicationRecord
     through: :subscriptions,
     source: :user
 
-  # has_many: :messages,
-  #   class_name: :Message,
-  #   primary_key: :id,
-  #   foreign_key: :dm_id
+  has_many :messages, as: :messagable, dependent: :destroy
+
+
+  def channel_name
+    name = [];
+    self.subscribers.each do |subscriber|
+      if subscriber.username != current_user.username
+        name << subscriber.username
+      end
+    end
+    name.join(", ")
+  end
+
+  def unsubscribe
+
+  end
 
 end

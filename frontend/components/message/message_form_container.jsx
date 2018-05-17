@@ -7,16 +7,16 @@ import { connect } from 'react-redux';
 
 
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  const messageType = ownProps.messageType || "";
   const currentUser = state.session.currentUser || {};
   const currentChannel = state.session.currentChannel || {};
   const currentServer = state.session.currentServer || {};
-  const currentChannelId = currentChannel.id || "";
+  const channelId = ownProps.channelId || "";
   const currentChannelName = currentChannel.name || "";
-  const currentState = {body: "", channel_id: currentChannelId} || {};
   return ({
-    currentState,
-    currentChannelId,
+    messageType,
+    channelId,
     currentChannelName,
     currentUser,
     currentChannel,

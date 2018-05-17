@@ -132,8 +132,14 @@
   padding-right: 20px;
 }
 
-.friend-item-container {
 
+
+.friend-item-container {
+border-top: 1px solid hsla(0,0%,100%,.1);
+}
+
+.friend-index-container:first-child {
+  border-top: 0px;
 }
 
 .friend-pic {
@@ -150,7 +156,7 @@
   display: flex;
   padding-top: 20px;
   padding-bottom: 20px;
-    border-top: 1px solid hsla(0,0%,100%,.1);
+
     align-items: center;
 
 }

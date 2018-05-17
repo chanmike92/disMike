@@ -2,8 +2,11 @@ class Api::MessagesController < ApplicationController
 
 
   def index
-
-    @messages = Channel.find(params[:id]).messages.includes(:author)
+    if params[:type] == 'DMChannel'
+      @messages = DmChannel.find(params[:id]).messages.order(:created_at).includes(:author)
+    elsif params[:type] == 'Channel'
+      @messages = Channel.find(params[:id]).messages.order(:created_at).includes(:author)
+    end
 
     if @messages
       render 'api/messages/index'
@@ -17,7 +20,7 @@ class Api::MessagesController < ApplicationController
     @message.author_id = current_user.id
 
     if @message.save
-      ChatChannel.broadcast_to(@message.channel,
+      ChatChannel.broadcast_to(@message.messagable,
         JSON.parse(render('/api/messages/_message.json.jbuilder',
           locals: { message: @message })))
       head :ok
@@ -29,6 +32,6 @@ class Api::MessagesController < ApplicationController
 
   private
   def message_params
-    params.require(:message).permit(:body, :channel_id)
+    params.require(:message).permit(:body, :messagable_type, :messagable_id)
   end
 end

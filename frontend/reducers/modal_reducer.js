@@ -1,4 +1,4 @@
-import { OPEN_MODAL, CLOSE_MODAL, OPEN_PAGE_MODAL, CLOSE_EDIT_MODAL } from '../actions/modal_actions';
+import { OPEN_MODAL, CLOSE_MODAL, OPEN_PAGE_MODAL } from '../actions/modal_actions';
 
 export default function modalReducer(state = {}, action) {
 

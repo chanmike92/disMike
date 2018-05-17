@@ -10,8 +10,8 @@ const channelReducer = (oldState = {}, action) => {
   switch(action.type) {
     case RECEIVE_A_MESSAGE:
       const id = action.message.id
-      const channelId = action.message.channel_id
-      const updatedChannel = {[channelId]: {message_ids: [...oldState[channelId].message_ids, id]}}
+      const messagableId = action.message.messagable_id
+      const updatedChannel = {[messagableId]: {message_ids: [...oldState[messagableId].message_ids, id]}}
       return merge({}, oldState, updatedChannel)
     case RECEIVE_ALL_CHANNELS:
       return action.channels;

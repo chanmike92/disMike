@@ -126,6 +126,7 @@ class ChannelShow extends React.Component {
         <MessageShowContainer
           serverId={ this.props.serverId }
           channelId={ this.props.channelId }
+          messageType={ "Channel" }
         />
         </div>
       );

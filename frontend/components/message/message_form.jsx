@@ -8,7 +8,8 @@ class MessageForm extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {body: '', channel_id: this.props.currentChannelId};
+
+    this.state = {body: '', messagable_id: this.props.channelId, messagable_type: this.props.messageType};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -16,12 +17,11 @@ class MessageForm extends React.Component {
   componentDidMount() {
 
     this.props.fetchAChannel(this.props.match.params.channelId);
-;
   }
 
   componentWillReceiveProps(newProps) {
     if(newProps.match.params.channelId !== this.props.match.params.channelId) {
-      this.setState({channel_id: newProps.currentChannelId});
+      this.setState({messagable_id: newProps.channelId, messagable_type: newProps.messageType});
       this.props.fetchAChannel(newProps.match.params.channelId)
     }
   }

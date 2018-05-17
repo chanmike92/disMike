@@ -14,7 +14,7 @@ class MessageShow extends React.Component {
     if (this.props.channelId) {
       this.props.fetchAChannel(this.props.channelId);
       this.subscription = App.cable.subscriptions.create(
-        {channel: 'ChatChannel', id: this.props.channelId},
+        {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
         { received: (data) => { this.props.receiveAMessage(data) }});
       this.scrollBottom();
     }
@@ -98,7 +98,10 @@ class MessageShow extends React.Component {
                     {messages}
                   </ul>
                   <div className='message-body'>
-                    <MessageFormContainer />
+                    <MessageFormContainer
+                      messageType={ this.props.messageType }
+                      channelId={ this.props.channelId }
+                      />
                   </div>
                 </div>
               <UserShowContainer serverId={ this.props.currentServerId }/>
