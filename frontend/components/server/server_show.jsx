@@ -35,7 +35,7 @@ class ServerShow extends React.Component {
       return (
         <LoadingContainer
           />
-      )
+      );
     }
     else {
 

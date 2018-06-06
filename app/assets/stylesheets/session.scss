@@ -92,10 +92,20 @@
   padding-bottom: 25px;
 }
 
-.loading-message {
+.loading-message-section {
   margin: 0 auto;
   z-index: 100;
   bottom: 300px;
+  width: 300px;
+  text-overflow: wrap;
+  text-align: center;
+  align-items: center;
+}
+
+.loading-message {
+  color: white;
+  font-size: 20px;
+
 }
 
 @-webkit-keyframes fadein {
