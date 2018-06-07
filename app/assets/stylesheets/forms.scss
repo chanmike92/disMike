@@ -1,0 +1,28 @@
+.channel-delete-form-container {
+  max-height: 660px;
+  min-height: 200px;
+  width: 440px;
+  background-color: #202225;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 5px;
+}
+
+.channel-delete-message {
+  padding: 20px;
+  padding-top: 0;
+  color: #dcddde;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  // text-transform: uppercase;
+  font-family: 'Open Sans',Helvetica,Helvetica,Arial,sans-serif;
+}
+
+.display-form-message-container {
+  display: flex;
+  flex-direction: column;
+}

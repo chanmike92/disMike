@@ -17,7 +17,7 @@ const ServerDelete = (props) => {
   };
 
   return (
-    <div className='server-form-container'>
+    <div className='form-container'>
         <div className='input-container'>
           <label className='server-label'>Are you sure you want to delete {props.serverName}</label>
         </div>

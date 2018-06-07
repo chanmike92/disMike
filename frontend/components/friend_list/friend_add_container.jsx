@@ -19,7 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    processForm: (channel, id) => dispatch(makeNewChannel(channel, id)),
+    processForm: (id) => dispatch(addNewFriend(id)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal()),
     addNewFriend: (id) => dispatch(addNewFriend(id)),

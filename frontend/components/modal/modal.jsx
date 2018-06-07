@@ -8,6 +8,7 @@ import ChannelCreateContainer from '../channel/channel_create_container';
 import ChannelUpdateContainer from '../channel/channel_update_container';
 import ChannelDeleteContainer from '../channel/channel_delete_container';
 import ServerJoinContainer from '../server/server_join_container';
+import FriendAddContainer from '../friend_list/friend_add_container';
 
 const Modal = ({ modal, currentServer, closeModal }) => {
 
@@ -18,7 +19,7 @@ const Modal = ({ modal, currentServer, closeModal }) => {
   switch (modal) {
     case 'createServer':
       component =
-      <div className='modal-container'>
+      <div className='server-modal-container'>
         <div className='modal-title'>OH, ANOTHER SERVER HUH?</div>
         <div className='modal-form-container'>
           <ServerCreateContainer />
@@ -28,41 +29,37 @@ const Modal = ({ modal, currentServer, closeModal }) => {
       break;
       case 'deleteServer':
         component =
-        <div className='modal-container'>
-          <div className='modal-title'>Delete Server</div>
+        <div className='server-modal-container'>
           <ServerDeleteContainer />
         </div>;
       break;
       case 'createChannel':
       component =
-        <div className='modal-container'>
-          <div className='modal-title'>Create Channel</div>
+        <div className='channel-modal-container'>
           <ChannelCreateContainer />
         </div>;
       break;
       case 'updateChannel':
         component =
         <div className='modal-container'>
-          <div className='modal-title'>Update Channel</div>
           <ChannelUpdateContainer />
         </div>;
       break;
       case 'deleteChannel':
         component =
         <div className='modal-container'>
-          <div className='modal-title'>Delete Channel</div>
           <ChannelDeleteContainer />
         </div>;
       break;
       case 'addDM':
         component =
-        <div className='modal-container'>
+        <div className='dm-modal-container'>
           <ChannelDeleteContainer />
         </div>;
       break;
       case 'addFriend':
         component =
-        <div className='modal-container'>
+        <div className='friend-modal-container'>
           <FriendAddContainer />
         </div>;
       break;

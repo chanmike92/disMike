@@ -23,13 +23,14 @@ const ChannelDelete = (props) => {
   };
 
   return (
-    <div className='server-form-container'>
-        <div className='input-container'>
-          <label className='server-label'>Are you sure you want to delete {props.channelName}</label>
+    <div className='channel-delete-form-container'>
+        <div className='display-form-message-container'>
+          <label className='modal-title'>Delete Channel</label>
+          <label className='channel-delete-message'>Are you sure you want to delete #{props.channelName}? This cannot be undone.</label>
         </div>
-        <div>
-        <button className='submit-form' onClick={ deleteChannel }>Yes</button>
-        <button className='submit-form' onClick={ goBack }>No</button>
+        <div className="yes-no-option">
+          <button className='submit-button yes' onClick={ deleteChannel }>Yes</button>
+          <button className='submit-button no' onClick={ goBack }>No</button>
         </div>
     </div>
   );

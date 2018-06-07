@@ -82,8 +82,8 @@
   // background-image: url('dismike-logo.png');
   background-size: contain;
   background-repeat: no-repeat;
-  max-width: 150px;
-  max-height: 150px;
+  max-width: 200px;
+  max-height: 200px;
   // -webkit-animation: rotating 2s linear infinite;
   // -moz-animation: rotating 2s linear infinite;
   // -ms-animation: rotating 2s linear infinite;
@@ -103,9 +103,10 @@
 }
 
 .loading-message {
-  color: white;
-  font-size: 20px;
-
+  color: #fff;
+  font-size: 16px;
+  font-style: italic;
+  margin-bottom: 10px;
 }
 
 @-webkit-keyframes fadein {

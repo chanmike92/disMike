@@ -124,6 +124,12 @@
     margin-left: 50px;
 }
 
+.friend-form-container {
+  background-color: #202225;
+  width: 300px;
+
+}
+
 .friend-index-container {
   display: flex;
   flex-direction: column;
@@ -132,7 +138,9 @@
   padding-right: 20px;
 }
 
+.friend-submit-form {
 
+}
 
 .friend-item-container {
 border-top: 1px solid hsla(0,0%,100%,.1);

@@ -11,12 +11,17 @@ class Loading extends React.Component {
       "FOR THE ALLIANCE!", "Frostmourne Hungers"
     ];
     this.state = {
-      currentMessage: loadingMessages[Math.floor(Math.random() * loadingMessages.length)]
+      currentMessage: loadingMessages[Math.floor(Math.random() * loadingMessages.length)],
+      connection: "Loading..."
     };
   }
 
+  componentDidMount() {
+    setTimeout(() => this.setState({connection: "Ready"}), 2000);
+  }
+
   render() {
-    setTimeout(() => this.setState({currentMessage: "PREPARATIONS COMPLETE!!!"}), 2000)
+
     return (
       <div className='loading-container'>
         <video className='loading-logo' loop autoPlay>
@@ -26,6 +31,7 @@ class Loading extends React.Component {
         <div className='loading-message-section'>
 
           <div className="loading-message">{ this.state.currentMessage }</div>
+          <div className="loading-message">{ this.state.connection }</div>
         </div>
 
       </div>
