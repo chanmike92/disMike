@@ -129,8 +129,9 @@ class MessageShow extends React.Component {
         channelName={this.props.currentChannelName}
         currentUser={this.props.currentUser} />
     );
+    let groupedMessages = [];
      for (let i = 0; i < this.props.messages.length; i++) {
-       let message = this.props.messages[i];
+       let message = this.props.messages[i] || {};
        let prevMessage = this.props.messages[i - 1] || {};
        let thisDate = new Date(message.created_at);
        let prevDate = new Date(prevMessage.created_at) || {};
@@ -138,9 +139,6 @@ class MessageShow extends React.Component {
          || thisDate.getMonth() !== prevDate.getMonth()
          || thisDate.getYear() !== prevDate.getYear()) {
           let date = this.generateDate(thisDate);
-          // messages.push(
-          //   <div className="message-index-divider-line"></div>
-          // );
           messages.push(
             <div className="message-index-divider" key={ i }>
               <div></div>
@@ -151,12 +149,28 @@ class MessageShow extends React.Component {
             </div>
           );
         }
-        messages.push(
-          <MessageIndex
-            key={message.id}
-            message={ message } />
-        );
+
+        if (i === 0) {
+          groupedMessages.push(message);
+        }
+        else if ((thisDate.getTime() < prevDate.getTime() + 120000)
+           || (message.author !== prevMessage.author)) {
+           let firstMessage = groupedMessages[0];
+          messages.push(
+            <MessageIndex
+              key={ firstMessage.id }
+              profilepic={ firstMessage.profilepic }
+              author={ firstMessage.author }
+              date={ firstMessage.created_at }
+              messages={ groupedMessages }
+              />);
+          groupedMessages = [];
+          groupedMessages.push(message);
+        } else {
+          groupedMessages.push(message);
+        }
       }
+      // messages.push(groupedMessages);
       return messages;
   }
 

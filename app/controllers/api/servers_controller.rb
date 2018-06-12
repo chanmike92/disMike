@@ -20,8 +20,8 @@ class Api::ServersController < ApplicationController
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
       @channel = Channel.create(name: "general", server_id: @server.id)
 
-      @server_channels = @server.channels
-      @server_users = @server.subscribed_users
+      # @server_channels = @server.channels
+      # @server_users = @server.subscribed_users
 
       render 'api/servers/show'
     else

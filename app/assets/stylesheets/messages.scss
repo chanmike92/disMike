@@ -222,11 +222,25 @@
   display: flex;
   padding: 20px 0;
   user-select: text;
-  overflow-wrap: break-word;
+  overflow: auto;
   word-wrap: break-word;
   min-height: 50px;
   width: 100%;
-  // padding: 10px;
+  -moz-user-select: text;
+   -ms-user-select: text;
+   -webkit-box-sizing: border-box;
+   -webkit-user-select: text;
+   border-bottom: 1px solid #eceeef;
+   box-sizing: border-box;
+   display: -webkit-box;
+   display: -ms-flexbox;
+   display: flex;
+   margin-left: 20px;
+   margin-right: 6px;
+   user-select: text;
+   overflow: auto;
+   word-wrap: break-word;
+
 }
 
 .message-content {
@@ -235,7 +249,7 @@
   line-height: 1.1em;
   margin-top: 6px;
   white-space: pre-wrap;
-  word-wrap: break-word;
+  word-wrap:normal;
 }
 
 .message-name {
