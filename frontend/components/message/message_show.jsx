@@ -80,7 +80,7 @@ class MessageShow extends React.Component {
     } else {
       const thisMonth = "January February March April May June July August September October November December".split(' ')[date.getMonth()];
       const thisDay = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(' ')[date.getDay()];
-      time = `${thisDay}, ${thisMonth} ${date.getDate()}`;
+      time = `${thisMonth} ${date.getDate()}, ${date.getFullYear()}`;
     }
     return time;
   }
@@ -137,11 +137,16 @@ class MessageShow extends React.Component {
          || thisDate.getMonth() !== prevDate.getMonth()
          || thisDate.getYear() !== prevDate.getYear()) {
           let date = this.generateDate(thisDate);
+          // messages.push(
+          //   <div className="message-index-divider-line"></div>
+          // );
           messages.push(
-            <div className="message-index-divider">
-              <div className="message-index-divider-text">
+            <div className="message-index-divider" key={ i }>
+              <div></div>
+              <span className="message-index-divider-text">
                 { date }
-              </div>
+              </span>
+              <div></div>
             </div>
           );
         }
@@ -166,20 +171,6 @@ class MessageShow extends React.Component {
     //   );
     // });
 
-
-    if (!this.props.channelId) {
-      return (<div className='message-container'>
-        <div className='empty-channel-container'>
-          <div className='empty-channel-icon'>
-          </div>
-          <div className='empty-channel-text'>
-            <div className='no-channel-text'>No Text Channel</div>
-            <div className='empty-channel-message'>You find yourself in a strange place. You don't have access to any text channels, or there are none in this server.</div>
-          </div>
-        </div>
-      </div>)
-    }
-    else {
       return (
           <div className='message-container'>
             <div className='channel-title-name-container'>
@@ -205,7 +196,6 @@ class MessageShow extends React.Component {
 
       );
     }
-  }
 }
 
 export default MessageShow;

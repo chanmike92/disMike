@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
     return message.messagable_id === channelId;
   });
   // const currentChannel = state.session.currentChannel || {};
-  debugger
+
 
   return ({
     messageType,

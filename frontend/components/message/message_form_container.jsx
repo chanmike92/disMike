@@ -10,9 +10,9 @@ import { connect } from 'react-redux';
 const mapStateToProps = (state, ownProps) => {
   const messageType = ownProps.messageType || "";
   const currentUser = state.session.currentUser || {};
-  const currentChannel = state.session.currentChannel || {};
-  const currentServer = state.session.currentServer || {};
   const channelId = ownProps.channelId || "";
+  const currentChannel = state.entities.channels[channelId] || {};
+  const currentServer = state.session.currentServer || {};
   const currentChannelName = currentChannel.name || "";
   return ({
     messageType,

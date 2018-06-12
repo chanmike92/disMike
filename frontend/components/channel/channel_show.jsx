@@ -2,6 +2,7 @@ import React from 'react';
 import ChannelIndex from './channel_index';
 import { Route, withRouter, Link, Redirect } from 'react-router-dom';
 import MessageShowContainer from '../message/message_show_container';
+import EmptyChannelMessages from '../message/empty_channel_message';
 import GreetingContainer from '../greeting/greeting_container';
 
 class ChannelShow extends React.Component {
@@ -98,6 +99,12 @@ class ChannelShow extends React.Component {
       :
       "";
 
+    const messages = this.props.channelId ? <MessageShowContainer
+      serverId={ this.props.serverId }
+      channelId={ this.props.channelId }
+      messageType={ "Channel" }
+    /> : <EmptyChannelMessages />;
+
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>
@@ -120,11 +127,7 @@ class ChannelShow extends React.Component {
             <GreetingContainer />
           </div>
         </div>
-        <MessageShowContainer
-          serverId={ this.props.serverId }
-          channelId={ this.props.channelId }
-          messageType={ "Channel" }
-        />
+        { messages}
         </div>
       );
     }

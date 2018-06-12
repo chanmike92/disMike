@@ -20,16 +20,16 @@ class MessageForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
-    if(newProps.match.params.channelId !== this.props.match.params.channelId) {
+    if(newProps.channelId !== this.props.channelId) {
       this.setState({messagable_id: newProps.channelId, messagable_type: newProps.messageType});
-      this.props.fetchAChannel(newProps.match.params.channelId)
+      // this.props.fetchAChannel(newProps.channelId)
     }
   }
 
   handleSubmit(e) {
       if (e.key === 'Enter') {
       const message = Object.assign({}, this.state);
-      this.props.processForm(message)
+      this.props.processForm(message);
       setTimeout(() => {
         this.setState({ body: "" });
 
@@ -44,7 +44,7 @@ class MessageForm extends React.Component {
     return (e) => {
       this.setState({
         [input]: e.currentTarget.value,
-        channel_id: this.props.currentChannelId
+        channel_id: this.props.channelId
       });
     };
   }
