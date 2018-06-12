@@ -278,15 +278,6 @@
   content: "";
 }
 
-// .message-index-divider::before {
-//   background: #474a4f;
-//   content: "";
-//   height: 1px;
-//   position: absolute;
-//   width: 100%;
-//   z-index: 0;
-//
-// }
 
 .message-index-divider-text {
   text-align: center;
@@ -302,22 +293,29 @@
     z-index: 2;
     background-color: inherit;
 }
-//   position: relative;
-//   display: inline-block;
-//   height: 25px;
-//   background-color: #fff;
-//   padding: 4px 10px;
-//   width: 230px;
-//   text-align: center;
-//   border-radius: 10px;
-//   top: -13px;
-//   cursor: default;
-//   -webkit-user-select: none;
-// }
-//
-// .message-index-divider-line {
-//   position: relative;
-//   top: 25px;
-//   width: 100%;
-//   border-top: 1px solid #eee;
-// }
+
+.message-beginning-container {
+  background-image: url('messagebeginning.png');
+  border-color: hsla(0,0%,100%,.02);
+  background-position: 0 100%,100% 100%;
+  background-repeat: no-repeat,no-repeat;
+  background-size: 192px 80px,216px 64px;
+  border-width: 0 0 1px;
+  box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  width: 100%;
+  justify-content: flex-end;
+  padding-bottom: 14px;
+}
+
+.message-beginning-text {
+  color: #949494;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+  margin: 0;
+}

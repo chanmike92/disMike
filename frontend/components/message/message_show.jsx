@@ -1,6 +1,7 @@
 import React from 'react';
 import MessageIndex from './message_index';
 import MessageFormContainer from './message_form_container';
+import MessageIndexBeginning from './message_index_beginning';
 import UserShowContainer from '../user_list/user_show_container';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
@@ -90,7 +91,7 @@ class MessageShow extends React.Component {
      messages.push(
        <MessageIndexBeginning
          key={"beginning"}
-         channel={this.props.channel}
+         channelName={this.props.currentChannelName}
          currentUser={this.props.currentUser} />
      );
      let messageGroup = [];
@@ -122,12 +123,12 @@ class MessageShow extends React.Component {
 
   renderMessages() {
     let messages = [];
-    // messages.push(
-    //   <MessageIndexBeginning
-    //     key={"beginning"}
-    //     channel={this.props.channel}
-    //     currentUser={this.props.currentUser} />
-    // );
+    messages.push(
+      <MessageIndexBeginning
+        key={"beginning"}
+        channelName={this.props.currentChannelName}
+        currentUser={this.props.currentUser} />
+    );
      for (let i = 0; i < this.props.messages.length; i++) {
        let message = this.props.messages[i];
        let prevMessage = this.props.messages[i - 1] || {};
