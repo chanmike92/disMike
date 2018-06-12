@@ -14,7 +14,9 @@ class Api::ServersController < ApplicationController
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
 
-    if @server.save
+    if params[:name] == nil
+      render json: {create: ['Must enter a name']}, status: 402
+    elsif @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
       @channel = Channel.create(name: "general", server_id: @server.id)
 
@@ -28,20 +30,24 @@ class Api::ServersController < ApplicationController
   end
 
   def join
-    @server = Server.find(params[:id])
-    if @server
-      @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
-    end
-
-
-    if @server && @sub && @sub.save
-      @server_channels = @server.channels
-      @server_users = @server.subscribed_users
-      render 'api/servers/show'
-    elsif @server
-      render json: {joinErrors: ['Already joined server']}, status: 402
+    if params[:id] == ""
+      render json: {joinErrors: ['Must enter an ID']}, status: 402
     else
-      render json: {joinErrors: ['Server does not exist']}, status: 402
+      @server = Server.find(params[:id])
+      if @server
+        @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
+      end
+
+
+      if @server && @sub && @sub.save
+        @server_channels = @server.channels
+        @server_users = @server.subscribed_users
+        render 'api/servers/show'
+      elsif @server
+        render json: {joinErrors: ['Already joined server']}, status: 402
+      else
+        render json: {joinErrors: ['Server does not exist']}, status: 402
+      end
     end
   end
 

@@ -20,7 +20,7 @@ const Modal = ({ modal, currentServer, closeModal }) => {
     case 'createServer':
       component =
       <div className='server-modal-container'>
-        <div className='modal-title'>OH, ANOTHER SERVER HUH?</div>
+        <div className='server-modal-title'>OH, ANOTHER SERVER HUH?</div>
         <div className='modal-form-container'>
           <ServerCreateContainer />
           <ServerJoinContainer />
@@ -29,13 +29,13 @@ const Modal = ({ modal, currentServer, closeModal }) => {
       break;
       case 'deleteServer':
         component =
-        <div className='server-modal-container'>
+        <div className='modal-container'>
           <ServerDeleteContainer />
         </div>;
       break;
       case 'createChannel':
       component =
-        <div className='channel-modal-container'>
+        <div className='modal-container'>
           <ChannelCreateContainer />
         </div>;
       break;
@@ -53,13 +53,13 @@ const Modal = ({ modal, currentServer, closeModal }) => {
       break;
       case 'addDM':
         component =
-        <div className='dm-modal-container'>
+        <div className='modal-container'>
           <ChannelDeleteContainer />
         </div>;
       break;
       case 'addFriend':
         component =
-        <div className='friend-modal-container'>
+        <div className='modal-container'>
           <FriendAddContainer />
         </div>;
       break;

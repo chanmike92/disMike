@@ -127,17 +127,23 @@
 }
 
 .server-form-container {
-  height: 300px;
+  height: 350px;
   width: 250px;
   background-color: #fff;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: column;
   border: 1px solid #87909c;
   padding: 20px;
   margin: 10px;
   border-radius: 5px;
+
+  background: hsla(0,0%,100%,.75);
+  border: 1px solid rgba(0,0,0,.1);
+  border-radius: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,.08);
+  box-sizing: border-box;
 }
 
 .server-label {

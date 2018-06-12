@@ -56,11 +56,13 @@ class ServerForm extends React.Component {
   render() {
     const formInputs = this.props.formType === 'createServer' ? this.createForm() : this.joinForm();
     const header = this.props.formType === 'createServer' ? 'CREATE YOUR SERVER' : 'JOIN A SERVER';
+    const titleColor = this.props.formType === 'createServer' ? 'form-title purple' : 'form-title green';
     const buttonName = this.props.formType === 'createServer' ? 'Create' : 'Join';
+    const buttonColor = this.props.formType === 'createServer' ? 'submit-form purple-back' : 'submit-form green-back';
 
     return (
       <div className='server-form-container'>
-        <h1 className='form-title'>{header}</h1>
+        <h1 className={ titleColor }>{header}</h1>
           <div className='errors-list error-item'>
             { this.props.errors }
           </div>
@@ -69,7 +71,7 @@ class ServerForm extends React.Component {
             { formInputs }
           </div>
 
-          <button className='submit-form' type='submit'>{buttonName}</button>
+          <button className={ buttonColor } type='submit'>{buttonName}</button>
         </form>
       </div>
     );

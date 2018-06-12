@@ -7,6 +7,7 @@ class FriendAdd extends React.Component {
     this.state = {id: ''};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   componentDidMount() {
@@ -31,15 +32,22 @@ class FriendAdd extends React.Component {
     };
   }
 
+  goBack() {
+    this.props.closeModal();
+  }
+
   render() {
 
     return (
-      <div className='friend-form-container'>
-        <form onSubmit={this.handleSubmit} className="server-form">
+      <div className='channel-update-form-container'>
+        <form onSubmit={this.handleSubmit}>
           <div className='input-container'>
-            <label className='friend-label'>ID</label>
-            <input className='friend-input-field' autoFocus type='text' placeholder="#0000" onChange={this.handleInput('id')} value={ this.state.id }></input>
-
+            <label className='channel-label'>ID</label>
+            <input className='channel-input-field' autoFocus type='text' placeholder="#0000" onChange={this.handleInput('id')} value={ this.state.id }></input>
+          </div>
+          <div className="channel-submit-buttons">
+            <button className='submit-button no' type='submit'>Add Friend</button>
+            <button className='submit-button yes' onClick={ this.goBack }>Cancel</button>
           </div>
         </form>
       </div>

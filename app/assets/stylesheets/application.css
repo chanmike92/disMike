@@ -172,6 +172,24 @@
 
 }
 
+.server-modal-title {
+  color: #7289da;
+  background-color: none;
+  /* width: 100%; */
+  height: 20px;
+  justify-content: center;
+  align-items: center;
+  /* text-align: center; */
+  color: white;
+  font-size: 18px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: .3px;
+  padding: 20px;
+  font-family: 'Open Sans',Helvetica,Helvetica,Arial,sans-serif;
+
+}
+
 .submit-button {
   -webkit-box-align: center;
    -webkit-box-pack: center;
