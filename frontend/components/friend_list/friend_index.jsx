@@ -6,22 +6,29 @@ class FriendIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = {selector: ""};
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchAllFriends();
   }
 
+  handleSelect(selector) {
+    this.setState({selector});
+  }
+
   render() {
 
     const friends = this.props.friendList.map((userId, idx) => {
-      if (this.props.users[userId]) {
-      return (<FriendShow
-      user={ this.props.users[userId] }
-      id= { userId }
-      key={ idx }
-      />
-        );
+      let user = this.props.users[userId];
+      if (user) {
+        // if (user.status.includes(this.state.selector)) {
+          return (<FriendShow
+          user={ this.props.users[userId] }
+          id= { userId }
+          key={ idx }
+          />);
+        // }
       }
     });
 
@@ -30,9 +37,9 @@ class FriendIndex extends React.Component {
         <div className='friend-selector'>
           <div className='add-friend-button' onClick={ this.props.addFriend }>Add Friend</div>
           <div className='verticle-separator'></div>
-          <div className='friend-selector-item'>All</div>
-          <div className='friend-selector-item'>Online</div>
-          <div className='friend-selector-item'>Pending</div>
+          <div className='friend-selector-item' onClick={ handleSelect("") }>All</div>
+          <div className='friend-selector-item' onClick={ handleSelect("online") }>Online</div>
+          <div className='friend-selector-item' onClick={ handleSelect("pending") }>Pending</div>
         </div>
         <div className='friend-list-container'>
           <div className='friend-table-header'>
