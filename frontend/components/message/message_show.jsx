@@ -8,6 +8,8 @@ class MessageShow extends React.Component {
   constructor(props) {
     super(props);
     this.scrollBottom = this.scrollBottom.bind(this);
+    this.renderMessages = this.renderMessages.bind(this);
+    this.generateDate = this.generateDate.bind(this);
   }
 
   componentDidMount() {
@@ -34,7 +36,7 @@ class MessageShow extends React.Component {
 
         this.props.fetchAChannel(nextProps.channelId)
       }
-      if (JSON.stringify(this.props.messageIds) !== JSON.stringify(nextProps.messageIds)) {
+      if (JSON.stringify(this.props.message) !== JSON.stringify(nextProps.messages)) {
         this.scrollBottom();
       }
     } else {
@@ -61,16 +63,108 @@ class MessageShow extends React.Component {
     }
   }
 
+  generateDate(date) {
+    const today = new Date();
+    let yesterday = new Date();
+    yesterday.setDate(today.getDate() - 1);
+
+    let time;
+    if (today.getMonth() === date.getMonth()
+      && today.getDate() === date.getDate()
+      && today.getYear() === date.getYear()) {
+      time = "Today";
+    } else if (yesterday.getMonth() === date.getMonth()
+      && yesterday.getDate() === date.getDate()
+      && yesterday.getYear() === date.getYear()) {
+      time = "Yesterday";
+    } else {
+      const thisMonth = "January February March April May June July August September October November December".split(' ')[date.getMonth()];
+      const thisDay = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(' ')[date.getDay()];
+      time = `${thisDay}, ${thisMonth} ${date.getDate()}`;
+    }
+    return time;
+  }
+
+  renderHanheeMessages() {
+     let messages = [];
+     messages.push(
+       <MessageIndexBeginning
+         key={"beginning"}
+         channel={this.props.channel}
+         currentUser={this.props.currentUser} />
+     );
+     let messageGroup = [];
+     for (let i = 0; i < this.props.messages.length; i++) {
+       let message = this.props.messages[i];
+       let prevMessage = this.props.messages[i - 1] || { author: {} };
+       let thisDate = new Date(message.created_at);
+       let prevDate = new Date(prevMessage.created_at) || {};
+       if (thisDate.getDate() !== prevDate.getDate()
+         || thisDate.getMonth() !== prevDate.getMonth()
+         || thisDate.getYear() !== prevDate.getYear()) {
+
+         let date = this.generateDate(thisDate);
+         this.addDivider(messages, message.id, date);
+       }
+
+       const isGroupHead = !(thisDate.getTime() < prevDate.getTime() + 120000)
+         || !(message.author.username === prevMessage.author.username);
+
+       messages.push(
+         <MessageIndexItemContainer
+           key={message.id}
+           message={message}
+           isGroupHead={isGroupHead}/>
+       );
+     }
+     return messages;
+  }
+
+  renderMessages() {
+    let messages = [];
+    // messages.push(
+    //   <MessageIndexBeginning
+    //     key={"beginning"}
+    //     channel={this.props.channel}
+    //     currentUser={this.props.currentUser} />
+    // );
+     for (let i = 0; i < this.props.messages.length; i++) {
+       let message = this.props.messages[i];
+       let prevMessage = this.props.messages[i - 1] || {};
+       let thisDate = new Date(message.created_at);
+       let prevDate = new Date(prevMessage.created_at) || {};
+       if (thisDate.getDate() !== prevDate.getDate()
+         || thisDate.getMonth() !== prevDate.getMonth()
+         || thisDate.getYear() !== prevDate.getYear()) {
+          let date = this.generateDate(thisDate);
+          messages.push(
+            <div className="message-index-divider">
+              <div className="message-index-divider-text">
+                { date }
+              </div>
+            </div>
+          );
+        }
+        messages.push(
+          <MessageIndex
+            key={message.id}
+            message={ message } />
+        );
+      }
+      return messages;
+  }
+
   render() {
+    let messages = this.renderMessages();
 
-    const messages = this.props.messageIds.map((messageId, idx) => {
 
-      return (<MessageIndex
-        message={ this.props.messages[messageId] }
-        key={ idx }
-      />
-      );
-    });
+    // const messages = this.props.messageIds.map((messageId, idx) => {
+    //   return (<MessageIndex
+    //     message={ this.props.messages[messageId] }
+    //     key={ idx }
+    //   />
+    //   );
+    // });
 
 
     if (!this.props.channelId) {

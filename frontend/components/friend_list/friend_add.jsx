@@ -40,13 +40,16 @@ class FriendAdd extends React.Component {
 
     return (
       <div className='channel-update-form-container'>
+        <div className='display-message-form-container'>
+          <label className='modal-title'>Add A Friend</label>
+        </div>
         <form onSubmit={this.handleSubmit}>
           <div className='input-container'>
             <label className='channel-label'>ID</label>
             <input className='channel-input-field' autoFocus type='text' placeholder="#0000" onChange={this.handleInput('id')} value={ this.state.id }></input>
           </div>
           <div className="channel-submit-buttons">
-            <button className='submit-button no' type='submit'>Add Friend</button>
+            <button className='submit-button no' type='submit'>Add</button>
             <button className='submit-button yes' onClick={ this.goBack }>Cancel</button>
           </div>
         </form>

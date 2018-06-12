@@ -2,7 +2,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-class ChannelForm extends React.Component {
+class ChannelUpdate extends React.Component {
 
   constructor(props) {
     super(props);
@@ -52,7 +52,7 @@ class ChannelForm extends React.Component {
             <input className='channel-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
           <div className="channel-submit-buttons">
-            <button className='submit-button no' type='submit'>Update Channel</button>
+            <button className='submit-button no' type='submit'>Update</button>
             <button className='submit-button yes' onClick={ this.goBack }>Cancel</button>
           </div>
         </form>
@@ -61,4 +61,4 @@ class ChannelForm extends React.Component {
   }
 }
 
-export default withRouter(ChannelForm);
+export default withRouter(ChannelUpdate);

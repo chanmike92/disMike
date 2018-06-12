@@ -11,22 +11,23 @@ import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const messageType = ownProps.messageType || "";
-  const messages = state.entities.messages || {};
-  const currentChannel = state.session.currentChannel || {};
-  const channelId = ownProps.channelId;
-  const currentChannelName = currentChannel.name || "";
-  const channels = state.entities.channels || {};
-  const relevantChannel = channels[channelId] || {};
-  const messageIds = relevantChannel.message_ids || [];
+  const channelId = parseInt(ownProps.channelId);
+  const channel = state.entities.channels[channelId] || {};
+  const currentChannelName = channel.name || "";
   const currentUser = state.session.currentUser || {};
   const currentServerId = ownProps.serverId;
+  const messages = Object.values(state.entities.messages).filter(message => {
+    return message.messagable_id === channelId;
+  });
+  // const currentChannel = state.session.currentChannel || {};
+  debugger
 
   return ({
     messageType,
+    channel,
     messages,
-    currentChannel,
+    // currentChannel,
     currentChannelName,
-    messageIds,
     currentServerId,
     channelId,
   });

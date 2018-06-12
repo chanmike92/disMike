@@ -6,6 +6,7 @@ if @channel
 end
 
 if @channel_messages
+
   json.messages do
     @channel_messages.each do |message|
       json.set! message.id do

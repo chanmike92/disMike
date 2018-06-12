@@ -1,4 +1,4 @@
-import ChannelForm from './channel_form';
+import ChannelUpdate from './channel_update';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAServer } from '../../actions/server_actions';
@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentServerId = currentServer.id || "";
 
   // errors: state.errors.channels,
-  
+
   return ({
     currentState,
     currentServerId,
@@ -30,4 +30,4 @@ const mapDispatchToProps = dispatch => {
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelUpdate));

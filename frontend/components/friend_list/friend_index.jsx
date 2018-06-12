@@ -13,8 +13,12 @@ class FriendIndex extends React.Component {
     this.props.fetchAllFriends();
   }
 
-  handleSelect(selector) {
-    this.setState({selector});
+  handleSelect(selected) {
+    return (e) => {
+      this.setState({
+        selector: selected
+      });
+    };
   }
 
   render() {
@@ -37,9 +41,9 @@ class FriendIndex extends React.Component {
         <div className='friend-selector'>
           <div className='add-friend-button' onClick={ this.props.addFriend }>Add Friend</div>
           <div className='verticle-separator'></div>
-          <div className='friend-selector-item' onClick={ handleSelect("") }>All</div>
-          <div className='friend-selector-item' onClick={ handleSelect("online") }>Online</div>
-          <div className='friend-selector-item' onClick={ handleSelect("pending") }>Pending</div>
+          <div className='friend-selector-item' onClick={ () => this.handleSelect("") }>All</div>
+          <div className='friend-selector-item' onClick={ () => this.handleSelect("online") }>Online</div>
+          <div className='friend-selector-item' onClick={ () => this.handleSelect("pending") }>Pending</div>
         </div>
         <div className='friend-list-container'>
           <div className='friend-table-header'>
