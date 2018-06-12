@@ -1,4 +1,4 @@
-#disMike
+## disMike
 
 disMike is a clone of the popular team voice chatting and messaging app, Discord. It features servers that users can create and own. Channels within the servers help maintain different conversations that users may have with each other. Check for the live version [here](www.dismike-herokuapp.com)!
 
@@ -9,7 +9,7 @@ disMike is a clone of the popular team voice chatting and messaging app, Discord
 * Users can then join channels and relay messages to each other
 * Users in the channel will get live updates of messages
 
-##Technologies Used
+## Technologies Used
 
 * Ruby on Rails for backend functionality
 * Postgresql for backend database
@@ -25,7 +25,6 @@ disMike is a clone of the popular team voice chatting and messaging app, Discord
 
 ## To-do/Future Features
 
-* Friend lists
 * Direct Messaging
 * Team Direct Messaging
 * Updating Profile Picture of Servers
