@@ -32,7 +32,7 @@ class MessageShow extends React.Component {
         }
 
         this.subscription = App.cable.subscriptions.create(
-          {channel: 'ChatChannel', id: nextProps.channelId},
+          {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
           { received: (data) => { nextProps.receiveAMessage(data) }});
 
         this.props.fetchAChannel(nextProps.channelId)
@@ -190,7 +190,8 @@ class MessageShow extends React.Component {
                       />
                   </div>
                 </div>
-              <UserShowContainer serverId={ this.props.currentServerId }/>
+              <UserShowContainer
+                serverId={ this.props.currentServerId }/>
             </div>
           </div>
           </div>

@@ -13,6 +13,7 @@ export const receiveAllMessages = (messages) => {
 };
 
 export const receiveAMessage = (message) => {
+
   return {
     type: RECEIVE_A_MESSAGE,
     message
@@ -42,5 +43,5 @@ export const fetchAllMessages = (id) => dispatch => {
 
 export const makeNewMessage = (message) => dispatch => {
 
-  return APIUtil.makeNewMessage(message).then((message) => dispatch(receiveAMessage(payload)));
+  return APIUtil.makeNewMessage(message).then((payload) => dispatch(receiveAMessage(payload)));
 };

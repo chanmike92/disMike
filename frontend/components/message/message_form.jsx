@@ -20,6 +20,7 @@ class MessageForm extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+
     if(newProps.channelId !== this.props.channelId) {
       this.setState({messagable_id: newProps.channelId, messagable_type: newProps.messageType});
       // this.props.fetchAChannel(newProps.channelId)
@@ -44,7 +45,8 @@ class MessageForm extends React.Component {
     return (e) => {
       this.setState({
         [input]: e.currentTarget.value,
-        channel_id: this.props.channelId
+        messagable_id: this.props.channelId,
+        messagable_type: this.props.messageType
       });
     };
   }

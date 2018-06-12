@@ -8,17 +8,19 @@ import GreetingContainer from '../greeting/greeting_container';
 class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
+    this.renderChannels = this.renderChannels.bind(this);
   }
 
   componentDidMount() {
-    if (this.props.currentServerId !== undefined) {
-      this.props.fetchAServer(this.props.currentServerId)
+    if (this.props.serverId !== undefined) {
+
+      this.props.fetchAServer(this.props.serverId)
       .then(
         (action) => {
         const channels = Object.values(action.payload.channels)
         if (channels.length > 0 && this.props.currentUser) {
           const channelId = channels[0].id
-          this.props.history.replace(`/${this.props.currentServerId}/${channelId}`)
+          this.props.history.replace(`/${this.props.serverId}/${channelId}`)
         }
       })
     }
@@ -26,9 +28,9 @@ class ChannelShow extends React.Component {
 
   componentWillReceiveProps(nextProps) {
 
-    if (this.props.currentServerId !== nextProps.currentServerId) {
-      if (parseInt(nextProps.currentServerId)) {
-        this.props.fetchAServer(nextProps.currentServerId)
+    if (this.props.serverId !== nextProps.serverId) {
+      if (parseInt(nextProps.serverId)) {
+        this.props.fetchAServer(nextProps.serverId)
       }
       else {
         this.props.history.replace(`/@me/`)
@@ -40,20 +42,17 @@ class ChannelShow extends React.Component {
     this.props.clearState();
   }
 
+  renderChannels() {
+    const channels = this.props.channels.map((channel, idx) => {
+        const active = this.props.channelId === channel.id ? true : false;
 
-
-
-  render() {
-    const channels = this.props.channelIds.map((id, idx) => {
-        const active = this.props.channelId === id ? true : false;
-      if (this.props.channels[id]) {
         return (<ChannelIndex
         key={ idx }
-        id={ id }
+        id={ channel.id }
         currentUserId={ this.props.currentUserId }
-        currentServerId={ this.props.currentServerId }
+        serverId={ this.props.serverId }
         channelId={ this.props.channelId }
-        channel={ this.props.channels[id] }
+        channel={ channel }
         updateForm={this.props.updateForm}
         deleteChannel={this.props.deleteChannel}
         fetchAChannel={this.props.fetchAChannel}
@@ -63,9 +62,14 @@ class ChannelShow extends React.Component {
         currentUserId={this.props.currentUserId}
         active={ active }
         />);
-        }
-      }
-    );
+      });
+  return channels;
+  }
+
+
+
+  render() {
+    let channels = this.renderChannels();
 
 
 

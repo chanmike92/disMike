@@ -23,6 +23,7 @@ class UserShow extends React.Component {
       if (this.props.users[userId]) {
       return (<UserIndex
       user={ this.props.users[userId] }
+      userId={ userId }
       id= { userId }
       key={ idx }
       currentServerOwnerId={this.props.currentServerOwnerId}

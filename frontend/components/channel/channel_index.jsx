@@ -5,7 +5,7 @@ const ChannelIndex = (props) => {
   const iconButtons = (props.currentUserId === props.currentServerOwnerId) ?
     <div className='channel-controls'>
       <button className='fafaicons-container' onClick={() => {
-          props.history.push(`/${props.currentServerId}/${props.id}`);
+          props.history.push(`/${props.serverId}/${props.id}`);
           props.fetchAChannel(props.id).then(() => props.updateForm());
         } }>
         <i className="fas fa-edit"></i>
@@ -14,15 +14,15 @@ const ChannelIndex = (props) => {
           props.fetchAChannel(props.id).then(() => props.deleteChannel());
         }
           // props.deleteChannel(props.id)
-          // .then(() => props.fetchAServer(props.currentServerId))
+          // .then(() => props.fetchAServer(props.serverId))
           //     .then(() => {
           //       return props.currentServer.channel_ids[0] === undefined ?
-          //         props.history.push(`/${props.currentServerId}/`) :
-          //         props.history.push(`/${props.currentServerId}/${props.currentServer.channel_ids[0]}`)
+          //         props.history.push(`/${props.serverId}/`) :
+          //         props.history.push(`/${props.serverId}/${props.currentServer.channel_ids[0]}`)
             //       if (props.currentServer.channel_ids[0] === undefined) {
-            //         props.history.push(`/@me/${props.currentServerId}`)
+            //         props.history.push(`/@me/${props.serverId}`)
             //       } else {
-            //       props.history.push(`/@me/${props.currentServerId}/${props.currentServer.channel_ids[0]}`);
+            //       props.history.push(`/@me/${props.serverId}/${props.currentServer.channel_ids[0]}`);
             //     })
             }
           >
@@ -35,7 +35,7 @@ const ChannelIndex = (props) => {
     // POTENTIAL DROPDOWN MENU OPTION
     //  const updateChannel =
     //    <button className='fafaicons-container' onClick={() => {
-    //        props.history.push(`/${props.currentServerId}/${props.id}`);
+    //        props.history.push(`/${props.serverId}/${props.id}`);
     //        props.fetchAChannel(props.id).then(() => props.updateForm());
     //      } }>
     //      <i className="fas fa-edit"></i>
@@ -74,7 +74,7 @@ const ChannelIndex = (props) => {
       <li className={ channelClass }>
         <div className='channel-name-container'>
           <Link
-            to={`/${props.currentServerId}/${props.id}`}
+            to={`/${props.serverId}/${props.id}`}
             className='channel-link-item'>
             # <div className={ channelNameClass }>{ channelName }</div>
           </Link>

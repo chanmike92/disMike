@@ -74,6 +74,7 @@
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  height: 100%;
   justify-content: space-between;
   align-items: center;
   box-sizing: border-box;
@@ -124,7 +125,9 @@
 }
 
 .channel-item-container {
+  box-sizing: border-box;
   display: flex;
+  margin: 2px;
   color: #72767d;
   font-size: 16px;
   width: 100%;

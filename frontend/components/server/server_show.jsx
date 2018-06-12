@@ -40,7 +40,6 @@ class ServerShow extends React.Component {
     else {
 
     const servers = this.props.serverIds.map((id, idx) => {
-      debugger
       const active = this.props.serverId === id ? true : false;
       return (<ServerIndex
       server={this.props.servers[id]}
