@@ -9,6 +9,7 @@ class ChannelForm extends React.Component {
     this.state = {name: ''};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.goBack = this.goBack.bind(this);
   }
 
   componentDidMount() {
@@ -23,7 +24,7 @@ class ChannelForm extends React.Component {
 
     this.props.processForm(channel)
     .then(() => this.props.fetchAServer(this.props.currentServerId))
-        .then(() => {this.props.closeModal()});
+        .then(() => {this.props.closeModal();});
   }
 
   handleInput(input) {
@@ -34,17 +35,26 @@ class ChannelForm extends React.Component {
     };
   }
 
+  goBack() {
+    this.props.closeModal();
+  }
+
   render() {
 
     return (
-      <div className='server-form-container'>
-        <div>Update Channel</div>
-        <form onSubmit={this.handleSubmit} className="server-form">
+      <div className='channel-update-form-container'>
+        <div className='display-form-message-container'>
+          <label className='modal-title'>Update Channel</label>
+        </div>
+        <form onSubmit={this.handleSubmit}>
           <div className='input-container'>
-            <label className='server-label'>Name</label>
-            <input className='server-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
+            <label className='channel-label'>Name</label>
+            <input className='channel-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
-          <button className='submit-form' type='submit'>Update Channel</button>
+          <div className="channel-submit-buttons">
+            <button className='submit-button no' type='submit'>Update Channel</button>
+            <button className='submit-button yes' onClick={ this.goBack }>Cancel</button>
+          </div>
         </form>
       </div>
     );

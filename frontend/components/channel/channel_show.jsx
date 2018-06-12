@@ -10,17 +10,17 @@ class ChannelShow extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchAServer(this.props.currentServerId)
-    .then(
-      (action) => {
-      const channels = Object.values(action.payload.channels)
-      if (channels.length > 0 && this.props.currentUser) {
-        const channelId = channels[0].id
-        this.props.history.replace(`/${this.props.currentServerId}/${channelId}`)
-      }
+    if (this.props.currentServerId !== undefined) {
+      this.props.fetchAServer(this.props.currentServerId)
+      .then(
+        (action) => {
+        const channels = Object.values(action.payload.channels)
+        if (channels.length > 0 && this.props.currentUser) {
+          const channelId = channels[0].id
+          this.props.history.replace(`/${this.props.currentServerId}/${channelId}`)
+        }
+      })
     }
-  );
-
   }
 
   componentWillReceiveProps(nextProps) {
@@ -28,9 +28,6 @@ class ChannelShow extends React.Component {
     if (this.props.currentServerId !== nextProps.currentServerId) {
       if (parseInt(nextProps.currentServerId)) {
         this.props.fetchAServer(nextProps.currentServerId)
-      }
-      else if (nextProps.currentServerId === '@me') {
-        this.props.fetchAllFriends()
       }
       else {
         this.props.history.replace(`/@me/`)

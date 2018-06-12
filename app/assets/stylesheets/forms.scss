@@ -1,3 +1,14 @@
+.channel-update-form-container {
+  padding: 20px;
+  background-color: #202225;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 5px;
+}
+
 .channel-delete-form-container {
   max-height: 660px;
   min-height: 200px;
@@ -9,6 +20,29 @@
   flex-direction: column;
   margin: 10px;
   border-radius: 5px;
+}
+
+.channel-input-field {
+  border: 0;
+  border-bottom: 1px solid grey;
+  background-color: inherit;
+  outline: 0;
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  margin: 10px;
+  font-family: 'Open Sans',Helvetica,Helvetica,Arial,sans-serif;
+
+}
+
+.channel-input-field:focus {
+  border-bottom: 2px solid #7289da;
+}
+
+.channel-submit-buttons {
+  display: flex;
+  flex-direction: row-reverse;
 }
 
 .channel-delete-message {
