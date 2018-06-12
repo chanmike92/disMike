@@ -12,8 +12,8 @@ class ChannelShow extends React.Component {
   }
 
   componentDidMount() {
-    if (this.props.serverId !== undefined) {
-
+    if (this.props.channelId !== undefined) {
+      debugger
       this.props.fetchAServer(this.props.serverId)
       .then(
         (action) => {

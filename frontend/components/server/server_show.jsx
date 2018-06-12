@@ -10,7 +10,7 @@ class ServerShow extends React.Component {
     super(props);
     this.state = {loaded: false};
   }
-
+  //MIKE -- FETCH ALL INFO IN HERE AND componentWillReceiveProps
   componentDidMount() {
     if (parseInt(this.props.serverId) && parseInt(this.props.channelId)) {
       this.props.fetchAllServers()
