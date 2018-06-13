@@ -149,11 +149,11 @@ class MessageShow extends React.Component {
             </div>
           );
         }
-
+        debugger
         if (i === 0) {
           groupedMessages.push(message);
         }
-        else if ((thisDate.getTime() < prevDate.getTime() + 120000)
+        else if ((thisDate.getTime() > prevDate.getTime() + 120000)
            || (message.author !== prevMessage.author)) {
            let firstMessage = groupedMessages[0];
           messages.push(
@@ -166,9 +166,23 @@ class MessageShow extends React.Component {
               />);
           groupedMessages = [];
           groupedMessages.push(message);
-        } else {
+        }
+        else {
           groupedMessages.push(message);
         }
+      }
+
+      if (groupedMessages.length > 0) {
+      let firstMessage = groupedMessages[0];
+       messages.push(
+         <MessageIndex
+           key={ firstMessage.id }
+           profilepic={ firstMessage.profilepic }
+           author={ firstMessage.author }
+           date={ firstMessage.created_at }
+           messages={ groupedMessages }
+           />);
+        groupedMessages = [];
       }
       // messages.push(groupedMessages);
       return messages;
