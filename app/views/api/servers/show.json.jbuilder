@@ -1,15 +1,12 @@
 if @server
   json.server do
     json.partial! 'api/servers/server', server: @server
-    json.channel_ids @server.channels.pluck(:id)
-    json.user_ids @server.subscribed_users.pluck(:id)
   end
 
   json.channels do
     @server.channels.each do |channel|
       json.set! channel.id do
         json.partial! 'api/channels/channel', channel: channel
-        json.message_ids channel.messages.pluck(:id)
       end
     end
   end

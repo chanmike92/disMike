@@ -9,9 +9,8 @@
 }
 
 .message-container {
-  height: 100%;
+  width: calc(100% - 240px);
   background-color: #36393e;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -120,7 +119,7 @@
   margin: 0;
   outline: 0;
   border: 0;
-  width: 100%;
+  width: calc(100% - 240px);
   padding-left: 10px;
   padding-right: 1px;
   padding-left: 10px;
@@ -191,18 +190,17 @@
 }
 
 .message-input-field {
+  width: 100%;
   // box-sizing: border-box;
   box-sizing: border-box;
   padding: 10px;
   background: #484B53;
-  width: 100%;
   margin-top: 0px;
   border-radius: 5px;
   border: none;
   outline: none;
   color: white;
-  min-height: 14px;
-  max-height: 56px;
+  height: 56px;
   font-size: 14px;
   font-weight: 400;
   resize: none;
@@ -210,13 +208,6 @@
   -ms-overflow-style: none;
   overflow-wrap: break-word;
   word-wrap: break-word;
-}
-
-.message-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
 }
 
 .message-item-container {
@@ -249,13 +240,26 @@
   border-bottom: 0;
 }
 
+.message-timestamp {
+  color: hsla(0,0%,100%,.2);
+  font-size: 0.75rem;
+  font-weight: 400;
+  letter-spacing: 0;
+  margin-left: 6px;
+  text-transform: none;
+  text-align: center;
+  align-items: baseline;
+}
+
 .message-content {
+  width: 300vh;
   color: hsla(0,0%,100%,.7);
   font-size: 18px;
   line-height: 20px;
   // margin-top: 6px;
   // white-space: pre-wrap;
-  word-wrap:normal;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }
 
 .message-header {
@@ -265,17 +269,17 @@
   display: flex;
   font-size: 18px;
   line-height: 20px;
-  justify-content: space-between;
   flex-direction: row;
   margin-right: 10px;
   color: gray;
+  align-items: baseline;
 }
 
 .message-content-body {
   height: auto;
-  max-width: 90%;
   display: flex;
   flex-direction: column;
+  align-items: baseline;
 
 }
 

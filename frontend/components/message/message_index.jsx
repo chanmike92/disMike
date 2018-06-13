@@ -18,10 +18,8 @@ const MessageIndex = ({author, messages, date, profilepic, dateNum }) => {
         <img className='profile-picture' src={ profilepic } />
         <div className="message-content-body">
           <div className='message-header'>
-            <div className='message-user-name'>
-              { author }
-            </div>
-            { dateShown }
+            <div className='message-user-name'>{ author }</div>
+            <div className='message-timestamp'>{ dateShown }</div>
           </div>
             { messagesList }
 
