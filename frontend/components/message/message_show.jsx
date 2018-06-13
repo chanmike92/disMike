@@ -11,6 +11,7 @@ class MessageShow extends React.Component {
     this.scrollBottom = this.scrollBottom.bind(this);
     this.renderMessages = this.renderMessages.bind(this);
     this.generateDate = this.generateDate.bind(this);
+    this.groupMessages = this.groupMessages.bind(this);
   }
 
   componentDidMount() {
@@ -65,6 +66,7 @@ class MessageShow extends React.Component {
   }
 
   generateDate(date) {
+
     const today = new Date();
     let yesterday = new Date();
     yesterday.setDate(today.getDate() - 1);
@@ -86,39 +88,17 @@ class MessageShow extends React.Component {
     return time;
   }
 
-  renderHanheeMessages() {
-     let messages = [];
-     messages.push(
-       <MessageIndexBeginning
-         key={"beginning"}
-         channelName={this.props.currentChannelName}
-         currentUser={this.props.currentUser} />
-     );
-     let messageGroup = [];
-     for (let i = 0; i < this.props.messages.length; i++) {
-       let message = this.props.messages[i];
-       let prevMessage = this.props.messages[i - 1] || { author: {} };
-       let thisDate = new Date(message.created_at);
-       let prevDate = new Date(prevMessage.created_at) || {};
-       if (thisDate.getDate() !== prevDate.getDate()
-         || thisDate.getMonth() !== prevDate.getMonth()
-         || thisDate.getYear() !== prevDate.getYear()) {
-
-         let date = this.generateDate(thisDate);
-         this.addDivider(messages, message.id, date);
-       }
-
-       const isGroupHead = !(thisDate.getTime() < prevDate.getTime() + 120000)
-         || !(message.author.username === prevMessage.author.username);
-
-       messages.push(
-         <MessageIndexItemContainer
-           key={message.id}
-           message={message}
-           isGroupHead={isGroupHead}/>
-       );
-     }
-     return messages;
+  groupMessages(groupedMessages, messages) {
+    let firstMessage = groupedMessages[0];
+    messages.push(
+      <MessageIndex
+        key={ firstMessage.id }
+        profilepic={ firstMessage.profilepic }
+        author={ firstMessage.author }
+        dateNum={ firstMessage.created_at }
+        date={ this.generateDate(new Date(firstMessage.created_at)) }
+        messages={ groupedMessages }
+        />);
   }
 
   renderMessages() {
@@ -139,6 +119,10 @@ class MessageShow extends React.Component {
          || thisDate.getMonth() !== prevDate.getMonth()
          || thisDate.getYear() !== prevDate.getYear()) {
           let date = this.generateDate(thisDate);
+          if (i === 1 && groupedMessages.length > 0) {
+            this.groupMessages(groupedMessages, messages);
+            // groupedMessages = [];
+          }
           messages.push(
             <div className="message-index-divider" key={ i }>
               <div></div>
@@ -149,44 +133,102 @@ class MessageShow extends React.Component {
             </div>
           );
         }
-        debugger
+
         if (i === 0) {
           groupedMessages.push(message);
         }
         else if ((thisDate.getTime() > prevDate.getTime() + 120000)
            || (message.author !== prevMessage.author)) {
-           let firstMessage = groupedMessages[0];
-          messages.push(
-            <MessageIndex
-              key={ firstMessage.id }
-              profilepic={ firstMessage.profilepic }
-              author={ firstMessage.author }
-              date={ firstMessage.created_at }
-              messages={ groupedMessages }
-              />);
+          this.groupMessages(groupedMessages, messages);
           groupedMessages = [];
+
           groupedMessages.push(message);
         }
         else {
           groupedMessages.push(message);
+
         }
       }
 
       if (groupedMessages.length > 0) {
-      let firstMessage = groupedMessages[0];
-       messages.push(
-         <MessageIndex
-           key={ firstMessage.id }
-           profilepic={ firstMessage.profilepic }
-           author={ firstMessage.author }
-           date={ firstMessage.created_at }
-           messages={ groupedMessages }
-           />);
+        this.groupMessages(groupedMessages, messages);
         groupedMessages = [];
+
       }
-      // messages.push(groupedMessages);
+
       return messages;
   }
+
+  // renderMessages() {
+  //   let messages = [];
+  //   messages.push(
+  //     <MessageIndexBeginning
+  //       key={"beginning"}
+  //       channelName={this.props.currentChannelName}
+  //       currentUser={this.props.currentUser} />
+  //   );
+  //   let groupedMessages = [];
+  //    for (let i = 0; i < this.props.messages.length; i++) {
+  //      let message = this.props.messages[i] || {};
+  //      let prevMessage = this.props.messages[i - 1] || {};
+  //      let thisDate = new Date(message.created_at);
+  //      let prevDate = new Date(prevMessage.created_at) || {};
+  //      if (thisDate.getDate() !== prevDate.getDate()
+  //        || thisDate.getMonth() !== prevDate.getMonth()
+  //        || thisDate.getYear() !== prevDate.getYear()) {
+  //         let date = this.generateDate(thisDate);
+  //
+  //         messages.push(
+  //           <div className="message-index-divider" key={ i }>
+  //             <div></div>
+  //             <span className="message-index-divider-text">
+  //               { date }
+  //             </span>
+  //             <div></div>
+  //           </div>
+  //         );
+  //       }
+  //
+  //       if (i === 0) {
+  //         groupedMessages.push(message);
+  //       }
+  //       else if ((thisDate.getTime() > prevDate.getTime() + 120000)
+  //          || (message.author !== prevMessage.author)) {
+  //          let firstMessage = groupedMessages[0];
+  //          debugger
+  //         messages.push(
+  //           <MessageIndex
+  //             key={ firstMessage.id }
+  //             profilepic={ firstMessage.profilepic }
+  //             author={ firstMessage.author }
+  //             dateNum={ firstMessage.created_at }
+  //             date={ this.generateDate(new Date(firstMessage.created_at)) }
+  //             messages={ groupedMessages }
+  //             />);
+  //         groupedMessages = [];
+  //         groupedMessages.push(message);
+  //       }
+  //       else {
+  //         groupedMessages.push(message);
+  //       }
+  //     }
+  //
+  //     if (groupedMessages.length > 0) {
+  //     let firstMessage = groupedMessages[0];
+  //      messages.push(
+  //        <MessageIndex
+  //          key={ firstMessage.id }
+  //          profilepic={ firstMessage.profilepic }
+  //          author={ firstMessage.author }
+  //          dateNum={ firstMessage.created_at }
+  //          date={ this.generateDate(new Date(firstMessage.created_at)) }
+  //          messages={ groupedMessages }
+  //          />);
+  //       groupedMessages = [];
+  //     }
+  //     // messages.push(groupedMessages);
+  //     return messages;
+  // }
 
   render() {
     let messages = this.renderMessages();
