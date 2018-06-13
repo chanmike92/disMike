@@ -11,32 +11,32 @@ class ChannelShow extends React.Component {
     this.renderChannels = this.renderChannels.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.channelId !== undefined) {
-      
-      this.props.fetchAServer(this.props.serverId)
-      .then(
-        (action) => {
-        const channels = Object.values(action.payload.channels)
-        if (channels.length > 0 && this.props.currentUser) {
-          const channelId = channels[0].id
-          this.props.history.replace(`/${this.props.serverId}/${channelId}`)
-        }
-      })
-    }
-  }
+  // componentDidMount() {
+  //   if (this.props.channelId !== undefined) {
+  //
+  //     this.props.fetchAServer(this.props.serverId)
+  //     .then(
+  //       (action) => {
+  //       const channels = Object.values(action.payload.channels)
+  //       if (channels.length > 0 && this.props.currentUser) {
+  //         const channelId = channels[0].id
+  //         this.props.history.replace(`/${this.props.serverId}/${channelId}`)
+  //       }
+  //     })
+  //   }
+  // }
 
-  componentWillReceiveProps(nextProps) {
-
-    if (this.props.serverId !== nextProps.serverId) {
-      if (parseInt(nextProps.serverId)) {
-        this.props.fetchAServer(nextProps.serverId)
-      }
-      else {
-        this.props.history.replace(`/@me/`)
-      }
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //
+  //   if (this.props.serverId !== nextProps.serverId) {
+  //     if (parseInt(nextProps.serverId)) {
+  //       this.props.fetchAServer(nextProps.serverId)
+  //     }
+  //     else {
+  //       this.props.history.replace(`/@me/`)
+  //     }
+  //   }
+  // }
 
   componentWillUnmount() {
     this.props.clearState();
