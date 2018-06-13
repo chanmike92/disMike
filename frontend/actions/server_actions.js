@@ -5,11 +5,11 @@ export const RECEIVE_ALL_SERVERS = 'RECEIVE_ALL_SERVERS';
 export const RECEIVE_SERVER_ERRORS = 'RECEIVE_SERVER_ERRORS';
 export const RECEIVE_CURRENT_SERVER = 'RECEIVE_CURRENT_SERVER';
 
-export const receiveAllServers = (servers) => {
+export const receiveAllServers = (payload) => {
 
   return {
     type: RECEIVE_ALL_SERVERS,
-    servers
+    payload
   };
 };
 
@@ -48,7 +48,7 @@ export const receiveCurrentServer = (currentServer) => {
 
 export const fetchAllServers = () => dispatch => {
 
-  return APIUtil.fetchAllServers().then((servers) => dispatch(receiveAllServers(servers)), (errors) => {
+  return APIUtil.fetchAllServers().then((payload) => dispatch(receiveAllServers(payload)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
 };

@@ -1,8 +1,8 @@
 class Api::ServersController < ApplicationController
   def index
 
-    @servers = current_user.subscribed_servers
-
+    @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
+    
     if @servers
       render 'api/servers/index'
     else

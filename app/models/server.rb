@@ -17,6 +17,10 @@ class Server < ApplicationRecord
     primary_key: :id,
     foreign_key: :server_id
 
+  has_many :messages,
+    through: :channels,
+    source: :messages
+
   has_many :subscribed_users, dependent: :destroy,
     through: :subscriptions,
     source: :user

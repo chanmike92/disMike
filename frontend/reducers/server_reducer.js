@@ -7,7 +7,7 @@ const serverReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ALL_SERVERS:
-      return action.servers;
+      return action.payload.servers;
     case RECEIVE_A_SERVER:
       return Object.assign({}, oldState, { [action.payload.server.id]: action.payload.server });
     case REMOVE_A_SERVER:

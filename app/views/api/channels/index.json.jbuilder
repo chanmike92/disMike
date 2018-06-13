@@ -1,7 +1,14 @@
 
+json.channels do
+  @channels.each do |channel|
+    json.partial! 'api/channels/channelindex', channel: channel
+  end
+end
 
-@channels.each do |channel|
-  json.set! channel.id do
-    json.partial! 'api/channels/channel', channel: channel
+json.messages do
+  @channels.each do |channel|
+    channel.messages.each do |messages|
+      json.partial! 'api/messages/messageindex', message: messages
+    end
   end
 end

@@ -1,6 +1,7 @@
 import { RECEIVE_A_CHANNEL, RECEIVE_ALL_CHANNELS, REMOVE_A_CHANNEL, CLEAR_STATE } from '../actions/channel_actions';
 import { RECEIVE_A_SERVER } from '../actions/server_actions';
 import { RECEIVE_A_MESSAGE } from '../actions/message_actions';
+import { RECEIVE_ALL_SERVERS } from '../actions/server_actions';
 import { merge } from 'lodash';
 
 
@@ -8,11 +9,13 @@ const channelReducer = (oldState = {}, action) => {
 
   Object.freeze(oldState);
   switch(action.type) {
+    case RECEIVE_ALL_SERVERS:
+      return action.payload.channels;
     case RECEIVE_A_MESSAGE:
       const id = action.message.id;
       const messagableId = action.message.messagable_id;
       const updatedChannel = {[messagableId]: {message_ids: [...oldState[messagableId].message_ids, id]}};
-      
+
       return merge({}, oldState, updatedChannel);
     case RECEIVE_ALL_CHANNELS:
       return action.channels;
