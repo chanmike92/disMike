@@ -5,6 +5,8 @@ import moment from 'moment';
 
 const MessageIndex = ({author, messages, date, profilepic, dateNum }) => {
 
+
+
   const messagesList = messages.map((message) => {
       return (<h1 className='message-content' key={ message.id }>{ message.body }</h1>);
     });

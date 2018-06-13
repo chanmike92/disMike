@@ -4,6 +4,7 @@ import MessageFormContainer from './message_form_container';
 import MessageIndexBeginning from './message_index_beginning';
 import UserShowContainer from '../user_list/user_show_container';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import moment from 'moment';
 
 class MessageShow extends React.Component {
   constructor(props) {
@@ -11,7 +12,8 @@ class MessageShow extends React.Component {
     this.scrollBottom = this.scrollBottom.bind(this);
     this.renderMessages = this.renderMessages.bind(this);
     this.generateDate = this.generateDate.bind(this);
-    this.groupMessages = this.groupMessages.bind(this);
+    this.generateFullDate = this.generateFullDate.bind(this);
+    this.renderGroupMessages = this.renderGroupMessages.bind(this);
   }
 
   componentDidMount() {
@@ -81,27 +83,18 @@ class MessageShow extends React.Component {
       && yesterday.getYear() === date.getYear()) {
       time = "Yesterday";
     } else {
-      const thisMonth = "January February March April May June July August September October November December".split(' ')[date.getMonth()];
-      const thisDay = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(' ')[date.getDay()];
-      time = `${thisMonth} ${date.getDate()}, ${date.getFullYear()}`;
+      time = date;
     }
     return time;
   }
 
-  groupMessages(groupedMessages, messages) {
-    let firstMessage = groupedMessages[0];
-    messages.push(
-      <MessageIndex
-        key={ firstMessage.id }
-        profilepic={ firstMessage.profilepic }
-        author={ firstMessage.author }
-        dateNum={ firstMessage.created_at }
-        date={ this.generateDate(new Date(firstMessage.created_at)) }
-        messages={ groupedMessages }
-        />);
+  generateFullDate(date) {
+    const thisMonth = "January February March April May June July August September October November December".split(' ')[date.getMonth()];
+    const thisDay = "Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(' ')[date.getDay()];
+    return `${thisMonth} ${date.getDate()}, ${date.getFullYear()}`;
   }
 
-  renderMessages() {
+  renderMessages(groupMessages) {
     let messages = [];
     messages.push(
       <MessageIndexBeginning
@@ -109,20 +102,17 @@ class MessageShow extends React.Component {
         channelName={this.props.currentChannelName}
         currentUser={this.props.currentUser} />
     );
-    let groupedMessages = [];
-     for (let i = 0; i < this.props.messages.length; i++) {
-       let message = this.props.messages[i] || {};
-       let prevMessage = this.props.messages[i - 1] || {};
+     for (let i = 0; i < groupMessages.length; i++) {
+
+       let message = groupMessages[i][0] || {};
+       let prevMessage = groupMessages[i - 1] || {};
+       prevMessage = prevMessage[0] || {};
        let thisDate = new Date(message.created_at);
        let prevDate = new Date(prevMessage.created_at) || {};
        if (thisDate.getDate() !== prevDate.getDate()
          || thisDate.getMonth() !== prevDate.getMonth()
          || thisDate.getYear() !== prevDate.getYear()) {
-          let date = this.generateDate(thisDate);
-          if (i === 1 && groupedMessages.length > 0) {
-            this.groupMessages(groupedMessages, messages);
-            // groupedMessages = [];
-          }
+          let date = this.generateFullDate(thisDate);
           messages.push(
             <div className="message-index-divider" key={ i }>
               <div></div>
@@ -133,29 +123,58 @@ class MessageShow extends React.Component {
             </div>
           );
         }
+        messages.push(<MessageIndex
+          key={ message.id }
+          profilepic={ message.profilepic }
+          author={ message.author }
+          dateNum={ message.created_at }
+          date={ this.generateDate(new Date(message.created_at)) }
+          messages={ groupMessages[i] }
+          />);
+
+
+      }
+
+      return messages;
+  }
+
+  renderGroupMessages() {
+    let messages = [];
+    let groupedMessages = [];
+     for (let i = 0; i < this.props.messages.length; i++) {
+       let message = this.props.messages[i] || {};
+       let prevMessage = this.props.messages[i - 1] || {};
+       let thisDate = new Date(message.created_at);
+       let prevDate = new Date(prevMessage.created_at) || {};
+       if (thisDate.getDate() !== prevDate.getDate()
+         || thisDate.getMonth() !== prevDate.getMonth()
+         || thisDate.getYear() !== prevDate.getYear()) {
+           if (groupedMessages.length > 0) {
+             messages.push(groupedMessages);
+             groupedMessages = [];
+           }
+        }
 
         if (i === 0) {
           groupedMessages.push(message);
         }
         else if ((thisDate.getTime() > prevDate.getTime() + 120000)
            || (message.author !== prevMessage.author)) {
-          this.groupMessages(groupedMessages, messages);
+           if (groupedMessages.length > 0) {
+             messages.push(groupedMessages);
+           }
           groupedMessages = [];
-
           groupedMessages.push(message);
         }
         else {
           groupedMessages.push(message);
-
         }
       }
 
       if (groupedMessages.length > 0) {
-        this.groupMessages(groupedMessages, messages);
-        groupedMessages = [];
-
+        messages.push(groupedMessages);
       }
-
+      debugger
       return messages;
   }
 
@@ -195,7 +214,7 @@ class MessageShow extends React.Component {
   //       else if ((thisDate.getTime() > prevDate.getTime() + 120000)
   //          || (message.author !== prevMessage.author)) {
   //          let firstMessage = groupedMessages[0];
-  //          debugger
+  //
   //         messages.push(
   //           <MessageIndex
   //             key={ firstMessage.id }
@@ -231,16 +250,8 @@ class MessageShow extends React.Component {
   // }
 
   render() {
-    let messages = this.renderMessages();
-
-
-    // const messages = this.props.messageIds.map((messageId, idx) => {
-    //   return (<MessageIndex
-    //     message={ this.props.messages[messageId] }
-    //     key={ idx }
-    //   />
-    //   );
-    // });
+    let groupMessages = this.renderGroupMessages();
+    let messages = this.renderMessages(groupMessages);
 
       return (
           <div className='message-container'>

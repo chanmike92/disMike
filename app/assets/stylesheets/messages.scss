@@ -164,6 +164,7 @@
   padding-top: 10px;
   width: 100%;
   height: auto;
+  margin-top: 1px;
   margin-right: 20px;
   // border-top: 1px
   box-shadow: 0 -1px 0 hsla(0,0%,100%,.06);
@@ -347,7 +348,6 @@
     padding: 0 10px;
     position: relative;
     z-index: 2;
-    background-color: inherit;
 }
 
 .message-beginning-container {
