@@ -66,13 +66,25 @@ const Modal = ({ modal, currentServer, closeModal }) => {
       case 'updateUser':
         component =
         <div className='modal-container'>
-          <FriendAddContainer />
+          <div className='channel-update-form-container'>
+            <div>test</div>
+          </div>
         </div>;
       break;
       case 'updateServer':
         component =
         <div className='modal-container'>
-          <FriendAddContainer />
+          <div className='channel-update-form-container'>
+            <div>test</div>
+          </div>
+        </div>;
+      break;
+      case 'searchUsers':
+        component =
+        <div className='modal-container'>
+          <div className='channel-update-form-container'>
+            <div>test</div>
+          </div>
         </div>;
       break;
     default:

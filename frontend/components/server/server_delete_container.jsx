@@ -3,7 +3,7 @@ import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { deleteServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
-import { openModal, closeModal, openEditModal } from '../../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {

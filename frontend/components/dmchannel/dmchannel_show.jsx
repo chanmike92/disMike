@@ -18,11 +18,13 @@ class DmChannelShow extends React.Component {
       <div className='subcomponent-container'>
         <div className='channel-container'>
           <div className='server-name-container'>
-            <input className='user-search' type='text' placeholder="Find or start a conversation"></input>
+            <div onClick={ this.props.searchUsers } className='user-search'>
+              <input className='user-search-inner' disabled placeholder="Find or start a conversation"></input>
+            </div>
           </div>
           <div className='bottom-channels-container'>
             <div className='text-channel-container'>
-              <div className='friends-logo'>
+              <div className='friends-logo' >
                 Friends - { this.props.friendCount }
               </div>
               <div className='text-channel-item-container'>

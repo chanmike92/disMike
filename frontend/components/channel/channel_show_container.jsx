@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.channelId;
   const channelIds = currentServer.channel_ids || [];
   const currentUserId = currentUser.id || "";
-  
+
   return ({
 
     currentServerName: currentServer.name || "",
