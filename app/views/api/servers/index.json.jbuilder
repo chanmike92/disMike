@@ -18,3 +18,9 @@ json.messages do
     json.partial! 'api/messages/messageindex', messages: server.messages
   end
 end
+
+json.users do
+  @servers.each do |server|
+    json.partial! 'api/users/userindex', users: server.subscribed_users
+  end
+end

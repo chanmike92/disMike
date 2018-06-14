@@ -103,7 +103,9 @@ class ChannelShow extends React.Component {
       :
       "";
 
-    const messages = this.props.channelId ? <MessageShowContainer
+
+
+    const messages = this.props.channel ? <MessageShowContainer
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
       messageType={ "Channel" }

@@ -10,6 +10,8 @@ import { openModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const users = state.entities.users || {};
+  // const users = Object.values(state.entities.users).filter(user => {
+  //   return user.serverId === serverId;
   const currentServerId = ownProps.serverId;
   const currentServer = state.entities.servers[currentServerId] || {};
   const currentUser = state.session.currentUser || {};

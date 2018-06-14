@@ -32,6 +32,8 @@ class UserShow extends React.Component {
       }
     });
 
+    
+
     return (
       <div className='user-container'>
         <div className='user-counter'>

@@ -12,7 +12,7 @@ import { openModal } from '../../actions/modal_actions';
 const mapStateToProps = (state, ownProps) => {
   const messageType = ownProps.messageType || "";
   const channelId = parseInt(ownProps.channelId);
-  const channel = state.entities.channels[channelId] || {};
+  const channel = state.entities.channels[ownProps.channelId] || {};
   const channelName = channel.name || "";
   const currentUser = state.session.currentUser || {};
   const serverId = ownProps.serverId;
@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
     return message.messagable_id === channelId;
   });
   // const currentChannel = state.session.currentChannel || {};
-
+  
 
   return ({
     messageType,

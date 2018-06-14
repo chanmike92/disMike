@@ -14,11 +14,11 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch => {
-  let asdf = openModal('updateUser');
+
 
   return ({
     logout: () => dispatch(logout()),
-    searchUsers: () => dispatch(asdf),
+    updateUser: () => dispatch(openModal('updateUser')),
   });
 };
 
