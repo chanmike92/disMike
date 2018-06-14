@@ -10,7 +10,7 @@ const messageReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ALL_SERVERS:
-      return action.payload.channels;
+      return action.payload.messages;
     case RECEIVE_ALL_MESSAGES:
       return action.messages;
     case CLEAR_MESSAGES:
