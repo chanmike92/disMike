@@ -17,7 +17,7 @@
 .user-search {
   width: 100%;
   background: transparent;
-  border: none;
+  border: 1px solid rgba(0,0,0,.1);
   box-sizing: border-box;
   color: #fff;
   flex: 1;
@@ -28,7 +28,7 @@
   outline: none;
   padding: 5px 7px;
   resize: none;
-  background-color: #202225
+  background-color: rgba(0,0,0,.2);
 }
 
 .user-search:hover {
@@ -67,6 +67,10 @@
   box-sizing: border-box;
   padding: 5px;
   border-radius: 3px;
+}
+
+.add-friend-button:hover {
+  cursor: pointer;
 }
 
 .friend-selector-item {
@@ -146,12 +150,16 @@
   border-top: 0;
 }
 
+.friend-index-container li:first-child {
+  border-top: 0;
+}
+
 .friend-item-container {
 border-top: 1px solid hsla(0,0%,100%,.1);
 }
 
 .friend-index-container:first-child {
-  border-top: 0px;
+  border-top: 0;
 }
 
 .friend-pic {

@@ -6,8 +6,8 @@ import { merge } from 'lodash';
 
 const nullState = {
   currentUser: null,
-  currentServer: null,
-  currentChannel: null
+  // currentServer: null,
+  // currentChannel: null
 };
 
 const sessionReducer = (oldState = nullState, action) => {
@@ -16,10 +16,10 @@ const sessionReducer = (oldState = nullState, action) => {
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
       return Object.assign({}, nullState, oldState, { currentUser: action.currentUser });
-    case RECEIVE_A_SERVER:
-      return Object.assign({}, nullState, oldState, { currentServer: action.payload.server });
-    case RECEIVE_A_CHANNEL:
-      return Object.assign({}, nullState, oldState, { currentChannel: action.payload.channel });
+    // case RECEIVE_A_SERVER:
+    //   return Object.assign({}, nullState, oldState, { currentServer: action.payload.server });
+    // case RECEIVE_A_CHANNEL:
+    //   return Object.assign({}, nullState, oldState, { currentChannel: action.payload.channel });
     case CLEAR_STATE:
       return Object.assign({}, nullState, oldState, { currentServer: null });
     default:

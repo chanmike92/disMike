@@ -14,18 +14,18 @@ class MessageForm extends React.Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount() {
-
-    this.props.fetchAChannel(this.props.match.params.channelId);
-  }
-
-  componentWillReceiveProps(newProps) {
-
-    if(newProps.channelId !== this.props.channelId) {
-      this.setState({messagable_id: newProps.channelId, messagable_type: newProps.messageType});
-      // this.props.fetchAChannel(newProps.channelId)
-    }
-  }
+  // componentDidMount() {
+  //
+  //   this.props.fetchAChannel(this.props.match.params.channelId);
+  // }
+  //
+  // componentWillReceiveProps(newProps) {
+  //
+  //   if(newProps.channelId !== this.props.channelId) {
+  //     this.setState({messagable_id: newProps.channelId, messagable_type: newProps.messageType});
+  //     // this.props.fetchAChannel(newProps.channelId)
+  //   }
+  // }
 
   handleSubmit(e) {
       if (e.key === 'Enter') {

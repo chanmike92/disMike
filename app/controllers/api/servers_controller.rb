@@ -2,7 +2,7 @@ class Api::ServersController < ApplicationController
   def index
 
     @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
-    
+
     if @servers
       render 'api/servers/index'
     else
@@ -13,8 +13,7 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
-
-    if params[:name] == nil
+    if params[:server][:name] == nil
       render json: {create: ['Must enter a name']}, status: 402
     elsif @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
@@ -30,8 +29,11 @@ class Api::ServersController < ApplicationController
   end
 
   def join
+
     if params[:id] == ""
       render json: {joinErrors: ['Must enter an ID']}, status: 402
+    elsif params[:id].to_i == 0
+      render json: {joinErrors: ['Please Enter ID > 0']}, status: 402
     else
       @server = Server.find(params[:id])
       if @server

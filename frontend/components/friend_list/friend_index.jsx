@@ -9,9 +9,9 @@ class FriendIndex extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
-  componentDidMount() {
-    this.props.fetchAllFriends();
-  }
+  // componentDidMount() {
+  //   this.props.fetchAllFriends();
+  // }
 
   handleSelect(selected) {
     return (e) => {

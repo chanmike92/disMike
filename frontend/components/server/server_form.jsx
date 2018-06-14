@@ -46,7 +46,7 @@ class ServerForm extends React.Component {
   joinForm() {
     return (
       <div>
-        <label className='server-label'>ID</label>
+        <label className='server-label'>Server ID</label>
         <input className='server-input-field' type='text' onChange={this.handleInput('id')} value={this.state.id}></input>
         <div className='spaceholder'></div>
       </div>

@@ -38,7 +38,7 @@ class MessageShow extends React.Component {
           {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
           { received: (data) => { nextProps.receiveAMessage(data) }});
 
-        this.props.fetchAChannel(nextProps.channelId)
+        // this.props.fetchAChannel(nextProps.channelId)
       }
       if (JSON.stringify(this.props.message) !== JSON.stringify(nextProps.messages)) {
         this.scrollBottom();

@@ -12,6 +12,8 @@ class DmChannelShow extends React.Component {
   }
 
   render() {
+
+    //make selected for friends-logo and each dm item
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>

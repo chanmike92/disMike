@@ -63,6 +63,18 @@ const Modal = ({ modal, currentServer, closeModal }) => {
           <FriendAddContainer />
         </div>;
       break;
+      case 'updateUser':
+        component =
+        <div className='modal-container'>
+          <FriendAddContainer />
+        </div>;
+      break;
+      case 'updateServer':
+        component =
+        <div className='modal-container'>
+          <FriendAddContainer />
+        </div>;
+      break;
     default:
       return null;
   }
