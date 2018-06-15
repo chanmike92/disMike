@@ -35,7 +35,8 @@ class Api::ServersController < ApplicationController
     elsif params[:id].to_i == 0
       render json: {joinErrors: ['Please Enter ID > 0']}, status: 402
     else
-      @server = Server.find(params[:id])
+
+      @server = Server.find_by(id: params[:id])
       if @server
         @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
       end

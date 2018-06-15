@@ -10,15 +10,9 @@ class FriendAdd extends React.Component {
     this.goBack = this.goBack.bind(this);
   }
 
-  componentDidMount() {
-
-    this.props.clearErrors();
-    this.setState(this.props.currentState);
-  }
-
   handleSubmit(e) {
     e.preventDefault();
-    const id = Object.assign({}, this.state);
+    const id = this.state.id;
 
     this.props.processForm(id)
       .then(() => this.props.closeModal());
