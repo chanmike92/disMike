@@ -12,6 +12,7 @@ class Api::ChannelsController < ApplicationController
   def create
     @channel = Channel.new(channel_params)
     @channel.server_id = params[:id]
+
     if @channel.save
       render 'api/channels/show'
     else
@@ -24,6 +25,7 @@ class Api::ChannelsController < ApplicationController
 
     @channel = Channel.find(params[:id])
     @channel_messages = @channel.messages
+
     if @channel
       render 'api/channels/show'
     else
@@ -33,6 +35,7 @@ class Api::ChannelsController < ApplicationController
 
   def update
     @channel = Channel.find(params[:id])
+
     if @channel.update(channel_params)
       render 'api/channels/show'
     else

@@ -11,8 +11,8 @@ const mapStateToProps = (state, ownProps) => {
 
   const server = ownProps.server || {};
   const serverId = server.id;
-  const currentState = {name: "", server_id: serverId};
-  
+  const currentState = {name: ""};
+
   return ({
     currentState,
     serverId,

@@ -4,14 +4,14 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 const ChannelDelete = (props) => {
   //DO NOT TOUCH, FETCHES AND USES RESULT FETCH AND PUSHES BASE ON THE RESULT
   const deleteChannel = () => {
-    debugger
-    props.deleteChannel(props.currentChannelId)
-    .then(() => props.fetchAServer(props.currentServerId))
+
+    props.deleteChannel(props.channelId)
+    .then(() => props.fetchAServer(props.serverId))
         .then(({payload}) => {
             if (payload.server.channel_ids[0]) {
-              props.history.push(`/${props.currentServerId}/${payload.server.channel_ids[0]}`)
+              props.history.push(`/${props.serverId}/${payload.server.channel_ids[0]}`)
             } else {
-              props.history.push(`/${props.currentServerId}/`);
+              props.history.push(`/${props.serverId}/`);
             }
           })
           .then(() => {

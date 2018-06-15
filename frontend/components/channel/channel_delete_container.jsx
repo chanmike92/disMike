@@ -8,19 +8,19 @@ import { openModal, closeModal, openEditModal } from '../../actions/modal_action
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentChannel = state.session.currentChannel || {};
-  const currentChannelId = currentChannel.id;
-  const currentServer = state.session.currentServer || {};
-  const currentServerId = currentServer.id;
-  const channelName = currentChannel.name || "";
+  const channel = ownProps.channel || {};
+  const channelId = channel.id;
+  const server = ownProps.server || {};
+  const serverId = server.id;
+  const channelName = channel.name || "";
 
   // errors: state.errors.channels,
-
+  debugger
   return ({
-    currentChannel,
-    currentChannelId,
-    currentServer,
-    currentServerId,
+    channel,
+    channelId,
+    server,
+    serverId,
     channelName,
   });
 };

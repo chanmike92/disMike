@@ -11,6 +11,7 @@ const ChannelIndex = (props) => {
         <i className="fas fa-edit"></i>
       </button>
       <button className='fafaicons-container' onClick={() => {
+          props.history.push(`/${props.serverId}/${props.id}`);
           props.fetchAChannel(props.id).then(() => props.deleteChannel());
         }
           // props.deleteChannel(props.id)

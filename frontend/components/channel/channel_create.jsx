@@ -12,15 +12,15 @@ class ChannelCreate extends React.Component {
     this.goBack = this.goBack.bind(this);
   }
 
-  componentDidMount() {
-
-    this.props.clearErrors();
-    this.setState(this.props.currentState);
-  }
+  // componentDidMount() {
+  //
+  //   this.props.clearErrors();
+  // }
 
   handleSubmit(e) {
     e.preventDefault();
     const channel = Object.assign({}, this.state);
+
 
     this.props.processForm(channel, this.props.serverId)
     .then(() => this.props.fetchAServer(this.props.serverId))
@@ -32,7 +32,6 @@ class ChannelCreate extends React.Component {
   }
 
   handleInput(input) {
-    debugger
     return (e) => {
       this.setState({
         [input]: e.currentTarget.value
@@ -45,13 +44,12 @@ class ChannelCreate extends React.Component {
   }
 
   render() {
-    debugger
     return (
       <div className='channel-update-form-container'>
         <div className='display-form-message-container'>
           <label className='modal-title'>Create A Channel</label>
         </div>
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={ this.handleSubmit }>
           <div className='input-container'>
             <label className='channel-label'>Name</label>
             <input className='channel-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>

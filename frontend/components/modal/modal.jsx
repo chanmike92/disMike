@@ -23,32 +23,32 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
         <div className='server-modal-title'>OH, ANOTHER SERVER HUH?</div>
         <div className='modal-form-container'>
           <ServerCreateContainer />
-          <ServerJoinContainer server={ server } serverId={ serverId }/>
+          <ServerJoinContainer server={ server }/>
         </div>
       </div>;
       break;
       case 'deleteServer':
         component =
         <div className='modal-container'>
-          <ServerDeleteContainer server={ server } serverId={ serverId }/>
+          <ServerDeleteContainer server={ server }/>
         </div>;
       break;
       case 'createChannel':
       component =
         <div className='modal-container'>
-          <ChannelCreateContainer server={ server } serverId={ serverId }/>
+          <ChannelCreateContainer server={ server }/>
         </div>;
       break;
       case 'updateChannel':
         component =
         <div className='modal-container'>
-          <ChannelUpdateContainer />
+          <ChannelUpdateContainer server={ server } channel={ channel }/>
         </div>;
       break;
       case 'deleteChannel':
         component =
         <div className='modal-container'>
-          <ChannelDeleteContainer />
+          <ChannelDeleteContainer server={ server } channel={ channel }/>
         </div>;
       break;
       case 'addDM':

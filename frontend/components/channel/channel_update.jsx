@@ -14,8 +14,8 @@ class ChannelUpdate extends React.Component {
 
   componentDidMount() {
 
-    this.props.clearErrors();
-    this.setState(this.props.currentChannel);
+    // this.props.clearErrors();
+    this.setState(this.props.channel);
   }
 
   handleSubmit(e) {
@@ -23,7 +23,7 @@ class ChannelUpdate extends React.Component {
     const channel = Object.assign({}, this.state);
 
     this.props.processForm(channel)
-    .then(() => this.props.fetchAServer(this.props.currentServerId))
+    .then(() => this.props.fetchAServer(this.props.serverId))
         .then(() => {this.props.closeModal();});
   }
 

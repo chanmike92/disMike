@@ -8,15 +8,15 @@ import { openModal, closeModal, openEditModal } from '../../actions/modal_action
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentChannel = ownProps.channel || {};
-  const currentServer = ownProps.server || {};
-  const currentServerId = currentServer.id || "";
+  const channel = ownProps.channel || {};
+  const server = ownProps.server || {};
+  const serverId = server.id || "";
 
   // errors: state.errors.channels,
 
   return ({
-    currentChannel,
-    currentServerId,
+    channel,
+    serverId,
     formType: 'updateChannel',
   });
 };
