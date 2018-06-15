@@ -1,7 +1,7 @@
 class Api::ChannelsController < ApplicationController
 
   def index
-    @channels = Server.find(params[:id]).channels
+    @channels = Server.find(params[:id]).channels.includes(:messages)
     if @channels
       render 'api/channels/index'
     else

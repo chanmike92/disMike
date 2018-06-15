@@ -10,7 +10,7 @@ import ChannelDeleteContainer from '../channel/channel_delete_container';
 import ServerJoinContainer from '../server/server_join_container';
 import FriendAddContainer from '../friend_list/friend_add_container';
 
-const Modal = ({ modal, currentServer, closeModal }) => {
+const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
 
   if (!modal) {
     return null;
@@ -23,20 +23,20 @@ const Modal = ({ modal, currentServer, closeModal }) => {
         <div className='server-modal-title'>OH, ANOTHER SERVER HUH?</div>
         <div className='modal-form-container'>
           <ServerCreateContainer />
-          <ServerJoinContainer />
+          <ServerJoinContainer server={ server } serverId={ serverId }/>
         </div>
       </div>;
       break;
       case 'deleteServer':
         component =
         <div className='modal-container'>
-          <ServerDeleteContainer />
+          <ServerDeleteContainer server={ server } serverId={ serverId }/>
         </div>;
       break;
       case 'createChannel':
       component =
         <div className='modal-container'>
-          <ChannelCreateContainer />
+          <ChannelCreateContainer server={ server } serverId={ serverId }/>
         </div>;
       break;
       case 'updateChannel':
@@ -102,11 +102,16 @@ const Modal = ({ modal, currentServer, closeModal }) => {
 
 const mapStateToProps = (state, ownProps) => {
   const modal = state.ui.modal;
-
+  const serverId = (ownProps.location.pathname.split('/')[1]);
+  const server = state.entities.servers[serverId] || {};
+  const channelId = (ownProps.location.pathname.split('/')[2]);
+  const channel = state.entities.channels[channelId] || {};
   return {
     modal,
-    currentServer: state.session.currentServer,
-    currentChannel: state.session.currentChannel,
+    server,
+    serverId,
+    channel,
+    channelId
   };
 };
 

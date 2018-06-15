@@ -8,13 +8,15 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentServer = state.session.currentServer || {};
-  const currentServerId = currentServer.id || "";
-  const currentState = {name: '', server_id: currentServerId};
+
+  const server = ownProps.server || {};
+  const serverId = server.id;
+  const currentState = {name: "", server_id: serverId};
+  
   return ({
     currentState,
-    currentServerId,
-    currentServer,
+    serverId,
+    server,
   });
 };
 

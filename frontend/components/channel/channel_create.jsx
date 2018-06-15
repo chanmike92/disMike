@@ -22,16 +22,17 @@ class ChannelCreate extends React.Component {
     e.preventDefault();
     const channel = Object.assign({}, this.state);
 
-    this.props.processForm(channel, this.props.currentServerId)
-    .then(() => this.props.fetchAServer(this.props.currentServerId))
+    this.props.processForm(channel, this.props.serverId)
+    .then(() => this.props.fetchAServer(this.props.serverId))
       .then(() => {
-        let newchannel = this.props.currentServer.channel_ids[this.props.currentServer.channel_ids.length - 1];
-        return this.props.history.push(`/${this.props.currentServerId}/${newchannel}`)
+        let newchannel = this.props.server.channel_ids[this.props.server.channel_ids.length - 1];
+        return this.props.history.push(`/${this.props.serverId}/${newchannel}`)
       })
         .then(() => {this.props.closeModal()});
   }
 
   handleInput(input) {
+    debugger
     return (e) => {
       this.setState({
         [input]: e.currentTarget.value
@@ -44,7 +45,7 @@ class ChannelCreate extends React.Component {
   }
 
   render() {
-
+    debugger
     return (
       <div className='channel-update-form-container'>
         <div className='display-form-message-container'>

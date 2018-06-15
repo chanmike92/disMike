@@ -15,7 +15,7 @@ class ChannelUpdate extends React.Component {
   componentDidMount() {
 
     this.props.clearErrors();
-    this.setState(this.props.currentState);
+    this.setState(this.props.currentChannel);
   }
 
   handleSubmit(e) {
