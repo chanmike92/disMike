@@ -52,7 +52,7 @@ class ChannelCreate extends React.Component {
         <form onSubmit={ this.handleSubmit }>
           <div className='input-container'>
             <label className='channel-label'>Name</label>
-            <input className='channel-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
+            <input className='channel-input-field' autoFocus type='text' maxLength="100" onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
           <div className="channel-submit-buttons">
             <button className='submit-button no' type='submit'>Create</button>

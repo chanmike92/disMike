@@ -1,22 +1,31 @@
-import ServerForm from './server_form';
+import ServerUpdate from './server_update';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { makeNewServer, receiveErrors } from '../../actions/server_actions';
+import { updateServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 
+const mapStateToProps = (state, ownProps) => {
+  const server = ownProps.server || {};
+  const serverId = server.id || "";
 
-const mapStateToProps = state => {
+  // errors: state.errors.servers,
+
   return ({
-    formType: 'update',
+    server,
+    serverId,
+    formType: 'updateserver',
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return ({
-    processForm: (server) => dispatch(makeNewServer(server)),
-    clearErrors: () => dispatch(receiveErrors([]))
+    fetchAServer: (id) => dispatch(fetchAServer(id)),
+    processForm: (server) => dispatch(updateServer(server)),
+    clearErrors: () => dispatch(receiveErrors([])),
+    closeModal: () => dispatch(closeModal())
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SessionForm));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerUpdate));

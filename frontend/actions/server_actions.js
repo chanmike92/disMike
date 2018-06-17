@@ -49,33 +49,48 @@ export const receiveCurrentServer = (currentServer) => {
 export const fetchAllServers = () => dispatch => {
 
   return APIUtil.fetchAllServers().then((payload) => dispatch(receiveAllServers(payload)), (errors) => {
-    
+
     return dispatch(receiveErrors(errors.responseJSON));});
 };
 
 export const fetchAServer = (id) => dispatch => {
 
   return APIUtil.fetchAServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
-    
+
     return dispatch(receiveErrors(errors.responseJSON));});
   };
 
 export const makeNewServer = (server) => dispatch => {
 
   return APIUtil.makeNewServer(server).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
-    
+
+    return dispatch(receiveErrors(errors.responseJSON));});
+  };
+
+export const updateServer = (id) => dispatch => {
+
+  return APIUtil.updateServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
+
     return dispatch(receiveErrors(errors.responseJSON));});
   };
 
 export const joinServer = (id) => dispatch => {
 
   return APIUtil.joinServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
-    
+
     return dispatch(receiveErrors(errors.responseJSON));});
   };
+
+export const leaveServer = (id) => dispatch => {
+
+  return APIUtil.joinServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
+
+    return dispatch(receiveErrors(errors.responseJSON));});
+  };
+
 export const deleteServer = (serverId) => dispatch => {
 
   return APIUtil.deleteServer(serverId).then(() => dispatch(removeAServer(serverId)), (errors) => {
-    
+
     return dispatch(receiveErrors(errors.responseJSON));});
   };

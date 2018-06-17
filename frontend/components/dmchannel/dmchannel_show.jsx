@@ -7,10 +7,6 @@ class DmChannelShow extends React.Component {
     super(props);
   }
 
-  componentDidMount() {
-    this.props.fetchAllFriends();
-  }
-
   render() {
 
     //make selected for friends-logo and each dm item

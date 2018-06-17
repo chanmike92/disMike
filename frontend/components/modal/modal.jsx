@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ServerCreateContainer from '../server/server_create_container';
 import ServerDeleteContainer from '../server/server_delete_container';
+import ServerUpdateContainer from '../server/server_update_container';
 import ChannelCreateContainer from '../channel/channel_create_container';
 import ChannelUpdateContainer from '../channel/channel_update_container';
 import ChannelDeleteContainer from '../channel/channel_delete_container';
@@ -75,16 +76,14 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
         component =
         <div className='modal-container'>
           <div className='channel-update-form-container'>
-            <div>test</div>
+            <ServerUpdateContainer />
           </div>
         </div>;
       break;
       case 'searchUsers':
         component =
         <div className='modal-container'>
-          <div className='channel-update-form-container'>
-            <div>test</div>
-          </div>
+            <ServerUpdateContainer />
         </div>;
       break;
     default:
