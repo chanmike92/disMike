@@ -17,7 +17,8 @@ const mapDispatchToProps = dispatch => {
 
 
   return ({
-    logout: () => dispatch(logout()),
+    logout: () => dispatch(openModal('logout')),
+    // logout: () => dispatch(logout()),
     updateUser: () => dispatch(openModal('updateUser')),
   });
 };

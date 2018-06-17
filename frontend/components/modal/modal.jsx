@@ -10,6 +10,7 @@ import ChannelUpdateContainer from '../channel/channel_update_container';
 import ChannelDeleteContainer from '../channel/channel_delete_container';
 import ServerJoinContainer from '../server/server_join_container';
 import FriendAddContainer from '../friend_list/friend_add_container';
+import LogoutConfirmation from '../greeting/logout_confirmation';
 
 const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
 
@@ -84,6 +85,12 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
         component =
         <div className='modal-container'>
             <ServerUpdateContainer />
+        </div>;
+      break;
+      case 'logout':
+        component =
+        <div className='modal-container'>
+          <LogoutConfirmation />
         </div>;
       break;
     default:

@@ -14,8 +14,6 @@ const mapStateToProps = (state, ownProps) => {
   const serverId = server.id;
   const channelName = channel.name || "";
 
-  // errors: state.errors.channels,
-  debugger
   return ({
     channel,
     channelId,
