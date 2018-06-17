@@ -252,7 +252,7 @@
 }
 
 .message-content {
-  width: 300vh;
+  width: 100%;
   color: hsla(0,0%,100%,.7);
   font-size: 18px;
   line-height: 20px;
@@ -277,6 +277,7 @@
 
 .message-content-body {
   height: auto;
+  width: calc(100% - 50px);
   display: flex;
   flex-direction: column;
   align-items: baseline;
