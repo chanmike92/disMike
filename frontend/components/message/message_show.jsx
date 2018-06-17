@@ -52,7 +52,7 @@ class MessageShow extends React.Component {
   }
 
   componentWillUnmount() {
-    this.props.clearMessages();
+    // this.props.clearMessages();
     if (this.subscription) {
       this.subscription.unsubscribe();
     }

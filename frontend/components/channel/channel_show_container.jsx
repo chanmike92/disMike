@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
   let channelId = undefined ? "" : propsChannelId;
   const currentUserId = currentUser.id || "";
   const channel = state.entities.channels[channelId];
-
+  debugger
   return ({
 
     currentServerName: currentServer.name || "",

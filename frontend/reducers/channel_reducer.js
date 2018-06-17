@@ -1,4 +1,4 @@
-import { RECEIVE_A_CHANNEL, RECEIVE_ALL_CHANNELS, REMOVE_A_CHANNEL, CLEAR_STATE } from '../actions/channel_actions';
+import { RECEIVE_A_CHANNEL, RECEIVE_ALL_CHANNELS, REMOVE_A_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_A_SERVER } from '../actions/server_actions';
 import { RECEIVE_A_MESSAGE } from '../actions/message_actions';
 import { RECEIVE_ALL_SERVERS } from '../actions/server_actions';
@@ -27,8 +27,6 @@ const channelReducer = (oldState = {}, action) => {
       const newState = merge({}, oldState);
       delete newState[action.channelId];
       return newState;
-    case CLEAR_STATE:
-      return {};
     default:
       return oldState;
   }

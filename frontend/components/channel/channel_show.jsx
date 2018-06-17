@@ -38,9 +38,6 @@ class ChannelShow extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.clearState();
-  }
 
   renderChannels() {
     const channels = this.props.channels.map((channel, idx) => {
@@ -69,6 +66,7 @@ class ChannelShow extends React.Component {
 
 
   render() {
+
     let channels = this.renderChannels();
 
 

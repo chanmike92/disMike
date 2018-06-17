@@ -9,7 +9,7 @@ class Api::FriendshipsController < ApplicationController
   def create
 
     @user = params[:id][0] == '#' ? User.find_by(username: params[:id][1..-1]) : User.find_by(id: params[:id])
-    debugger
+
     if @user
       if @user == current_user
         render json: ['Cannot add self'], status: 402

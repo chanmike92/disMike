@@ -5,7 +5,7 @@ import { logout } from '../../actions/session_actions';
 import { openModal, closeModal, openEditModal } from '../../actions/modal_actions';
 
 const LogoutConfirmation = (props) => {
-  debugger
+
   const goBack = () => {
     props.closeModal();
   };

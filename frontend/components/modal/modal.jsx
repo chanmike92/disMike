@@ -77,14 +77,14 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
         component =
         <div className='modal-container'>
           <div className='channel-update-form-container'>
-            <ServerUpdateContainer />
+            <ServerUpdateContainer server={ server }/>
           </div>
         </div>;
       break;
       case 'searchUsers':
         component =
         <div className='modal-container'>
-            <ServerUpdateContainer />
+            <ServerUpdateContainer server={ server }/>
         </div>;
       break;
       case 'logout':
