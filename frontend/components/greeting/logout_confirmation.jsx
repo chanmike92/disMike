@@ -13,7 +13,7 @@ const LogoutConfirmation = (props) => {
   return (
     <div className='channel-delete-form-container'>
         <div className='display-form-message-container'>
-          <label className='modal-title'>Delete Channel</label>
+          <label className='modal-title'>Logging Out?</label>
           <label className='channel-delete-message'>Are you sure you want to logout?</label>
         </div>
         <div className="yes-no-option">
