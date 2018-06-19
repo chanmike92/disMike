@@ -4,7 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { fetchAServer } from '../../actions/server_actions';
 import { deleteChannel, receiveErrors, fetchAChannel } from '../../actions/channel_actions';
 import { connect } from 'react-redux';
-import { openModal, closeModal, openEditModal } from '../../actions/modal_actions';
+import { openModal, closeModal,  } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {

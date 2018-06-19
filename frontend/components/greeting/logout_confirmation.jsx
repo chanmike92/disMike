@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-import { openModal, closeModal, openEditModal } from '../../actions/modal_actions';
+import { openModal, closeModal,  } from '../../actions/modal_actions';
 
 const LogoutConfirmation = (props) => {
 

@@ -22,9 +22,3 @@ export const openPageModal = pageModal => {
     modal: Object.assign(pageModal, { type: OPEN_PAGE_MODAL }),
   };
 };
-//
-// export const closeEditModal = () => {
-//   return {
-//     type: CLOSE_EDIT_MODAL,
-//   };
-// };

@@ -18,8 +18,8 @@ const ServerDropdown = (props) => {
           <label className='server-dropdown-index-title'>Leave Server</label>
         </div>
         <div className='server-dropdown-index-item'>
-          <div className='server-dropdown-icon'>Leave Server</div>
-          <label className='server-dropdown-index-title'>Leave Server</label>
+          <div className='server-dropdown-icon'>Delete Server</div>
+          <label className='server-dropdown-index-title'>Delete Server</label>
         </div>
     </div>
   );
