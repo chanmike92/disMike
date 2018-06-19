@@ -112,7 +112,7 @@ class ChannelShow extends React.Component {
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>
-          <div className='server-name-container dropdown'>
+          <div className='server-title-container dropdown'>
             <button className="server-name-container dropbtn">
               <div className='server-name'>{this.props.currentServerName}</div>
               <i className="fas fa-angle-down"></i>
