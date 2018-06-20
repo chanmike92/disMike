@@ -1,0 +1,14 @@
+.server-dropdown-container {
+  position: fixed;
+  top: 62px;
+  // left: 298px;
+  background-color: white;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  z-index: 10;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+}

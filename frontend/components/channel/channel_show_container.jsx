@@ -4,7 +4,7 @@ import { getDMServer } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAllChannels, fetchAChannel, deleteChannel, receiveErrors, clearState } from '../../actions/channel_actions';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
-
+import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 
@@ -22,9 +22,10 @@ const mapStateToProps = (state, ownProps) => {
   let channelId = undefined ? "" : propsChannelId;
   const currentUserId = currentUser.id || "";
   const channel = state.entities.channels[channelId];
-  debugger
-  return ({
+  const dropdown = state.ui.dropdown;
 
+  return ({
+    dropdown,
     currentServerName: currentServer.name || "",
     currentServerOwnerId: currentServer.owner_id || "",
     currentUserId,
@@ -40,6 +41,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    openDropdown: () => dispatch(openDropdown()),
+    closeDropdown: (e) => {
+    e.stopPropagation();
+    dispatch(closeDropdown()); },
     clearState: () => dispatch(clearState()),
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),

@@ -14,8 +14,10 @@ const mapStateToProps = (state, ownProps) => {
   const server = ownProps.server || {};
   const serverId = server.id;
   const channelName = channel.name || "";
+  const currentUserId = currentUser.id;
 
   return ({
+    currentUserId,
     channel,
     channelId,
     server,
@@ -26,11 +28,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    fetchAServer: (id) => dispatch(fetchAServer(id)),
-    deleteChannel: (id) => dispatch(deleteChannel(id)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelDelete));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerDropdown));

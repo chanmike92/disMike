@@ -4,10 +4,12 @@ import { Route, withRouter, Link, Redirect } from 'react-router-dom';
 import MessageShowContainer from '../message/message_show_container';
 import EmptyChannelMessages from '../message/empty_channel_message';
 import GreetingContainer from '../greeting/greeting_container';
+import ServerDropdownContainer from '../dropdown/server_dropdown_container';
 
 class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
+    // this.state = {serverDropdown: false}
     this.renderChannels = this.renderChannels.bind(this);
   }
 
@@ -37,6 +39,10 @@ class ChannelShow extends React.Component {
       }
     }
   }
+
+  // toggleServerDropdown() {
+  //   this.setState({serverDropdown: !this.state.serverDropdown});
+  // }
 
 
   renderChannels() {
@@ -109,15 +115,21 @@ class ChannelShow extends React.Component {
       messageType={ "Channel" }
     /> : <EmptyChannelMessages />;
 
+  const serverDropdown = this.props.dropdown === true ? <ServerDropdownContainer
+    server={ this.props.currentServer }
+    currentUser={ this.props.currentUser }
+    /> : "";
+
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>
           <div className='server-title-container dropdown'>
-            <button className="server-name-container dropbtn" onClick={ this.props.dropdown ? this.props.closeDropdown : this.props.openDropdown }>
+            <button className="server-name-container dropbtn" onClick={ this.props.dropdown === true ? this.props.closeDropdown : this.props.openDropdown }>
               <div className='server-name'>{this.props.currentServerName}</div>
               <i className="fas fa-angle-down"></i>
             </button>
           </div>
+          { serverDropdown }
           <div className='bottom-channels-container'>
             <div className='text-channel-container'>
               <div className='text-channel-item-container'>
