@@ -41,7 +41,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    openDropdown: () => dispatch(openDropdown()),
+    openDropdown: (e) => {
+      e.stopPropagation();
+      dispatch(openDropdown());
+    },
     closeDropdown: (e) => {
     e.stopPropagation();
     dispatch(closeDropdown()); },

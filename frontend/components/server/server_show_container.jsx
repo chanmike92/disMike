@@ -6,6 +6,7 @@ import { fetchAllChannels } from '../../actions/channel_actions';
 import { fetchAllFriends } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
+import { closeDropdown } from '../../actions/dropdown_actions';
 
 
 
@@ -26,6 +27,10 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    closeDropdown: (e) => {
+      e.stopPropagation();
+      dispatch(closeDropdown());
+    },
     fetchAllFriends: () => dispatch(fetchAllFriends()),
     fetchAllServers: () => dispatch(fetchAllServers()),
     deleteServer: (id) => dispatch(deleteServer(id)),

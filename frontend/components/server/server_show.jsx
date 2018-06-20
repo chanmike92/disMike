@@ -57,7 +57,7 @@ class ServerShow extends React.Component {
       />;
 
     return (
-      <div className='maincomponent-container'>
+      <div className='maincomponent-container' onClick={ this.props.closeDropdown}>
         <div className='server-container'>
 
           <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
