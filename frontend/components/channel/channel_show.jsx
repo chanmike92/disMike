@@ -115,16 +115,19 @@ class ChannelShow extends React.Component {
       messageType={ "Channel" }
     /> : <EmptyChannelMessages />;
 
-  const serverDropdown = this.props.dropdown === true ? <ServerDropdownContainer
+  const serverDropdown = this.props.dropdown === "server" ? <ServerDropdownContainer
     server={ this.props.currentServer }
     currentUser={ this.props.currentUser }
     /> : "";
+
+
 
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>
           <div className='server-title-container dropdown'>
-            <button className="server-name-container dropbtn" onClick={ this.props.dropdown === true ? this.props.closeDropdown : this.props.openDropdown }>
+            <button className="server-name-container dropbtn"
+              onClick={ this.props.dropdown === "server" ? this.props.closeDropdown : this.props.openDropdown }>
               <div className='server-name'>{this.props.currentServerName}</div>
               <i className="fas fa-angle-down"></i>
             </button>

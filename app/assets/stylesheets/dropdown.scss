@@ -2,7 +2,24 @@
   position: fixed;
   top: 62px;
   // left: 298px;
-  background-color: white;
+  background-color: #282b30;
+    box-shadow: 0 0 1px rgba(0,0,0,.82), 0 1px 4px rgba(0,0,0,.1);
+  z-index: 0;
+  width: 0;
+  height: 0;
+  z-index: 10;
+  border-radius: 5px;
+  overflow: hidden;
+  width: 200px;
+  height: 150px;
+}
+
+.user-dropdown-container {
+  position: fixed;
+  bottom: 62px;
+  // left: 298px;
+  background-color: #282b30;
+    box-shadow: 0 0 1px rgba(0,0,0,.82), 0 1px 4px rgba(0,0,0,.1);
   z-index: 0;
   width: 0;
   height: 0;

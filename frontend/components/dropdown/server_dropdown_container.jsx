@@ -4,7 +4,6 @@ import { Link, withRouter } from 'react-router-dom';
 import { leaveServer, deleteServer } from '../../actions/server_actions';
 import { makeNewChannel, receiveErrors, fetchAChannel } from '../../actions/channel_actions';
 import { connect } from 'react-redux';
-import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -26,11 +25,4 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-const mapDispatchToProps = dispatch => {
-  return ({
-    clearErrors: () => dispatch(receiveErrors([])),
-    closeModal: () => dispatch(closeModal())
-  });
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerDropdown));
+export default withRouter(connect(mapStateToProps, null)(ServerDropdown));

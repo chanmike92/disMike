@@ -43,7 +43,7 @@ const mapDispatchToProps = dispatch => {
   return ({
     openDropdown: (e) => {
       e.stopPropagation();
-      dispatch(openDropdown());
+      dispatch(openDropdown("server"));
     },
     closeDropdown: (e) => {
     e.stopPropagation();
