@@ -56,8 +56,10 @@ class ServerShow extends React.Component {
       channelId={ this.props.channelId }
       />;
 
+    const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
+
     return (
-      <div className='maincomponent-container' onClick={ this.props.closeDropdown }>
+      <div className='maincomponent-container' onClick={ dropdown }>
         <div className='server-container'>
 
           <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>

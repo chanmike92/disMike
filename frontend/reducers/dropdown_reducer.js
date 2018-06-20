@@ -1,5 +1,6 @@
 import { OPEN_DROPDOWN, CLOSE_DROPDOWN } from '../actions/dropdown_actions';
 
+
 const nullState = {
   dropdown: false,
 };

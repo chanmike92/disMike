@@ -3,6 +3,7 @@ import React from 'react';
 import { logout } from '../../actions/session_actions';
 import { connect } from 'react-redux';
 import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -19,11 +20,14 @@ const mapDispatchToProps = dispatch => {
   return ({
     openUserDropdown: (e) => {
       e.stopPropagation();
-      dispatch(openDropdown("server"));
+      dispatch(openDropdown("user"));
     },
     closeDropdown: (e) => {
-    e.stopPropagation();
-    dispatch(closeDropdown()); },
+      e.stopPropagation();
+      dispatch(openDropdown("user"));
+    },
+    updateUser: () => dispatch(openModal('updateUser')),
+
     logout: () => dispatch(logout()),
   });
 };
