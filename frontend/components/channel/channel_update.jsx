@@ -43,9 +43,7 @@ class ChannelUpdate extends React.Component {
 
     return (
       <div className='channel-update-form-container'>
-        <div className='display-form-message-container'>
-          <label className='modal-title'>Update Channel</label>
-        </div>
+        <label className='modal-title'>Update Channel</label>
         <form onSubmit={this.handleSubmit}>
           <div className='input-container'>
             <label className='channel-label'>Name</label>

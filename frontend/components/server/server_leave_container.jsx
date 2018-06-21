@@ -1,7 +1,7 @@
-import ServerDelete from './server_delete';
+import ServerLeave from './server_leave';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { deleteServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
+import { leaveServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -23,10 +23,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
-    deleteServer: (id) => dispatch(deleteServer(id)),
+    leaveServer: (id) => dispatch(leaveServer(id)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerDelete));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerLeave));

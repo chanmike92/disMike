@@ -83,7 +83,7 @@ export const joinServer = (id) => dispatch => {
 
 export const leaveServer = (id) => dispatch => {
 
-  return APIUtil.joinServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
+  return APIUtil.leaveServer(id).then((payload) => dispatch(removeAServer(id)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
   };

@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :friendships, only: [:index, :create, :show, :destroy]
     resources :dms, only: [:index, :create, :show, :update, :destroy]
     post 'servers/join', to: 'servers#join'
-    delete 'servers/leave', to: 'servers#leave'
+    post 'servers/leave', to: 'servers#leave'
     resources :channels, only: [:index, :create, :show, :update, :destroy]
     resources :messages, only: [:index, :create]
   end

@@ -40,3 +40,12 @@ export const deleteServer = (id) => {
     method: 'DELETE',
   });
 };
+
+export const leaveServer = (id) => {
+  debugger
+  return $.ajax({
+    url: 'api/servers/leave',
+    method: 'POST',
+    data: { id }
+  });
+};

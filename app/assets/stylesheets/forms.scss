@@ -22,25 +22,17 @@
   border-radius: 5px;
 }
 
-.purple {
-  color: #7289da;
+.server-modal-container {
+  background-color: #202225;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px;
+  border-radius: 5px;
 }
 
-.purple-back {
-  background: #7289da;
-}
 
-.purple-back:hover {
-  background: #7289da;
-}
-
-.green {
-  color: #3ca374;
-}
-
-.green-back {
-  background-color: #3ca374;
-}
 
 .channel-input-field {
   border: 0;

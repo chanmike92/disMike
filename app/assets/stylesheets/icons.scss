@@ -16,6 +16,10 @@
   font-weight: 400;
 }
 
+.channel-edit {
+  color: teal;
+}
+
 .fafaplus:hover {
   cursor: pointer;
 }
@@ -31,7 +35,7 @@
 
 .fa-edit {
   font-size: 15px;
-  color: teal;
+  color: inherit;
 }
 
 .fa-times-circle {

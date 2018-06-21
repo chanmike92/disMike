@@ -11,21 +11,80 @@
   border-radius: 5px;
   overflow: hidden;
   width: 200px;
-  height: 150px;
+  height: 80px;
+}
+
+.server-owner {
+  height: 154px;
+}
+
+.dropdown-index-item {
+  box-sizing: border-box;
+  padding: 10px 14px;
+  font-size: 15px;
+  line-height: 18px;
+  color: #7289da;
+  display: flex;
+  flex-direction: row;
+}
+
+.dropdown-index-item:hover {
+  cursor: pointer;
+}
+
+.dropdown-index-title:hover {
+  cursor: pointer;
 }
 
 .user-dropdown-container {
   position: fixed;
   bottom: 62px;
-  left: 150px;
+  left: 200px;
   background-color: #282b30;
     box-shadow: 0 0 1px rgba(0,0,0,.82), 0 1px 4px rgba(0,0,0,.1);
-  z-index: 0;
+  z-index: 2;
   width: 0;
   height: 0;
   z-index: 10;
   border-radius: 5px;
   overflow: hidden;
-  width: 200px;
-  height: 150px;
+  width: 150px;
+  height: 78px;
+}
+
+.dropdown-icon {
+  color: #7289da;
+  background-size: contain;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  flex-shrink: 0;
+  height: 18px;
+  margin-right: 14px;
+  opacity: .8;
+  width: 18px;
+}
+
+.dropdown-divider {
+  outline: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom-style: solid;
+  border-bottom-width: 1px;
+  border-bottom-color: hsla(0,0%,96%,.08);
+}
+
+.create-channel-icon {
+  background-image: url("create_channel.svg")
+}
+
+.delete-server-icon {
+  background-image: url("delete.svg")
+}
+
+.invite-users-icon {
+  background-image: url("invite_users.svg");
+}
+
+.leave-server-icon {
+  background-image: url("exit.svg")
 }

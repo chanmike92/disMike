@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import ServerCreateContainer from '../server/server_create_container';
 import ServerDeleteContainer from '../server/server_delete_container';
+import ServerLeaveContainer from '../server/server_leave_container';
 import ServerUpdateContainer from '../server/server_update_container';
 import ChannelCreateContainer from '../channel/channel_create_container';
 import ChannelUpdateContainer from '../channel/channel_update_container';
@@ -33,6 +34,12 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
         component =
         <div className='modal-container'>
           <ServerDeleteContainer server={ server }/>
+        </div>;
+      break;
+      case 'leaveServer':
+        component =
+        <div className='modal-container'>
+          <ServerLeaveContainer server={ server }/>
         </div>;
       break;
       case 'createChannel':
