@@ -58,7 +58,23 @@
   font-size: 15px;
 }
 
-//
+.server-dropdown-image {
+  color: #acadaf;
+  height: 10px;
+  width: 10px;
+  -webkit-transition: all  0.1s linear ;
+   -moz-transition: all 0.1s linear ;
+   -o-transition: all 0.1s linear ;
+   background-repeat: no-repeat;
+   background-size: contain;
+   transition: all 0.1s linear ;
+   background-image: url('arrow_down.svg');
+   &.dropdown-active{
+     transform: rotate(-90deg);
+      background-image: url('delete.svg');
+   }
+}
+
 .fa-plus:hover{
   cursor: pointer;
 }

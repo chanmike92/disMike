@@ -9,7 +9,6 @@ import ServerDropdownContainer from '../dropdown/server_dropdown_container';
 class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {serverDropdown: false}
     this.renderChannels = this.renderChannels.bind(this);
   }
 
@@ -22,7 +21,6 @@ class ChannelShow extends React.Component {
           let channelId = validChannels[0];
           this.props.history.replace(`/${this.props.serverId}/${channelId}`);
         }
-      // })
     }
   }
 
@@ -39,11 +37,6 @@ class ChannelShow extends React.Component {
       }
     }
   }
-
-  // toggleServerDropdown() {
-  //   this.setState({serverDropdown: !this.state.serverDropdown});
-  // }
-
 
   renderChannels() {
     const channels = this.props.channels.map((channel, idx) => {
@@ -75,31 +68,6 @@ class ChannelShow extends React.Component {
 
     let channels = this.renderChannels();
 
-
-
-    const deletebutton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
-      <button className='fafaicons-container' onClick={ this.props.deleteServer }>
-        <i className="far fa-times-circle"></i>
-      </button>
-      :
-      "";
-
-      const dropDownMenu =
-        <div class="dropdown">
-        <button onclick="myFunction()" class="dropbtn">
-          <i className="fas fa-angle-down"></i>
-        </button>
-        <div id="myDropdown" class="dropdown-content">
-
-        </div>
-      </div>;
-
-
-      const dropDown = (e) => {
-        e.preventDefault();
-        document.getElementById("myDropdown");
-      };
-
     const createButton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
       <button className='fafaplus' onClick={ this.props.createForm }>
         +
@@ -107,20 +75,19 @@ class ChannelShow extends React.Component {
       :
       "";
 
-
-
     const messages = this.props.channel ? <MessageShowContainer
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
       messageType={ "Channel" }
     /> : <EmptyChannelMessages />;
 
-  const serverDropdown = this.props.dropdown === "server" ? <ServerDropdownContainer
-    server={ this.props.currentServer }
-    currentUser={ this.props.currentUser }
-    /> : "";
+    const serverDropdown = this.props.dropdown === "server" ? <ServerDropdownContainer
+      server={ this.props.currentServer }
+      currentUser={ this.props.currentUser }
+      /> : "";
 
-
+    const dropdownImg = this.props.dropdown === "server" ? "exit.svg" : "arrow_down.svg";
+    const dropdownActive = this.props.dropdown === "server" ? "server-dropdown-image dropdown-active" : "server-dropdown-image";
 
     return (
       <div className='subcomponent-container'>
@@ -129,7 +96,7 @@ class ChannelShow extends React.Component {
             <button className="server-name-container dropbtn"
               onClick={ this.props.dropdown === "server" ? this.props.closeDropdown : this.props.openDropdown }>
               <div className='server-name'>{this.props.currentServerName}</div>
-              <i className="fas fa-angle-down"></i>
+              <div className={ dropdownActive }></div>
             </button>
           </div>
           { serverDropdown }
