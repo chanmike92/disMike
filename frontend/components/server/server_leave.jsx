@@ -17,12 +17,14 @@ const ServerLeave = (props) => {
   };
 
   return (
-    <div className='channel-update-form-container'>
+    <div className='channel-delete-form-container'>
         <div className='display-form-message-container'>
           <label className='modal-title'>Update Channel</label>
-          <label className='server-label'>Are you sure you want to leave {props.serverName}?</label>
+          <div className='channel-delete-message'>
+            <label className='server-label'>Are you sure you want to leave {props.serverName}?</label>
+          </div>
         </div>
-        <div className="yes-no-option">
+        <div className="yes-no-option channel-delete-yes-no">
           <button className='submit-button yes' onClick={ leaveServer }>Yes</button>
           <button className='submit-button no' onClick={ goBack }>No</button>
         </div>

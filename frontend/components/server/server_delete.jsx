@@ -17,15 +17,18 @@ const ServerDelete = (props) => {
   };
 
   return (
-    <div className='channel-update-form-container'>
-        <div className='display-form-message-container'>
+    <div className='channel-delete-form-container'>
+      <div className='display-form-message-container'>
+        <label className='modal-title'>Delete Server</label>
+        <div className='channel-delete-message'>
           <label className='server-label'>Are you sure you want to delete {props.serverName}?</label>
           <label className='server-label'>There is no return from this action.</label>
         </div>
-        <div className="yes-no-option">
-          <button className='submit-form' onClick={ deleteServer }>Yes</button>
-          <button className='submit-form' onClick={ goBack }>No</button>
-        </div>
+      </div>
+      <div className="yes-no-option channel-delete-yes-no">
+        <button className='submit-button yes' onClick={ deleteServer }>Yes</button>
+        <button className='submit-button no' onClick={ goBack }>No</button>
+      </div>
     </div>
   );
 };

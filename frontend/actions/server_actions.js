@@ -67,9 +67,9 @@ export const makeNewServer = (server) => dispatch => {
     return dispatch(receiveErrors(errors.responseJSON));});
   };
 
-export const updateServer = (id) => dispatch => {
+export const updateServer = (server) => dispatch => {
 
-  return APIUtil.updateServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
+  return APIUtil.updateServer(server).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
   };

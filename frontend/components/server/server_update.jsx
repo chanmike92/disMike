@@ -23,7 +23,7 @@ class ServerUpdate extends React.Component {
     const server = Object.assign({}, this.state);
 
     this.props.processForm(server)
-    .then(() => this.props.fetchAServer(this.props.serverId))
+    // .then(() => this.props.fetchAServer(this.props.serverId))
         .then(() => {this.props.closeModal();});
   }
 

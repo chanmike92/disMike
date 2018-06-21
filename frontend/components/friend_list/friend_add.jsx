@@ -34,9 +34,7 @@ class FriendAdd extends React.Component {
 
     return (
       <div className='channel-update-form-container'>
-        <div className='display-message-form-container'>
-          <label className='modal-title'>Add A Friend</label>
-        </div>
+        <label className='modal-title'>Add A Friend</label>
         <form onSubmit={this.handleSubmit}>
           <div className='input-container'>
             <label className='channel-label'>ID</label>
