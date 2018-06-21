@@ -7,7 +7,7 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-
+  debugger
   return ({
     dropdown: state.ui.dropdown,
     currentUser: state.session.currentUser

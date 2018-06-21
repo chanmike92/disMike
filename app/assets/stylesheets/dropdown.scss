@@ -12,10 +12,15 @@
   overflow: hidden;
   width: 200px;
   height: 80px;
+  -webkit-transition: all  0.1s linear ;
+  -moz-transition: all 0.1s linear ;
+  -o-transition: all 0.1s linear ;
+  transition: all 0.1s linear ;
 }
 
 .server-owner {
   height: 154px;
+  width: 200px;
 }
 
 .dropdown-index-item {
