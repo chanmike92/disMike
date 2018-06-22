@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import ServerCreateContainer from '../server/server_create_container';
 import ServerDeleteContainer from '../server/server_delete_container';
 import ServerLeaveContainer from '../server/server_leave_container';
+import UserUpdateContainer from '../greeting/user_update_container';
 import ServerUpdateContainer from '../server/server_update_container';
 import ChannelCreateContainer from '../channel/channel_create_container';
 import ChannelUpdateContainer from '../channel/channel_update_container';
@@ -13,7 +14,7 @@ import ServerJoinContainer from '../server/server_join_container';
 import FriendAddContainer from '../friend_list/friend_add_container';
 import LogoutConfirmation from '../greeting/logout_confirmation';
 
-const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
+const Modal = ({ modal, serverId, server, channelId, channel, closeModal, currentUser }) => {
 
   if (!modal) {
     return null;
@@ -75,9 +76,7 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal }) => {
       case 'updateUser':
         component =
         <div className='modal-container'>
-          <div className='channel-update-form-container'>
-            <div>test</div>
-          </div>
+          <UserUpdateContainer currentUser={ currentUser }/>
         </div>;
       break;
       case 'updateServer':
@@ -119,12 +118,15 @@ const mapStateToProps = (state, ownProps) => {
   const server = state.entities.servers[serverId] || {};
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const channel = state.entities.channels[channelId] || {};
+  const currentUser = state.session.currentUser;
+  debugger
   return {
     modal,
     server,
     serverId,
     channel,
-    channelId
+    channelId,
+    currentUser
   };
 };
 
