@@ -43,30 +43,24 @@ class UserUpdate extends React.Component {
   render() {
     return (
       <div className='channel-delete-form-container'>
-          <div className='display-form-message-container'>
-            <label className='modal-title'>Edit { this.props.currentUser.username }s profile picture</label>
-          </div>
-          <div className="user-update-container">
-            <div>
-              <label>Username</label>
-              <label>{ this.props.currentUser.username}</label>
-            </div>
-            <div>
-              <label>Profile Picture</label>
-              <div className='profile-picture-upload'>
-                <div className="icon-preview" style={ { backgroundImage: `url(${this.state.image_url})` } }></div>
-                <div className='profile-picture-hint'>Change Avatar</div>
-                <input id="fileUploadInput"
-                  onChange={this.handleFileUpload}
-                   type='file'>
-                 </input>
-              </div>
-            </div>
-            <div>
-              <button onClick={ this.props.closeModal }>Cancel</button>
-              <button onClick={ this.handleSubmit }>Submit</button>
+        <label className='modal-title user-update-title'>Edit
+          <div className='purple' style={ {margin: "8px"}}>{ `${this.props.currentUser.username}\'s` }</div> profile picture</label>
+        <div className="profile-picture-update-container">
+          <label>Profile Picture</label>
+          <div className='profile-picture-upload'>
+            <div className="icon-preview" style={ { backgroundImage: `url(${this.state.image_url})` } }>
+              <input id="fileUploadInput"
+                onChange={this.handleFileUpload}
+                 type='file'>
+               </input>
+               <div className='profile-picture-hint'>Change Avatar</div>
             </div>
           </div>
+        </div>
+        <div className='yes-no-option channel-delete-yes-no'>
+          <button className='submit-button green-back' style={ {color: "white"}} onClick={ this.handleSubmit }>Save</button>
+          <button className='submit-button no' onClick={ this.props.closeModal }>Cancel</button>
+        </div>
       </div>
     );
   }

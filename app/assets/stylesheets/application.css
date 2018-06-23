@@ -75,6 +75,11 @@
   color: #3ca374;
 }
 
+.user-update-title {
+  display: flex;
+  flex-direction: row;
+}
+
 .green-back {
   background-color: #3ca374;
 }
