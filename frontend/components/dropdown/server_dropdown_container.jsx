@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUser = state.session.currentUser;
+  const currentUser = state.session.user;
   const channel = ownProps.channel || {};
   const channelId = channel.id;
   const server = ownProps.server || {};

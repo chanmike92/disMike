@@ -10,7 +10,7 @@ const channelReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ALL_SERVERS:
-      return action.payload.channels;
+      return merge({}, oldState, action.payload.channels);
     case RECEIVE_A_MESSAGE:
       const id = action.message.id;
       const messagableId = action.message.messagable_id;
@@ -18,7 +18,7 @@ const channelReducer = (oldState = {}, action) => {
 
       return merge({}, oldState, updatedChannel);
     case RECEIVE_ALL_CHANNELS:
-      return action.channels;
+      return merge({}, oldState, action.channels);
     case RECEIVE_A_SERVER:
       return merge({}, oldState, action.payload.channels);
     case RECEIVE_A_CHANNEL:

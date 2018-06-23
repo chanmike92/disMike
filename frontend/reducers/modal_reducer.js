@@ -1,4 +1,7 @@
-import { OPEN_MODAL, CLOSE_MODAL, OPEN_PAGE_MODAL } from '../actions/modal_actions';
+import { merge } from 'lodash';
+import { OPEN_MODAL, CLOSE_MODAL } from '../actions/modal_actions';
+import { OPEN_DROPDOWN } from '../actions/dropdown_actions';
+import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 
 export default function modalReducer(state = {}, action) {
 
@@ -7,8 +10,10 @@ export default function modalReducer(state = {}, action) {
       return action.modal;
     case CLOSE_MODAL:
       return {};
-    case OPEN_PAGE_MODAL:
-      return action.modal;
+    case OPEN_DROPDOWN:
+      return {};
+    case RECEIVE_CURRENT_USER:
+      return {};
     default:
       return state;
   }

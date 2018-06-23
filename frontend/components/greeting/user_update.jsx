@@ -36,7 +36,6 @@ class UserUpdate extends React.Component {
     if (file) {
       formData.append("user[image]",file);
       this.props.updateUser(formData, this.props.currentUser.id);
-      this.props.closeModal;
     }
   }
 
@@ -49,9 +48,8 @@ class UserUpdate extends React.Component {
           <label>Profile Picture</label>
           <div className='profile-picture-upload'>
             <div className="icon-preview" style={ { backgroundImage: `url(${this.state.image_url})` } }>
-              <input id="fileUploadInput"
-                onChange={this.handleFileUpload}
-                 type='file'>
+              <input id="fileUploadInput"onChange={this.handleFileUpload}
+                type='file' accept="image/gif, image/jpeg, image/png">
                </input>
                <div className='profile-picture-hint'>Change Avatar</div>
             </div>

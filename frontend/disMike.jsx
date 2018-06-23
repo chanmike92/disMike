@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (window.currentUser) {
     preloadedState = merge(preloadedState,
-      { session: { currentUser: window.currentUser } });
+      { session: { user: window.currentUser } });
     delete window.currentUser;
   }
 

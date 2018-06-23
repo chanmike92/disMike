@@ -2,12 +2,21 @@ import * as APIUtil from '../util/session_api_util';
 export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_CURRENT_SERVER = 'RECEIVE_CURRENT_SERVER';
 export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
+export const DELETE_CURRENT_USER = 'DELETE_CURRENT_USER';
 
-export const receiveCurrentUser = (currentUser) => {
+export const receiveCurrentUser = (user) => {
 
   return {
     type: RECEIVE_CURRENT_USER,
-    currentUser
+    user
+  };
+};
+
+export const deleteCurrentUser = () => {
+
+  return {
+    type: DELETE_CURRENT_USER,
+    user: null,
   };
 };
 
@@ -32,5 +41,5 @@ export const login = (user) => dispatch => {
 
 export const logout = () => dispatch => {
 
-  return APIUtil.logout().then(() => dispatch(receiveCurrentUser(null)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.logout().then(() => dispatch(deleteCurrentUser()), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };

@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     dropdown: state.ui.dropdown,
-    currentUser: state.session.currentUser
+    currentUser: state.session.user
   });
 };
 

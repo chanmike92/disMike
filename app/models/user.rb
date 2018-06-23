@@ -48,6 +48,10 @@ class User < ApplicationRecord
     through: :dmsubscriptions,
     source: :dmchannel
 
+  has_many :companions,
+    through: :subscribed_servers,
+    source: :subscribed_users
+
   attr_reader :password
 
   def self.find_by_credentials(email, password)

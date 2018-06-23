@@ -1,10 +1,10 @@
 class Api::SessionsController < ApplicationController
 
   def create
-    @login = User.find_by_credentials(params[:user][:email], params[:user][:password])
-    if @login
-      login(@login)
+    @user = User.find_by_credentials(params[:user][:email], params[:user][:password]).(:channels, :servers, :messages)
 
+    if @user
+      login(@user)
       render 'api/users/show'
     elsif User.find_by(email: params[:user][:email])
       render json: ['PASSWORD (PASSWORD DOES NOT MATCH)'], status: 422

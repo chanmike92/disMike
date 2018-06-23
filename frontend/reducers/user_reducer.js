@@ -15,8 +15,7 @@ const userReducer = (oldState = {}, action) => {
     case RECEIVE_A_FRIEND:
       return merge({}, oldState, { [action.user.id]: action.user });
     case RECEIVE_CURRENT_USER:
-    debugger
-      return merge({}, oldState, { [action.currentUser.user.id]: action.currentUser.user });
+      return merge({}, oldState, { [action.user.id]: action.user });
     case RECEIVE_ALL_USERS:
       return merge({}, oldState, action.users);
     case RECEIVE_A_USER:

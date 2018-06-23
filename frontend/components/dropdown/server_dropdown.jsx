@@ -13,6 +13,14 @@ const ServerDropdown = (props) => {
   :
   "";
 
+  const serverUpdate = props.server.owner_id === props.currentUserId ?
+  <div className='dropdown-index-item' onClick={ props.serverUpdate }>
+    <div className='dropdown-icon create-channel-icon'></div>
+    <label className='dropdown-index-title'>Edit Server</label>
+  </div>
+  :
+  "";
+
   const deleteServer = props.server.owner_id === props.currentUserId ?
   <div className='dropdown-index-item' onClick={ props.deleteServer }>
     <div className='dropdown-icon delete-server-icon'></div>
@@ -30,6 +38,7 @@ const ServerDropdown = (props) => {
         </div>
         <div className='dropdown-divider'></div>
         { channelCreate }
+        { serverUpdate }
         <div className='dropdown-index-item' onClick={ props.leaveServer }>
           <div className='dropdown-icon leave-server-icon'></div>
           <label className='dropdown-index-title'>Leave Server</label>

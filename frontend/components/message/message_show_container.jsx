@@ -14,14 +14,14 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = parseInt(ownProps.channelId);
   const channel = state.entities.channels[ownProps.channelId] || {};
   const channelName = channel.name || "";
-  const currentUser = state.session.currentUser || {};
+  const currentUser = state.session.user || {};
   const serverId = ownProps.serverId;
   const currentServer = state.entities.channels[serverId];
   const messages = Object.values(state.entities.messages).filter(message => {
     return message.messagable_id === channelId;
   });
   // const currentChannel = state.session.currentChannel || {};
-  
+
 
   return ({
     messageType,
