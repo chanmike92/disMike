@@ -119,7 +119,7 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const channel = state.entities.channels[channelId] || {};
   const currentUser = state.session.currentUser;
-  debugger
+
   return {
     modal,
     server,

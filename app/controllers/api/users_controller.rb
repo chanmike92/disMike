@@ -37,6 +37,7 @@ class Api::UsersController < ApplicationController
   def update
     @user = current_user
     @user.image = params[:user][:image]
+
     if @user.save
       render 'api/users/show'
     else

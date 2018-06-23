@@ -42,7 +42,7 @@ export const deleteServer = (id) => {
 };
 
 export const leaveServer = (id) => {
-  debugger
+
   return $.ajax({
     url: 'api/servers/leave',
     method: 'POST',

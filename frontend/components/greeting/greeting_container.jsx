@@ -7,7 +7,7 @@ import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   return ({
     dropdown: state.ui.dropdown,
     users: state.entities.users,

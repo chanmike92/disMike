@@ -4,7 +4,10 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class UserUpdate extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      image_url: "",
+      imageFile: null
+    };
     this.handleFileUpload = this.handleFileUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -50,13 +53,14 @@ class UserUpdate extends React.Component {
             </div>
             <div>
               <label>Profile Picture</label>
-                <label htmlFor="fileUploadInput" className="fileUploadInputLabel">
-                  <span>Choose a photo!</span>
-                </label>
+              <div className='profile-picture-upload'>
+                <div className="icon-preview" style={ { backgroundImage: `url(${this.state.image_url})` } }></div>
+                <div className='profile-picture-hint'>Change Avatar</div>
                 <input id="fileUploadInput"
                   onChange={this.handleFileUpload}
-                   type='file'></input>
-               <img id="iconpreview" height="45px" width="45x" src={ this.state.image_url }></img>
+                   type='file'>
+                 </input>
+              </div>
             </div>
             <div>
               <button onClick={ this.props.closeModal }>Cancel</button>

@@ -1,5 +1,5 @@
 import * as APIUtil from '../util/user_api_util';
-import receiveCurrentUser from './session_actions';
+import { receiveCurrentUser } from './session_actions';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const RECEIVE_A_USER = 'RECEIVE_A_USER';
 

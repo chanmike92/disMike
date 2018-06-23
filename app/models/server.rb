@@ -1,6 +1,8 @@
 class Server < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :owner_id, presence: true
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "dismike-logo.png"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :owner,
     class_name: :User,
