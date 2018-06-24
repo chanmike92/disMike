@@ -37,7 +37,9 @@ class Api::UsersController < ApplicationController
     @user.image = params[:user][:image]
 
     if @user.save
-      render 'api/users/show'
+      @friends = @user.friends
+      @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
+      render 'api/users/currentuser'
     else
       render json: @user.errors.full_messages, status: 402
     end

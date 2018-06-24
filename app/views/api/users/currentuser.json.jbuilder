@@ -3,23 +3,9 @@ if @user
     json.partial! 'api/users/user', user: @user
   end
 
-  json.server do
-    json.partial! 'api/servers/server', server: @user.servers
-  end
+  json.partial! 'api/servers/serverindex', server: @servers
 
-  json.channels do
-    @user.channels.each do |channel|
-      json.set! channel.id do
-        json.partial! 'api/channels/channel', channel: channel
-      end
-    end
-  end
-
-  json.users do
-    @user.subscribed_users.each do |user|
-      json.set! user.id do
-        json.partial! 'api/users/user', user: user
-      end
-    end
+  json.friends do
+    json.partial! 'api/users/userindex', users: @friends
   end
 end

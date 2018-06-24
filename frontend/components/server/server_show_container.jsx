@@ -1,6 +1,7 @@
 import ServerShow from './server_show';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { login } from '../../actions/session_actions';
 import { fetchAllServers, deleteServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
 import { fetchAllChannels } from '../../actions/channel_actions';
 import { fetchAllFriends } from '../../actions/friend_actions';
@@ -16,9 +17,10 @@ const mapStateToProps = (state, ownProps) => {
   const serverId = (ownProps.location.pathname.split('/')[1]);
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const dropdown = state.ui.dropdown;
+  debugger
   return ({
     dropdown,
-    currentUser: state.session.currentUser || {},
+    currentUser: state.session.user || {},
     serverIds: Object.keys(servers),
     servers,
     errors: state.errors.server || [],
@@ -33,6 +35,7 @@ const mapDispatchToProps = dispatch => {
       e.stopPropagation();
       dispatch(closeDropdown());
     },
+    fetchCurrentUser: (user) => dispatch(login(user)),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
     fetchAllServers: () => dispatch(fetchAllServers()),
     deleteServer: (id) => dispatch(deleteServer(id)),

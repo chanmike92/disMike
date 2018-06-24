@@ -10,7 +10,7 @@ const sessionReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_CURRENT_USER:
-      return Object.assign({}, oldState, { user: action.user });
+      return Object.assign({}, oldState, { user: action.payload.currentUser });
     case DELETE_CURRENT_USER:
       return Object.assign({}, oldState, { user: action.user });
     // case RECEIVE_A_SERVER:

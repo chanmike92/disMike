@@ -10,6 +10,7 @@ Rails.application.routes.draw do
     resources :dms, only: [:index, :create, :show, :update, :destroy]
     post 'servers/join', to: 'servers#join'
     post 'servers/leave', to: 'servers#leave'
+    get 'servers/currentuser', to: 'servers#currentuser'
     resources :channels, only: [:index, :create, :show, :update, :destroy]
     resources :messages, only: [:index, :create]
   end

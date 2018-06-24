@@ -1,10 +1,10 @@
 class Api::SessionsController < ApplicationController
 
   def create
-    @user = User.find_by_credentials(params[:user][:email], params[:user][:password]).(:channels, :servers, :messages)
+    @session_user = User.find_by_credentials(params[:user][:email], params[:user][:password])
 
-    if @user
-      login(@user)
+    if @session_user
+      login(@session_user)
       render 'api/users/show'
     elsif User.find_by(email: params[:user][:email])
       render json: ['PASSWORD (PASSWORD DOES NOT MATCH)'], status: 422
@@ -13,10 +13,15 @@ class Api::SessionsController < ApplicationController
     end
   end
 
-  def destroy
+  def currentuser
     @user = current_user
+    render 'api/users/currentuser'
+  end
 
-    if @user
+  def destroy
+    @session_user = current_user
+
+    if @session_user
       logout
       render json: {}
     else

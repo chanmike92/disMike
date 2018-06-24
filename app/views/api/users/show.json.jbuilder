@@ -5,9 +5,9 @@ if @user
   end
 end
 
-# if @session_user
-#   json.partial! 'api/users/user', user: @session_user
-# end
+if @session_user
+  json.partial! 'api/users/user', user: @session_user
+end
 # if @friends
 #   json.channel do
 #     json.partial! 'api/channels/channel', channel: @channel
