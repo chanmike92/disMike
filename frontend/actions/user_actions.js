@@ -1,5 +1,4 @@
 import * as APIUtil from '../util/user_api_util';
-import { receiveCurrentUser } from './session_actions';
 export const RECEIVE_CURRENT_USER_SESSION = 'RECEIVE_CURRENT_USER_SESSION';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const RECEIVE_A_USER = 'RECEIVE_A_USER';
@@ -45,5 +44,5 @@ export const fetchAUser = () => dispatch => {
 
 export const updateAUser = (formData, id) => dispatch => {
   return APIUtil.updateAUser(formData, id).then((payload) =>
-  dispatch(receiveCurrentUser(payload)));
+  dispatch(receiveCurrentUserSession(payload)));
 };

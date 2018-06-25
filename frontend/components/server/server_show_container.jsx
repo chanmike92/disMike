@@ -12,7 +12,7 @@ import { closeDropdown } from '../../actions/dropdown_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  debugger
+
   const servers =  state.entities.servers || {};
   const serverId = (ownProps.location.pathname.split('/')[1]);
   const channelId = (ownProps.location.pathname.split('/')[2]);

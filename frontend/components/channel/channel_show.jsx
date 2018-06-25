@@ -99,7 +99,11 @@ class ChannelShow extends React.Component {
               <div className={ dropdownActive }></div>
             </button>
           </div>
-          { serverDropdown }
+          <ServerDropdownContainer
+            server={ this.props.currentServer }
+            currentUser={ this.props.currentUser }
+            active={ this.props.dropdown }
+            />
           <div className='bottom-channels-container'>
             <div className='text-channel-container'>
               <div className='text-channel-item-container'>

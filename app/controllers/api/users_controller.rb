@@ -39,7 +39,7 @@ class Api::UsersController < ApplicationController
     if @user.save
       @friends = @user.friends
       @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
-      render 'api/users/currentuser'
+      render 'api/users/payload'
     else
       render json: @user.errors.full_messages, status: 402
     end
