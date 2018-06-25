@@ -16,14 +16,6 @@ export const login = (user) => {
   });
 };
 
-export const currentuser = () => {
-
-  return $.ajax({
-    method: 'GET',
-    url: 'api/session/currentuser',
-  });
-};
-
 export const logout = () => {
   return $.ajax({
     url: 'api/session',

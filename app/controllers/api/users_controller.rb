@@ -45,6 +45,14 @@ class Api::UsersController < ApplicationController
     end
   end
 
+  def payload
+    @user = current_user
+    @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
+    @friends = current_user.friends
+
+    render 'api/users/payload'
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)

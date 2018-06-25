@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/user_api_util';
 import { receiveCurrentUser } from './session_actions';
+export const RECEIVE_CURRENT_USER_SESSION = 'RECEIVE_CURRENT_USER_SESSION';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const RECEIVE_A_USER = 'RECEIVE_A_USER';
 
@@ -17,6 +18,19 @@ export const receiveAllUsers = (users) => {
     type: RECEIVE_ALL_USERS,
     users
   };
+};
+
+export const receiveCurrentUserSession = (payload) => {
+
+  return {
+    type: RECEIVE_CURRENT_USER_SESSION,
+    payload
+  };
+};
+
+export const fetchCurrentUserSession = (id) => dispatch => {
+
+  return APIUtil.fetchCurrentUser(id).then((payload) => dispatch(receiveCurrentUserSession(payload)));
 };
 
 export const fetchAllUsers = (id) => dispatch => {

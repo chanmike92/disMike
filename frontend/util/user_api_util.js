@@ -15,6 +15,15 @@ export const fetchAUser = (id) => {
   });
 };
 
+export const fetchCurrentUser = (id) => {
+
+  return $.ajax({
+    method: 'POST',
+    url: 'api/users/payload',
+    data: {id}
+  });
+};
+
 export const updateAUser = (formData, id) => {
 
   return $.ajax({

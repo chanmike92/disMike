@@ -55,6 +55,7 @@ class Api::ServersController < ApplicationController
   end
 
   def leave
+
     @sub = Serversubscription.find_by(user_id: current_user.id, server_id: params[:id])
     if @sub
       @sub.destroy
