@@ -14,6 +14,17 @@ export const fetchAServer = (id) => {
   });
 };
 
+export const updateAServer = (formData, id) => {
+
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/servers/${ id }`,
+    processData: false,
+    contentType: false,
+    data: formData
+  });
+};
+
 export const makeNewServer = (server) => {
 
   return $.ajax({

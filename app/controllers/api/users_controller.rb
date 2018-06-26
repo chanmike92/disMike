@@ -33,10 +33,8 @@ class Api::UsersController < ApplicationController
   end
 
   def update
-    debugger
     @user = current_user
     @user.image = params[:user][:image]
-    debugger
     if @user.save
       @friends = @user.friends
       @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)

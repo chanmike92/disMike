@@ -10,6 +10,7 @@ class ServerUpdate extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
+    this.handleFileUpload = this.handleFileUpload.bind(this);
   }
 
   componentDidMount() {
@@ -25,17 +26,17 @@ class ServerUpdate extends React.Component {
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this.setState({image_url: this.props.currentUser.image_url, imageFile: null});
+      this.setState({image_url: this.props.server.image_url, imageFile: null});
     }
   }
 
   handleSubmit() {
     const file = this.state.imageFile;
     const formData = new FormData();
-    formData.append("server[name]", this.props.currentUser.username)
+    formData.append("server[name]", this.state.name)
     if (file) {
       formData.append("server[image]",file);
-      this.props.updateUser(formData, this.props.server.id);
+      this.props.processForm(formData, this.props.serverId);
     }
   }
 
@@ -52,6 +53,14 @@ class ServerUpdate extends React.Component {
   }
 
   render() {
+    const nameArr = this.state.name.split(" ");
+    let serverNameIcon = "";
+    nameArr.forEach((word, idx) => {
+      if (word[0]) {
+        serverNameIcon = serverNameIcon + word[0];
+      }
+    });
+
 
     return (
       <div className='server-update-form-container'>
@@ -63,9 +72,17 @@ class ServerUpdate extends React.Component {
             <label className='server-label'>Name</label>
             <input className='server-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
-          <div className='input-container'>
-            <label className='server-label'>Image</label>
-            <input className='server-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
+          <div className="profile-picture-update-container">
+            <label>Server Image</label>
+            <div className='profile-picture-upload'>
+              <div className="icon-preview" style={ { backgroundImage: `url(${this.state.image_url})` } }>
+                <input id="fileUploadInput"onChange={this.handleFileUpload}
+                  type='file' accept="image/gif, image/jpeg, image/png">
+                 </input>
+                 <div className='server-acronym'>{ (this.state.image_url === "" || this.state.image_url === null) ? "" : serverNameIcon }</div>
+                   <div className='profile-picture-hint'>Change Icon</div>
+              </div>
+            </div>
           </div>
           <div className="server-submit-buttons">
             <button className='submit-button no' type='submit'>Update</button>

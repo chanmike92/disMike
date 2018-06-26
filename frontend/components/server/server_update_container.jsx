@@ -22,7 +22,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
-    processForm: (server) => dispatch(updateServer(server)),
+    processForm: (formData, id) => dispatch(updateServer(formData, id)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });
