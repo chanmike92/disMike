@@ -13,14 +13,6 @@ class Api::SessionsController < ApplicationController
     end
   end
 
-  def payload
-    @user = current_user
-    debugger
-    # @user = current_user || User.find(params[:id])
-
-    render 'api/users/payload'
-  end
-
   def destroy
     @session_user = current_user
 

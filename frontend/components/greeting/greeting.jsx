@@ -11,20 +11,20 @@ class Greeting extends React.Component {
 
 
   render() {
-
-    const userDropdown = this.props.dropdown === "user" ? <UserDropdownContainer
-      currentUser={ this.props.currentUser }
-      /> : "";
+    const dropdownActive = this.props.dropdown === "user" ? "active-spin" : "";
 
       return (
         <div className='greeting-container'>
-          { userDropdown }
+          <UserDropdownContainer
+            currentUser={ this.props.currentUser }
+            active={ this.props.dropdown }
+          />
           <div className='user-image-name'>
             <img className='profile-picture' src={ this.props.currentUser.image_url } />
             <h1>{ this.props.currentUser.username }</h1>
           </div>
-          <button className='fafaicons-container' onClick={ this.props.dropdown === 'user' ? this.props.closeDropdown : this.props.openDropdown }>
-            <i className="fas fa-cogs"></i>
+          <button className={`fafaicons-container ${dropdownActive}`} onClick={ this.props.dropdown === 'user' ? this.props.closeDropdown : this.props.openDropdown }>
+            <i className="fas fa-cog"></i>
           </button>
         </div>
       );

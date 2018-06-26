@@ -6,25 +6,37 @@ class ServerUpdate extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {name: '', image: ""};
+    this.state = {name: '', image_url: "", imageFile: null};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
   }
 
   componentDidMount() {
-
     // this.props.clearErrors();
     this.setState(this.props.server);
   }
 
-  handleSubmit(e) {
-    e.preventDefault();
-    const server = Object.assign({}, this.state);
+  handleFileUpload(e) {
+    const reader = new FileReader();
+    const file = e.currentTarget.files[0];
+    reader.onloadend = () =>
+      this.setState({image_url: reader.result, imageFile: file});
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({image_url: this.props.currentUser.image_url, imageFile: null});
+    }
+  }
 
-    this.props.processForm(server)
-    // .then(() => this.props.fetchAServer(this.props.serverId))
-        .then(() => {this.props.closeModal();});
+  handleSubmit() {
+    const file = this.state.imageFile;
+    const formData = new FormData();
+    formData.append("server[name]", this.props.currentUser.username)
+    if (file) {
+      formData.append("server[image]",file);
+      this.props.updateUser(formData, this.props.server.id);
+    }
   }
 
   handleInput(input) {

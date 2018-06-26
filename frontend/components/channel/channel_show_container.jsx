@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   const channels = Object.values(state.entities.channels).filter(channel => {
     return channel.serverId === serverId;
   });
-  const currentUser = state.session.currentUser || {};
+  const currentUser = state.session.user || {};
   const channelIds = currentServer.channel_ids || [];
   let propsChannelId = channelIds.includes(parseInt(ownProps.channelId)) ? ownProps.channelId : channelIds[0];
   let channelId = undefined ? "" : propsChannelId;

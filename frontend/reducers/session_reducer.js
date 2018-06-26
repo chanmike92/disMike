@@ -15,7 +15,7 @@ const sessionReducer = (oldState = {}, action) => {
     case DELETE_CURRENT_USER:
       return Object.assign({}, oldState, { user: action.user });
     case RECEIVE_CURRENT_USER_SESSION:
-      return Object.assign({}, oldState, action.payload.currentUser);
+      return Object.assign({}, oldState, { user: action.payload.currentUser });
 
     // case RECEIVE_A_SERVER:
     //   return Object.assign({}, nullState, oldState, { currentServer: action.payload.server });

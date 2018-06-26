@@ -19,7 +19,8 @@ const ServerIndex = (props) => {
     <li className={ iconClass }>
       <Link className='server-links'
         to={`/${props.server.id}/${firstChannel}`}>
-        { serverNameIcon }
+        <image src={ props.server.image_url }>{ serverNameIcon }</image>
+
       </Link>
     </li>
   );

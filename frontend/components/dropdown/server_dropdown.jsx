@@ -15,7 +15,7 @@ const ServerDropdown = (props) => {
   "";
 
   const serverUpdate = props.server.owner_id === props.currentUserId ?
-  <div className='dropdown-index-item' onClick={ props.serverUpdate }>
+  <div className='dropdown-index-item' onClick={ props.updateServer }>
     <div className='dropdown-icon create-channel-icon'></div>
     <label className='dropdown-index-title'>Edit Server</label>
   </div>

@@ -2,9 +2,10 @@ import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const UserDropdown = (props) => {
+  const active = props.active === "user" ? `user-dropdown-container user-dropdown-active` : "user-dropdown-container";
 
   return (
-    <div className='user-dropdown-container'>
+    <div className={ active }>
         <div className='dropdown-index-item' onClick={ props.updateUser }>
           <div className='dropdown-icon'>
             <i className="fas fa-edit"></i>

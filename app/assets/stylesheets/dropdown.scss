@@ -21,7 +21,7 @@
     width: 200px;
   }
   &.server-owner {
-    height: 154px;
+    height: 191px;
     width: 200px;
   }
 }
@@ -61,8 +61,14 @@
   z-index: 10;
   border-radius: 5px;
   overflow: hidden;
-  width: 150px;
-  height: 78px;
+  -webkit-transition: all  0.1s linear;
+  -moz-transition: all 0.1s linear;
+  -o-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  &.user-dropdown-active {
+    width: 150px;
+    height: 78px;
+  }
 }
 
 .dropdown-icon {

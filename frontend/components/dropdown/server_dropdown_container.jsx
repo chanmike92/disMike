@@ -30,6 +30,7 @@ const mapDispatchToProps = dispatch => {
   return ({
     closeModal: () => dispatch(closeModal()),
     createChannel: () => dispatch(openModal('createChannel')),
+    updateServer: () => dispatch(openModal('updateServer')),
     deleteServer: () => dispatch(openModal('deleteServer')),
     leaveServer: () => dispatch(openModal('leaveServer')),
     inviteUsers: () => dispatch(openModal('inviteUsers')),
