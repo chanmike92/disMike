@@ -48,7 +48,7 @@ class Api::UsersController < ApplicationController
     @user = current_user
     @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
     @friends = current_user.friends
-
+    sleep(2)
     render 'api/users/payload'
   end
 

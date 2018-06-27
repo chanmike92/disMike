@@ -8,16 +8,15 @@ import LoadingContainer from '../loading/loading_container';
 class ServerShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {loaded: false};
+
   }
   //MIKE -- FETCH ALL INFO IN HERE AND componentWillReceiveProps
   componentDidMount() {
     // this.props.fetchAllFriends().then(this.props.fetchAllServers()).then((setTimeout(() => this.setState({loaded: true}), 3000)));
-    this.props.fetchCurrentUser(this.props.currentUser.id).then((setTimeout(() => this.setState({loaded: true}), 3000)));
+    // this.props.fetchCurrentUser(this.props.currentUser.id);
     if (parseInt(this.props.serverId) || parseInt(this.props.channelId)) {
     } else {
-        this.props.history.push(`/@me/`);
-        (setTimeout(() => this.setState({loaded: true}), 3000));
+      this.props.history.push(`/@me/`);
     }
   }
 
@@ -25,14 +24,6 @@ class ServerShow extends React.Component {
 
 
   render() {
-    if (this.state.loaded === false) {
-      return (
-        <LoadingContainer
-          />
-      );
-    }
-    else {
-
     const servers = this.props.serverIds.map((id, idx) => {
       const active = this.props.serverId === id ? true : false;
       return (<ServerIndex
@@ -64,6 +55,7 @@ class ServerShow extends React.Component {
           <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
             <i className="fas fa-users"></i>
           </Link>
+          <div className='online-friends-count'>0 Online</div>
           <div className='separator'></div>
             {servers}
           <button id='create-server-form' onClick={this.props.createForm}>
@@ -78,7 +70,6 @@ class ServerShow extends React.Component {
       </div>
     );
   }
-}
 }
 
 export default ServerShow;
