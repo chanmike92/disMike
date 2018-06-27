@@ -8,19 +8,19 @@ const ServerIndex = (props) => {
   const firstChannel = props.server.channel_ids[0] ? props.server.channel_ids[0] : "";
   const nameArr = props.server.name.split(" ");
   let serverNameIcon = "";
-  nameArr.forEach((word, idx) => {
-    if (word[0]) {
-      serverNameIcon = serverNameIcon + word[0];
-    }
-  });
+  if (!props.server.image_url) {
+    nameArr.forEach((word, idx) => {
+      if (word[0]) {
+        serverNameIcon = serverNameIcon + word[0];
+      }
+    });
+  }
 
-  // const iconPic = () =>
     return (
-    <li className={ iconClass }>
+    <li className={ iconClass } style={ { backgroundImage: `url(${props.server.image_url})` } }>
       <Link className='server-links'
-        to={`/${props.server.id}/${firstChannel}`}>
-        <image src={ props.server.image_url }>{ serverNameIcon }</image>
-
+        to={`/${props.server.id}/${firstChannel}`} >
+        { serverNameIcon }
       </Link>
     </li>
   );

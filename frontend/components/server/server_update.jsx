@@ -79,7 +79,7 @@ class ServerUpdate extends React.Component {
                 <input id="fileUploadInput"onChange={this.handleFileUpload}
                   type='file' accept="image/gif, image/jpeg, image/png">
                  </input>
-                 <div className='server-acronym'>{ (this.state.image_url === "" || this.state.image_url === null) ? "" : serverNameIcon }</div>
+                 <div className='server-acronym'>{ (this.state.image_url === "" || this.state.image_url === null) ? serverNameIcon : "" }</div>
                    <div className='profile-picture-hint'>Change Icon</div>
               </div>
             </div>

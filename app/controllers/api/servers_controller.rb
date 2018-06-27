@@ -78,7 +78,7 @@ class Api::ServersController < ApplicationController
   end
 
   def update
-    debugger
+
     @server = current_user.owned_servers.find(params[:id])
     @server.image = params[:server][:image]
     if @server.save
