@@ -264,7 +264,7 @@
   font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0;
-  margin-left: 6px;
+  margin-left: 10px;
   text-transform: none;
   text-align: center;
   align-items: baseline;
@@ -315,10 +315,14 @@
 
 .message-user-name {
   font-size: inherit;
-  line-height: inherit;
-  font-family: inherit;
-  margin-right: 20px;
-  color: blue;
+      color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  margin: 0;
+  padding: 0;
+  vertical-align: baseline;
+
 }
 
 .grouped-message-list {

@@ -12,6 +12,7 @@
     // z-index: -100;
     opacity: 0;
     transform: translateZ(0);
-    transition: visibility 1500ms linear 3000ms, opacity 3000ms;
+    transition-delay: 3000ms;
+    transition: visibility 1000ms linear 1000ms, opacity 3000ms 1s ease;
   }
 }
