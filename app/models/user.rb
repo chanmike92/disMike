@@ -3,7 +3,12 @@ class User < ApplicationRecord
   validates :email, email: true
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
-  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "dismike-logo.png"
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" },
+  default_url: ["discord-user-icon-1.png",
+    "discord-user-icon-2.png",
+    "discord-user-icon-3.png",
+    "discord-user-icon-4.png"
+  ].sample
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   # validates :image, attachment_presence: true
   # validates_with AttachmentPresenceValidator, attributes: :image
@@ -79,6 +84,26 @@ class User < ApplicationRecord
     self.save!
     self.session_token
   end
+
+  # def set_default_profile_picture
+  #   default = ["app/assets/images/discord-user-icon-4.png",
+  #     "app/assets/images/discord-user-icon-4.png",
+  #     "app/assets/images/discord-user-icon-4.png",
+  #     "app/assets/images/discord-user-icon-4.png"
+  #   ].sample
+  #   # discord-user-icon-2', 'discord-user-icon-3', 'discord-user-icon-4'
+  #   # image_file = File.new(default)
+  #   # debugger
+  #   #
+  #   # self.image = ActionDispatch::Http::UploadedFile.new(
+  #   #     :filename => File.basename(image_file),
+  #   #     :tempfile => image_file,
+  #   #     :contenttype => "image/png",
+  #   #   )
+  #   # self.image = image_file
+  #   img = File.open(File.join(Rails.root, default))
+  #   self.update(image: img)
+  # end
 
   private
   def ensure_session_token
