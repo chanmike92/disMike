@@ -1,5 +1,5 @@
 import React from 'react';
-import { connect } from 'react-redux'
+import { connect, withRouter } from 'react-redux';
 
 const Loading = (props) => {
   const loadingMessages = [
@@ -11,28 +11,20 @@ const Loading = (props) => {
   ];
   let currentMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
 
-
+  const loadingContainer = props.loaded ? "loading-container loaded" : "loading-container";
 
   return (
-    <div className='loading-container'>
+    <div className={ loadingContainer }>
       <video className='loading-logo' loop autoPlay>
           <source src='https://s3.amazonaws.com/dismikechan-app-name-dev/discord-load2.webm' type='video/webm'></source>
           <source src='https://s3.amazonaws.com/dismikechan-app-name-dev/discord-load1.mp4' type='video/mp4'></source>
       </video>
       <div className='loading-message-section'>
-
         <div className="loading-message">{ currentMessage }</div>
-        <div className="loading-message">{props.loading ? "READY" : "LOADING"}</div>
+        <div className="loading-message">{props.loaded ? "READY" : "LOADING"}</div>
       </div>
-
     </div>
   );
 };
 
-const mapStateToProps = (state, ownProps) => {
-  return {
-    loading: state.ui.loading.loaded,
-  };
-};
-
-export default connect(mapStateToProps, null)(Loading);
+export default Loading;

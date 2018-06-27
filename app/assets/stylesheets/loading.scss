@@ -1,0 +1,17 @@
+.loading-container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+    background-color: #36393e;
+  justify-content: center;
+  position: absolute;
+  z-index: 50;
+  &.loaded {
+    visibility: hidden;
+    // z-index: -100;
+    opacity: 0;
+    transform: translateZ(0);
+    transition: visibility 1500ms linear 3000ms, opacity 3000ms;
+  }
+}

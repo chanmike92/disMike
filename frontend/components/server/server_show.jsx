@@ -49,7 +49,6 @@ class ServerShow extends React.Component {
     const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
 
     return (
-      <div className='maincomponent-container' onClick={ dropdown }>
         <div className='server-container'>
 
           <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
@@ -66,8 +65,7 @@ class ServerShow extends React.Component {
           <a href='https://www.linkedin.com/in/chanmike92' className='server-icons'><i className="fab fa-linkedin-in"></i></a>
           <a href='http://mikechan.me' className='server-icons'><i className="fas fa-briefcase"></i></a>
         </div>
-          { nextComponent }
-      </div>
+
     );
   }
 }

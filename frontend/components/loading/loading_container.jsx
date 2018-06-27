@@ -4,15 +4,12 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 
-const mapStateToProps = state => {
-  return ({
-  });
+const mapStateToProps = (state, ownProps) => {
+
+  return {
+    loaded: state.ui.loading.loaded,
+    displayload: state.ui.loading.displayload
+  };
 };
 
-const mapDispatchToProps = dispatch => {
-  return ({
-
-  });
-};
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Loading));
+export default connect(mapStateToProps, null)(Loading);

@@ -40,15 +40,6 @@
   margin: 0 auto;
 }
 
-.loading-container {
-  height: 100%;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-    background-color: #36393e;
-  justify-content: center;
-}
-
 @-webkit-keyframes rotating {
   from {
     -webkit-transform: rotate(0deg);
