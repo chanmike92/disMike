@@ -5,7 +5,7 @@ export const RECEIVE_SESSION_ERRORS = 'RECEIVE_SESSION_ERRORS';
 export const DELETE_CURRENT_USER = 'DELETE_CURRENT_USER';
 
 export const receiveCurrentUser = (user) => {
-
+  debugger
   return {
     type: RECEIVE_CURRENT_USER,
     user

@@ -4,17 +4,14 @@ class User < ApplicationRecord
   validates :password_digest, presence: true
   validates :password, length: { minimum: 6, allow_nil: true }
   has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" },
-  default_url: ["discord-user-icon-1.png",
-    "discord-user-icon-2.png",
-    "discord-user-icon-3.png",
-    "discord-user-icon-4.png"
-  ].sample
+  default_url: "discord-user-icon-1.png"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   # validates :image, attachment_presence: true
   # validates_with AttachmentPresenceValidator, attributes: :image
   # validates_with AttachmentSizeValidator, attributes: :image, less_than: 1.megabytes
 
   after_initialize :ensure_session_token
+  after_create :set_default_profile_picture
 
   has_many :owned_servers,
     class_name: :Server,
@@ -85,25 +82,25 @@ class User < ApplicationRecord
     self.session_token
   end
 
-  # def set_default_profile_picture
-  #   default = ["app/assets/images/discord-user-icon-4.png",
-  #     "app/assets/images/discord-user-icon-4.png",
-  #     "app/assets/images/discord-user-icon-4.png",
-  #     "app/assets/images/discord-user-icon-4.png"
-  #   ].sample
-  #   # discord-user-icon-2', 'discord-user-icon-3', 'discord-user-icon-4'
-  #   # image_file = File.new(default)
-  #   # debugger
-  #   #
-  #   # self.image = ActionDispatch::Http::UploadedFile.new(
-  #   #     :filename => File.basename(image_file),
-  #   #     :tempfile => image_file,
-  #   #     :contenttype => "image/png",
-  #   #   )
-  #   # self.image = image_file
-  #   img = File.open(File.join(Rails.root, default))
-  #   self.update(image: img)
-  # end
+  def set_default_profile_picture
+    default = ["app/assets/images/discord-user-icon-1.png",
+      "app/assets/images/discord-user-icon-2.png",
+      "app/assets/images/discord-user-icon-3.png",
+      "app/assets/images/discord-user-icon-4.png"
+    ].sample
+    # discord-user-icon-2', 'discord-user-icon-3', 'discord-user-icon-4'
+    # image_file = File.new(default)
+    # debugger
+    #
+    # self.image = ActionDispatch::Http::UploadedFile.new(
+    #     :filename => File.basename(image_file),
+    #     :tempfile => image_file,
+    #     :contenttype => "image/png",
+    #   )
+    # self.image = image_file
+    img = File.open(File.join(Rails.root, default))
+    self.update(image: img)
+  end
 
   private
   def ensure_session_token

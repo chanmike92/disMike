@@ -15,7 +15,7 @@ class ServerShow extends React.Component {
     // this.props.fetchAllFriends().then(this.props.fetchAllServers()).then((setTimeout(() => this.setState({loaded: true}), 3000)));
     this.props.fetchCurrentUser(this.props.currentUser.id).then((setTimeout(() => this.setState({loaded: true}), 3000)));
     const validServers = this.props.serverIds;
-    if (validServers[this.props.serverId]) {
+    if (this.props.serverId || this.props.channelId) {
 
     } else {
         this.props.history.push(`/@me/`);
