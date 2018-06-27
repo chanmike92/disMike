@@ -89,7 +89,7 @@ class User < ApplicationRecord
       "app/assets/images/discord-user-icon-4.png"
     ].sample
     # image_file = File.new(default)
-    # debugger
+    #
     #
     # self.image = ActionDispatch::Http::UploadedFile.new(
     #     :filename => File.basename(image_file),

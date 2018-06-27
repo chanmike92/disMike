@@ -33,7 +33,7 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = current_user
-    debugger
+
     @user.image = params[:user][:image]
     if @user.save
       @friends = @user.friends
