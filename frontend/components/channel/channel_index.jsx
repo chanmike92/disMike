@@ -73,13 +73,11 @@ const ChannelIndex = (props) => {
     const channelName = props.channel.name ? props.channel.name : "";
     return (
       <li className={ channelClass }>
-        <div className='channel-name-container'>
-          <Link
-            to={`/${props.serverId}/${props.id}`}
-            className='channel-link-item'>
-            # <div className={ channelNameClass }>{ channelName }</div>
-          </Link>
-        </div>
+        <Link
+          to={`/${props.serverId}/${props.id}`}
+          className='channel-link-item'>
+          # <div className={ channelNameClass }>{ channelName }</div>
+        </Link>
         {iconButtons}
       </li>
     );

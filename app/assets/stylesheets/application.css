@@ -63,6 +63,32 @@
   color: #7289da;
 }
 
+.user-image-icons {
+  height: 30px;
+  width: 30px;
+  margin-right: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.online-status-icon {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+      border-color: #2f3136;
+      background-clip: padding-box;
+    border: 2px solid #f6f6f7;
+    border-radius: 999px;
+    bottom: -4px;
+    height: 10px;
+    right: -2px;
+    width: 10px;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
 .purple-back {
   background: #7289da;
   -webkit-transition: background-color 0.2s ease-out;
@@ -77,6 +103,10 @@ transition: background-color .2s ease-out;
 
 .green {
   color: #3ca374;
+}
+
+.grey-back {
+  background-color: #747f8d;
 }
 
 .active-spin {

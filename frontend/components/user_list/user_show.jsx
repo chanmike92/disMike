@@ -19,30 +19,58 @@ class UserShow extends React.Component {
 
   render() {
 
-    const users = this.props.userIds.map((userId, idx) => {
+    // const users = this.props.userIds.map((userId, idx) => {
+    //   if (this.props.users[userId]) {
+    //   return (<UserIndex
+    //   user={ this.props.users[userId] }
+    //   userId={ userId }
+    //   id= { userId }
+    //   key={ idx }
+    //   currentServerOwnerId={this.props.currentServerOwnerId}
+    //   />
+    //   );
+    //   }
+    // });
+
+    const onlineUsers = [];
+    const offlineUsers = [];
+
+    this.props.userIds.map((userId, idx) => {
       if (this.props.users[userId]) {
-      return (<UserIndex
-      user={ this.props.users[userId] }
-      userId={ userId }
-      id= { userId }
-      key={ idx }
-      currentServerOwnerId={this.props.currentServerOwnerId}
-      />
-      );
+        if (this.props.users[userId].online_status) {
+          onlineUsers.push(
+            <UserIndex
+            user={ this.props.users[userId] }
+            userId={ userId }
+            id= { userId }
+            key={ idx }
+            currentServerOwnerId={this.props.currentServerOwnerId}
+          />);
+        } else {
+          offlineUsers.push(
+            <UserIndex
+            user={ this.props.users[userId] }
+            userId={ userId }
+            id= { userId }
+            key={ idx }
+            currentServerOwnerId={this.props.currentServerOwnerId}
+          />);
+        }
       }
     });
 
-    
+
 
     return (
       <div className='user-container'>
-        <div className='user-counter'>
-          Members - {users.length}
-        </div>
-
-        <ul className='user-list-container'>
-          { users }
-        </ul>
+          <div className='user-counter'>
+            Online - { onlineUsers.length }
+          </div>
+          { onlineUsers }
+          <div className='user-counter'>
+            Offline - { offlineUsers.length }
+          </div>
+          { offlineUsers }
       </div>
     );
   }

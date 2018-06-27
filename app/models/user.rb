@@ -88,7 +88,6 @@ class User < ApplicationRecord
       "app/assets/images/discord-user-icon-3.png",
       "app/assets/images/discord-user-icon-4.png"
     ].sample
-    # discord-user-icon-2', 'discord-user-icon-3', 'discord-user-icon-4'
     # image_file = File.new(default)
     # debugger
     #
