@@ -12,7 +12,7 @@ class Api::DmsController < ApplicationController
 
   def create
     @dm = Dmchannel.new(dmchannel_params)
-
+    #@dm = Dmchannel.dms
     if @channel.save
       Serverchannel.create(server_id: params[:id], channel_id: @channel.id)
       render 'api/channels/show'

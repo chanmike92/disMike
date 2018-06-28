@@ -90,7 +90,7 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
       case 'searchUsers':
         component =
         <div className='modal-container'>
-            <ServerUpdateContainer server={ server }/>
+            <UserSearchContainer currentUser={ currentUser }/>
         </div>;
       break;
       case 'logout':

@@ -52,10 +52,11 @@ class ServerShow extends React.Component {
             <span className='create-sign'>+</span>
           </button>
           <div className='separator'></div>
-          <a href='https://www.github.com/chanmike92' className='server-icons'><i className="fab fa-github"></i></a>
-          <a href='https://www.linkedin.com/in/chanmike92' className='server-icons'><i className="fab fa-linkedin-in"></i></a>
-          <a href='http://mikechan.me' className='server-icons'><i className="fas fa-briefcase"></i></a>
+          <a href='https://www.github.com/chanmike92' target="_blank" className='server-icons'><i className="fab fa-github"></i></a>
+          <a href='https://www.linkedin.com/in/chanmike92' target="_blank" className='server-icons'><i className="fab fa-linkedin-in"></i></a>
+          <a href='http://mikechan.me' target="_blank" className='server-icons'><i className="fas fa-briefcase"></i></a>
         </div>
+
 
     );
   }
