@@ -32,4 +32,4 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 
-export const AuthRoute = withRouter(connect(mapStateToProps, null)(Auth));
+export const AuthRoute = withRouter(connect(mapStateToProps)(Auth));

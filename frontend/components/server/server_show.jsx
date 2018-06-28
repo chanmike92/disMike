@@ -38,15 +38,6 @@ class ServerShow extends React.Component {
     });
 
     const activeServer = this.props.serverId === '@me' ? "server-icons active-personal-server" : "server-icons";
-    const nextComponent = this.props.serverId === '@me' ? <DmChannelShowContainer serverId={ this.props.serverId }
-    channelId={ parseInt(this.props.channelId) } />
-    :
-    <ChannelShowContainer
-      serverId={ this.props.serverId }
-      channelId={ this.props.channelId }
-      />;
-
-    const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
 
     return (
         <div className='server-container'>
