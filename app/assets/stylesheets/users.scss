@@ -84,22 +84,23 @@
 }
 
 .user-counter {
+  padding-top: 20px;
+  padding-left: 16px;
+  padding-right: 8px;
   width: 100%;
   align-items: center;
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
   box-sizing: border-box;
   color: #fff;
   display: flex;
   color: #72767d;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 500;
-  height: 48px;
-  padding: 0 12px 0 16px;
+  height: 40px;
+  line-height: 20px;
   transition: background-color .15s ease;
   z-index: 3;
   position: relative;
   font-style: inherit;
-  justify-content: center;
   align-items: center;
   margin-bottom: 10px;
 }

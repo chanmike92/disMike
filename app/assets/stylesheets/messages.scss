@@ -113,6 +113,7 @@
 .bottom-message-container {
   box-sizing: border-box;
   display: flex;
+  min-width: 250px;
   align-items: center;
   justify-content: space-between;
   flex-direction: column;
