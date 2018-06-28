@@ -16,11 +16,16 @@ const mapStateToProps = (state, ownProps) => {
   const servers =  state.entities.servers || {};
   const serverId = (ownProps.location.pathname.split('/')[1]);
   const channelId = (ownProps.location.pathname.split('/')[2]);
+  const currentUser = state.session.user || {};
   const dropdown = state.ui.dropdown;
-
+  const onlineFriends = Object.values(state.entities.users).filter(user => {
+    return user.online_status === true && currentUser.friends_id.includes(user.id);
+  });
+  debugger
   return ({
+    onlineFriends,
+    currentUser,
     dropdown,
-    currentUser: state.session.user || {},
     serverIds: Object.keys(servers),
     servers,
     errors: state.errors.server || [],
