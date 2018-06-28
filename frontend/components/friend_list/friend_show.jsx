@@ -3,8 +3,8 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const FriendShow = (props) => {
 
-  const onlineStatus = props.user.online ? "online-status online" : "online-status offline";
-  const onlineStatusName = props.user.online ? "Online" : "Offline";
+  const onlineStatus = props.user.online_status ? "online-status online" : "online-status offline";
+  const onlineStatusName = props.user.online_status ? "Online" : "Offline";
 
   // const iconPic = () =>
 
