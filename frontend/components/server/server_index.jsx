@@ -18,7 +18,7 @@ const ServerIndex = (props) => {
 
   const handleClick = (e) => {
     e.preventDefault();
-
+    debugger
   };
     return (
     <li className={ iconClass } style={ { backgroundImage: `url(${props.server.image_url})` } }>

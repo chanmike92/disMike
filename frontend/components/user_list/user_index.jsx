@@ -5,10 +5,9 @@ const UserIndex = (props) => {
 
 
   const owner = (props.currentServerOwnerId === props.userId) ?
-  <div className='owner-icon'>
-  </div>
+  <div className='owner-icon'></div>
     :
-  <div className='not-owner-icon'></div>;
+  "";
 
   const online = props.user.online_status ? "online-status-icon green-back" : "online-status-icon grey-back";
 
@@ -19,7 +18,10 @@ const UserIndex = (props) => {
           <img className='profile-picture' src={ props.user.image_url } />
           <div className={ online }></div>
         </div>
-        { props.user.username }
+        <div className='user-name'>
+          { props.user.username }
+        </div>
+        { owner }
       </div>
     </li>
 );
