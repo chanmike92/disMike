@@ -73,36 +73,7 @@ class ChannelShow extends React.Component {
         }
       }
     }
-    // const channels = this.props.channels.map((channel, idx) => {
-    // const active = this.props.channelId === channel.id ? true : false;
-    // let currentChannel = <ChannelIndex
-    //   key={ idx }
-    //   id={ channel.id }
-    //   currentUserId={ this.props.currentUserId }
-    //   serverId={ this.props.serverId }
-    //   channelId={ this.props.channelId }
-    //   channel={ channel }
-    //   updateForm={this.props.updateForm}
-    //   deleteChannel={this.props.deleteChannel}
-    //   fetchAChannel={this.props.fetchAChannel}
-    //   fetchAServer={this.props.fetchAServer}
-    //   currentServer={this.props.currentServer}
-    //   currentServerOwnerId={this.props.currentServerOwnerId}
-    //   currentUserId={this.props.currentUserId}
-    //   active={ active }
-    //   />;
-    //   if (this.state.toggleChannelDropdown) {
-    //     return currentChannel;
-    //   } else {
-    //     if (active) {
-    //       debugger
-    //       return currentChannel;
-    //     }
-    //   }
-    // });
-    debugger
-    // return channels;
-  return channels;
+    return channels;
   }
 
   handleChannelDropdown() {
@@ -134,6 +105,7 @@ class ChannelShow extends React.Component {
 
     const dropdownImg = this.props.dropdown === "server" ? "exit.svg" : "arrow_down.svg";
     const dropdownActive = this.props.dropdown === "server" ? "server-dropdown-image dropdown-active" : "server-dropdown-image";
+    const channelDropdown = this.state.toggleChannelDropdown ? "channel-dropdown-image dropdown-active" : "channel-dropdown-image";
 
     return (
       <div className='subcomponent-container'>
@@ -153,7 +125,10 @@ class ChannelShow extends React.Component {
           <div className='bottom-channels-container'>
             <div className='text-channel-container'>
               <div className='text-channel-item-container'>
-                <div className='text-channel-name' onClick={ this.handleChannelDropdown }>TEXT CHANNELS</div>
+                <div className='text-channel-name' onClick={ this.handleChannelDropdown }>
+                  <div className={ channelDropdown }></div>
+                  TEXT CHANNELS
+                </div>
                 {createButton}
               </div>
               <ul className='channel-list-container'>

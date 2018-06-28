@@ -101,6 +101,9 @@
 }
 
 .text-channel-name {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
   flex: 1 1 auto;
   color: #72767d;
   font-size: 12px;
@@ -124,6 +127,7 @@
 
 .text-channel-container {
   display: flex;
+  min-height: 90px;
   justify-content: center;
   align-items: center;
   flex-direction: column;
@@ -188,7 +192,7 @@
   border-top: 1px solid rgba(79,84,92,.6);
   box-sizing: border-box;
   padding: 10px;
-  height: 52px;
+  min-height: 52px;
   width: 100%;
   display: flex;
   justify-content: space-between;

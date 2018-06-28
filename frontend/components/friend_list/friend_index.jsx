@@ -22,19 +22,19 @@ class FriendIndex extends React.Component {
   }
 
   render() {
-
+      // if (user) {
     const friends = this.props.friendList.map((userId, idx) => {
       let user = this.props.users[userId];
-      if (user) {
-        switch (this.state.selector)
+
+        // switch (this.state.selector)
           return (<FriendShow
           user={ this.props.users[userId] }
           id= { userId }
           key={ idx }
           />);
         // }
-      }
-    });
+      });
+    // });
 
     return (
       <div className='message-container'>
