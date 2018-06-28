@@ -10,7 +10,7 @@ import { loaded } from '../actions/loading_actions';
 
 
 const Protected = ({ component: Component, path, loggedIn, exact }) => {
-  debugger
+
   return (
     <Route
       path={path}

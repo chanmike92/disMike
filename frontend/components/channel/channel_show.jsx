@@ -9,7 +9,12 @@ import ServerDropdownContainer from '../dropdown/server_dropdown_container';
 class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {
+      toggleChannelDropdown: false,
+    };
     this.renderChannels = this.renderChannels.bind(this);
+
+    this.handleChannelDropdown = this.handleChannelDropdown.bind(this);
   }
 
   componentDidMount() {
@@ -39,29 +44,70 @@ class ChannelShow extends React.Component {
   }
 
   renderChannels() {
-    const channels = this.props.channels.map((channel, idx) => {
-        const active = this.props.channelId === channel.id ? true : false;
+    let channels = [];
+    for (let i = 0; i < this.props.channels.length; i++) {
 
-        return (<ChannelIndex
-        key={ idx }
-        id={ channel.id }
-        currentUserId={ this.props.currentUserId }
-        serverId={ this.props.serverId }
-        channelId={ this.props.channelId }
-        channel={ channel }
-        updateForm={this.props.updateForm}
-        deleteChannel={this.props.deleteChannel}
-        fetchAChannel={this.props.fetchAChannel}
-        fetchAServer={this.props.fetchAServer}
-        currentServer={this.props.currentServer}
-        currentServerOwnerId={this.props.currentServerOwnerId}
-        currentUserId={this.props.currentUserId}
-        active={ active }
-        />);
-      });
+      let channel = this.props.channels[i];
+      let active = this.props.channelId == channel.id ? true : false;
+      let a = <ChannelIndex
+      key={ i }
+      id={ channel.id }
+      currentUserId={ this.props.currentUserId }
+      serverId={ this.props.serverId }
+      channelId={ this.props.channelId }
+      channel={ channel }
+      updateForm={this.props.updateForm}
+      deleteChannel={this.props.deleteChannel}
+      fetchAChannel={this.props.fetchAChannel}
+      fetchAServer={this.props.fetchAServer}
+      currentServer={this.props.currentServer}
+      currentServerOwnerId={this.props.currentServerOwnerId}
+      currentUserId={this.props.currentUserId}
+      active={ active }
+      />;
+      if (this.state.toggleChannelDropdown) {
+        channels.push(a);
+      } else {
+        if (active) {
+          channels.push(a);
+        }
+      }
+    }
+    // const channels = this.props.channels.map((channel, idx) => {
+    // const active = this.props.channelId === channel.id ? true : false;
+    // let currentChannel = <ChannelIndex
+    //   key={ idx }
+    //   id={ channel.id }
+    //   currentUserId={ this.props.currentUserId }
+    //   serverId={ this.props.serverId }
+    //   channelId={ this.props.channelId }
+    //   channel={ channel }
+    //   updateForm={this.props.updateForm}
+    //   deleteChannel={this.props.deleteChannel}
+    //   fetchAChannel={this.props.fetchAChannel}
+    //   fetchAServer={this.props.fetchAServer}
+    //   currentServer={this.props.currentServer}
+    //   currentServerOwnerId={this.props.currentServerOwnerId}
+    //   currentUserId={this.props.currentUserId}
+    //   active={ active }
+    //   />;
+    //   if (this.state.toggleChannelDropdown) {
+    //     return currentChannel;
+    //   } else {
+    //     if (active) {
+    //       debugger
+    //       return currentChannel;
+    //     }
+    //   }
+    // });
+    debugger
+    // return channels;
   return channels;
   }
 
+  handleChannelDropdown() {
+    this.setState({ toggleChannelDropdown: !this.state.toggleChannelDropdown});
+  }
 
 
   render() {
@@ -107,7 +153,7 @@ class ChannelShow extends React.Component {
           <div className='bottom-channels-container'>
             <div className='text-channel-container'>
               <div className='text-channel-item-container'>
-                <div className='text-channel-name'>TEXT CHANNELS</div>
+                <div className='text-channel-name' onClick={ this.handleChannelDropdown }>TEXT CHANNELS</div>
                 {createButton}
               </div>
               <ul className='channel-list-container'>

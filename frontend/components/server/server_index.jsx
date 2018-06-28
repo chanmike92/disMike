@@ -16,10 +16,12 @@ const ServerIndex = (props) => {
     });
   }
 
+  const handleClick = (e) => {
+    debugger
+  };
     return (
     <li className={ iconClass } style={ { backgroundImage: `url(${props.server.image_url})` } }>
-      <Link className='server-links'
-        to={`/${props.server.id}/${firstChannel}`} >
+      <Link className='server-links' onContextMenu={ handleClick } to={`/${props.server.id}/${firstChannel}`}>
         { serverNameIcon }
       </Link>
     </li>

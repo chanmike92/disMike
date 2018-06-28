@@ -10,6 +10,10 @@ import Modal from '../modal/modal';
 class MainComponent extends React.Component{
   constructor(props) {
     super(props);
+    this.state = {
+      x: 0,
+      y: 0
+    };
   }
 
   componentDidMount() {

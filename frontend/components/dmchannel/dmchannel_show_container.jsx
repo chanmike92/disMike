@@ -8,13 +8,15 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUser = state.session.currentUser || {};
+  const currentUser = state.session.user || {};
   const friendList = currentUser.friends_id || [];
   const friendCount = friendList.length || "";
+  const channelId = ownProps.channelId;
   return ({
     currentUser,
     friendList,
     friendCount,
+    channelId
   });
 };
 
