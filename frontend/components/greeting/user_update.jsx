@@ -45,7 +45,6 @@ class UserUpdate extends React.Component {
         <label className='modal-title user-update-title'>Edit
           <div className='purple' style={ {margin: "8px"}}>{ `${this.props.currentUser.username}\'s` }</div> profile picture</label>
         <div className="profile-picture-update-container">
-          <label>Profile Picture</label>
           <div className='profile-picture-upload'>
             <div className="icon-preview" style={ { backgroundImage: `url(${this.state.image_url})` } }>
               <input id="fileUploadInput"onChange={this.handleFileUpload}
