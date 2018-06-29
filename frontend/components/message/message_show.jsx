@@ -59,9 +59,9 @@ class MessageShow extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    this.scrollBottom();
-  }
+  // componentDidUpdate() {
+  //   this.scrollBottom();
+  // }
 
   scrollBottom() {
     const messageList = this.refs.messageList;

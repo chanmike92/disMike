@@ -42,7 +42,7 @@ class User < ApplicationRecord
     source: :friend
 
   has_many :dmsubscriptions,
-    class_name: :dmsubscriber,
+    class_name: :Dmsubscriber,
     primary_key: :id,
     foreign_key: :user_id
 
@@ -53,6 +53,10 @@ class User < ApplicationRecord
   has_many :companions,
     through: :subscribed_servers,
     source: :subscribed_users
+
+  has_many :dmusers,
+    through: :dmchannels,
+    source: :subscribers
 
   attr_reader :password
 

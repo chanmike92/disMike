@@ -5,7 +5,7 @@ if @user
 
   json.partial! 'api/servers/serverindex', server: @servers
 
-  json.friends do
-    json.partial! 'api/users/userindex', users: @friends
+  json.users do
+    json.partial! 'api/users/userindex', users: @users
   end
 end
