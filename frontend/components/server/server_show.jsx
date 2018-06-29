@@ -38,7 +38,6 @@ class ServerShow extends React.Component {
     });
 
     const activeServer = this.props.serverId === '@me' ? "server-icons active-personal-server" : "server-icons";
-
     return (
         <div className='server-container'>
 

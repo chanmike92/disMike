@@ -5,6 +5,7 @@ import MessageIndexBeginning from './message_index_beginning';
 import UserShowContainer from '../user_list/user_show_container';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
+import * as ReactDOM from 'react-dom';
 
 class MessageShow extends React.Component {
   constructor(props) {
@@ -58,14 +59,25 @@ class MessageShow extends React.Component {
     }
   }
 
-  scrollBottom() {
-    const element = document.getElementById("messages");
-    if (element) {
-      setTimeout(() => {
-        element.scrollTop = element.scrollHeight;
-      }, 10);
-    }
+  componentDidUpdate() {
+    this.scrollBottom();
   }
+
+  scrollBottom() {
+    const messageList = this.refs.messageList;
+    const scrollHeight = messageList.scrollHeight;
+    const height = messageList.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    ReactDOM.findDOMNode(messageList).scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
+  }
+  // scrollBottom() {
+  //   const element = document.getElementById("messages");
+  //   if (element) {
+  //     setTimeout(() => {
+  //       element.scrollTop = element.scrollHeight;
+  //     }, 10);
+  //   }
+  // }
 
   generateDate(date) {
 
@@ -191,7 +203,7 @@ class MessageShow extends React.Component {
             <div className='bottom-container'>
               <div className='bottom-container-divider'>
                 <div className='bottom-message-container'>
-                  <ul id='messages' className='message-list-container'>
+                  <ul id='messages' ref='messageList' className='message-list-container'>
                     {messages}
                   </ul>
                   <div className='message-form'>

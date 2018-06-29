@@ -2,7 +2,6 @@
 import React from 'react';
 import TextareaAutosize from 'react-autosize-textarea';
 import { withRouter, Link, Redirect } from 'react-router-dom';
-import 'emoji-mart/css/emoji-mart.css';
 import { Picker } from 'emoji-mart';
 
 
