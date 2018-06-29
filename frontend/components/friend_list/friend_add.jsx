@@ -38,10 +38,10 @@ class FriendAdd extends React.Component {
           <label className='modal-title'>Add A Friend</label>
           <label className='channel-delete-message'>You can add a friend with their DisMikeTag.</label>
         </div>
-        <form onSubmit={this.handleSubmit}>
+        <form style={ {width: '90%'} } onSubmit={this.handleSubmit}>
           <div className='input-container'>
             <label className='channel-label'>ID</label>
-            <input className='channel-input-field' autoFocus type='text' placeholder="Enter a DisMikeTag#0000" onChange={this.handleInput('id')} value={ this.state.id }></input>
+            <input style={ {width: '100%'} } className='channel-input-field' autoFocus type='text' placeholder="Enter a DisMikeTag#0000" onChange={this.handleInput('id')} value={ this.state.id }></input>
           </div>
           <div className="channel-submit-buttons">
             <button className='submit-button no' type='submit'>Add</button>

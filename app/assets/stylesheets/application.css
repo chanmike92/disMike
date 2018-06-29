@@ -307,7 +307,7 @@ transition: background-color .2s ease-out;
 }
 
 .no {
-  background: none;
+  background-color: transparent;
   color: white;
 }
 
