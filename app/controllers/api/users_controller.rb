@@ -36,7 +36,7 @@ class Api::UsersController < ApplicationController
 
     @user.image = params[:user][:image]
     if @user.save
-      @friends = @user.friends
+      @friendships = @user.friendships.includes(:friend)
       @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
       render 'api/users/payload'
     else
@@ -46,10 +46,10 @@ class Api::UsersController < ApplicationController
 
   def payload
     @user = current_user
-    debugger
+
     @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
 
-    @users = (current_user.friends + current_user.companions + current_user.dmusers).uniq
+    @friendships = current_user.friendships.includes(:friend)
 
     render 'api/users/payload'
   end

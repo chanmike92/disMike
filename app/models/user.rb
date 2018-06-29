@@ -35,16 +35,22 @@ class User < ApplicationRecord
   has_many :friendships,
     class_name: :Friendship,
     primary_key: :id,
-    foreign_key: :friend1
+    foreign_key: :friend1,
+    dependent: :destroy
 
   has_many :friends,
     through: :friendships,
     source: :friend
 
+  has_many :possiblefriends,
+    through: :friends,
+    source: :friendship
+
   has_many :dmsubscriptions,
     class_name: :Dmsubscriber,
     primary_key: :id,
-    foreign_key: :user_id
+    foreign_key: :user_id,
+    dependent: :destroy
 
   has_many :dmchannels,
     through: :dmsubscriptions,

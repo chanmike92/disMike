@@ -18,6 +18,7 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const currentUser = state.session.user || {};
   const dropdown = state.ui.dropdown;
+  debugger
   const onlineFriends = Object.values(state.entities.users).filter(user => {
     return user.online_status === true && currentUser.friends_id.includes(user.id);
   });
