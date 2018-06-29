@@ -47,7 +47,7 @@ class Api::UsersController < ApplicationController
   def payload
     @user = current_user
     @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
-      debugger
+
     @users = (current_user.friends + current_user.companions + current_user.dmusers).uniq
 
     render 'api/users/payload'

@@ -57,6 +57,12 @@
   align-items: center;
 }
 
+.friend-active-selector:hover {
+  color: #36393e;
+  background-color: white;
+}
+
+
 .friend-selector {
   width: 100%;
   align-items: center;
@@ -75,6 +81,13 @@
   font-style: inherit;
   border-bottom: 1px hsla(0,0%,100%,.1);
   // justify-content: space-between;
+
+}
+
+
+.friend-active-selector:hover {
+  color: #36393e;
+  background-color: white;
 }
 
 .add-friend-button {
@@ -98,12 +111,17 @@
   text-align: center;
   color: hsla(0,0%,100%,.6);
   font-style: Roboto;
+  &:hover {
+    cursor: pointer;
 
-}
-
-.friend-selector-item:hover {
-  cursor: pointer;
-  background-color: rgba(32, 34, 37, 0.6);
+  };
+  &.friend-active-selector {
+    color: #36393e;
+    background-color: white;
+    &:hover{
+      background-color: white;
+    };
+  };
 }
 
 .verticle-separator {
@@ -192,9 +210,7 @@ border-top: 1px solid hsla(0,0%,100%,.1);
   display: flex;
   padding-top: 20px;
   padding-bottom: 20px;
-
-    align-items: center;
-
+  align-items: center;
 }
 
 .status-container {
