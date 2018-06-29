@@ -38,7 +38,7 @@ class FriendIndex extends React.Component {
           friends.push(friend);
           break;
           case "ONLINE":
-          debugger
+
           if (user.online_status) {
             friends.push(friend);
           }

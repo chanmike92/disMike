@@ -1,5 +1,6 @@
 
 import React from 'react';
+import TextareaAutosize from 'react-autosize-textarea';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 
@@ -52,19 +53,30 @@ class MessageForm extends React.Component {
   }
 
   render() {
-
     return (
-      <div className='message-form'>
-        <form className='form-input' onKeyPress={this.handleSubmit}>
-          <textarea type='text'
-              id='textareaInput'
-              className='message-input-field'
-              onChange={this.handleInput('body')}
-              value={this.state.body}
-              placeholder={`Message #${this.props.currentChannelName}`}>
-          </textarea>
-        </form>
-      </div>
+        <div className='message-text-area'>
+          <form className='message-form-input' onKeyPress={this.handleSubmit}>
+            <div className="message-file-upload">
+              <div className='message-file-upload-icon-wrapper'>
+                <div className='message-file-upload-icon'>
+                a
+                </div>
+              </div>
+              <div className='message-icon-separator'></div>
+            </div>
+            <div className='message-input-field-wrapper'>
+              <TextareaAutosize type='text'
+                  id='textareaInput'
+                  className='message-input-field'
+                  rows="1"
+                  maxRows="6"
+                  onChange={this.handleInput('body')}
+                  value={this.state.body}
+                  placeholder={`Message #${this.props.currentChannelName}`}>
+              </TextareaAutosize>
+            </div>
+          </form>
+        </div>
     );
   }
 }

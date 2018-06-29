@@ -194,7 +194,7 @@ class MessageShow extends React.Component {
                   <ul id='messages' className='message-list-container'>
                     {messages}
                   </ul>
-                  <div className='message-body'>
+                  <div className='message-form'>
                     <MessageFormContainer
                       messageType={ this.props.messageType }
                       channelId={ this.props.channelId }
