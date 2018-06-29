@@ -2,6 +2,9 @@
 import React from 'react';
 import TextareaAutosize from 'react-autosize-textarea';
 import { withRouter, Link, Redirect } from 'react-router-dom';
+import 'emoji-mart/css/emoji-mart.css';
+import { Picker } from 'emoji-mart';
+
 
 
 
@@ -59,7 +62,7 @@ class MessageForm extends React.Component {
             <div className="message-file-upload">
               <div className='message-file-upload-icon-wrapper'>
                 <div className='message-file-upload-icon'>
-                a
+                +
                 </div>
               </div>
               <div className='message-icon-separator'></div>
@@ -68,12 +71,14 @@ class MessageForm extends React.Component {
               <TextareaAutosize type='text'
                   id='textareaInput'
                   className='message-input-field'
-                  rows="1"
-                  maxRows="6"
+                  rows={1}
+                  autoFocus
+                  maxRows={6}
                   onChange={this.handleInput('body')}
                   value={this.state.body}
                   placeholder={`Message #${this.props.currentChannelName}`}>
               </TextareaAutosize>
+
             </div>
           </form>
         </div>

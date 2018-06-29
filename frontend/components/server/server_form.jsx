@@ -37,8 +37,7 @@ class ServerForm extends React.Component {
       <div>
         <label className='server-label'>Name</label>
         <input className='server-input-field' type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
-        <label className='server-label'>Image URL</label>
-        <input className='server-input-field' type='text' onChange={this.handleInput('img_url')} value={this.state.img_url}></input>
+        <div className='spaceholder'></div>
       </div>
     );
   }
