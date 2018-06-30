@@ -34,12 +34,18 @@ class FriendIndex extends React.Component {
 
 
         switch (this.state.selector) {
+          case "ALL":
+          if (user.friendship_status === "ACCEPTED") {
+            friends.push(friend);
+          }
+          break;
           case "PENDING":
-          friends.push(friend);
+          if (user.friendship_status !== "ACCEPTED") {
+            friends.push(friend);
+          }
           break;
           case "ONLINE":
-
-          if (user.online_status) {
+          if (user.online_status && user.friendship_status === "ACCEPTED") {
             friends.push(friend);
           }
           break;
@@ -68,7 +74,7 @@ class FriendIndex extends React.Component {
           <div className='friend-table-header'>
             <div className='friend-table-tab'>Name</div>
             <div className='verticle-separator'></div>
-            <div className='friend-table-tab'>Status</div>
+            <div className='friend-table-tab status'>Status</div>
             <div className='verticle-separator'></div>
           </div>
           <div className='friend-index-container'>

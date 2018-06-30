@@ -17,7 +17,7 @@
   display: flex;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  height: 48px;
+  min-height: 48px;
   padding-left: 8px;
   padding-right: 8px;
   transition: background-color .15s ease;
@@ -127,6 +127,7 @@
 
 .text-channel-container {
   display: flex;
+  width: 100%;
   min-height: 90px;
   height: calc(100% - 61px);
   justify-content: center;

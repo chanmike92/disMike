@@ -72,7 +72,7 @@
   display: flex;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
-  height: 48px;
+  min-height: 48px;
   padding: 0 12px 0 16px;
   transition: background-color .15s ease;
   z-index: 3;
@@ -144,22 +144,26 @@
   box-sizing: border-box;
   display: flex;
   width: 100%;
-  margin-top: 10px;
+  // margin-top: 10px;
   flex-direction: row;
-  padding: 5px;
+  // padding: 5px;
+  min-height: 48px;
   border-bottom: 1px solid hsla(0,0%,100%,.1);
   align-items: center;
 }
 
 .friend-table-tab {
-  width: 200px;
+  min-width: 200px;
   color: hsla(0,0%,100%,.3);
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
-    font-weight: 500;
-    letter-spacing: .025em;
-    text-transform: uppercase;
-    margin-left: 50px;
+  font-weight: 500;
+  letter-spacing: .025em;
+  text-transform: uppercase;
+  margin-left: 50px;
+  &.status {
+    min-width: 250px;
+  }
 }
 
 .friend-form-container {
@@ -169,11 +173,33 @@
 }
 
 .friend-index-container {
+  height: calc(100% - 49px);
   display: flex;
+  overflow-x: hidden;
+  overflow-y: scroll;
   flex-direction: column;
   box-sizing: border-box;
   padding-left: 20px;
   padding-right: 20px;
+  &::-webkit-scrollbar-track{
+     border-radius: 20px;
+     right: 20px;
+     background-color: #484B53;
+     // border: 3px solid #484B53;
+   }
+  &::-webkit-scrollbar {
+     width: 5px;
+     right: 5px;
+     border-right: 10px;
+     border-radius: 20px;
+   }
+  &::-webkit-scrollbar-thumb {
+    border-radius: 15px;
+    right: 3px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background: #2F3136;
+    // border: 3px solid #484B53;
+  }
 }
 
 .friend-submit-form {
@@ -189,7 +215,8 @@
 }
 
 .friend-item-container {
-border-top: 1px solid hsla(0,0%,100%,.1);
+  height: 62px;
+  border-top: 1px solid hsla(0,0%,100%,.1);
 }
 
 .friend-index-container:first-child {
@@ -208,15 +235,17 @@ border-top: 1px solid hsla(0,0%,100%,.1);
 
 .friend-link-item {
   display: flex;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  height: 100%;
   align-items: center;
 }
 
 .status-container {
   display: flex;
+  height: 100%;
   flex-direction: row;
   align-items: center;
+  min-width: 250px;
+  margin-right: 70px;
 }
 
 .online-status {
@@ -238,7 +267,8 @@ border-top: 1px solid hsla(0,0%,100%,.1);
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 300px;
+  min-width: 200px;
+  margin-right: 70px;
 }
 
 .status-name {
@@ -246,4 +276,13 @@ border-top: 1px solid hsla(0,0%,100%,.1);
   font-family: Roboto;
   font-weight: 200;
   font-size: 16px;
+}
+
+.friend-controls-container {
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  // flex-direction: row-reverse;
+  justify-content: flex-end;
 }
