@@ -57,9 +57,6 @@ class ServerShow extends React.Component {
           <a href='https://www.github.com/chanmike92' target="_blank" className='server-icons'><i className="fab fa-github"></i></a>
           <a href='https://www.linkedin.com/in/chanmike92' target="_blank" className='server-icons'><i className="fab fa-linkedin-in"></i></a>
           <a href='http://mikechan.me' target="_blank" className='server-icons'><i className="fas fa-briefcase"></i></a>
-            <div className='server-context-menu' >
-              hello
-            </div>
         </div>
 
 
