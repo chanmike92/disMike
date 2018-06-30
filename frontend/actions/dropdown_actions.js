@@ -12,6 +12,6 @@ export const openDropdown = payload  => {
 export const closeDropdown = () => {
   return {
     type: CLOSE_DROPDOWN,
-    payload: {dropdown: ""}
+    payload: {dropdownType: null}
   };
 };

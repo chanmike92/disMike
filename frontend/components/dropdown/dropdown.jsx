@@ -46,8 +46,8 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
 const mapStateToProps = (state, ownProps) => {
   const dropdownType = state.ui.dropdown.type;
   const dropdownId = state.ui.dropdown.id;
-  const x = state.ui.dropdown.x;
-  const y = state.ui.dropdown.y;
+  const x = state.ui.dropdown.x || 0;
+  const y = state.ui.dropdown.y || 0;
   const serverId = (ownProps.location.pathname.split('/')[1]);
   const server = state.entities.servers[serverId] || {};
   const channelId = (ownProps.location.pathname.split('/')[2]);

@@ -22,8 +22,7 @@ const ServerIndex = (props) => {
     e.preventDefault();
     let x = e.screenX;
     let y = e.screenY;
-
-    openServerDropdown
+    debugger
   };
 
     return (

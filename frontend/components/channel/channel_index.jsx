@@ -6,13 +6,13 @@ const ChannelIndex = (props) => {
     <div className='channel-controls'>
       <button className='fafaicons-container channel-edit' onClick={() => {
           props.history.push(`/${props.serverId}/${props.id}`);
-          props.fetchAChannel(props.id).then(() => props.updateForm());
+          props.updateForm();
         } }>
         <i className="fas fa-edit"></i>
       </button>
       <button className='fafaicons-container channel-delete' onClick={() => {
           props.history.push(`/${props.serverId}/${props.id}`);
-          props.fetchAChannel(props.id).then(() => props.deleteChannel());
+          props.deleteChannel();
         }
           // props.deleteChannel(props.id)
           // .then(() => props.fetchAServer(props.serverId))

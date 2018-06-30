@@ -11,10 +11,17 @@ import Dropdown from '../dropdown/dropdown';
 class MainComponent extends React.Component{
   constructor(props) {
     super(props);
+    this.handleRightClick = this.handleRightClick.bind(this);
   }
 
   componentDidMount() {
     this.props.fetchCurrentUser(this.props.currentUser.id);
+  }
+
+  handleRightClick(e) {
+    e.preventDefault();
+    this.props.closeDropdown;
+    // return null;
   }
 
   render() {
@@ -31,10 +38,10 @@ class MainComponent extends React.Component{
     />;
 
 
-  const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
-
+  // const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
+ // onClick={ dropdown }
     return (
-      <div className='maincomponent-container' onClick={ dropdown }>
+      <div className='maincomponent-container' onClick={ this.props.closeDropdown } onContextMenu={ this.handleClick }>
         <LoadingContainer />
 
         <ServerShowContainer />

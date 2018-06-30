@@ -23,7 +23,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = currentUser.id || "";
   const channel = state.entities.channels[channelId];
   const dropdown = state.ui.dropdown.dropdownType;
-
+  debugger
 
   return ({
     dropdown,
