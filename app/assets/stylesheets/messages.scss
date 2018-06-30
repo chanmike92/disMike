@@ -296,33 +296,42 @@ width: calc(100% - 38px);
   justify-content: center;
   flex: auto;
 }
-&::-moz-placeholder { /* Firefox 19+ */
-  align-self: center;
-}
-&:-ms-input-placeholder { /* IE 10+ */
-  align-self: center;
-}
-&:-moz-placeholder { /* Firefox 18- */
-  align-self: center;
-}
-  // width: 100%;
-  // // box-sizing: border-box;
-  // box-sizing: border-box;
-  //
-  //
-  //
-  // border: none;
-  // outline: none;
-  // color: white;
-  // height: 56px;
-  // font-size: 14px;
-  // font-weight: 400;
-  // resize: none;
-  // user-select: text;
-  // -ms-overflow-style: none;
-  // overflow-wrap: break-word;
-  // word-wrap: break-word;
-  // font-family: 'Roboto', sans-serif;
+  &::placeholder {
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    align-self: center;
+    margin: 0 auto;
+    justify-content: center;
+    flex: auto;
+  }
+  &::-moz-placeholder { /* Firefox 19+ */
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    align-self: center;
+    margin: 0 auto;
+    justify-content: center;
+    flex: auto;
+  }
+  &:-ms-input-placeholder { /* IE 10+ */
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    align-self: center;
+    margin: 0 auto;
+    justify-content: center;
+    flex: auto;
+  }
+  &:-moz-placeholder { /* Firefox 18- */
+    overflow: hidden;
+    overflow-wrap: break-word;
+    text-overflow: ellipsis;
+    align-self: center;
+    margin: 0 auto;
+    justify-content: center;
+    flex: auto;
+  }
   &::-webkit-scrollbar-track{
      border-radius: 20px;
      right: 20px;
@@ -330,7 +339,7 @@ width: calc(100% - 38px);
      // border: 3px solid #484B53;
    }
   &::-webkit-scrollbar {
-     width: 5px;
+     width: 4px;
      right: 5px;
      border-right: 10px;
      border-radius: 20px;

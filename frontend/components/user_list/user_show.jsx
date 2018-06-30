@@ -62,7 +62,8 @@ class UserShow extends React.Component {
 
 
     return (
-      <div className='user-container'>
+      <div style={ {padding: '2px', height: '100%',  width: '240px'} }>
+        <div className='user-container'>
           <div className='user-counter'>
             Online - { onlineUsers.length }
           </div>
@@ -71,6 +72,7 @@ class UserShow extends React.Component {
             Offline - { offlineUsers.length }
           </div>
           { offlineUsers }
+        </div>
       </div>
     );
   }

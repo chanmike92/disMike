@@ -11,24 +11,10 @@ class MessageForm extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {body: '', messagable_id: this.props.channelId, messagable_type: this.props.messageType};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-
-  // componentDidMount() {
-  //
-  //   this.props.fetchAChannel(this.props.match.params.channelId);
-  // }
-  //
-  // componentWillReceiveProps(newProps) {
-  //
-  //   if(newProps.channelId !== this.props.channelId) {
-  //     this.setState({messagable_id: newProps.channelId, messagable_type: newProps.messageType});
-  //     // this.props.fetchAChannel(newProps.channelId)
-  //   }
-  // }
 
   handleSubmit(e) {
       if (e.key === 'Enter') {
@@ -36,10 +22,7 @@ class MessageForm extends React.Component {
       this.props.processForm(message);
       setTimeout(() => {
         this.setState({ body: "" });
-
       }, 0);
-
-
     }
   }
 
@@ -77,7 +60,6 @@ class MessageForm extends React.Component {
                   value={this.state.body}
                   placeholder={`Message #${this.props.currentChannelName}`}>
               </TextareaAutosize>
-
             </div>
             <div className="emoji-button-icon">
               <div className="emoji-inner-icon">

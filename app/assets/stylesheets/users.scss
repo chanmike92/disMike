@@ -12,6 +12,7 @@
 }
 
 .user-container {
+  height: 100%;
   box-sizing: border-box;
   padding-left: 10px;
   padding-right: 10px;
@@ -28,19 +29,26 @@
      margin-bottom: 10px;
      right: 20px;
      background-color: #2F3136;
-     border: 3px solid #36393E;
+     // border: 3px solid #36393E;
    }
   &::-webkit-scrollbar {
-     width: 14px;
-     border-right: 10px;
-     border-radius: 20px;
+    // display: none;
+    right: 2px;
+     width: 5px;
+     // border-right: 10px;
+     border-radius: 5px;
    }
   &::-webkit-scrollbar-thumb {
     border-radius: 15px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background: #202225;
-    border: 3px solid #36393e;
-}
+    // border: 3px solid #36393e;
+  }
+  &:hover {
+    &::-webkit-scrollbar {
+      display: contents;
+    }
+  }
 }
 
 
