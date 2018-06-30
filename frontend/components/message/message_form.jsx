@@ -79,6 +79,11 @@ class MessageForm extends React.Component {
               </TextareaAutosize>
 
             </div>
+            <div className="emoji-button-icon">
+              <div className="emoji-inner-icon">
+                a
+              </div>
+            </div>
           </form>
         </div>
     );

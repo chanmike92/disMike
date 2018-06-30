@@ -123,20 +123,16 @@ class ChannelShow extends React.Component {
             active={ this.props.dropdown }
             />
           <div className='bottom-channels-container'>
-            <div className='text-channel-container'>
-              <div className='text-channel-item-container'>
-                <div className='text-channel-name' onClick={ this.handleChannelDropdown }>
-                  <div className={ channelDropdown }></div>
-                  TEXT CHANNELS
-                </div>
-                {createButton}
+            <div className='text-channel-item-container'>
+              <div className='text-channel-name' onClick={ this.handleChannelDropdown }>
+                <div className={ channelDropdown }></div>
+                TEXT CHANNELS
               </div>
-              <ul className='channel-list-container'>
-                {channels}
-              </ul>
+              {createButton}
             </div>
-            <GreetingContainer />
+            {channels}
           </div>
+          <GreetingContainer />
         </div>
         { messages}
         </div>

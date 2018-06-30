@@ -121,6 +121,23 @@
   transition: color .1s ease-out;
 }
 
+.dm-text-channel-name {
+  width: 100%;
+  min-height: 25px;
+  flex-direction: row;
+  // flex: 1 1 auto;
+  box-sizing: border-box;
+  color: #72767d;
+  font-size: 12px;
+  font-weight: 1000;
+  line-height: 25px;
+  text-transform: uppercase;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 9px 20px;
+}
+
 .text-channel-name:hover {
   cursor: pointer;
 }
@@ -202,10 +219,11 @@
   background-color: rgba(32,34,37,.3);
   color: white;
 }
+
 .bottom-channels-container {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  // justify-content: space-between;
   flex-direction: column;
   height: 100%;
   margin: 0;

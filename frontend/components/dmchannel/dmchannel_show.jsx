@@ -19,20 +19,13 @@ class DmChannelShow extends React.Component {
             </div>
           </div>
           <div className='bottom-channels-container'>
-            <div className='text-channel-container'>
-              <div className='friends-logo' >
-                Friends - { this.props.friendCount }
-              </div>
-              <div className='text-channel-item-container'>
-
-                <div className='text-channel-name'>DIRECT MESSAGES</div>
-              </div>
-              <ul className='channel-list-container'>
-
-              </ul>
+            <div className='friends-logo' >
+              Friends - { this.props.friendCount }
             </div>
-              <GreetingContainer />
+            <div className='dm-text-channel-name'>DIRECT MESSAGES</div>
+
           </div>
+          <GreetingContainer />
         </div>
         <FriendIndexContainer
           friendList={ this.props.friendList }

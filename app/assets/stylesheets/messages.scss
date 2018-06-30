@@ -212,6 +212,26 @@ width: 100%;
   min-width: 51px;
 }
 
+.emoji-button-icon {
+  position: absolute;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  right: 12px;
+  top: 11px;
+  opacity: .6;
+}
+
+.emoji-inner-icon {
+  background-repeat: no-repeat;
+  display: block;
+  height: 22px;
+  width: 22px;
+  filter: grayscale(100%);
+  opacity: .5;
+}
+
 .message-file-upload-icon-wrapper {
   width: 50px;
   align-items: center;
@@ -268,6 +288,9 @@ resize: none;
 width: calc(100% - 38px);
   padding-right: 36px;
 &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  overflow: hidden;
+  overflow-wrap: break-word;
+  text-overflow: ellipsis;
   align-self: center;
   margin: 0 auto;
   justify-content: center;
@@ -325,7 +348,7 @@ width: calc(100% - 38px);
   margin: 2px 2px 2px 0;
   height: auto;
   width: calc(100% - 50px);
-  padding: 10px 38px 10px 10px;
+  padding: 10px 1px 10px 10px;
   display: flex;
 }
 
