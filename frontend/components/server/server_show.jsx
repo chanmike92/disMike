@@ -8,7 +8,7 @@ import LoadingContainer from '../loading/loading_container';
 class ServerShow extends React.Component {
   constructor(props) {
     super(props);
-
+    this.handleClick = this.handleClick.bind(this);
   }
   //MIKE -- FETCH ALL INFO IN HERE AND componentWillReceiveProps
   componentDidMount() {
@@ -20,7 +20,9 @@ class ServerShow extends React.Component {
     }
   }
 
-
+  handleClick(e) {
+    e.preventDefault();
+  }
 
 
   render() {
@@ -41,7 +43,8 @@ class ServerShow extends React.Component {
     return (
         <div className='server-container'>
 
-          <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
+
+          <Link className={`direct-message-link ${activeServer}`} onContextMenu={ this.handleClick } to={`/@me/`}>
             <i className="fas fa-users"></i>
           </Link>
           <div className='online-friends-count'>{ this.props.onlineFriends.length } Online</div>

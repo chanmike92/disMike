@@ -122,7 +122,7 @@ class ChannelShow extends React.Component {
             currentUser={ this.props.currentUser }
             active={ this.props.dropdown }
             />
-          <div className='bottom-channels-container' onContextMenu={ this.props.openChannelDropdown }>
+          <div className='bottom-channels-container'>
             <div className='text-channel-item-container'>
               <div className='text-channel-name' onClick={ this.handleChannelDropdown }>
                 <div className={ channelDropdown }></div>

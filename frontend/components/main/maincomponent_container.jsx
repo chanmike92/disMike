@@ -19,10 +19,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    closeDropdown: (e) => {
-      e.stopPropagation();
-      dispatch(closeDropdown());
-    },
+    closeDropdown: () => dispatch(closeDropdown()),
     fetchCurrentUser: (id) => dispatch(fetchCurrentUserSession(id)),
   });
 };

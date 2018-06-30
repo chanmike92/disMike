@@ -14,19 +14,26 @@ class UserUpdate extends React.Component {
 
   componentDidMount() {
     this.setState(this.props.currentUser);
+    debugger
   }
 
 
   handleFileUpload(e) {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
+    let prevImg = this.state.image_url;
+    let prevFile = this.state.image_url;
     reader.onloadend = () =>
       this.setState({image_url: reader.result, imageFile: file});
     if (file) {
       reader.readAsDataURL(file);
     } else {
-      this.setState({image_url: this.props.currentUser.image_url, imageFile: null});
+      this.setState({image_url: prevImg, imageFile: prevFile});
     }
+  }
+
+  handleRemove() {
+
   }
 
   handleSubmit() {
@@ -53,6 +60,7 @@ class UserUpdate extends React.Component {
                <div className='profile-picture-hint'>Change Avatar</div>
             </div>
           </div>
+          <button>Remove</button>
         </div>
         <div className='yes-no-option channel-delete-yes-no'>
           <button className='submit-button green-back' style={ {color: "white"}} onClick={ this.handleSubmit }>Save</button>

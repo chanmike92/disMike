@@ -11,7 +11,6 @@ export default function dropdownReducer(state = nullState, action) {
     case OPEN_DROPDOWN:
       return merge(state, nullState, action.payload);
     case CLOSE_DROPDOWN:
-    debugger
       return {};
     case OPEN_MODAL:
       return {};

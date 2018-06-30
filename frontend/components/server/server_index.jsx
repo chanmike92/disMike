@@ -20,9 +20,6 @@ const ServerIndex = (props) => {
   // </div>
   const handleClick = (e) => {
     e.preventDefault();
-    let x = e.screenX;
-    let y = e.screenY;
-    debugger
   };
 
     return (

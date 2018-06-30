@@ -20,7 +20,7 @@ class MainComponent extends React.Component{
 
   handleRightClick(e) {
     e.preventDefault();
-    this.props.closeDropdown;
+    this.props.closeDropdown();
     // return null;
   }
 
@@ -41,7 +41,7 @@ class MainComponent extends React.Component{
   // const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
  // onClick={ dropdown }
     return (
-      <div className='maincomponent-container' onClick={ this.props.closeDropdown } onContextMenu={ this.handleClick }>
+      <div className='maincomponent-container' onClick={ this.props.closeDropdown } onContextMenu={ this.handleRightClick }>
         <LoadingContainer />
 
         <ServerShowContainer />
