@@ -111,6 +111,11 @@ class User < ApplicationRecord
     self.update(image: img)
   end
 
+  def reset_profile_picture
+    img = File.open(File.join(Rails.root, "app/assets/images/discord-user-icon-1.png"))
+    self.update(image: img)
+  end
+
   private
   def ensure_session_token
     self.session_token ||= User.generate_session_token

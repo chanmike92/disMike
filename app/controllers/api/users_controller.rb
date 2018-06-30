@@ -33,8 +33,14 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = current_user
+    debugger
+    if params[:user][:image] == "null"
+      debugger
+      @user.reset_profile_picture
+    else
+      @user.image = params[:user][:image]
+    end
 
-    @user.image = params[:user][:image]
     if @user.save
       @friendships = @user.friendships.includes(:friend)
       @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
@@ -42,6 +48,7 @@ class Api::UsersController < ApplicationController
     else
       render json: @user.errors.full_messages, status: 402
     end
+
   end
 
   def payload
