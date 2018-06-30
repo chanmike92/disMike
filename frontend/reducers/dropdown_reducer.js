@@ -3,16 +3,16 @@ import { merge } from 'lodash';
 import { OPEN_MODAL } from '../actions/modal_actions';
 import { RECEIVE_A_SERVER } from '../actions/server_actions';
 const nullState = {
-  dropdown: false,
+  dropdownType: "",
 };
 
 export default function dropdownReducer(state = nullState, action) {
 
   switch (action.type) {
     case OPEN_DROPDOWN:
-      return action.dropdown;
+      return merge(state, action.payload);
     case CLOSE_DROPDOWN:
-      return action.dropdown;
+      return action.payload;
     case OPEN_MODAL:
       return nullState;
     case RECEIVE_A_SERVER:

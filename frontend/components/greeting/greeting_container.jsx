@@ -7,9 +7,9 @@ import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  
+
   return ({
-    dropdown: state.ui.dropdown,
+    dropdown: state.ui.dropdown.dropdownType,
     users: state.entities.users,
     currentUser: state.session.user
   });
@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
     logout: () => dispatch(openModal('logout')),
     openDropdown: (e) => {
       e.stopPropagation();
-      dispatch(openDropdown("user"));
+      dispatch(openDropdown({dropdownType: "user"}));
     },
     closeDropdown: (e) => {
     e.stopPropagation();

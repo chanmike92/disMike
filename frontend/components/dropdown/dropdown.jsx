@@ -3,25 +3,31 @@ import { closeDropdown } from '../../actions/dropdown_actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FriendAddContainer from '../friend_list/friend_add_container';
-import LogoutConfirmation from '../greeting/logout_confirmation';
 
-const Dropdown = ({ dropdown, serverId, server, channelId, channel, closeDropdown }) => {
 
-  if (!dropdown) {
+const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel, closeDropdown }) => {
+
+  if (!dropdownType) {
     return null;
   }
   let component;
-  switch (dropdown) {
-      case 'server':
+  switch (dropdownType) {
+      case 'serverindex':
         component =
         <div className='dropdown-container'>
             <ServerUpdateContainer server={ server }/>
         </div>;
       break;
-      case 'logout':
+      case 'channel':
         component =
         <div className='dropdown-container'>
-          <LogoutConfirmation />
+            <ServerUpdateContainer server={ server }/>
+        </div>;
+      break;
+      case 'channelindex':
+        component =
+        <div className='dropdown-container'>
+            <ServerUpdateContainer server={ server }/>
         </div>;
       break;
     default:
@@ -30,7 +36,7 @@ const Dropdown = ({ dropdown, serverId, server, channelId, channel, closeDropdow
 
   return (
     <div className="dropdown-background" onClick={ closeDropdown }>
-      <div className='dropdown-child' onClick={ e => e.stopPropagation() }>
+      <div className='dropdown-child' style={ {left: `${x}`, bottom: `${y}` } } onClick={ e => e.stopPropagation() }>
         { component }
       </div>
     </div>
@@ -38,13 +44,19 @@ const Dropdown = ({ dropdown, serverId, server, channelId, channel, closeDropdow
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const dropdown = state.ui.dropdown;
+  const dropdownType = state.ui.dropdown.type;
+  const dropdownId = state.ui.dropdown.id;
+  const x = state.ui.dropdown.x;
+  const y = state.ui.dropdown.y;
   const serverId = (ownProps.location.pathname.split('/')[1]);
   const server = state.entities.servers[serverId] || {};
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const channel = state.entities.channels[channelId] || {};
   return {
-    dropdown,
+    dropdownType,
+    dropdownId,
+    x,
+    y,
     server,
     serverId,
     channel,

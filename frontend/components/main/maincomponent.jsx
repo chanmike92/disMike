@@ -5,15 +5,12 @@ import DmChannelShowContainer from '../dmchannel/dmchannel_show_container';
 import LoadingContainer from '../loading/loading_container';
 import ServerShowContainer from '../server/server_show_container';
 import Modal from '../modal/modal';
+import Dropdown from '../dropdown/dropdown';
 
 
 class MainComponent extends React.Component{
   constructor(props) {
     super(props);
-    this.state = {
-      x: 0,
-      y: 0
-    };
   }
 
   componentDidMount() {
@@ -43,6 +40,7 @@ class MainComponent extends React.Component{
         <ServerShowContainer />
         { subComponent }
         <Modal />
+        <Dropdown />
       </div>
     );
   }

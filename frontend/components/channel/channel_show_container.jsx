@@ -22,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
   let channelId = undefined ? "" : propsChannelId;
   const currentUserId = currentUser.id || "";
   const channel = state.entities.channels[channelId];
-  const dropdown = state.ui.dropdown;
+  const dropdown = state.ui.dropdown.dropdownType;
+
 
   return ({
     dropdown,
@@ -41,10 +42,11 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    openDropdown: (e) => {
+    openServerDropdown: (e) => {
       e.stopPropagation();
-      dispatch(openDropdown("server"));
+      dispatch(openDropdown({dropdownType: "server"}));
     },
+    openChannelDropdown: (dropdown) => dispatch(openDropdown(dropdown)),
     closeDropdown: (e) => {
     e.stopPropagation();
     dispatch(closeDropdown()); },

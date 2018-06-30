@@ -15,11 +15,17 @@ const ServerIndex = (props) => {
       }
     });
   }
-
+  // <div className='server-context-menu' style={ {left: `${x}`, bottom: `${y}` }}>
+  //   hello
+  // </div>
   const handleClick = (e) => {
     e.preventDefault();
+    let x = e.screenX;
+    let y = e.screenY;
 
+    openServerDropdown
   };
+
     return (
     <li className={ iconClass } style={ { backgroundImage: `url(${props.server.image_url})` } }>
       <Link className='server-links' onContextMenu={ handleClick } to={`/${props.server.id}/${firstChannel}`}>
