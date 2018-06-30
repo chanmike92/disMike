@@ -7,7 +7,7 @@ import { fetchAllChannels } from '../../actions/channel_actions';
 import { fetchAllFriends } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
-import { closeDropdown } from '../../actions/dropdown_actions';
+import { closeDropdown, openDropdown } from '../../actions/dropdown_actions';
 
 
 
@@ -40,6 +40,7 @@ const mapDispatchToProps = dispatch => {
       e.stopPropagation();
       dispatch(closeDropdown());
     },
+    openDropdown: (payload) => dispatch(openDropdown(payload))
     fetchCurrentUser: (id) => dispatch(fetchCurrentUserSession(id)),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
     fetchAllServers: () => dispatch(fetchAllServers()),

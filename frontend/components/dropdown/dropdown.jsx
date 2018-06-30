@@ -15,7 +15,7 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       case 'serverindex':
         component =
         <div className='dropdown-container'>
-            <ServerUpdateContainer server={ server }/>
+          <div>hello</div>
         </div>;
       break;
       case 'channel':
@@ -44,7 +44,7 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const dropdownType = state.ui.dropdown.type;
+  const dropdownType = state.ui.dropdown.dropdownType;
   const dropdownId = state.ui.dropdown.id;
   const x = state.ui.dropdown.x || 0;
   const y = state.ui.dropdown.y || 0;
