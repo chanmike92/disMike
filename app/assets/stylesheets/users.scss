@@ -22,13 +22,13 @@
   overflow-x: hidden;
   // overflow-y: scroll;
     -ms-overflow-style: none;
-  box-sizing: border-box;
-  &::-webkit-scrollbar-track{
+  &::-webkit-scrollbar-track {
      border-radius: 20px;
      margin-top: 5px;
      margin-bottom: 10px;
      right: 20px;
      background-color: #2F3136;
+     visibility: hidden;
      // border: 3px solid #36393E;
    }
   &::-webkit-scrollbar {
@@ -37,20 +37,30 @@
      width: 5px;
      // border-right: 10px;
      border-radius: 5px;
+     visibility: hidden;
    }
   &::-webkit-scrollbar-thumb {
     border-radius: 15px;
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background: #202225;
+    visibility: hidden;
     // border: 3px solid #36393e;
   }
   &:hover {
     &::-webkit-scrollbar {
       display: contents;
-    }
+      visibility: visible;
+    };
+    &::-webkit-scrollbar-track {
+      display: contents;
+      visibility: visible;
+    };
+    &::-webkit-scrollbar-thumb {
+      display: contents;
+      visibility: visible;
+    };
   }
 }
-
 
 .user-items {
   height: 40px;

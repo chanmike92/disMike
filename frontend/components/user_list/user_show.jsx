@@ -7,30 +7,7 @@ class UserShow extends React.Component {
     super(props);
   }
 
-  // componentDidMount() {
-  //   this.props.fetchAllUsers(this.props.serverId);
-  // }
-  //
-  // componentWillReceiveProps(newProps) {
-  //   if (this.props.serverId !== newProps.serverId ) {
-  //     this.props.fetchAllUsers(newProps.serverId);
-  //   }
-  // }
-
   render() {
-
-    // const users = this.props.userIds.map((userId, idx) => {
-    //   if (this.props.users[userId]) {
-    //   return (<UserIndex
-    //   user={ this.props.users[userId] }
-    //   userId={ userId }
-    //   id= { userId }
-    //   key={ idx }
-    //   currentServerOwnerId={this.props.currentServerOwnerId}
-    //   />
-    //   );
-    //   }
-    // });
 
     const onlineUsers = [];
     const offlineUsers = [];
@@ -58,8 +35,6 @@ class UserShow extends React.Component {
         }
       }
     });
-
-
 
     return (
       <div style={ {padding: '2px', height: '100%',  width: '240px'} }>
