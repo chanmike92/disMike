@@ -19,9 +19,10 @@ class MainComponent extends React.Component{
   }
 
   componentDidMount() {
+
     this.props.fetchCurrentUser(this.props.currentUser.id);
     // .then(() => {
-    //
+    // /
     //   }
     // );
   }
@@ -32,17 +33,28 @@ class MainComponent extends React.Component{
         this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
       } else {
         if (this.props.serverId === nextProps.serverId) {
-          this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
+          if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.props.channelId))) {
+            this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
+        } else if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.state.channelId))) {
+        }
+          else {
+          if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
+            let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+            this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+          } else {
+            this.setState({serverId: nextProps.serverId, channelId: null});
+          }
+        }
           // this.props.history.push(`/${nextProps.serverId}/${this.props.channelId}`);
         }
-        //   else {
-        //   if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
-        //     let channelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-        //     this.props.history.push(`/${nextProps.serverId}/${channelId}`);
-        //   } else {
-        //     this.props.history.push(`/${nextProps.serverId}/`);
-        //   }
-        // }
+        else {
+          if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
+            let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+            this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+          } else {
+            this.setState({serverId: nextProps.serverId, channelId: null});
+          }
+        }
       }
     } else {
       if (nextProps.serverId === '@me') {
