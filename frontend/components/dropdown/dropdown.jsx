@@ -21,13 +21,19 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       case 'channel':
         component =
         <div className='dropdown-container'>
-            <ServerUpdateContainer server={ server }/>
+            <div>channel</div>
+        </div>;
+      break;
+      case 'servername':
+        component =
+        <div className='dropdown-container'>
+            <div>channel</div>
         </div>;
       break;
       case 'channelindex':
         component =
         <div className='dropdown-container'>
-            <ServerUpdateContainer server={ server }/>
+          <div>channel index</div>
         </div>;
       break;
     default:
@@ -36,7 +42,7 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
 
   return (
     <div className="dropdown-background" onClick={ closeDropdown }>
-      <div className='dropdown-child' style={ {left: (x+40), top: y } } onClick={ e => e.stopPropagation() }>
+      <div className='dropdown-child' style={ {left: (x+20), top: y } } onClick={ e => e.stopPropagation() }>
         { component }
       </div>
     </div>

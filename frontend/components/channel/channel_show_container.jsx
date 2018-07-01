@@ -45,7 +45,7 @@ const mapDispatchToProps = dispatch => {
       e.stopPropagation();
       dispatch(openDropdown({dropdownType: "server"}));
     },
-    openChannelDropdown: (dropdown) => dispatch(openDropdown(dropdown)),
+    openChannelDropdown: (payload) => dispatch(openDropdown(payload)),
     closeDropdown: (e) => {
     e.stopPropagation();
     dispatch(closeDropdown()); },
