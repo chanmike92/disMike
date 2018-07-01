@@ -1,7 +1,8 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import moment from 'moment';
-
+import { Emoji } from 'emoji-mart';
+import { emojiIndex } from 'emoji-mart';
 
 const MessageIndex = ({author, messages, date, profilepic, dateNum }) => {
 
