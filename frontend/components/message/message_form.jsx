@@ -16,11 +16,10 @@ class MessageForm extends React.Component {
     this.state = {body: '',
       messagable_id: this.props.channelId,
       messagable_type: this.props.messageType,
-      emoji_dropdown: false,
       currentEmoji: "",
     };
-    this.handleDropdown = this.handleDropdown.bind(this);
     this.handleInput = this.handleInput.bind(this);
+    // this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addEmoji = this.addEmoji.bind(this);
   }
@@ -30,18 +29,14 @@ class MessageForm extends React.Component {
       const message = Object.assign({}, this.state);
       this.props.processForm(message);
       setTimeout(() => {
-        this.setState({ body: "", emoji_dropdown: false });
+        this.setState({ body: ""});
       }, 0);
     }
   }
 
   addEmoji(emoji, event) {
-    debugger
+    event.stopPropagation();
     this.setState({body: this.state.body.concat(emoji.native), currentEmoji: emoji.colons});
-  }
-
-  handleDropdown() {
-    this.setState({emoji_dropdown: !this.state.emoji_dropdown});
   }
 
   handleInput(input) {
@@ -50,10 +45,10 @@ class MessageForm extends React.Component {
         [input]: e.currentTarget.value,
         messagable_id: this.props.channelId,
         messagable_type: this.props.messageType,
-        emoji_dropdown: false
       });
     };
   }
+
 
   render() {
     return (
@@ -80,7 +75,7 @@ class MessageForm extends React.Component {
               </TextareaAutosize>
             </div>
             <div className="emoji-button-icon">
-              <div className="emoji-inner-icon" onClick={ this.handleDropdown }>
+              <div className="emoji-inner-icon" onClick={ this.props.dropdown === 'emoji' ? this.props.closeDropdown : this.props.openDropdown }>
                 <Emoji emoji='heart_eyes_cat' size={16}/>
               </div>
             </div>
@@ -93,7 +88,7 @@ class MessageForm extends React.Component {
             emojiTooltip={true}
             showPreview={false}
             onClick={this.addEmoji}
-            style={ this.state.emoji_dropdown ?
+            style={ this.props.dropdown === 'emoji' ?
               { position: 'absolute', width: '315px', bottom: '75px', right: '70px'} :
               { display: 'none'} }
             title='Pick your emoji…' emoji='point_up'

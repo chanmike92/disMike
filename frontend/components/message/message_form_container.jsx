@@ -1,6 +1,7 @@
 import MessageForm from './message_form';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
 import { fetchAllMessages, makeNewMessage, receiveErrors } from '../../actions/message_actions';
 import { fetchAllChannels, fetchAChannel } from '../../actions/channel_actions';
 import { connect } from 'react-redux';
@@ -14,7 +15,10 @@ const mapStateToProps = (state, ownProps) => {
   const currentChannel = state.entities.channels[channelId] || {};
   const currentServer = state.session.currentServer || {};
   const currentChannelName = currentChannel.name || "";
+  const dropdown = state.ui.dropdown.dropdownType;
+  debugger
   return ({
+    dropdown,
     messageType,
     channelId,
     currentChannelName,
@@ -26,6 +30,14 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    openDropdown: (e) => {
+      e.stopPropagation();
+      dispatch(openDropdown({dropdownType: "emoji"}));
+    },
+    closeDropdown: (e) => {
+      e.stopPropagation();
+      dispatch(closeDropdown());
+    },
     processForm: (message) => dispatch(makeNewMessage(message)),
     fetchAllChannels: (id) => dispatch(fetchAllChannels(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),
