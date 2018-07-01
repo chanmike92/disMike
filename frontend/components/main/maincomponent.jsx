@@ -21,12 +21,11 @@ class MainComponent extends React.Component{
   componentDidMount() {
 
     this.props.fetchCurrentUser(this.props.currentUser.id);
-    // .then(() => {
-    // /
-    //   }
-    // );
   }
 
+
+  //routes all possible edges cases for mistaken url input
+  //DO NOT MODIFY UNLESS FULLY TESTED
   componentWillReceiveProps(nextProps) {
     if (nextProps.servers[nextProps.serverId]) {
       if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
@@ -38,14 +37,13 @@ class MainComponent extends React.Component{
         } else if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.state.channelId))) {
         }
           else {
-          if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
-            let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-            this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-          } else {
-            this.setState({serverId: nextProps.serverId, channelId: null});
+            if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
+              let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+              this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+            } else {
+              this.setState({serverId: nextProps.serverId, channelId: null});
+            }
           }
-        }
-          // this.props.history.push(`/${nextProps.serverId}/${this.props.channelId}`);
         }
         else {
           if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {

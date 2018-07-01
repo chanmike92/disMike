@@ -181,8 +181,14 @@
   min-height: 30px;
 }
 
+
 .channel-item-container:hover {
   background-color: #36393f;
+  // background-color: #b9bbbe;
+}
+
+.channel-item-container:hover .channel-controls {
+  display: flex;
   // background-color: #b9bbbe;
 }
 
@@ -232,8 +238,10 @@
   width: 240px;
 }
 
-.channel-control {
+.channel-controls {
   z-index: 5;
+  visibility: none;
+  display: none;
 }
 
 .link-item-name {
@@ -252,6 +260,10 @@
   margin-left: 5px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.active-channel .channel-controls {
+  display: flex;
 }
 
 .channel-name-item {
