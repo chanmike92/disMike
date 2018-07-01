@@ -18,8 +18,9 @@ const mapStateToProps = (state, ownProps) => {
   });
   const currentUser = state.session.user || {};
   const channelIds = currentServer.channel_ids || [];
-  let propsChannelId = channelIds.includes(parseInt(ownProps.channelId)) ? ownProps.channelId : channelIds[0];
-  let channelId = undefined ? "" : propsChannelId;
+  // let propsChannelId = channelIds.includes(parseInt(ownProps.channelId)) ? ownProps.channelId : channelIds[0];
+  // let channelId = undefined ? "" : propsChannelId;
+  const channelId = parseInt(ownProps.channelId);
   const currentUserId = currentUser.id || "";
   const channel = state.entities.channels[channelId];
   const dropdown = state.ui.dropdown.dropdownType;

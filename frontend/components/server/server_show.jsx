@@ -11,14 +11,14 @@ class ServerShow extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
   //MIKE -- FETCH ALL INFO IN HERE AND componentWillReceiveProps
-  componentDidMount() {
-    // this.props.fetchAllFriends().then(this.props.fetchAllServers()).then((setTimeout(() => this.setState({loaded: true}), 3000)));
-    // this.props.fetchCurrentUser(this.props.currentUser.id);
-    if (parseInt(this.props.serverId) || parseInt(this.props.channelId)) {
-    } else {
-      this.props.history.push(`/@me/`);
-    }
-  }
+  // componentDidMount() {
+  //   // this.props.fetchAllFriends().then(this.props.fetchAllServers()).then((setTimeout(() => this.setState({loaded: true}), 3000)));
+  //   // this.props.fetchCurrentUser(this.props.currentUser.id);
+  //   if (parseInt(this.props.serverId) || parseInt(this.props.channelId)) {
+  //   } else {
+  //     this.props.history.push(`/@me/`);
+  //   }
+  // }
 
   handleClick(e) {
     e.preventDefault();

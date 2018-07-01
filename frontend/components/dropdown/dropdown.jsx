@@ -18,6 +18,12 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
           <div>hello</div>
         </div>;
       break;
+      case 'serverjoin':
+        component =
+        <div className='dropdown-container'>
+          <div>hello</div>
+        </div>;
+      break;
       case 'channel':
         component =
         <div className='dropdown-container'>

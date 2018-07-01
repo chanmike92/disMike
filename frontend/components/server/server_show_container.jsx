@@ -14,8 +14,8 @@ import { closeDropdown, openDropdown } from '../../actions/dropdown_actions';
 const mapStateToProps = (state, ownProps) => {
 
   const servers =  state.entities.servers || {};
-  const serverId = (ownProps.location.pathname.split('/')[1]);
-  const channelId = (ownProps.location.pathname.split('/')[2]);
+  const serverId = ownProps.serverId;
+  const channelId = ownProps.channelId;
   const currentUser = state.session.user || {};
   const dropdown = state.ui.dropdown;
   const onlineFriends = Object.values(state.entities.users).filter(user => {

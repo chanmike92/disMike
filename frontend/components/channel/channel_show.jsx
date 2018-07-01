@@ -10,38 +10,34 @@ class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      toggleChannelDropdown: false,
+      toggleChannelDropdown: true,
     };
     this.renderChannels = this.renderChannels.bind(this);
-
     this.handleChannelDropdown = this.handleChannelDropdown.bind(this);
   }
 
   componentDidMount() {
-    const validChannels = this.props.currentServer.channel_ids;
-    if (this.props.channelId === undefined || validChannels[this.props.channelId]) {
-    } else {
-
-        if (validChannels.length > 0 && (this.props.currentServer.owner_id === this.props.currentUser.id)) {
-          let channelId = validChannels[0];
-          this.props.history.replace(`/${this.props.serverId}/${channelId}`);
-        }
-    }
+    // const validChannels = this.props.currentServer.channel_ids;
+    // if (this.props.channelId === undefined || validChannels[this.props.channelId]) {
+    // } else {
+    //   if (validChannels.length > 0 && (this.props.currentServer.owner_id === this.props.currentUser.id)) {
+    //     let channelId = validChannels[0];
+    //
+    //     this.props.history.replace(`/${this.props.serverId}/${channelId}`);
+    //   }
+    // }
   }
 
-  componentWillReceiveProps(nextProps) {
-
-    if (this.props.serverId !== nextProps.serverId) {
-      if (parseInt(nextProps.serverId)) {
-        const validChannels = nextProps.currentServer.channel_ids;
-        let channelId = validChannels[0];
-        this.props.history.replace(`/${nextProps.serverId}/${channelId}`)
-      }
-      else {
-        this.props.history.replace(`/@me/`)
-      }
-    }
-  }
+  // componentWillReceiveProps(nextProps) {
+  //
+  //   if (this.props.serverId !== nextProps.serverId) {
+  //     if (parseInt(nextProps.serverId)) {
+  //       const validChannels = nextProps.currentServer.channel_ids;
+  //       let channelId = validChannels[0];
+  //       this.props.history.replace(`/${nextProps.serverId}/${channelId}`)
+  //     }
+  //   }
+  // }
 
   renderChannels() {
     let channels = [];

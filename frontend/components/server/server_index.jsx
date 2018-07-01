@@ -21,7 +21,7 @@ const ServerIndex = (props) => {
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    debugger
+
     props.openDropdown({dropdownType: "serverindex", x: e.clientX,
       y: e.clientY, id: props.server.id});
   };

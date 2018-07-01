@@ -33,9 +33,9 @@ class Api::UsersController < ApplicationController
 
   def update
     @user = current_user
-    debugger
+
     if params[:user][:image] == "null"
-      debugger
+
       @user.reset_profile_picture
     else
       @user.image = params[:user][:image]
