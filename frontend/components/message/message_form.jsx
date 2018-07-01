@@ -35,8 +35,8 @@ class MessageForm extends React.Component {
   }
 
   addEmoji(emoji, event) {
-    event.stopPropagation();
     this.setState({body: this.state.body.concat(emoji.native), currentEmoji: emoji.colons});
+    this.props.closeDropdown(event);
   }
 
   handleInput(input) {
@@ -80,19 +80,21 @@ class MessageForm extends React.Component {
               </div>
             </div>
           </form>
-          <Picker
-            id="emoji-picker"
-            className='emoji-mart'
-            set='twitter'
-            skin={2}
-            emojiTooltip={true}
-            showPreview={false}
-            onClick={this.addEmoji}
-            style={ this.props.dropdown === 'emoji' ?
-              { position: 'absolute', width: '315px', bottom: '75px', right: '70px'} :
-              { display: 'none'} }
-            title='Pick your emoji…' emoji='point_up'
-          />
+          <div onClick={ e => e.stopPropagation() }>
+            <Picker
+              id="emoji-picker"
+              className='emoji-mart'
+              set='twitter'
+              skin={2}
+              emojiTooltip={true}
+              showPreview={false}
+              onClick={this.addEmoji}
+              style={ this.props.dropdown === 'emoji' ?
+                { position: 'absolute', width: '315px', bottom: '75px', right: '70px'} :
+                { display: 'none'} }
+              title='Pick your emoji…' emoji='point_up'
+            />
+          </div>
         </div>
     );
   }
