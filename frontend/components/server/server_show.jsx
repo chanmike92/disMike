@@ -32,6 +32,7 @@ class ServerShow extends React.Component {
       server={this.props.servers[id]}
       key={ idx }
       id={ id }
+      openDropdown={ this.props.openDropdown }
       currentUser={this.props.currentUser}
       fetchAServer={this.props.fetchAServer}
       active={ active }

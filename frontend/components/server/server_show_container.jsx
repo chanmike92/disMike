@@ -40,7 +40,7 @@ const mapDispatchToProps = dispatch => {
       e.stopPropagation();
       dispatch(closeDropdown());
     },
-    openDropdown: (payload) => dispatch(openDropdown(payload))
+    openDropdown: (payload) => dispatch(openDropdown(payload)),
     fetchCurrentUser: (id) => dispatch(fetchCurrentUserSession(id)),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
     fetchAllServers: () => dispatch(fetchAllServers()),

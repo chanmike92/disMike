@@ -36,7 +36,7 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
 
   return (
     <div className="dropdown-background" onClick={ closeDropdown }>
-      <div className='dropdown-child' style={ {left: `${x}`, bottom: `${y}` } } onClick={ e => e.stopPropagation() }>
+      <div className='dropdown-child' style={ {left: (x+40), top: y } } onClick={ e => e.stopPropagation() }>
         { component }
       </div>
     </div>

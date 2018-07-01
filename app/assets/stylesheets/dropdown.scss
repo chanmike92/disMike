@@ -137,8 +137,13 @@
 }
 
 .dropdown-child {
+  z-index: 25;
   position: absolute;
   transform: translate(-50%, -50%);
+}
+
+.dropdown-container {
+  z-index: 25;
 }
 
 .dropdown-background {

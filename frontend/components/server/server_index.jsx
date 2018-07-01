@@ -20,10 +20,14 @@ const ServerIndex = (props) => {
   // </div>
   const handleClick = (e) => {
     e.preventDefault();
+    e.stopPropagation();
+    debugger
+    props.openDropdown({dropdownType: "serverindex", x: e.clientX,
+      y: e.clientY, id: props.server.id});
   };
 
     return (
-    <li className={ iconClass } style={ { backgroundImage: `url(${props.server.image_url})` } }>
+    <li className={ iconClass } onContextMenu={ handleClick } style={ { backgroundImage: `url(${props.server.image_url})` } }>
       <Link className='server-links' onContextMenu={ handleClick } to={`/${props.server.id}/${firstChannel}`}>
         { serverNameIcon }
       </Link>
