@@ -24,7 +24,10 @@ class Greeting extends React.Component {
               <img className='profile-picture' src={ this.props.currentUser.image_url } />
               <div className={ online }></div>
             </div>
-            <h1>{ this.props.currentUser.username }</h1>
+            <div className='user-info-container'>
+              <div className='user-info-username'>{ this.props.currentUser.username }</div>
+              <div className='user-info-id'>#{ this.props.currentUser.id }</div>
+            </div>
           </div>
           <button className={`fafaicons-container ${dropdownActive}`} onClick={ this.props.dropdown === 'user' ? this.props.closeDropdown : this.props.openDropdown }>
 

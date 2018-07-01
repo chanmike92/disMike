@@ -2,6 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-info-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 90px;
+}
+
+.user-info-username {
+  display: block;
+  max-width: 84px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.user-info-id {
+  display: block;
+  font-size: 10px;
+  margin-top: 4px;
+  opacity: .4;
+}
+
+
 .profile-picture {
   height: 30px;
   width: 30px;
