@@ -2,7 +2,6 @@
 .emoji-mart * {
   box-sizing: border-box;
   line-height: 1.15;
-  z-index: 50;
 }
 
 .emoji-mart {
@@ -117,7 +116,7 @@
 }
 
 .emoji-mart-category-label {
-  z-index: 2;
+  z-index: 5;
   position: relative;
   position: -webkit-sticky;
   position: sticky;

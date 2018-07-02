@@ -98,3 +98,16 @@ Message.create(body: "First Message", author_id: 1, messagable_id: 12, messagabl
 Message.create(body: "First Message", author_id: 1, messagable_id: 13, messagable_type: "Channel")
 Message.create(body: "Second!", author_id: 2, messagable_id: 1, messagable_type: "Channel")
 Message.create(body: "Me third", author_id: 3, messagable_id: 1, messagable_type: "Channel")
+
+Dmchannel.create()
+Dmchannel.create()
+Dmchannel.create()
+
+Dmsubscriber.create(dm_id: 1, user_id: 1, subscribed: true)
+Dmsubscriber.create(dm_id: 1, user_id: 2, subscribed: true)
+Dmsubscriber.create(dm_id: 1, user_id: 3, subscribed: true)
+Dmsubscriber.create(dm_id: 2, user_id: 1, subscribed: true)
+Dmsubscriber.create(dm_id: 2, user_id: 3, subscribed: true)
+Dmsubscriber.create(dm_id: 2, user_id: 5, subscribed: true)
+Dmsubscriber.create(dm_id: 3, user_id: 1, subscribed: true)
+Dmsubscriber.create(dm_id: 3, user_id: 7, subscribed: true)
