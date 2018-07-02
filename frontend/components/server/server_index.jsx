@@ -27,8 +27,8 @@ const ServerIndex = (props) => {
   };
 
     return (
-    <li className={ iconClass } onContextMenu={ handleClick } style={ { backgroundImage: `url(${props.server.image_url})` } }>
-      <Link className='server-links' onContextMenu={ handleClick } to={`/${props.server.id}/${firstChannel}`}>
+    <li className={ iconClass } draggable="true" onContextMenu={ handleClick } style={ { backgroundImage: `url(${props.server.image_url})` } }>
+      <Link className='server-links' draggable="true" onContextMenu={ handleClick } to={`/${props.server.id}/${firstChannel}`}>
         { serverNameIcon }
       </Link>
     </li>
