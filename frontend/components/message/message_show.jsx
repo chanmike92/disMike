@@ -212,6 +212,7 @@ class MessageShow extends React.Component {
                     <MessageFormContainer
                       messageType={ this.props.messageType }
                       channelId={ this.props.channelId }
+                      scrollBottom={ this.scrollBottom }
                       />
                   </div>
                 </div>

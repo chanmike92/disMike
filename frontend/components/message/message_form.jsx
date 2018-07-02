@@ -26,9 +26,10 @@ class MessageForm extends React.Component {
     if (e.key === 'Enter' && !e.shiftKey) {
       const message = Object.assign({}, this.state);
 
-      this.props.processForm(message);
+      this.props.processForm(message).then(() => this.props.scrollBottom);
       setTimeout(() => {
         this.setState({ body: ""});
+
       }, 0);
     }
   }
