@@ -9,6 +9,20 @@ const MessageIndex = ({author, messages, date, profilepic, dateNum }) => {
 
 
   const messagesList = messages.map((message) => {
+    const colonsToUnicode = (text) => {
+      const colonsRegex = new RegExp('(^|\\s)(:[a-zA-Z0-9-_+]+:(:skin-tone-[2-6]:)?)', 'g');
+      let newText = text;
+
+      let match;
+      while (match === colonsRegex.exec(text)) {
+        let colons = match[2];
+        let offset = match.index + match[1].length;
+        let length = colons.length;
+
+        console.log(colons, offset, length);
+      }
+    };
+    colonsToUnicode(message.body);
       return (<h1 className='message-content' key={ message.id }>{ message.body }</h1>);
     });
   const time = moment(dateNum).format('hh:mm A');

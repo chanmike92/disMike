@@ -403,6 +403,8 @@ width: calc(100% - 38px);
 }
 
 .message-content {
+  display: flex;
+  flex-direction: row;
   letter-spacing: 0.5px;
   font-weight: 400;
   width: 100%;
@@ -410,7 +412,7 @@ width: calc(100% - 38px);
   font-size: 0.9375rem;
   line-height: 20px;
   // margin-top: 6px;
-  // white-space: pre-wrap;
+  white-space: pre-wrap;
   overflow-wrap: break-word;
   word-wrap: break-word;
 }

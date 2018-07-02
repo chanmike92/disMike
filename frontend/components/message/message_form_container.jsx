@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentServer = state.session.currentServer || {};
   const currentChannelName = currentChannel.name || "";
   const dropdown = state.ui.dropdown.dropdownType;
-  debugger
+
   return ({
     dropdown,
     messageType,

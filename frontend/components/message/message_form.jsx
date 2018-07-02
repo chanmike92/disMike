@@ -16,7 +16,7 @@ class MessageForm extends React.Component {
     this.state = {body: '',
       messagable_id: this.props.channelId,
       messagable_type: this.props.messageType,
-      currentEmoji: "",
+      currentEmoji: "heart",
     };
     this.handleInput = this.handleInput.bind(this);
     // this.handleClick = this.handleClick.bind(this);
@@ -25,8 +25,9 @@ class MessageForm extends React.Component {
   }
 
   handleSubmit(e) {
-      if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !e.shiftKey) {
       const message = Object.assign({}, this.state);
+
       this.props.processForm(message);
       setTimeout(() => {
         this.setState({ body: ""});
@@ -48,6 +49,7 @@ class MessageForm extends React.Component {
       });
     };
   }
+
 
 
   render() {
@@ -76,7 +78,7 @@ class MessageForm extends React.Component {
             </div>
             <div className="emoji-button-icon">
               <div className="emoji-inner-icon" onClick={ this.props.dropdown === 'emoji' ? this.props.closeDropdown : this.props.openDropdown }>
-                <Emoji emoji='heart_eyes_cat' size={16}/>
+                <Emoji emoji={ this.state.currentEmoji } size={16}/>
               </div>
             </div>
           </form>
