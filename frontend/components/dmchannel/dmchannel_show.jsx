@@ -1,6 +1,7 @@
 import React from 'react';
 import FriendIndexContainer from '../friend_list/friend_index_container';
 import GreetingContainer from '../greeting/greeting_container';
+import DmIndex from './dm_index';
 
 class DmChannelShow extends React.Component {
   constructor(props) {
@@ -8,7 +9,14 @@ class DmChannelShow extends React.Component {
   }
 
   render() {
-
+    let dms = this.props.dmIds.map((id, i) => {
+      return (<DmIndex
+        key={ i }
+        id={ id }
+        dm={ this.props.dms[id] }
+        channelId={ this.props.channelId }
+        />);}
+      );
     //make selected for friends-logo and each dm item
     return (
       <div className='subcomponent-container'>
@@ -23,7 +31,7 @@ class DmChannelShow extends React.Component {
               Friends - { this.props.friendCount }
             </div>
             <div className='dm-text-channel-name'>DIRECT MESSAGES</div>
-
+              { dms }
           </div>
           <GreetingContainer />
         </div>
