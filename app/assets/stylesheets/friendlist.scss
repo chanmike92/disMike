@@ -114,12 +114,13 @@
   font-style: Roboto;
   &:hover {
     cursor: pointer;
-
+    background-color: #2f3136;
   };
   &.friend-active-selector {
     color: #36393e;
     background-color: white;
-    &:hover{
+    &:hover {
+      cursor: pointer;
       background-color: white;
     };
   };
@@ -217,7 +218,15 @@
 
 .friend-item-container {
   height: 62px;
+  padding: 10px;
+  box-sizing: border-box;
   border-top: 1px solid hsla(0,0%,100%,.1);
+  &:hover {
+    background: #414449;
+    border-color: transparent;
+    border-radius: 3px;
+    box-shadow: 0 2px 1px 0 rgba(0,0,0,.1);
+  }
 }
 
 .friend-index-container:first-child {

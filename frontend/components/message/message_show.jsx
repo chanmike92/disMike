@@ -41,7 +41,7 @@ class MessageShow extends React.Component {
 
         // this.props.fetchAChannel(nextProps.channelId)
       }
-      if (JSON.stringify(this.props.message) !== JSON.stringify(nextProps.messages)) {
+      if (this.props.messages.length !== nextProps.messages.length) {
         this.scrollBottom();
       }
     } else {
@@ -59,9 +59,6 @@ class MessageShow extends React.Component {
     }
   }
 
-  componentDidUpdate() {
-    this.scrollBottom();
-  }
 
   scrollBottom() {
     const messageList = this.refs.messageList;

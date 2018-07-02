@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
   const dms = state.entities.dms;
   const dmIds = Object.keys(dms);
   const currentDm = dms[channelId];
-  debugger
+
   return ({
     dmIds,
     dms,

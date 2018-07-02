@@ -22,6 +22,7 @@ class Api::UsersController < ApplicationController
 
   def create
     @session_user = User.new(user_params)
+    @session_user.online_status = false
 
     if @session_user.save
       login(@session_user)
