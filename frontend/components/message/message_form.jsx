@@ -4,8 +4,7 @@ import React from 'react';
 import TextareaAutosize from 'react-autosize-textarea';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import { Picker } from 'emoji-mart';
-import { Emoji } from 'emoji-mart';
-
+import Emojify from 'react-emojione';
 
 
 
@@ -19,7 +18,6 @@ class MessageForm extends React.Component {
       currentEmoji: ":heart:",
     };
     this.handleInput = this.handleInput.bind(this);
-    // this.handleClick = this.handleClick.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addEmoji = this.addEmoji.bind(this);
   }
@@ -36,7 +34,7 @@ class MessageForm extends React.Component {
   }
 
   addEmoji(emoji, event) {
-    this.setState({body: this.state.body.concat(emoji.native), currentEmoji: emoji.colons});
+    this.setState({body: this.state.body.concat(emoji.colons), currentEmoji: emoji.colons});
     this.props.closeDropdown(event);
   }
 
@@ -78,7 +76,7 @@ class MessageForm extends React.Component {
             </div>
             <div className="emoji-button-icon">
               <div className="emoji-inner-icon" onClick={ this.props.dropdown === 'emoji' ? this.props.closeDropdown : this.props.openDropdown }>
-                <Emoji emoji='heart' set='twitter' size={16}/>
+                <Emojify>{ this.state.currentEmoji }</Emojify>
               </div>
             </div>
           </form>
@@ -87,7 +85,6 @@ class MessageForm extends React.Component {
               id="emoji-picker"
               className='emoji-mart'
               set='twitter'
-              skin={2}
               emojiTooltip={true}
               showPreview={false}
               onClick={this.addEmoji}

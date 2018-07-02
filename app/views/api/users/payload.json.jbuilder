@@ -8,4 +8,6 @@ if @user
   json.friends do
     json.partial! 'api/users/friendindex', friendships: @friendships
   end
+
+  json.partial! 'api/dms/dmsindex', dms: @dms
 end

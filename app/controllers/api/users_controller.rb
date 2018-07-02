@@ -43,6 +43,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       @friendships = @user.friendships.includes(:friend)
+      @dms = @user.dmchannels.includes(:subscribers)
       @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
       render 'api/users/payload'
     else

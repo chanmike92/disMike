@@ -7,20 +7,6 @@ import emoji from 'react-easy-emoji';
 import Emojify from 'react-emojione';
 
 const MessageIndex = ({author, messages, date, profilepic, dateNum }) => {
-  // const colonsToUnicode = (text) => {
-  //   const colonsRegex = new RegExp('(^|\\s)(:[a-zA-Z0-9-_+]+:(:skin-tone-[2-6]:)?)', 'g');
-  //   let newText = text;
-  //
-  //   let match;
-  //   while (match = colonsRegex.exec(text)) {
-  //     let colons = match[2];
-  //     let offset = match.index + match[1].length;
-  //     let length = colons.length;
-  //
-  //     console.log(colons, offset, length);
-  //   }
-  // };
-
 
   const messagesList = messages.map((message) => {
 

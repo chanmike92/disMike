@@ -218,7 +218,7 @@
   align-items: center;
   justify-content: center;
   display: flex;
-  right: 12px;
+  right: 6px;
   top: 11px;
   opacity: .6;
 }
@@ -226,8 +226,8 @@
 .emoji-inner-icon {
   background-repeat: no-repeat;
   display: block;
-  height: 22px;
-  width: 22px;
+  height: 40px;
+  width: 40px;
   filter: grayscale(100%);
   opacity: .5;
 }
@@ -274,19 +274,19 @@
 .message-input-field {
   outline: 0;
     color: hsla(0,0%,100%,.7);
-  -webkit-appearance: none;
-appearance: none;
-background-color: transparent;
-border: none;
-font-family: Roboto, sans-serif;
-font-size: 0.9375rem;
-font-weight: 400;
-letter-spacing: -0.025rem;
-line-height: 1.25rem;
-max-height: 120px;
-resize: none;
-width: calc(100% - 38px);
-  padding-right: 36px;
+    -webkit-appearance: none;
+  appearance: none;
+  background-color: transparent;
+  border: none;
+  font-family: Roboto, sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  letter-spacing: -0.025rem;
+  line-height: 1.25rem;
+  max-height: 120px;
+  resize: none;
+  width: calc(100% - 38px);
+  padding-right: 40px;
 &::-webkit-input-placeholder { /* Chrome/Opera/Safari */
   overflow: hidden;
   overflow-wrap: break-word;
@@ -403,7 +403,6 @@ width: calc(100% - 38px);
 }
 
 .message-content {
-  display: flex;
   flex-direction: row;
   letter-spacing: 0.5px;
   font-weight: 400;

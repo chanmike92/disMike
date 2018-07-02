@@ -17,7 +17,7 @@ const userReducer = (oldState = {}, action) => {
     // case RECEIVE_CURRENT_USER:
     //   return merge({}, oldState, { [action.payload.currentUser.id]: action.payload.currentUser }, action.payload.users, action.payload.friends);
     case RECEIVE_CURRENT_USER_SESSION:
-      return merge({}, oldState, action.payload.users, action.payload.friends);
+      return merge({}, oldState, action.payload.users, action.payload.friends, action.payload.dmusers);
     case RECEIVE_ALL_USERS:
       return merge({}, oldState, action.users);
     case RECEIVE_A_USER:
