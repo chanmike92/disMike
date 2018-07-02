@@ -3,11 +3,17 @@ if @user
     json.partial! 'api/users/user', user: @user
   end
 
-  json.partial! 'api/servers/serverindex', server: @servers
-
-  json.friends do
-    json.partial! 'api/users/friendindex', friendships: @friendships
+  if @servers
+    json.partial! 'api/servers/serverindex', server: @servers
   end
 
-  json.partial! 'api/dms/dmsindex', dms: @dms
+  if @friendships
+    json.friends do
+      json.partial! 'api/users/friendindex', friendships: @friendships
+    end
+  end
+
+  if @dms
+    json.partial! 'api/dms/dmsindex', dms: @dms
+  end
 end

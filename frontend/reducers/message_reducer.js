@@ -11,7 +11,7 @@ const messageReducer = (oldState = {}, action) => {
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_CURRENT_USER_SESSION:
-      return merge({}, oldState, action.payload.messages);
+      return merge({}, oldState, action.payload.messages, action.payload.dmmessages);
     case RECEIVE_ALL_SERVERS:
       return merge({}, oldState, action.payload.messages);
     // case RECEIVE_CURRENT_USER:

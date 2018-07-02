@@ -11,7 +11,8 @@ class Api::DmsController < ApplicationController
   end
 
   def create
-    @dm = Dmchannel.new(dmchannel_params)
+
+    @dm = Dmchannel.new(dm_params)
     #@dm = Dmchannel.dms
     if @channel.save
       Serverchannel.create(server_id: params[:id], channel_id: @channel.id)
@@ -35,7 +36,7 @@ class Api::DmsController < ApplicationController
 
 
   private
-  def channel_params
+  def dm_params
     params.require(:dmchannel).permit(:name)
   end
 end

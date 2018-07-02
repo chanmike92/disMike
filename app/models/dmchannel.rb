@@ -12,7 +12,7 @@ class Dmchannel < ApplicationRecord
   has_many :messages, as: :messagable, dependent: :destroy
 
 
-  def channel_name
+  def channel_name(current_user)
     name = [];
     self.subscribers.each do |subscriber|
       if subscriber.username != current_user.username
