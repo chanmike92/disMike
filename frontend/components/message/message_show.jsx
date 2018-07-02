@@ -34,16 +34,15 @@ class MessageShow extends React.Component {
         if (this.subscription) {
         this.subscription.unsubscribe();
         }
-
         this.subscription = App.cable.subscriptions.create(
           {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
           { received: (data) => { nextProps.receiveAMessage(data) }});
 
         // this.props.fetchAChannel(nextProps.channelId)
       }
-      if (this.props.messages.length !== nextProps.messages.length) {
-        this.scrollBottom();
-      }
+      // if (this.props.messages.length !== nextProps.messages.length) {
+      //   this.scrollBottom();
+      // }
     } else {
       if (this.subscription) {
         this.subscription.unsubscribe();
@@ -56,6 +55,12 @@ class MessageShow extends React.Component {
     // this.props.clearMessages();
     if (this.subscription) {
       this.subscription.unsubscribe();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.messages.length !== this.props.messages.length) {
+      this.scrollBottom();
     }
   }
 
