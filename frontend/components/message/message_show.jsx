@@ -55,6 +55,9 @@ class MessageShow extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    if (prevProps.channelId !== this.props.channelId) {
+      this.scrollBottom();
+    }
     if (prevProps.messages.length !== this.props.messages.length) {
       if (this.props.lastMessage.author_id ===  this.props.currentUser.id) {
         this.scrollBottom();

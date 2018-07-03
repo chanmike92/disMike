@@ -35,7 +35,7 @@ class UserUpdate extends React.Component {
   }
 
   handleRemove() {
-    this.setState({image_url: "http://s3.amazonaws.com/dismikechan-app-name-dev/users/images/000/000/001/original/discord-user-icon-1.png", imageFile: null, type: true});
+    this.setState({image_url: "https://s3.amazonaws.com/dismikechan-app-name-dev/discord-user-icon-1.png", imageFile: null, type: true});
   }
 
   handleSubmit() {
