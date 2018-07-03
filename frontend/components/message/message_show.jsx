@@ -17,52 +17,52 @@ class MessageShow extends React.Component {
     this.renderGroupMessages = this.renderGroupMessages.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.channelId) {
-      // this.props.fetchAChannel(this.props.channelId);
-      this.subscription = App.cable.subscriptions.create(
-        {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
-        { received: (data) => { this.props.receiveAMessage(data) }});
-      this.scrollBottom();
-    }
-  }
-
-  componentWillReceiveProps(nextProps) {
-
-    if (nextProps.channelId)  {
-      if (nextProps.channelId !== this.props.channelId) {
-        if (this.subscription) {
-        this.subscription.unsubscribe();
-        }
-        this.subscription = App.cable.subscriptions.create(
-          {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
-          { received: (data) => { nextProps.receiveAMessage(data) }});
-
-        // this.props.fetchAChannel(nextProps.channelId)
-      }
-      // if (this.props.messages.length !== nextProps.messages.length) {
-      //   this.scrollBottom();
-      // }
-    } else {
-      if (this.subscription) {
-        this.subscription.unsubscribe();
-      }
-    }
-
-  }
-
-  componentWillUnmount() {
-    // this.props.clearMessages();
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
-
-  componentDidUpdate(prevProps) {
-    if (prevProps.messages.length !== this.props.messages.length) {
-      this.scrollBottom();
-    }
-  }
+  // componentDidMount() {
+  //   if (this.props.channelId) {
+  //     // this.props.fetchAChannel(this.props.channelId);
+  //     this.subscription = App.cable.subscriptions.create(
+  //       {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
+  //       { received: (data) => { this.props.receiveAMessage(data) }});
+  //     this.scrollBottom();
+  //   }
+  // }
+  //
+  // componentWillReceiveProps(nextProps) {
+  //
+  //   if (nextProps.channelId)  {
+  //     if (nextProps.channelId !== this.props.channelId) {
+  //       if (this.subscription) {
+  //       this.subscription.unsubscribe();
+  //       }
+  //       this.subscription = App.cable.subscriptions.create(
+  //         {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
+  //         { received: (data) => { nextProps.receiveAMessage(data) }});
+  //
+  //       // this.props.fetchAChannel(nextProps.channelId)
+  //     }
+  //     // if (this.props.messages.length !== nextProps.messages.length) {
+  //     //   this.scrollBottom();
+  //     // }
+  //   } else {
+  //     if (this.subscription) {
+  //       this.subscription.unsubscribe();
+  //     }
+  //   }
+  //
+  // }
+  //
+  // componentWillUnmount() {
+  //   // this.props.clearMessages();
+  //   if (this.subscription) {
+  //     this.subscription.unsubscribe();
+  //   }
+  // }
+  //
+  // componentDidUpdate(prevProps) {
+  //   if (prevProps.messages.length !== this.props.messages.length) {
+  //     this.scrollBottom();
+  //   }
+  // }
 
 
   scrollBottom() {

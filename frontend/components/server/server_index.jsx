@@ -15,9 +15,7 @@ const ServerIndex = (props) => {
       }
     });
   }
-  // <div className='server-context-menu' style={ {left: `${x}`, bottom: `${y}` }}>
-  //   hello
-  // </div>
+
   const handleClick = (e) => {
     e.preventDefault();
     e.stopPropagation();

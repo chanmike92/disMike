@@ -86,7 +86,9 @@ class MainComponent extends React.Component{
   // const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
  // onClick={ dropdown }
     return (
-      <div className='maincomponent-container' onClick={ this.props.closeDropdown } onContextMenu={ this.handleRightClick }>
+      <div className='maincomponent-container' onClick={ this.props.dropdown ? this.props.closeDropdown : () => {} } onContextMenu={ this.handleRightClick }>
+        <Modal />
+        <Dropdown />
         <LoadingContainer />
 
         <ServerShowContainer
@@ -94,8 +96,7 @@ class MainComponent extends React.Component{
           channelId={ this.state.channelId }
           />
         { subComponent }
-        <Modal />
-        <Dropdown />
+
       </div>
     );
   }

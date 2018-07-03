@@ -121,23 +121,23 @@
 }
 
 .create-channel-icon {
-  background-image: url("create_channel.svg")
+  background-image: url("https://s3.amazonaws.com/dismikechan-app-name-dev/create_channel.svg")
 }
 
 .delete-server-icon {
-  background-image: url("delete.svg")
+  background-image: url("https://s3.amazonaws.com/dismikechan-app-name-dev/delete.svg")
 }
 
 .invite-users-icon {
-  background-image: url("invite_users.svg");
+  background-image: url("https://s3.amazonaws.com/dismikechan-app-name-dev/invite_users.svg");
 }
 
 .leave-server-icon {
-  background-image: url("exit.svg")
+  background-image: url("https://s3.amazonaws.com/dismikechan-app-name-dev/exit.svg")
 }
 
 .dropdown-child {
-  z-index: 25;
+  z-index: 500;
   position: absolute;
   transform: translate(-50%, -50%);
 }

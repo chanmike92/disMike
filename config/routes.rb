@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  #how to fix the routes to here for root
   root to: 'static_pages#root'
 
   namespace :api, defaults: {format: :json} do

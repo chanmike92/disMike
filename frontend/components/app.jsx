@@ -20,7 +20,7 @@ const App = () => (
     <AuthRoute exact path='/signup' component={ SignupFormContainer } />
     <AuthRoute exact path='/login' component={ SessionFormContainer }/>
 
-    <ProtectedRoute path={'/'} component={ MainComponentContainer} />
+    <ProtectedRoute path={'/:serverId'} component={ MainComponentContainer} />
 
 
   </div>

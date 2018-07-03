@@ -3,6 +3,7 @@ import { closeDropdown } from '../../actions/dropdown_actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FriendAddContainer from '../friend_list/friend_add_container';
+import ServerIndexDropdown from '../dropdown/serverindex_dropdown';
 
 
 const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel, closeDropdown }) => {
@@ -15,10 +16,10 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       case 'serverindex':
         component =
         <div className='dropdown-container'>
-          <div>hello</div>
+          <ServerIndexDropdown />
         </div>;
       break;
-      case 'serverjoin':
+      case 'serverbutton':
         component =
         <div className='dropdown-container'>
           <div>hello</div>
