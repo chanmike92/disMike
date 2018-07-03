@@ -38,11 +38,9 @@ class ChannelShow extends React.Component {
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
       channel={ channel }
+      openDropdown={ this.props.openDropdown }
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
-      fetchAChannel={this.props.fetchAChannel}
-      fetchAServer={this.props.fetchAServer}
-      currentServer={this.props.currentServer}
       currentServerOwnerId={this.props.currentServerOwnerId}
       currentUserId={this.props.currentUserId}
       active={ active }
@@ -92,9 +90,10 @@ class ChannelShow extends React.Component {
     return (
       <div className='subcomponent-container'>
         <div className='channel-container'>
-          <div className='server-title-container dropdown'>
+          <div className='server-title-container dropdown' >
             <button className="server-name-container dropbtn"
-              onClick={ this.props.dropdown === "server" ? this.props.closeDropdown : this.props.openServerDropdown }>
+              onClick={ this.props.dropdown === "server" ? this.props.closeDropdown : this.props.openServerDropdown }
+              onContextMenu={ this.handleContextClick }>
               <div className='server-name'>{this.props.currentServerName}</div>
               <div className={ dropdownActive }></div>
             </button>
