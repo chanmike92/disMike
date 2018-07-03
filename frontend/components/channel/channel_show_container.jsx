@@ -44,10 +44,11 @@ const mapDispatchToProps = dispatch => {
       e.stopPropagation();
       dispatch(openDropdown({dropdownType: "server"}));
     },
-    openChannelDropdown: (payload) => dispatch(openDropdown(payload)),
     closeDropdown: (e) => {
-    e.stopPropagation();
-    dispatch(closeDropdown()); },
+      e.stopPropagation();
+      dispatch(closeDropdown());
+    },
+    openDropdown: (payload) => dispatch(openDropdown(payload)),
     clearState: () => dispatch(clearState()),
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),

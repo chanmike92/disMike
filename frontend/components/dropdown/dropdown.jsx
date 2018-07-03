@@ -4,6 +4,8 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FriendAddContainer from '../friend_list/friend_add_container';
 import ServerIndexDropdown from '../dropdown/serverindex_dropdown';
+import ChannelIndexDropdown from '../dropdown/channelindex_dropdown';
+import ChannelDropdown from '../dropdown/channel_dropdown';
 import ServerButtonDropdown from '../dropdown/serverbutton_dropdown';
 
 

@@ -14,7 +14,7 @@ class ServerShow extends React.Component {
   handleContextClick(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.props.openDropdown({dropdownType: "serverindex", x: e.clientX,
+    this.props.openDropdown({dropdownType: "serverbutton", x: e.clientX,
       y: e.clientY });
   }
 

@@ -38,12 +38,7 @@ class MessageShow extends React.Component {
         this.subscription = App.cable.subscriptions.create(
           {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
           { received: (data) => { nextProps.receiveAMessage(data) }});
-
-        // this.props.fetchAChannel(nextProps.channelId)
       }
-      // if (this.props.messages.length !== nextProps.messages.length) {
-      //   this.scrollBottom();
-      // }
     } else {
       if (this.subscription) {
         this.subscription.unsubscribe();
@@ -75,7 +70,7 @@ class MessageShow extends React.Component {
     const scrollHeight = messageList.scrollHeight;
     const height = messageList.clientHeight;
     const maxScrollTop = scrollHeight - height;
-    debugger
+
     ReactDOM.findDOMNode(messageList).scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   }
 
@@ -85,7 +80,7 @@ class MessageShow extends React.Component {
     const height = messageList.clientHeight;
     const maxScrollTop = scrollHeight - height;
     let currentHeight = ReactDOM.findDOMNode(messageList).scrollTop;
-
+    // 20 due to padding from message form
     ReactDOM.findDOMNode(messageList).scrollTop = maxScrollTop - currentHeight === 20 ? maxScrollTop : currentHeight;
   }
 
