@@ -20,11 +20,13 @@ const mapStateToProps = (state, ownProps) => {
   const messages = Object.values(state.entities.messages).filter(message => {
     return message.messagable_id === channelId;
   });
+  const lastMessage = messages[messages.length - 1];
   // const currentChannel = state.session.currentChannel || {};
 
 
   return ({
     messageType,
+    currentUser,
     channel,
     messages,
     // currentChannel,
@@ -32,6 +34,7 @@ const mapStateToProps = (state, ownProps) => {
     serverId,
     currentServer,
     channelId,
+    lastMessage,
   });
 };
 

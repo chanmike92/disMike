@@ -36,7 +36,7 @@ class Api::ServersController < ApplicationController
       render json: {joinErrors: ['Please Enter ID > 0']}, status: 402
     else
 
-      @server = Server.find_by(id: params[:id])
+      @server = Server.includes(:channels, :subscribed_users, :messages).find_by(id: params[:id])
       if @server
         @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
       end

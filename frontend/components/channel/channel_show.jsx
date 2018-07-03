@@ -14,7 +14,16 @@ class ChannelShow extends React.Component {
     };
     this.renderChannels = this.renderChannels.bind(this);
     this.handleChannelDropdown = this.handleChannelDropdown.bind(this);
+    this.handleContextClick = this.handleContextClick.bind(this);
   }
+
+  handleContextClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.openDropdown({dropdownType: "serverindex", x: e.clientX,
+      y: e.clientY });
+  }
+
 
   renderChannels() {
     let channels = [];

@@ -29,7 +29,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  debugger
+
   return ({
     openDropdown: (e) => {
       e.stopPropagation();
@@ -39,7 +39,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       e.stopPropagation();
       dispatch(closeDropdown());
     },
-    scrollBottom: () => { ownProps.scrollBottom; },
+    scrollBottom: () => ownProps.scrollBottom(),
     processForm: (message) => dispatch(makeNewMessage(message)),
     fetchAllChannels: (id) => dispatch(fetchAllChannels(id)),
     fetchAChannel: (id) => dispatch(fetchAChannel(id)),

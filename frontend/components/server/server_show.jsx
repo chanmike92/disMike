@@ -8,10 +8,10 @@ import LoadingContainer from '../loading/loading_container';
 class ServerShow extends React.Component {
   constructor(props) {
     super(props);
-    this.handleServerContextClick = this.handleServerContextClick.bind(this);
+    this.handleContextClick = this.handleContextClick.bind(this);
   }
 
-  handleServerContextClick(e) {
+  handleContextClick(e) {
     e.preventDefault();
     e.stopPropagation();
     this.props.openDropdown({dropdownType: "serverindex", x: e.clientX,
@@ -44,7 +44,7 @@ class ServerShow extends React.Component {
         <div className='online-friends-count'>{ this.props.onlineFriends.length } Online</div>
         <div className='separator'></div>
           {servers}
-        <button id='create-server-form' onClick={this.props.createForm} onContextMenu={ this.handleServerContextClick }>
+        <button id='create-server-form' onClick={this.props.createForm} onContextMenu={ this.handleContextClick }>
           <span className='create-sign'>+</span>
         </button>
         <div className='separator'></div>

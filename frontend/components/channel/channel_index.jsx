@@ -13,27 +13,12 @@ const ChannelIndex = (props) => {
       <div className='channel-controls'>
         <button className='fafaicons-container channel-edit' onClick={() => {
             props.history.push(`/${props.serverId}/${props.id}`);
-            props.updateForm();
-          } }>
+            props.updateForm();} }>
           <i className="fas fa-edit"></i>
         </button>
         <button className='fafaicons-container channel-delete' onClick={() => {
             props.history.push(`/${props.serverId}/${props.id}`);
-            props.deleteChannel();
-          }
-            // props.deleteChannel(props.id)
-            // .then(() => props.fetchAServer(props.serverId))
-            //     .then(() => {
-            //       return props.currentServer.channel_ids[0] === undefined ?
-            //         props.history.push(`/${props.serverId}/`) :
-            //         props.history.push(`/${props.serverId}/${props.currentServer.channel_ids[0]}`)
-              //       if (props.currentServer.channel_ids[0] === undefined) {
-              //         props.history.push(`/@me/${props.serverId}`)
-              //       } else {
-              //       props.history.push(`/@me/${props.serverId}/${props.currentServer.channel_ids[0]}`);
-              //     })
-              }
-            >
+            props.deleteChannel();} }>
           <i className="far fa-trash-alt"></i>
         </button>
       </div>

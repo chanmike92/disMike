@@ -11,6 +11,15 @@ if @server
     end
   end
 
+  json.messages do
+    @server.messages.each do |message|
+      json.set! message.id do
+        json.partial! 'api/messages/message', message: message
+      end
+    end
+  end
+
+
   json.users do
     @server.subscribed_users.each do |user|
       json.set! user.id do

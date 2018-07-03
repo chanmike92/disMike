@@ -2,7 +2,7 @@ import { RECEIVE_ALL_MESSAGES, RECEIVE_A_MESSAGE, CLEAR_MESSAGES } from '../acti
 import { RECEIVE_A_CHANNEL, CLEAR_STATE } from '../actions/channel_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_CURRENT_USER_SESSION, RECEIVE_A_USER } from '../actions/user_actions';
-import { RECEIVE_ALL_SERVERS } from '../actions/server_actions';
+import { RECEIVE_ALL_SERVERS, RECEIVE_A_SERVER } from '../actions/server_actions';
 import { merge } from 'lodash';
 
 
@@ -20,6 +20,8 @@ const messageReducer = (oldState = {}, action) => {
       return action.messages;
     case CLEAR_MESSAGES:
       return {};
+    case RECEIVE_A_SERVER:
+      return merge({}, oldState, action.payload.messages );
     case RECEIVE_A_MESSAGE:
       return merge({}, oldState, { [action.message.id]: action.message });
     case RECEIVE_A_CHANNEL:

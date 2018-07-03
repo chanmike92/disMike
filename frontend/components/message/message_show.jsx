@@ -11,58 +11,63 @@ class MessageShow extends React.Component {
   constructor(props) {
     super(props);
     this.scrollBottom = this.scrollBottom.bind(this);
+    this.scrollByPosition = this.scrollByPosition.bind(this);
     this.renderMessages = this.renderMessages.bind(this);
     this.generateDate = this.generateDate.bind(this);
     this.generateFullDate = this.generateFullDate.bind(this);
     this.renderGroupMessages = this.renderGroupMessages.bind(this);
   }
 
-  // componentDidMount() {
-  //   if (this.props.channelId) {
-  //     // this.props.fetchAChannel(this.props.channelId);
-  //     this.subscription = App.cable.subscriptions.create(
-  //       {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
-  //       { received: (data) => { this.props.receiveAMessage(data) }});
-  //     this.scrollBottom();
-  //   }
-  // }
-  //
-  // componentWillReceiveProps(nextProps) {
-  //
-  //   if (nextProps.channelId)  {
-  //     if (nextProps.channelId !== this.props.channelId) {
-  //       if (this.subscription) {
-  //       this.subscription.unsubscribe();
-  //       }
-  //       this.subscription = App.cable.subscriptions.create(
-  //         {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
-  //         { received: (data) => { nextProps.receiveAMessage(data) }});
-  //
-  //       // this.props.fetchAChannel(nextProps.channelId)
-  //     }
-  //     // if (this.props.messages.length !== nextProps.messages.length) {
-  //     //   this.scrollBottom();
-  //     // }
-  //   } else {
-  //     if (this.subscription) {
-  //       this.subscription.unsubscribe();
-  //     }
-  //   }
-  //
-  // }
-  //
-  // componentWillUnmount() {
-  //   // this.props.clearMessages();
-  //   if (this.subscription) {
-  //     this.subscription.unsubscribe();
-  //   }
-  // }
-  //
-  // componentDidUpdate(prevProps) {
-  //   if (prevProps.messages.length !== this.props.messages.length) {
-  //     this.scrollBottom();
-  //   }
-  // }
+  componentDidMount() {
+    if (this.props.channelId) {
+      // this.props.fetchAChannel(this.props.channelId);
+      this.subscription = App.cable.subscriptions.create(
+        {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
+        { received: (data) => { this.props.receiveAMessage(data) }});
+      this.scrollBottom();
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+
+    if (nextProps.channelId)  {
+      if (nextProps.channelId !== this.props.channelId) {
+        if (this.subscription) {
+        this.subscription.unsubscribe();
+        }
+        this.subscription = App.cable.subscriptions.create(
+          {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
+          { received: (data) => { nextProps.receiveAMessage(data) }});
+
+        // this.props.fetchAChannel(nextProps.channelId)
+      }
+      // if (this.props.messages.length !== nextProps.messages.length) {
+      //   this.scrollBottom();
+      // }
+    } else {
+      if (this.subscription) {
+        this.subscription.unsubscribe();
+      }
+    }
+
+  }
+
+  componentWillUnmount() {
+    // this.props.clearMessages();
+    if (this.subscription) {
+      this.subscription.unsubscribe();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.messages.length !== this.props.messages.length) {
+      if (this.props.lastMessage.author_id ===  this.props.currentUser.id) {
+        this.scrollBottom();
+      } else {
+        this.scrollByPosition();
+      }
+    }
+  }
 
 
   scrollBottom() {
@@ -70,16 +75,19 @@ class MessageShow extends React.Component {
     const scrollHeight = messageList.scrollHeight;
     const height = messageList.clientHeight;
     const maxScrollTop = scrollHeight - height;
+    debugger
     ReactDOM.findDOMNode(messageList).scrollTop = maxScrollTop > 0 ? maxScrollTop : 0;
   }
-  // scrollBottom() {
-  //   const element = document.getElementById("messages");
-  //   if (element) {
-  //     setTimeout(() => {
-  //       element.scrollTop = element.scrollHeight;
-  //     }, 10);
-  //   }
-  // }
+
+  scrollByPosition() {
+    const messageList = this.refs.messageList;
+    const scrollHeight = messageList.scrollHeight;
+    const height = messageList.clientHeight;
+    const maxScrollTop = scrollHeight - height;
+    let currentHeight = ReactDOM.findDOMNode(messageList).scrollTop;
+
+    ReactDOM.findDOMNode(messageList).scrollTop = maxScrollTop - currentHeight === 20 ? maxScrollTop : currentHeight;
+  }
 
   generateDate(date) {
 

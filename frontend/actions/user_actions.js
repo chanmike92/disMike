@@ -28,7 +28,7 @@ export const receiveCurrentUserSession = (payload) => {
 };
 
 export const fetchCurrentUserSession = (id) => dispatch => {
-  debugger
+  
   return APIUtil.fetchCurrentUser(id).then((payload) => dispatch(receiveCurrentUserSession(payload)));
 };
 
