@@ -63,12 +63,15 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
 const mapStateToProps = (state, ownProps) => {
   const dropdownType = state.ui.dropdown.dropdownType;
   const dropdownId = state.ui.dropdown.id;
+  const channels = state.entities.channels;
+  const servers = state.entities.servers;
   const x = state.ui.dropdown.x || 0;
   const y = state.ui.dropdown.y || 0;
   const serverId = (ownProps.location.pathname.split('/')[1]);
-  const server = state.entities.servers[serverId] || {};
+  const server = servers[serverId] || {};
   const channelId = (ownProps.location.pathname.split('/')[2]);
-  const channel = state.entities.channels[channelId] || {};
+  const channel = channels[channelId] || {};
+
   return {
     dropdownType,
     dropdownId,
@@ -77,7 +80,7 @@ const mapStateToProps = (state, ownProps) => {
     server,
     serverId,
     channel,
-    channelId
+    channelId,
   };
 };
 
