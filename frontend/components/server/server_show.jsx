@@ -8,11 +8,14 @@ import LoadingContainer from '../loading/loading_container';
 class ServerShow extends React.Component {
   constructor(props) {
     super(props);
-    this.handleClick = this.handleClick.bind(this);
+    this.handleServerContextClick = this.handleServerContextClick.bind(this);
   }
 
-  handleClick(e) {
+  handleServerContextClick(e) {
     e.preventDefault();
+    e.stopPropagation();
+    this.props.openDropdown({dropdownType: "serverindex", x: e.clientX,
+      y: e.clientY });
   }
 
 
@@ -35,13 +38,13 @@ class ServerShow extends React.Component {
 
     return (
       <div className='server-container'>
-        <Link className={`direct-message-link ${activeServer}`} onContextMenu={ this.handleClick } to={`/@me/`}>
+        <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
           <i className="fas fa-users"></i>
         </Link>
         <div className='online-friends-count'>{ this.props.onlineFriends.length } Online</div>
         <div className='separator'></div>
           {servers}
-        <button id='create-server-form' onClick={this.props.createForm}>
+        <button id='create-server-form' onClick={this.props.createForm} onContextMenu={ this.handleServerContextClick }>
           <span className='create-sign'>+</span>
         </button>
         <div className='separator'></div>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
-const ServerButtonDropdown = (props) => {
+const ChannelIndexDropdown = (props) => {
 
     return (
       <div className='server-index-dropdown-container'>
@@ -16,4 +16,4 @@ const ServerButtonDropdown = (props) => {
     );
 };
 
-export default withRouter(ServerButtonDropdown);
+export default withRouter(ChannelIndexDropdown);

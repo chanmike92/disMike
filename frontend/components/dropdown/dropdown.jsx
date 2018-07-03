@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import FriendAddContainer from '../friend_list/friend_add_container';
 import ServerIndexDropdown from '../dropdown/serverindex_dropdown';
+import ServerButtonDropdown from '../dropdown/serverbutton_dropdown';
 
 
 const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel, closeDropdown }) => {
@@ -15,31 +16,31 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
   switch (dropdownType) {
       case 'serverindex':
         component =
-        <div className='dropdown-container'>
+        <div className='dropdown-context-container'>
           <ServerIndexDropdown />
         </div>;
       break;
       case 'serverbutton':
         component =
-        <div className='dropdown-container'>
-          <div>hello</div>
+        <div className='dropdown-context-container'>
+          <ServerButtonDropdown />
         </div>;
       break;
       case 'channel':
         component =
-        <div className='dropdown-container'>
+        <div className='dropdown-context-container'>
             <div>channel</div>
         </div>;
       break;
-      case 'servername':
-        component =
-        <div className='dropdown-container'>
-            <div>channel</div>
-        </div>;
-      break;
+      // case 'servername':
+      //   component =
+      //   <div className='dropdown-container'>
+      //       <div>channel</div>
+      //   </div>;
+      // break;
       case 'channelindex':
         component =
-        <div className='dropdown-container'>
+        <div className='dropdown-context-container'>
           <div>channel index</div>
         </div>;
       break;
@@ -47,12 +48,13 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       return null;
   }
 
+
   return (
-    <div className="dropdown-background" onClick={ closeDropdown }>
-      <div className='dropdown-child' style={ {left: (x+20), top: y } } onClick={ e => e.stopPropagation() }>
+
+      <div className='dropdown-child' style={ {left: x, top: y } } onClick={ e => e.stopPropagation() }>
         { component }
       </div>
-    </div>
+
   );
 };
 

@@ -137,13 +137,24 @@
 }
 
 .dropdown-child {
-  z-index: 500;
+  z-index: 25;
   position: absolute;
   transform: translate(-50%, -50%);
 }
 
 .dropdown-container {
   z-index: 25;
+}
+
+.dropdown-context-container {
+  z-index: 25;
+  background: #18191c;
+  box-shadow: 0 0 1px rgba(0,0,0,.82), 0 1px 4px rgba(0,0,0,.1);
+  cursor: default;
+  border-radius: 5px;
+  display: inline-block;
+  position: fixed;
+  width: 170px;
 }
 
 .dropdown-background {

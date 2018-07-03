@@ -15,7 +15,7 @@ class MainComponent extends React.Component{
       serverId: "",
       channelId: ""
     };
-    this.handleRightClick = this.handleRightClick.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
@@ -64,9 +64,11 @@ class MainComponent extends React.Component{
 
   }
 
-  handleRightClick(e) {
+  handleClick(e) {
     e.preventDefault();
-    this.props.closeDropdown();
+    if (this.props.dropdown) {
+      this.props.closeDropdown();
+    }
   }
 
   render() {
@@ -86,7 +88,7 @@ class MainComponent extends React.Component{
   // const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
  // onClick={ dropdown }
     return (
-      <div className='maincomponent-container' onClick={ this.props.dropdown ? this.props.closeDropdown : () => {} } onContextMenu={ this.handleRightClick }>
+      <div className='maincomponent-container' onClick={ this.handleClick } onContextMenu={ this.handleClick }>
         <Modal />
         <Dropdown />
         <LoadingContainer />
