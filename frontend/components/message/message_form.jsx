@@ -15,7 +15,7 @@ class MessageForm extends React.Component {
     this.state = {body: '',
       messagable_id: this.props.channelId,
       messagable_type: this.props.messageType,
-      currentEmoji: ":heart:",
+      currentEmoji: ":grinning:",
     };
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -90,7 +90,7 @@ class MessageForm extends React.Component {
               showPreview={false}
               onClick={this.addEmoji}
               style={ this.props.dropdown === 'emoji' ?
-                { position: 'absolute', width: '315px', bottom: '75px', right: '70px'} :
+                { position: 'absolute', width: '315px', bottom: '75px', right: '10px'} :
                 { display: 'none'} }
               title='Pick your emoji…' emoji='point_up'
             />

@@ -19,7 +19,7 @@ const ServerLeave = (props) => {
   return (
     <div className='channel-delete-form-container'>
         <div className='display-form-message-container'>
-          <label className='modal-title'>Update Channel</label>
+          <label className='modal-title'>Leaving?</label>
           <div className='channel-delete-message'>
             <label className='server-label'>Are you sure you want to leave {props.serverName}?</label>
           </div>

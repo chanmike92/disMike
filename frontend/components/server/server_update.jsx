@@ -73,7 +73,6 @@ class ServerUpdate extends React.Component {
             <input className='server-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
           <div className="profile-picture-update-container">
-            <label>Server Image</label>
             <div className='profile-picture-upload'>
               <div className="icon-preview" style={ { backgroundImage: `url(${this.state.image_url})` } }>
                 <input id="fileUploadInput"onChange={this.handleFileUpload}
