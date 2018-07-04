@@ -1,9 +1,9 @@
 import ServerDropdown from './server_dropdown';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { leaveServer, deleteServer } from '../../actions/server_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
-import { makeNewChannel, receiveErrors, fetchAChannel } from '../../actions/channel_actions';
+import { leaveServer, deleteServer } from '../../../actions/server_actions';
+import { openModal, closeModal } from '../../../actions/modal_actions';
+import { makeNewChannel, receiveErrors, fetchAChannel } from '../../../actions/channel_actions';
 import { connect } from 'react-redux';
 
 

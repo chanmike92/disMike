@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import UserDropdownContainer from '../dropdown/user_dropdown_container';
+import UserDropdownContainer from '../dropdown/user/user_dropdown_container';
 
 
 class Greeting extends React.Component {

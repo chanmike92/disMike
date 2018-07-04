@@ -2,11 +2,10 @@ import React from 'react';
 import { closeDropdown } from '../../actions/dropdown_actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import FriendAddContainer from '../friend_list/friend_add_container';
-import ServerIndexDropdown from '../dropdown/serverindex_dropdown';
-import ChannelIndexDropdown from '../dropdown/channelindex_dropdown';
-import ChannelDropdown from '../dropdown/channel_dropdown';
-import ServerButtonDropdown from '../dropdown/serverbutton_dropdown';
+import ServerIndexDropdown from './serverindex/serverindex_dropdown';
+import ChannelIndexDropdown from './channelindex/channelindex_dropdown';
+import ChannelDropdown from './channel/channel_dropdown';
+import ServerButtonDropdown from './serverbutton/serverbutton_dropdown';
 
 
 const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel, closeDropdown }) => {

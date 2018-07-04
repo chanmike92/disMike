@@ -1,9 +1,9 @@
 import UserDropdown from './user_dropdown';
 import React from 'react';
-import { logout } from '../../actions/session_actions';
+import { logout } from '../../../actions/session_actions';
 import { connect } from 'react-redux';
-import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
-import { openModal, closeModal } from '../../actions/modal_actions';
+import { openDropdown, closeDropdown } from '../../../actions/dropdown_actions';
+import { openModal, closeModal } from '../../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {

@@ -4,7 +4,7 @@ import { Route, withRouter, Link, Redirect } from 'react-router-dom';
 import MessageShowContainer from '../message/message_show_container';
 import EmptyChannelMessages from '../message/empty_channel_message';
 import GreetingContainer from '../greeting/greeting_container';
-import ServerDropdownContainer from '../dropdown/server_dropdown_container';
+import ServerDropdownContainer from '../dropdown/server/server_dropdown_container';
 
 class ChannelShow extends React.Component {
   constructor(props) {
