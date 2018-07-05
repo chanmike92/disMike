@@ -2,7 +2,7 @@ import React from 'react';
 import { closeDropdown } from '../../actions/dropdown_actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ServerIndexDropdown from './serverindex/serverindex_dropdown';
+import ServerIndexDropdownContainer from './serverindex/serverindex_dropdown_container';
 import ChannelIndexDropdownContainer from './channelindex/channelindex_dropdown_container';
 import ChannelDropdownContainer from './channel/channel_dropdown_container';
 import ServerButtonDropdownContainer from './serverbutton/serverbutton_dropdown_container';
@@ -18,7 +18,7 @@ const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId,
       case 'serverindex':
         component =
         <div className='dropdown-context-container'>
-          <ServerIndexDropdown serverId={ dropdownId }/>
+          <ServerIndexDropdownContainer serverId={ dropdownId }/>
         </div>;
       break;
       case 'serverbutton':
