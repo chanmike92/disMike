@@ -1,4 +1,4 @@
-import ChannelUpdate from './channel_update';
+import ServerIndexDropdown from './serverindex_dropdown';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAServer } from '../../actions/server_actions';
@@ -8,21 +8,22 @@ import { openModal, closeModal,  } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  const channel = ownProps.channel || {};
-  const server = ownProps.server || {};
-  const serverId = server.id || "";
+  const servers = state.entities.servers;
+  const serverId = ownProps.serverId;
+  const server = servers[serverId];
+  const currentUser = state.session.user;
 
   // errors: state.errors.channels,
 
   return ({
-    channel,
-    serverId,
-    formType: 'updateChannel',
+    server,
+    currentUser
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return ({
+
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     processForm: (channel) => dispatch(updateChannel(channel)),
     clearErrors: () => dispatch(receiveErrors([])),

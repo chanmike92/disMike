@@ -1,4 +1,4 @@
-import ServerButton from './serverbutton_dropdown';
+import ServerButtonDropdown from './serverbutton_dropdown';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,9 +21,16 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    openModal: (form) => dispatch(openModal(form)),
+    openCreateModal: (e) => {
+      e.stopPropagation();
+      dispatch(openModal('createServer'));
+    },
+    openJoinModal: (e) => {
+      e.stopPropagation();
+      dispatch(openModal('createServer'));
+    },
     closeModal: () => dispatch(closeModal())
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ChannelUpdate));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerButtonDropdown));

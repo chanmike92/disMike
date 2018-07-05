@@ -2,13 +2,13 @@ import React from 'react';
 import { closeDropdown } from '../../actions/dropdown_actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ServerIndexDropdown from './serverindex/serverindex_dropdown';
+import ServerIndexDropdownContainer from './serverindex/serverindex_dropdown';
 import ChannelIndexDropdown from './channelindex/channelindex_dropdown';
-import ChannelDropdown from './channel/channel_dropdown';
-import ServerButtonDropdown from './serverbutton/serverbutton_dropdown';
+import ChannelDropdownContainer from './channel/channel_dropdown_container';
+import ServerButtonDropdownContainer from './serverbutton/serverbutton_dropdown_container';
 
 
-const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel, closeDropdown }) => {
+const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel, currentUser, closeDropdown }) => {
 
   if (!dropdownType) {
     return null;
@@ -18,19 +18,19 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       case 'serverindex':
         component =
         <div className='dropdown-context-container'>
-          <ServerIndexDropdown />
+          <ServerIndexDropdownContainer serverId={ id }/>
         </div>;
       break;
       case 'serverbutton':
         component =
         <div className='dropdown-context-container'>
-          <ServerButtonDropdown />
+          <ServerButtonDropdownContainer />
         </div>;
       break;
       case 'channel':
         component =
         <div className='dropdown-context-container'>
-            <ChannelDropdown />
+          <ChannelDropdownContainer server={ server }/>
         </div>;
       break;
       // case 'servername':
@@ -42,7 +42,7 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       case 'channelindex':
         component =
         <div className='dropdown-context-container'>
-          <ChannelIndexDropdown />
+          <ChannelIndexDropdown channelId={ id }/>
         </div>;
       break;
     default:
@@ -71,6 +71,7 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const channel = channels[channelId] || {};
 
+
   return {
     dropdownType,
     dropdownId,
@@ -80,6 +81,7 @@ const mapStateToProps = (state, ownProps) => {
     serverId,
     channel,
     channelId,
+    currentUser,
   };
 };
 

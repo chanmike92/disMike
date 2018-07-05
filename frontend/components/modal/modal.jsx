@@ -28,7 +28,7 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
         <div className='server-modal-title'>OH, ANOTHER SERVER HUH?</div>
         <div className='modal-form-container'>
           <ServerCreateContainer />
-          <ServerJoinContainer server={ server }/>
+          <ServerJoinContainer />
         </div>
       </div>;
       break;
