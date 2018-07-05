@@ -13,7 +13,6 @@ const mapStateToProps = (state, ownProps) => {
   const channel = channels[channelId];
   const currentUser = state.session.user;
   // errors: state.errors.channels,
-  debugger
   return ({
     channel,
     serverId,

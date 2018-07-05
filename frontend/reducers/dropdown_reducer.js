@@ -1,6 +1,7 @@
 import { OPEN_DROPDOWN, CLOSE_DROPDOWN } from '../actions/dropdown_actions';
 import { merge } from 'lodash';
 import { OPEN_MODAL } from '../actions/modal_actions';
+import { RECEIVE_A_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_A_SERVER } from '../actions/server_actions';
 const nullState = {
   dropdownType: null,
@@ -18,6 +19,8 @@ export default function dropdownReducer(state = nullState, action) {
     case OPEN_MODAL:
       return {};
     case RECEIVE_A_SERVER:
+      return {};
+    case RECEIVE_A_CHANNEL:
       return {};
     default:
       return state;
