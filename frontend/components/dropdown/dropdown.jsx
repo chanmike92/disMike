@@ -2,13 +2,13 @@ import React from 'react';
 import { closeDropdown } from '../../actions/dropdown_actions';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import ServerIndexDropdownContainer from './serverindex/serverindex_dropdown';
-import ChannelIndexDropdown from './channelindex/channelindex_dropdown';
+import ServerIndexDropdown from './serverindex/serverindex_dropdown';
+import ChannelIndexDropdownContainer from './channelindex/channelindex_dropdown_container';
 import ChannelDropdownContainer from './channel/channel_dropdown_container';
 import ServerButtonDropdownContainer from './serverbutton/serverbutton_dropdown_container';
 
 
-const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel, currentUser, closeDropdown }) => {
+const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId, channel, currentUser, closeDropdown }) => {
 
   if (!dropdownType) {
     return null;
@@ -18,7 +18,7 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       case 'serverindex':
         component =
         <div className='dropdown-context-container'>
-          <ServerIndexDropdownContainer serverId={ id }/>
+          <ServerIndexDropdown serverId={ dropdownId }/>
         </div>;
       break;
       case 'serverbutton':
@@ -42,7 +42,7 @@ const Dropdown = ({ dropdownType, id, x, y, serverId, server, channelId, channel
       case 'channelindex':
         component =
         <div className='dropdown-context-container'>
-          <ChannelIndexDropdown channelId={ id }/>
+          <ChannelIndexDropdownContainer serverId={ serverId } channelId={ dropdownId }/>
         </div>;
       break;
     default:
@@ -81,7 +81,6 @@ const mapStateToProps = (state, ownProps) => {
     serverId,
     channel,
     channelId,
-    currentUser,
   };
 };
 

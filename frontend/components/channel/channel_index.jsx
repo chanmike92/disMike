@@ -30,7 +30,7 @@ const ChannelIndex = (props) => {
        e.stopPropagation();
 
        props.openDropdown({dropdownType: "channelindex", x: e.clientX,
-         y: e.clientY, id: props.channel.id});
+         y: e.clientY, id: props.id});
      };
 
     return (
