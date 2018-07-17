@@ -23,7 +23,7 @@ const ChannelIndexDropdown = (props) => {
         <div className='dropdown-divider'></div>
         <div>
           <div className='dropdown-index-item' onClick={() => {
-              props.cloneChannel(props.channel, props.serverId);
+              props.cloneChannel(props.channel, props.serverId).then(() => props.fetchAServer(props.serverId));
             }}>
             <label className='dropdown-index-title'>Clone Channel</label>
           </div>
