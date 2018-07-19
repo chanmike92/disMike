@@ -6,7 +6,7 @@ const ChannelIndex = (props) => {
 
 
     if (props.id) {
-    const channelClass = Number(props.channelId) === props.id ? "channel-item-container active-channel" : "channel-item-container";
+    const channelClass = Number(props.channelId) === props.id ? "channel-item-container active-channel channel-link-item" : "channel-item-container channel-link-item";
     const channelNameClass = Number(props.channelId) === props.id ? "active-name-channel channel-name-item" : "channel-name-item";
     // const activeDisplayControls = parseInt(props.channelId) === props.id ? "a"
     let iconButtons;
@@ -34,14 +34,13 @@ const ChannelIndex = (props) => {
      };
 
     return (
-      <li className={ channelClass } onContextMenu={ handleClick }>
         <Link
           to={`/${props.serverId}/${props.id}`}
-          className='channel-link-item'>
+          onContextMenu={ handleClick }
+          className={ channelClass }>
           # <div className={ channelNameClass }>{ props.channel.name }</div>
-        </Link>
         {iconButtons}
-      </li>
+        </Link>
     );
   }
 };

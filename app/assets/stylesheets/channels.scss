@@ -230,16 +230,14 @@
   // background-color: #b9bbbe;
 }
 
-.channel-item-container:enabled {
-  background-color: rgba(79,84,92,.6);
-}
+// .channel-item-container:enabled {
+//   background-color: rgba(79,84,92,.6);
+// }
 
 .channel-link-item {
   font-size: 16px;
   display: flex;
   position: relative;
-  width: 150px;
-  height: 20px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
