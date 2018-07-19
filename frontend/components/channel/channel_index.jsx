@@ -9,8 +9,9 @@ const ChannelIndex = (props) => {
     const channelClass = Number(props.channelId) === props.id ? "channel-item-container active-channel" : "channel-item-container";
     const channelNameClass = Number(props.channelId) === props.id ? "active-name-channel channel-name-item" : "channel-name-item";
     // const activeDisplayControls = parseInt(props.channelId) === props.id ? "a"
-    const iconButtons = (props.currentUserId === props.currentServerOwnerId) ?
-      <div className='channel-controls'>
+    let iconButtons;
+    if (props.currentUserId === props.currentServerOwnerId) {
+      iconButtons = <div className='channel-controls'>
         <button className='fafaicons-container channel-edit' onClick={() => {
             props.history.push(`/${props.serverId}/${props.id}`);
             props.updateForm();} }>
@@ -21,9 +22,8 @@ const ChannelIndex = (props) => {
             props.deleteChannel();} }>
           <i className="far fa-trash-alt"></i>
         </button>
-      </div>
-     :
-     <div></div>;
+      </div>;
+    }
 
      const handleClick = (e) => {
        e.preventDefault();
