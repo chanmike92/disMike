@@ -25,7 +25,7 @@ const mapDispatchToProps = dispatch => {
   return ({
     cloneChannel: (channel, id) => dispatch(makeNewChannel(channel, id)),
     updateChannel: () => dispatch(openModal('updateChannel')),
-    processForm: () => dispatch(openModal('deleteChannel')),
+    deleteChannel: () => dispatch(openModal('deleteChannel')),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });
