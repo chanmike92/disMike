@@ -3,7 +3,7 @@ import React from 'react';
 import { getDMServer } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
-import { fetchAllFriends } from '../../actions/friend_actions';
+import { fetchAllFriends, addNewFriend, deleteFriend } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
 import { openModal } from '../../actions/modal_actions';
 
@@ -38,7 +38,9 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     fetchAllFriends: () => dispatch(fetchAllFriends()),
-    addFriend: () => dispatch(openModal('addFriend'))
+    addNewFriend: () => dispatch(openModal('addFriend')),
+    addFriend: (id) => dispatch(addNewFriend(id)),
+    deleteFriend: (id) => dispatch(deleteFriend(id)),
   });
 };
 

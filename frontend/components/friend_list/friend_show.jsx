@@ -16,20 +16,20 @@ const FriendShow = (props) => {
         renderStatus = "Offline";
       }
       friendControls = <div className='friend-controls-container'>
-        <div></div>
+        <div onClick={ () => props.deleteFriend(props.id) }>DELETE</div>
       </div>;
     break;
     case ("PENDING RECEIVE"):
       renderStatus = "Outgoing Friend Request";
       friendControls = <div className='friend-controls-container'>
-        <div></div>
+        <div onClick={ () => props.deleteFriend(props.id) }>DELETE</div>
       </div>;
       break;
     case ("PENDING ACCEPT"):
       renderStatus = "Incoming Friend Request";
       friendControls = <div className='friend-controls-container'>
-        <div></div>
-        <div></div>
+        <div onClick={ () => props.deleteFriend(props.id) }>DELETE</div>
+        <div onClick={ () => props.addFriend(props.id) }>ADD</div>
       </div>;
     break;
   }
@@ -48,9 +48,7 @@ const FriendShow = (props) => {
         </div>
         <div className='mutual-servers-container'>
         </div>
-        <div className='friend-controls-container'>
-          <div></div>
-        </div>
+        { friendControls }
       </Link>
     </li>
   );

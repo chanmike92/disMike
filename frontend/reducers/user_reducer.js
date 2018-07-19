@@ -1,5 +1,5 @@
 import { RECEIVE_A_USER, RECEIVE_ALL_USERS,  RECEIVE_CURRENT_USER_SESSION } from '../actions/user_actions';
-import { RECEIVE_A_FRIEND, RECEIVE_ALL_FRIENDS } from '../actions/friend_actions';
+import { RECEIVE_A_FRIEND, RECEIVE_ALL_FRIENDS, REMOVE_A_FRIEND } from '../actions/friend_actions';
 import { RECEIVE_A_SERVER, RECEIVE_ALL_SERVERS } from '../actions/server_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { CLEAR_STATE } from '../actions/channel_actions';
@@ -14,6 +14,11 @@ const userReducer = (oldState = {}, action) => {
       return merge({}, oldState, action.users);
     case RECEIVE_A_FRIEND:
       return merge({}, oldState, { [action.user.id]: action.user });
+    case REMOVE_A_FRIEND:
+      const newState = merge({}, oldState);
+      debugger
+      const removedFriend = merge(newState[action.id], {friendship_status: null});
+      return merge(newState, { [action.id]: removedFriend });
     // case RECEIVE_CURRENT_USER:
     //   return merge({}, oldState, { [action.payload.currentUser.id]: action.payload.currentUser }, action.payload.users, action.payload.friends);
     case RECEIVE_CURRENT_USER_SESSION:

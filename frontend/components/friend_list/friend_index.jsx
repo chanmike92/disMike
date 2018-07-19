@@ -28,8 +28,10 @@ class FriendIndex extends React.Component {
       if (user) {
         let friend = <FriendShow
           user={ user }
-          id= { userId }
+          id={ userId }
           key={ i }
+          addFriend={ this.props.addFriend }
+          deleteFriend={ this.props.deleteFriend }
           />;
 
 
@@ -64,7 +66,7 @@ class FriendIndex extends React.Component {
     return (
       <div className='message-container'>
         <div className='friend-selector'>
-          <div className='add-friend-button purple-back' onClick={ this.props.addFriend }>Add Friend</div>
+          <div className='add-friend-button purple-back' onClick={ this.props.addNewFriend }>Add Friend</div>
           <div className='verticle-separator'></div>
           <div className={ active("ALL") } onClick={ this.handleSelect("ALL") }>All</div>
           <div className={ active("ONLINE") } onClick={ this.handleSelect("ONLINE") }>Online</div>
