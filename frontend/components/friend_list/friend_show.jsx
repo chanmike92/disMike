@@ -16,10 +16,10 @@ const FriendShow = (props) => {
       }
     break;
     case ("PENDING RECEIVE"):
-      renderStatus = "Incoming Friend Request";
+      renderStatus = "Outgoing Friend Request";
       break;
     case ("PENDING ACCEPT"):
-      renderStatus = "Outgoing Friend Request";
+      renderStatus = "Incoming Friend Request";
     break;
   }
   // const iconPic = () =>
