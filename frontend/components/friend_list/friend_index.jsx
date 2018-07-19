@@ -76,6 +76,8 @@ class FriendIndex extends React.Component {
             <div className='verticle-separator'></div>
             <div className='friend-table-tab status'>Status</div>
             <div className='verticle-separator'></div>
+            <div className='friend-table-tab status'>Mutual Servers</div>
+            <div className='verticle-separator'></div>
           </div>
           <div className='friend-index-container'>
             {friends}

@@ -5,6 +5,7 @@ const FriendShow = (props) => {
 
   let statusClassName = "online-status offline";
   let renderStatus = props.user.online_status ? "Online" : "Offline";
+  let friendControls;
   switch (props.user.friendship_status) {
     case ("ACCEPTED"):
       if (props.user.online_status) {
@@ -14,15 +15,24 @@ const FriendShow = (props) => {
         statusClassName = "online-status offline";
         renderStatus = "Offline";
       }
+      friendControls = <div className='friend-controls-container'>
+        <div></div>
+      </div>;
     break;
     case ("PENDING RECEIVE"):
       renderStatus = "Outgoing Friend Request";
+      friendControls = <div className='friend-controls-container'>
+        <div></div>
+      </div>;
       break;
     case ("PENDING ACCEPT"):
       renderStatus = "Incoming Friend Request";
+      friendControls = <div className='friend-controls-container'>
+        <div></div>
+        <div></div>
+      </div>;
     break;
   }
-  // const iconPic = () =>
 
     return (
     <li className="friend-item-container">
@@ -35,6 +45,8 @@ const FriendShow = (props) => {
         <div className='status-container'>
           <div className={ statusClassName }></div>
           <div className="status-name">{ renderStatus }</div>
+        </div>
+        <div className='mutual-servers-container'>
         </div>
         <div className='friend-controls-container'>
           <div></div>
