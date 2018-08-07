@@ -10,8 +10,8 @@ const LogoutConfirmation = (props) => {
           <label className='channel-delete-message'>{`Are you sure you want to log out, ${props.currentUser.username}? We're going to miss you...`}</label>
         </div>
         <div className="yes-no-option channel-delete-yes-no">
-          <button className='submit-button yes' onClick={ () => props.logout }>Yes</button>
-          <button className='submit-button no' onClick={ () => props.closeModal }>No</button>
+          <button className='submit-button yes' onClick={ props.logout }>Yes</button>
+          <button className='submit-button no' onClick={ props.closeModal }>No</button>
         </div>
     </div>
   );

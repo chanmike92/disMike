@@ -18,10 +18,18 @@ class Api::MessagesController < ApplicationController
   def create
     @message = Message.new(message_params)
     @message.author_id = current_user.id
-
+    # if @message.messagable_type == 'DMChannel'
+    #   @messagable = DmChannel.find(@message.messagable_id).includes(:subscribers)
+    # else
+    #   @messagable = Channel.find(@message.messagable_id).includes(:subscribers)
+    # end
+    @messagable = @message.messagable
     if @message.save
-      @message.
-      BroadcastMessageJob.perform_later @message, current_user, user
+      @messagable.subscribers.each do |user|
+        # if user != current_user
+          BroadcastMessageJob.perform_later @message, user
+        # end
+      end
 
       # ChatChannel.broadcast_to(@message.messagable,
       #   JSON.parse(render('/api/messages/_message.json.jbuilder',

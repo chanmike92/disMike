@@ -8,7 +8,7 @@ class Channel < ApplicationRecord
     primary_key: :id,
     foreign_key: :server_id
 
-  has_many :subscribers, dependent: :destroy,
+  has_many :subscribers,
     through: :server,
     source: :subscribed_users
 end

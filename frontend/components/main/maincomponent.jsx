@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import ChannelShowContainer from '../channel/channel_show_container';
 import DmChannelShowContainer from '../dmchannel/dmchannel_show_container';
 import LoadingContainer from '../loading/loading_container';
+import ActionCableContainer from '../actioncable/actioncable_container';
 import ServerShowContainer from '../server/server_show_container';
 import Modal from '../modal/modal';
 import Dropdown from '../dropdown/dropdown';
@@ -20,79 +21,47 @@ class MainComponent extends React.Component{
 
   componentDidMount() {
 
-    this.props.fetchCurrentUser(this.props.currentUser.id).then(
-      this.subscription = App.cable.subscriptions.create(
-        {channel: 'DirectChannel', id: this.props.currentUser.username}, {
-        received: ({command, options}) => {
-          switch (command) {
-            case 'toggle_online':
-            this.props.toggleOnline(options.userId, options.onlineStatus);
-            break;
-            case 'fetch_server':
-            this.props.fetchServer(options.serverId);
-            break;
-            case 'fetch_message':
-            break;
-            case 'fetch_dm':
-            this.props.fetchDm(options.targetId);
-            break;
-            case 'remove_channel':
-            this.props.removeChannel(options.payload, this.props.location.pathname);
-            break;
-            case 'fetch_user':
-            this.props.fetchUser(options.payload, this.props.location.pathname);
-            break;
-            case 'remove_server':
-            break;
-            case 'force_logout':
-            this.subscription.unsubscribe();
-            this.props.forceLogout();
-            break;
-            default:
-            console.log(`Unknown Command Received: ${command}`);
-          }}}
-        )
-      );
+    this.props.fetchCurrentUser(this.props.currentUser.id)
   }
 
 
   //routes all possible edges cases for mistaken url input
   //DO NOT MODIFY UNLESS FULLY TESTED
   componentWillReceiveProps(nextProps) {
-    if (nextProps.servers[nextProps.serverId]) {
-      if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
-        this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
-      } else {
-        if (this.props.serverId === nextProps.serverId) {
-          if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.props.channelId))) {
-            this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
-        } else if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.state.channelId))) {
-        }
-          else {
-            if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
-              let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-              this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-            } else {
-              this.setState({serverId: nextProps.serverId});
-            }
-          }
-        }
-        else {
-          if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
-            let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-            this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-          } else {
-            this.setState({serverId: nextProps.serverId});
-          }
-        }
-      }
-    } else {
-      if (nextProps.serverId === '@me') {
-
-      } else {
-        this.props.history.replace(`/@me/`);
-      }
-    }
+    // if (nextProps.servers[nextProps.serverId]) {
+    //   if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
+    //     this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
+    //   } else {
+    //     if (this.props.serverId === nextProps.serverId) {
+    //       if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.props.channelId))) {
+    //         this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
+    //     } else if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.state.channelId))) {
+    //     }
+    //       else {
+    //         if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
+    //           let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+    //           this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+    //         } else {
+    //           this.setState({serverId: nextProps.serverId});
+    //         }
+    //       }
+    //     }
+    //     else {
+    //       if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
+    //         let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+    //         this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+    //       } else {
+    //         this.setState({serverId: nextProps.serverId});
+    //       }
+    //     }
+    //   }
+    // } else {
+    //   if (nextProps.serverId === '@me') {
+    //
+    //   } else {
+    //     this.props.history.replace(`/@me/`);
+    //   }
+    // }
   }
 
   componentWillUnmount() {
@@ -113,12 +82,12 @@ class MainComponent extends React.Component{
     const subComponent = this.props.serverId === '@me' ?
     <DmChannelShowContainer
       serverId={ this.props.serverId }
-      channelId={ this.state.channelId }
+      channelId={ this.props.channelId }
     />
     :
     <ChannelShowContainer
-      serverId={ this.state.serverId }
-      channelId={ this.state.channelId }
+      serverId={ this.props.serverId }
+      channelId={ this.props.channelId }
     />;
 
 

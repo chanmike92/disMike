@@ -116,7 +116,7 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
 const mapStateToProps = (state, ownProps) => {
   const modal = state.ui.modal;
   const serverId = (ownProps.location.pathname.split('/')[1]);
-  const server = state.entities.servers[serverId] || {};
+  const server = state.entities.servers[ownProps.id] || state.entities.servers[serverId];
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const channel = state.entities.channels[channelId] || {};
   const currentUser = state.session.user;
