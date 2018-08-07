@@ -45,7 +45,7 @@ class Api::ChannelsController < ApplicationController
 
   def destroy
     @channel = Channel.find(params[:id])
-    debugger
+
     if @channel
       if @channel.server.owner_id == current_user.id
         # @channels = @channel.server.channels

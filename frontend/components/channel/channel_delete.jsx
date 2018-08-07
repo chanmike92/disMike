@@ -5,18 +5,19 @@ const ChannelDelete = (props) => {
   //DO NOT TOUCH, FETCHES AND USES RESULT FETCH AND PUSHES BASE ON THE RESULT
   const deleteChannel = () => {
 
-    props.deleteChannel(props.channelId)
-    .then(() => props.fetchAServer(props.serverId))
-        .then(({payload}) => {
-            if (payload.server.channel_ids[0]) {
-              props.history.push(`/${props.serverId}/${payload.server.channel_ids[0]}`)
-            } else {
-              props.history.push(`/${props.serverId}/`);
-            }
-          })
-          .then(() => {
-            props.closeModal();
-          });
+    props.deleteChannel(props.channelId, props.serverId)
+      .then(() => {
+        props.closeModal();
+      });
+    // .then(() => props.fetchAServer(props.serverId))
+    //     .then(({payload}) => {
+    //         if (payload.server.channel_ids[0]) {
+    //           props.history.push(`/${props.serverId}/${payload.server.channel_ids[0]}`)
+    //         } else {
+    //           props.history.push(`/${props.serverId}/`);
+    //         }
+    //       })
+
   };
 
   const goBack = () => {

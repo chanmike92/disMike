@@ -21,54 +21,54 @@ class MainComponent extends React.Component{
 
   componentDidMount() {
 
-    this.props.fetchCurrentUser(this.props.currentUser.id)
+    this.props.fetchCurrentUser(this.props.currentUser.id);
   }
 
 
   //routes all possible edges cases for mistaken url input
   //DO NOT MODIFY UNLESS FULLY TESTED
   componentWillReceiveProps(nextProps) {
-    // if (nextProps.servers[nextProps.serverId]) {
-    //   if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
-    //     this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
-    //   } else {
-    //     if (this.props.serverId === nextProps.serverId) {
-    //       if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.props.channelId))) {
-    //         this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
-    //     } else if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.state.channelId))) {
-    //     }
-    //       else {
-    //         if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
-    //           let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-    //           this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-    //         } else {
-    //           this.setState({serverId: nextProps.serverId});
-    //         }
-    //       }
-    //     }
-    //     else {
-    //       if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
-    //         let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-    //         this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-    //       } else {
-    //         this.setState({serverId: nextProps.serverId});
-    //       }
-    //     }
-    //   }
-    // } else {
-    //   if (nextProps.serverId === '@me') {
-    //
-    //   } else {
-    //     this.props.history.replace(`/@me/`);
-    //   }
-    // }
+    if (nextProps.servers[nextProps.serverId]) {
+      if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
+        this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
+      } else {
+        if (this.props.serverId === nextProps.serverId) {
+          if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.props.channelId))) {
+            this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
+        } else if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.state.channelId))) {
+        }
+          else {
+            if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
+              let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+              this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+            } else {
+              this.setState({serverId: nextProps.serverId});
+            }
+          }
+        }
+        else {
+          if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
+            let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+            this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+          } else {
+            this.setState({serverId: nextProps.serverId});
+          }
+        }
+      }
+    } else {
+      if (nextProps.serverId === '@me') {
+
+      } else {
+        this.props.history.replace(`/@me/`);
+      }
+    }
   }
 
-  componentWillUnmount() {
-        if (this.subscription) {
-          this.subscription.unsubscribe();
-        }
-  }
+  // componentWillUnmount() {
+  //       if (this.subscription) {
+  //         this.subscription.unsubscribe();
+  //       }
+  // }
 
   handleClick(e) {
     e.preventDefault();
@@ -81,13 +81,13 @@ class MainComponent extends React.Component{
 
     const subComponent = this.props.serverId === '@me' ?
     <DmChannelShowContainer
-      serverId={ this.props.serverId }
-      channelId={ this.props.channelId }
+      serverId={ this.state.serverId }
+      channelId={ this.state.channelId }
     />
     :
     <ChannelShowContainer
-      serverId={ this.props.serverId }
-      channelId={ this.props.channelId }
+      serverId={ this.state.serverId }
+      channelId={ this.state.channelId }
     />;
 
 
