@@ -15,6 +15,12 @@
   border-radius: 5px;
 }
 
+.mutual-servers-container {
+  width: 250px;
+  height: 100%;
+  margin-right: 500px;
+}
+
 .user-search {
   width: 100%;
   background: transparent;
@@ -229,6 +235,10 @@
   }
 }
 
+.friend-item-container:hover .friend-controls-container {
+  display: flex;
+}
+
 .friend-index-container:first-child {
   border-top: 0;
 }
@@ -291,8 +301,26 @@
 .friend-controls-container {
   align-items: center;
   height: 100%;
-  width: 100%;
-  display: flex;
+  width: 250px;
+  display: none;
   // flex-direction: row-reverse;
   justify-content: flex-end;
+}
+
+.friend-controls-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 42px;
+  background-color: #2f3136;
+  border-radius: 3px;
+  color: white;
+}
+
+.friend-controls-button:hover {
+  background-color: rgb(240, 71, 71);
+  transition: background-color .2s;
+  cursor: pointer;
+
 }

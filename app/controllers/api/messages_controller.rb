@@ -20,10 +20,13 @@ class Api::MessagesController < ApplicationController
     @message.author_id = current_user.id
 
     if @message.save
-      ChatChannel.broadcast_to(@message.messagable,
-        JSON.parse(render('/api/messages/_message.json.jbuilder',
-          locals: { message: @message })))
-      head :ok
+      @message.
+      BroadcastMessageJob.perform_later @message, current_user, user
+
+      # ChatChannel.broadcast_to(@message.messagable,
+      #   JSON.parse(render('/api/messages/_message.json.jbuilder',
+      #     locals: { message: @message })))
+      # head :ok
 
     else
       render json: @message.errors.full_messages, status: 402

@@ -28,7 +28,7 @@ class DmChannelShow extends React.Component {
           </div>
           <div className='bottom-channels-container'>
             <div className='friends-logo' >
-              Friends - { this.props.friendCount }
+              Friends
             </div>
             <div className='dm-text-channel-name'>DIRECT MESSAGES</div>
               { dms }

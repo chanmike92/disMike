@@ -16,20 +16,28 @@ const FriendShow = (props) => {
         renderStatus = "Offline";
       }
       friendControls = <div className='friend-controls-container'>
-        <div onClick={ () => props.deleteFriend(props.id) }>DELETE</div>
+        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+          <i className="fas fa-ban"></i>
+        </div>
       </div>;
     break;
     case ("PENDING RECEIVE"):
       renderStatus = "Outgoing Friend Request";
       friendControls = <div className='friend-controls-container'>
-        <div onClick={ () => props.deleteFriend(props.id) }>DELETE</div>
+        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+          <i className="fas fa-ban"></i>
+        </div>
       </div>;
       break;
     case ("PENDING ACCEPT"):
       renderStatus = "Incoming Friend Request";
       friendControls = <div className='friend-controls-container'>
-        <div onClick={ () => props.deleteFriend(props.id) }>DELETE</div>
-        <div onClick={ () => props.addFriend(props.id) }>ADD</div>
+        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+          <i className="fas fa-ban"></i>
+        </div>
+        <div className='friend-controls-button' onClick={ () => props.addFriend(props.id) }>
+          <i class="fas fa-plus-circle"></i>
+        </div>
       </div>;
     break;
   }

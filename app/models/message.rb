@@ -14,4 +14,7 @@ class Message < ApplicationRecord
     primary_key: :id,
     foreign_key: :author_id
 
+  has_many :readers,
+    through: :messagable,
+    source: :subscribers
 end

@@ -21,6 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   const onlineFriends = Object.values(state.entities.users).filter(user => {
     return user.online_status === true && currentUser.friends_id.includes(user.id);
   });
+  debugger
 
   return ({
     onlineFriends,

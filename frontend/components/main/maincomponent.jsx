@@ -39,14 +39,10 @@ class MainComponent extends React.Component{
             case 'remove_channel':
             this.props.removeChannel(options.payload, this.props.location.pathname);
             break;
+            case 'fetch_user':
+            this.props.fetchUser(options.payload, this.props.location.pathname);
+            break;
             case 'remove_server':
-            let serverPath = `/${options.payload.deletedServerId}`;
-            let currentPathSlice = this.props.location.pathname.slice(0, serverPath.length);
-
-            if (currentPathSlice === serverPath) {
-              this.props.history.push('/@me');
-            }
-            this.props.removeServer(options.payload, this.props.location.pathname);
             break;
             case 'force_logout':
             this.subscription.unsubscribe();
@@ -135,7 +131,7 @@ class MainComponent extends React.Component{
         <LoadingContainer />
 
         <ServerShowContainer
-          serverId={ this.state.serverId }
+          serverId={ this.props.serverId }
           channelId={ this.state.channelId }
           />
         { subComponent }
