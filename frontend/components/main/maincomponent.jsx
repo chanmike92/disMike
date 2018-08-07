@@ -20,7 +20,10 @@ class MainComponent extends React.Component{
 
   componentDidMount() {
 
-    this.props.fetchCurrentUser(this.props.currentUser.id);
+    this.props.fetchCurrentUser(this.props.currentUser.id).then(
+      this.subscription = App.cable.subscriptions.create(
+        {channel: 'ChatChannel', id: this.props.currentUser.id})
+      );
   }
 
 
@@ -41,7 +44,7 @@ class MainComponent extends React.Component{
               let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
               this.setState({serverId: nextProps.serverId, channelId: newchannelId});
             } else {
-              this.setState({serverId: nextProps.serverId, channelId: null});
+              this.setState({serverId: nextProps.serverId});
             }
           }
         }
@@ -50,7 +53,7 @@ class MainComponent extends React.Component{
             let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
             this.setState({serverId: nextProps.serverId, channelId: newchannelId});
           } else {
-            this.setState({serverId: nextProps.serverId, channelId: null});
+            this.setState({serverId: nextProps.serverId});
           }
         }
       }
@@ -61,7 +64,12 @@ class MainComponent extends React.Component{
         this.props.history.replace(`/@me/`);
       }
     }
+  }
 
+  componentWillUnmount() {
+        if (this.subscription) {
+          this.subscription.unsubscribe();
+        }
   }
 
   handleClick(e) {

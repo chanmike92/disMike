@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => {
   return ({
 
     fetchAServer: (id) => dispatch(fetchAServer(id)),
-    processForm: (channel) => dispatch(updateChannel(channel)),
+    updateServer: (channel) => dispatch(updateChannel(channel)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });

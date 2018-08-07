@@ -21,31 +21,31 @@ class MessageShow extends React.Component {
   componentDidMount() {
     if (this.props.channelId) {
       // this.props.fetchAChannel(this.props.channelId);
-      this.subscription = App.cable.subscriptions.create(
-        {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
-        { received: (data) => { this.props.receiveAMessage(data) }});
+      // this.subscription = App.cable.subscriptions.create(
+      //   {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
+      //   { received: (data) => { this.props.receiveAMessage(data) }});
       this.scrollBottom();
     }
   }
 
-  componentWillReceiveProps(nextProps) {
-
-    if (nextProps.channelId)  {
-      if (nextProps.channelId !== this.props.channelId) {
-        if (this.subscription) {
-        this.subscription.unsubscribe();
-        }
-        this.subscription = App.cable.subscriptions.create(
-          {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
-          { received: (data) => { nextProps.receiveAMessage(data) }});
-      }
-    } else {
-      if (this.subscription) {
-        this.subscription.unsubscribe();
-      }
-    }
-
-  }
+  // componentWillReceiveProps(nextProps) {
+  //
+  //   if (nextProps.channelId)  {
+  //     if (nextProps.channelId !== this.props.channelId) {
+  //       if (this.subscription) {
+  //       this.subscription.unsubscribe();
+  //       }
+  //       this.subscription = App.cable.subscriptions.create(
+  //         {channel: 'ChatChannel', id: nextProps.channelId, type: nextProps.messageType},
+  //         { received: (data) => { nextProps.receiveAMessage(data) }});
+  //     }
+  //   } else {
+  //     if (this.subscription) {
+  //       this.subscription.unsubscribe();
+  //     }
+  //   }
+  //
+  // }
 
   componentWillUnmount() {
     // this.props.clearMessages();
