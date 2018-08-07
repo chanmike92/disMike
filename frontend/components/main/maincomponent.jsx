@@ -22,7 +22,40 @@ class MainComponent extends React.Component{
 
     this.props.fetchCurrentUser(this.props.currentUser.id).then(
       this.subscription = App.cable.subscriptions.create(
-        {channel: 'ChatChannel', id: this.props.currentUser.id})
+        {channel: 'DirectChannel', id: this.props.currentUser.username}, {
+        received: ({command, options}) => {
+          switch (command) {
+            case 'toggle_online':
+            this.props.toggleOnline(options.userId, options.onlineStatus);
+            break;
+            case 'fetch_server':
+            this.props.fetchServer(options.serverId);
+            break;
+            case 'fetch_message':
+            break;
+            case 'fetch_dm':
+            this.props.fetchDm(options.targetId);
+            break;
+            case 'remove_channel':
+            this.props.removeChannel(options.payload, this.props.location.pathname);
+            break;
+            case 'remove_server':
+            let serverPath = `/${options.payload.deletedServerId}`;
+            let currentPathSlice = this.props.location.pathname.slice(0, serverPath.length);
+
+            if (currentPathSlice === serverPath) {
+              this.props.history.push('/@me');
+            }
+            this.props.removeServer(options.payload, this.props.location.pathname);
+            break;
+            case 'force_logout':
+            this.subscription.unsubscribe();
+            this.props.forceLogout();
+            break;
+            default:
+            console.log(`Unknown Command Received: ${command}`);
+          }}}
+        )
       );
   }
 
