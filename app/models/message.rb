@@ -17,4 +17,8 @@ class Message < ApplicationRecord
   has_many :readers,
     through: :messagable,
     source: :subscribers
+
+  def broadcast(user)
+    BroadcastMessageJob.perform_now self, user
+  end
 end

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import ChannelShowContainer from '../channel/channel_show_container';
 import DmChannelShowContainer from '../dmchannel/dmchannel_show_container';
 import LoadingContainer from '../loading/loading_container';
-import ActionCableContainer from '../actioncable/actioncable_container';
+import ActionCableContainer from '../actioncable/actioncable';
 import ServerShowContainer from '../server/server_show_container';
 import Modal from '../modal/modal';
 import Dropdown from '../dropdown/dropdown';
@@ -95,6 +95,7 @@ class MainComponent extends React.Component{
  // onClick={ dropdown }
     return (
       <div className='maincomponent-container' onClick={ this.handleClick } onContextMenu={ this.handleClick }>
+        <ActionCableContainer />
         <Modal />
         <Dropdown />
         <LoadingContainer />
