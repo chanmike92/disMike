@@ -1,7 +1,7 @@
 class Api::UsersController < ApplicationController
 
   def index
-    @users = Server.find(params[:id]).subscribed_users
+    @users = Server.find(params[:id]).subscribed_users.includes(:subscribed_servers)
     if @users
       render 'api/users/index'
     else
