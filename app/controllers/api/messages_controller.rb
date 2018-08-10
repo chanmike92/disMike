@@ -29,11 +29,11 @@ class Api::MessagesController < ApplicationController
       @messagable.subscribers.each do |user|
         if user != current_user
       #     @message.broadcast(user)
-        # DirectChannel.broadcast_to(user, {command: 'fetch_message',
-        #   data: JSON.parse(render('/api/messages/_message.json.jbuilder',
-        #     locals: { message: @message }))})
-        # head :ok
-          BroadcastMessageJob.perform_now @message, user
+        message = JSON.parse(render('/api/messages/_message.json.jbuilder',
+          locals: { message: @message }))
+        DirectChannel.broadcast_to(user, {command: 'fetch_message',
+          data: message})
+          # BroadcastMessageJob.perform_now @message, user
 
         end
 

@@ -124,7 +124,6 @@ class MessageShow extends React.Component {
         currentUser={this.props.currentUser} />
     );
      for (let i = 0; i < groupMessages.length; i++) {
-
        let message = groupMessages[i][0] || {};
        let prevMessage = groupMessages[i - 1] || {};
        prevMessage = prevMessage[0] || {};
@@ -135,7 +134,7 @@ class MessageShow extends React.Component {
          || thisDate.getYear() !== prevDate.getYear()) {
           let date = this.generateFullDate(thisDate);
           messages.push(
-            <div className="message-index-divider" key={ i }>
+            <div className="message-index-divider" key={ `divider-${i}` }>
               <div></div>
               <span className="message-index-divider-text">
                 { date }

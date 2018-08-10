@@ -27,6 +27,7 @@ const mapStateToProps = (state, ownProps) => {
   const locationsplit = location.split('/');
   const serverId = locationsplit[1];
   const channelId = locationsplit[2];
+  debugger
   return {
     serverId,
     channelId,
