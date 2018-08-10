@@ -85,11 +85,10 @@ class MainComponent extends React.Component{
       channelId={ this.state.channelId }
     />
     :
-    <div></div>;
-    // <ChannelShowContainer
-    //   serverId={ this.state.serverId }
-    //   channelId={ this.state.channelId }
-    // />;
+    <ChannelShowContainer
+      serverId={ this.state.serverId }
+      channelId={ this.state.channelId }
+    />;
 
 
   // const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;

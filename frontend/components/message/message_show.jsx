@@ -47,12 +47,12 @@ class MessageShow extends React.Component {
   // //
   // }
 
-  componentWillUnmount() {
-    // this.props.clearMessages();
-    if (this.subscription) {
-      this.subscription.unsubscribe();
-    }
-  }
+  // componentWillUnmount() {
+  //   // this.props.clearMessages();
+  //   if (this.subscription) {
+  //     this.subscription.unsubscribe();
+  //   }
+  // }
 
   componentDidUpdate(prevProps) {
     if (prevProps.channelId !== this.props.channelId) {
