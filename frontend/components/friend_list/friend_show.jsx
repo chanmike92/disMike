@@ -36,7 +36,7 @@ const FriendShow = (props) => {
           <i className="fas fa-ban"></i>
         </div>
         <div className='friend-controls-button' onClick={ () => props.addFriend(props.id) }>
-          <i class="fas fa-plus-circle"></i>
+          <i className="fas fa-plus-circle"></i>
         </div>
       </div>;
     break;

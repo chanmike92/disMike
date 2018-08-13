@@ -4,7 +4,6 @@ import { Route, Redirect, withRouter } from 'react-router-dom';
 import ServerShowContainer from '../components/server/server_show_container';
 import LoadingContainer from '../components/loading/loading_container';
 import MainComponentContainer from '../components/main/maincomponent';
-
 import { fetchCurrentUserSession } from '../actions/user_actions';
 import { loaded } from '../actions/loading_actions';
 
@@ -27,7 +26,7 @@ const mapStateToProps = (state, ownProps) => {
   const locationsplit = location.split('/');
   const serverId = locationsplit[1];
   const channelId = locationsplit[2];
-  debugger
+  
   return {
     serverId,
     channelId,

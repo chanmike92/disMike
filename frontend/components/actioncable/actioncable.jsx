@@ -16,20 +16,20 @@ class ActionCableContainer extends React.Component {
   }
 
   componentWillMount() {
-    // this.consumer = ActionCable.createConsumer();
-    // this.subscription = this.consumer.subscriptions.create(
-    // // this.subscription = App.cable.subscriptions.create(
-    //   {channel: 'DirectChannel', id: this.props.currentUser.id},
-    //   { received: ({command, data}) => {
-    //     switch (command) {
-    //       case 'fetch_message':
-    //         this.props.receiveAMessage(data);
-    //         break;
-    //       default:
-    //         console.log(`${command}`);
-    //     }
-    //   }}
-    // );
+    this.consumer = ActionCable.createConsumer();
+    this.subscription = this.consumer.subscriptions.create(
+    // this.subscription = App.cable.subscriptions.create(
+      {channel: 'DirectChannel', id: this.props.currentUser.id},
+      { received: ({command, data}) => {
+        switch (command) {
+          case 'fetch_message':
+            this.props.receiveAMessage(data);
+            break;
+          default:
+            console.log(`${command}`);
+        }
+      }}
+    );
   }
 
   render() {
