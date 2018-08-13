@@ -29,6 +29,7 @@ class MainComponent extends React.Component{
   //DO NOT MODIFY UNLESS FULLY TESTED
   componentWillReceiveProps(nextProps) {
     if (nextProps.servers[nextProps.serverId]) {
+
       if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
         this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
       } else {

@@ -13,8 +13,23 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.new(channel_params)
     @channel.server_id = params[:id]
 
+
     if @channel.save
-      render 'api/channels/show'
+      channel = JSON.parse(render('/api/channels/show.json.jbuilder',
+        locals: { channel: @channel }))
+
+      @channel.subscribers.each do |user|
+
+        if user != current_user
+      #     @message.broadcast(user)
+
+          DirectChannel.broadcast_to(user, {command: 'fetch_new_channel',
+            data: channel})
+          # BroadcastMessageJob.perform_now @message, user
+
+        end
+
+      end
     else
       render json: @channel.errors.full_messages, status: 402
     end
@@ -50,7 +65,18 @@ class Api::ChannelsController < ApplicationController
       if @channel.server.owner_id == current_user.id
         # @channels = @channel.server.channels
         @channel.destroy!
-        render json: {}
+        channelid = @channel.id
+        @channel.subscribers.each do |user|
+
+          if user != current_user
+        #     @message.broadcast(user)
+
+            DirectChannel.broadcast_to(user, {command: 'delete_channel',
+              data: channel})
+            # BroadcastMessageJob.perform_now @message, user
+
+          end
+        end
       else
         render json: ['You do not have access'], status: 404
       end

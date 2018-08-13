@@ -22,9 +22,10 @@ const serverReducer = (oldState = {}, action) => {
     case RECEIVE_NEW_CHANNEL:
       newState = merge({}, oldState);
       currentServer = newState[action.payload.channel.server_id];
-      channelIds = currentServer.channel_ids.push(action.payload.channel.id);
-      channel = Object.assign(currentServer, { channel_ids: channelIds });
-      return Object.assign({}, oldState, { [action.payload.channel.server_id]: channel });
+      channelIds = currentServer.channel_ids.concat(action.payload.channel.id);
+      
+      channel = merge({}, currentServer, { channel_ids: channelIds });
+      return merge({}, oldState, { [action.payload.channel.server_id]: channel });
     case REMOVE_A_CHANNEL:
       newState = merge({}, oldState);
       currentServer = newState[action.serverId];

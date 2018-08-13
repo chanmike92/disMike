@@ -23,12 +23,12 @@ class ChannelCreate extends React.Component {
 
 
     this.props.processForm(channel, this.props.serverId)
-    .then(() => this.props.fetchAServer(this.props.serverId))
-      .then(() => {
-        let newchannel = this.props.server.channel_ids[this.props.server.channel_ids.length - 1];
-        return this.props.history.push(`/${this.props.serverId}/${newchannel}`)
-      })
-        .then(() => {this.props.closeModal()});
+    // .then(() => this.props.fetchAServer(this.props.serverId))
+    //   .then(() => {
+    //     let newchannel = this.props.server.channel_ids[this.props.server.channel_ids.length - 1];
+    //     return this.props.history.push(`/${this.props.serverId}/${newchannel}`)
+    //   })
+        .then(() => {this.props.closeModal();});
   }
 
   handleInput(input) {
