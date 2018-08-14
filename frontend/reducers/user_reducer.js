@@ -7,17 +7,20 @@ import { merge } from 'lodash';
 
 
 const userReducer = (oldState = {}, action) => {
-
+  let newState;
   Object.freeze(oldState);
   switch(action.type) {
     case RECEIVE_ALL_FRIENDS:
       return merge({}, oldState, action.users);
     case RECEIVE_A_FRIEND:
-      return merge({}, oldState, { [action.user.id]: action.user });
+      newState = merge({}, oldState);
+      delete newState[action.user.id];
+      return merge({}, newState, { [action.user.id]: action.user });
     case REMOVE_A_FRIEND:
-      const newState = merge({}, oldState);
+      newState = merge({}, oldState);
 
       const removedFriend = merge(newState[action.id], {friendship_status: null});
+
       return merge(newState, { [action.id]: removedFriend });
     // case RECEIVE_CURRENT_USER:
     //   return merge({}, oldState, { [action.payload.currentUser.id]: action.payload.currentUser }, action.payload.users, action.payload.friends);
