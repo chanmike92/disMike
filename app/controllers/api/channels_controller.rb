@@ -64,19 +64,22 @@ class Api::ChannelsController < ApplicationController
     if @channel
       if @channel.server.owner_id == current_user.id
         # @channels = @channel.server.channels
-        @channel.destroy!
-        channelid = @channel.id
+
+        channel = JSON.parse(render('/api/channels/_channel.json.jbuilder',
+          locals: { channel: @channel }))
         @channel.subscribers.each do |user|
 
           if user != current_user
         #     @message.broadcast(user)
 
             DirectChannel.broadcast_to(user, {command: 'delete_channel',
-              data: channel})
-            # BroadcastMessageJob.perform_now @message, user
+                data: channel})
+              # BroadcastMessageJob.perform_now @message, user
 
           end
         end
+        @channel.destroy!
+
       else
         render json: ['You do not have access'], status: 404
       end

@@ -9,7 +9,7 @@ import Modal from '../modal/modal';
 import Dropdown from '../dropdown/dropdown';
 import ActionCable from 'actioncable';
 import { receiveAMessage } from '../../actions/message_actions';
-import { addNewChannel } from '../../actions/channel_actions';
+import { addNewChannel, removeAChannel } from '../../actions/channel_actions';
 
 class ActionCableContainer extends React.Component {
   constructor(props) {
@@ -28,6 +28,9 @@ class ActionCableContainer extends React.Component {
             break;
           case 'fetch_new_channel':
             this.props.receiveNewChannel(data);
+            break;
+          case 'delete_channel':
+            this.props.removeAChannel(data);
             break;
           default:
             console.log(`${command}`);
@@ -62,6 +65,7 @@ const mapDispatchToProps = dispatch => {
   return ({
     receiveAMessage: (message) => dispatch(receiveAMessage(message)),
     receiveNewChannel: (payload) => dispatch(addNewChannel(payload)),
+    removeAChannel: (payload) => dispatch(removeAChannel(payload)),
   });
 };
 

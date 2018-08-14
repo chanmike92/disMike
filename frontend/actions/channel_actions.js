@@ -45,12 +45,11 @@ export const clearState = () => {
   };
 };
 
-export const removeAChannel = (channelId, serverId) => {
+export const removeAChannel = (payload) => {
 
   return {
     type: REMOVE_A_CHANNEL,
-    channelId,
-    serverId
+    payload,
   };
 };
 
@@ -84,7 +83,7 @@ export const updateChannel = (channel) => dispatch => {
 
 export const deleteChannel = (channelId, serverId) => dispatch => {
 
-  return APIUtil.deleteChannel(channelId, serverId).then(() => dispatch(removeAChannel(channelId, serverId)), (errors) => {
+  return APIUtil.deleteChannel(channelId, serverId).then((payload) => dispatch(removeAChannel(payload)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
 };
