@@ -111,6 +111,10 @@ class User < ApplicationRecord
     self.update(image: img)
   end
 
+  def companions
+    # self.
+  end
+
   def reset_profile_picture
     img = File.open(File.join(Rails.root, "app/assets/images/discord-user-icon-1.png"))
     self.update(image: img)

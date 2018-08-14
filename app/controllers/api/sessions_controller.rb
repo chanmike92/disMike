@@ -5,7 +5,14 @@ class Api::SessionsController < ApplicationController
 
     if @session_user
       login(@session_user)
-      render 'api/users/show'
+      user = JSON.parse(render('/api/users/_user.json.jbuilder',
+        locals: { user: @session_user }))
+      @session_user.companions.each do |companion|
+        if @session_user != companion
+          DirectChannel.broadcast_to(companion, {command: 'fetch_user',
+              data: user})
+        end
+      end
     elsif User.find_by(email: params[:user][:email])
       render json: ['PASSWORD (PASSWORD DOES NOT MATCH)'], status: 422
     else

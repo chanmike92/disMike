@@ -188,6 +188,24 @@ border: 0;
   border-bottom: 2px solid #7289da;
 }
 
+.server-update-input-field {
+  height: 30px;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: white;
+  border-bottom: 1px solid grey;
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: black;
+  font-weight: 400;
+  font-family: 'Open Sans', Helvetica, Arial, sans-serif;
+}
+
+.server-update-input-field:focus {
+  border-bottom: 2px solid #7289da;
+}
+
 .form-title {
   font-weight: 900;
 }
