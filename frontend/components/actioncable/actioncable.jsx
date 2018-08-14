@@ -11,6 +11,7 @@ import ActionCable from 'actioncable';
 import { receiveAMessage } from '../../actions/message_actions';
 import { addNewChannel, removeAChannel } from '../../actions/channel_actions';
 import { receiveAServer, removeAServer } from '../../actions/server_actions';
+import { receiveAUser } from '../../actions/user_actions';
 
 class ActionCableContainer extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ class ActionCableContainer extends React.Component {
             this.props.removeAServer(data);
             break;
           case 'fetch_user':
-            this.props.removeAChannel(data);
+            this.props.receiveAUser(data);
             break;
           case 'remove_user':
             this.props.removeAChannel(data);
@@ -87,6 +88,7 @@ const mapDispatchToProps = dispatch => {
     removeAChannel: (payload) => dispatch(removeAChannel(payload)),
     removeAServer: (payload) => dispatch(removeAServer(payload)),
     receiveAServer: (payload) => dispatch(receiveAServer(payload)),
+    receiveAUser: (payload) => dispatch(receiveAUser(payload)),
   });
 };
 

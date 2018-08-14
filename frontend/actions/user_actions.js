@@ -3,11 +3,11 @@ export const RECEIVE_CURRENT_USER_SESSION = 'RECEIVE_CURRENT_USER_SESSION';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const RECEIVE_A_USER = 'RECEIVE_A_USER';
 
-export const receiveAUser = (payload) => {
-
+export const receiveAUser = (user) => {
+  debugger
   return {
     type: RECEIVE_A_USER,
-    payload
+    user
   };
 };
 
@@ -28,7 +28,7 @@ export const receiveCurrentUserSession = (payload) => {
 };
 
 export const fetchCurrentUserSession = (id) => dispatch => {
-  
+
   return APIUtil.fetchCurrentUser(id).then((payload) => dispatch(receiveCurrentUserSession(payload)));
 };
 
@@ -38,8 +38,8 @@ export const fetchAllUsers = (id) => dispatch => {
 };
 
 export const fetchAUser = () => dispatch => {
-  return APIUtil.fetchAUser().then((payload) =>
-  dispatch(receiveAUser(payload)));
+  return APIUtil.fetchAUser().then((user) =>
+  dispatch(receiveAUser(user)));
 };
 
 export const updateAUser = (formData, id) => dispatch => {

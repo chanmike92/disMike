@@ -7,9 +7,9 @@ class Api::SessionsController < ApplicationController
       login(@session_user)
       user = JSON.parse(render('/api/users/_user.json.jbuilder',
         locals: { user: @session_user }))
-      @session_user.companions.each do |companion|
-        if @session_user != companion
-          DirectChannel.broadcast_to(companion, {command: 'fetch_user',
+      @session_user.acquaintances.each do |acquaintance|
+        if @session_user != acquaintance
+          DirectChannel.broadcast_to(acquaintance, {command: 'fetch_user',
               data: user})
         end
       end
@@ -22,10 +22,17 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     @session_user = current_user
-
+    # debugger
     if @session_user
       logout
-      render json: {}
+      user = JSON.parse(render('/api/users/_user.json.jbuilder',
+        locals: { user: @session_user }))
+      @session_user.acquaintances.each do |acquaintance|
+        if @session_user != acquaintance
+          DirectChannel.broadcast_to(acquaintance, {command: 'fetch_user',
+              data: user})
+        end
+      end
     else
       render json: ['You need to be signed in'], status: 404
     end

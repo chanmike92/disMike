@@ -114,7 +114,7 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
 };
 
 const mapStateToProps = (state, ownProps) => {
-  const modal = state.ui.modal;
+  const modal = state.ui.modal.modalType;
   const dropdownId = state.ui.dropdown.id;
   const serverId = (ownProps.location.pathname.split('/')[1]);
   const server = state.entities.servers[dropdownId] || state.entities.servers[serverId];

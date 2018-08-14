@@ -26,8 +26,8 @@ const messageReducer = (oldState = {}, action) => {
       return merge({}, oldState, { [action.message.id]: action.message });
     case RECEIVE_A_CHANNEL:
       return merge({}, oldState, action.payload.messages);
-    case RECEIVE_A_USER:
-      return merge({}, oldState, action.payload.messages);
+    // case RECEIVE_A_USER:
+    //   return merge({}, oldState, action.payload.messages);
     case CLEAR_STATE:
       return {};
     default:

@@ -10,7 +10,7 @@ const mapStateToProps = (state, ownProps) => {
   const serverId = (ownProps.location.pathname.split('/')[1]);
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const dropdown = state.ui.dropdown.dropdownType;
-  const modal = state.ui.modal;
+  const modal = state.ui.modal.modalType;
   return ({
     servers,
     dropdown,

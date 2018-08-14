@@ -111,8 +111,8 @@ class User < ApplicationRecord
     self.update(image: img)
   end
 
-  def companions
-    # self.
+  def acquaintances
+    (self.friends + self.dmusers + self.companions).uniq
   end
 
   def reset_profile_picture

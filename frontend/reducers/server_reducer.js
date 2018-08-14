@@ -28,7 +28,6 @@ const serverReducer = (oldState = {}, action) => {
       return merge({}, oldState, { [action.payload.channel.server_id]: channel });
     case REMOVE_A_CHANNEL:
       newState = merge({}, oldState);
-      debugger
       currentServer = newState[action.payload.server_id];
       channelIds = currentServer.channel_ids.filter(id => id !== action.payload.id);
       channel = Object.assign(currentServer, { channel_ids: channelIds });

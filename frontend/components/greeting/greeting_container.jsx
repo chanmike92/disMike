@@ -19,7 +19,10 @@ const mapDispatchToProps = dispatch => {
 
 
   return ({
-    logout: () => dispatch(openModal('logout')),
+    logout: (e) => {
+      e.stopPropagation();
+      dispatch(openModal('logout'));
+    },
     openDropdown: (e) => {
       e.stopPropagation();
       dispatch(openDropdown({dropdownType: "user"}));

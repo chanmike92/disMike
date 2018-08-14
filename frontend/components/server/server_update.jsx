@@ -70,7 +70,7 @@ class ServerUpdate extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className='input-container'>
             <label className='server-label'>Name</label>
-            <input className='server-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
+            <input className='server-update-input-field' autoFocus type='text' onChange={this.handleInput('name')} value={this.state.name}></input>
           </div>
           <div className="profile-picture-update-container">
             <div className='profile-picture-upload'>

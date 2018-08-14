@@ -49,9 +49,9 @@ class ServerShow extends React.Component {
         </button>
         <div className='separator'></div>
 
-        <a href='https://www.github.com/chanmike92' target="_blank" className='server-icons'><i className="fab fa-github"></i></a>
-        <a href='https://www.linkedin.com/in/chanmike92' target="_blank" className='server-icons'><i className="fab fa-linkedin-in"></i></a>
-        <a href='http://mikechan.me' target="_blank" className='server-icons'><i className="fas fa-briefcase"></i></a>
+        <a className='server-icons' href='https://www.github.com/chanmike92' target="_blank"><i className="fab fa-github"></i></a>
+        <a className='server-icons' href='https://www.linkedin.com/in/chanmike92' target="_blank"><i className="fab fa-linkedin-in"></i></a>
+        <a className='server-icons' href='http://mikechan.me' target="_blank"><i className="fas fa-briefcase"></i></a>
       </div>
 
 
