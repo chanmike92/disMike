@@ -10,6 +10,7 @@ import Dropdown from '../dropdown/dropdown';
 import ActionCable from 'actioncable';
 import { receiveAMessage } from '../../actions/message_actions';
 import { addNewChannel, removeAChannel } from '../../actions/channel_actions';
+import { receiveAServer, removeAServer } from '../../actions/server_actions';
 
 class ActionCableContainer extends React.Component {
   constructor(props) {
@@ -30,6 +31,24 @@ class ActionCableContainer extends React.Component {
             this.props.receiveNewChannel(data);
             break;
           case 'delete_channel':
+            this.props.removeAChannel(data);
+            break;
+          case 'fetch_server':
+            this.props.receiveAServer(data);
+            break;
+          case 'delete_server':
+            this.props.removeAServer(data);
+            break;
+          case 'fetch_user':
+            this.props.removeAChannel(data);
+            break;
+          case 'remove_user':
+            this.props.removeAChannel(data);
+            break;
+          case 'update_user':
+            this.props.removeAChannel(data);
+            break;
+          case 'fetch_dm':
             this.props.removeAChannel(data);
             break;
           default:
@@ -66,6 +85,8 @@ const mapDispatchToProps = dispatch => {
     receiveAMessage: (message) => dispatch(receiveAMessage(message)),
     receiveNewChannel: (payload) => dispatch(addNewChannel(payload)),
     removeAChannel: (payload) => dispatch(removeAChannel(payload)),
+    removeAServer: (payload) => dispatch(removeAServer(payload)),
+    receiveAServer: (payload) => dispatch(receiveAServer(payload)),
   });
 };
 

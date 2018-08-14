@@ -36,7 +36,7 @@ class Api::MessagesController < ApplicationController
 
           DirectChannel.broadcast_to(user, {command: 'fetch_message',
             data: message})
-          # BroadcastMessageJob.perform_now @message, user
+          # BroadcastMessageJob.perform_now message, user
 
         end
 
