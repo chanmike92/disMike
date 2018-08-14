@@ -4,7 +4,9 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 const ServerIndexDropdown = (props) => {
 
   const channelCreate = props.server.owner_id === props.currentUserId ?
-  <div className='dropdown-index-item' onClick={ props.createChannel }>
+  <div className='dropdown-index-item' onClick={ () => {
+      props.history.push(`/${props.serverId}/${props.channelId}`);
+      props.createChannel(); } }>
     <div className='dropdown-icon create-channel-icon'></div>
     <label className='dropdown-index-title'>Create Channel</label>
   </div>
@@ -12,7 +14,9 @@ const ServerIndexDropdown = (props) => {
   "";
 
   const serverUpdate = props.server.owner_id === props.currentUserId ?
-  <div className='dropdown-index-item' onClick={ props.updateServer }>
+  <div className='dropdown-index-item' onClick={ () => {
+      props.history.push(`/${props.serverId}/${props.channelId}`);
+      props.updateServer(); } }>
     <div className='dropdown-icon edit-server-icon'></div>
     <label className='dropdown-index-title'>Edit Server</label>
   </div>
@@ -20,7 +24,10 @@ const ServerIndexDropdown = (props) => {
   "";
 
   const deleteServer = props.server.owner_id === props.currentUserId ?
-  <div className='dropdown-index-item' onClick={ props.deleteServer }>
+  <div className='dropdown-index-item' onClick={ () => {
+      props.history.push(`/${props.serverId}/${props.channelId}`);
+      props.deleteServer();
+    } }>
     <div className='dropdown-icon delete-server-icon'></div>
     <label className='dropdown-index-title'>Delete Server</label>
   </div>
@@ -37,7 +44,9 @@ const ServerIndexDropdown = (props) => {
         <div className='dropdown-divider'></div>
         { channelCreate }
         { serverUpdate }
-        <div className='dropdown-index-item' onClick={ props.leaveServer }>
+        <div className='dropdown-index-item' onClick={ () => {
+              props.history.push(`/${props.serverId}/${props.channelId}`);
+              props.leaveServer(); } }>
           <div className='dropdown-icon leave-server-icon'></div>
           <label className='dropdown-index-title'>Leave Server</label>
         </div>

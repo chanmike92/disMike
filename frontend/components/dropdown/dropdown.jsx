@@ -18,7 +18,7 @@ const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId,
       case 'serverindex':
         component =
         <div className='dropdown-context-container'>
-          <ServerIndexDropdownContainer serverId={ dropdownId }/>
+          <ServerIndexDropdownContainer serverId={ dropdownId } channelId={ channelId }/>
         </div>;
       break;
       case 'serverbutton':
