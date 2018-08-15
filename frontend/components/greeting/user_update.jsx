@@ -64,7 +64,7 @@ class UserUpdate extends React.Component {
                <div className='profile-picture-hint'>Change Avatar</div>
             </div>
           </div>
-          <button onClick={ this.handleRemove }>Remove</button>
+          <button className='remove-avatar-button' onClick={ this.handleRemove }>Remove</button>
         </div>
         <div className='yes-no-option channel-delete-yes-no'>
           <button className='submit-button green-back' style={ {color: "white"}} onClick={ this.handleSubmit }>Save</button>

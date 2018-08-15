@@ -8,7 +8,7 @@ import { openModal, closeModal,  } from '../../../actions/modal_actions';
 const mapStateToProps = (state, ownProps) => {
   const server = ownProps.server || {};
   const serverId = server.id || "";
-    const currentUser = state.session.user;
+  const currentUser = state.session.user;
 
   // errors: state.errors.channels,
 

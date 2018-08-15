@@ -80,7 +80,7 @@ class MainComponent extends React.Component{
   }
 
   handleEscape(e) {
-    e.preventDefault();
+
     if (e.which === 27 && (this.props.modal || this.props.dropdown)) {
       this.props.closeModal();
     }

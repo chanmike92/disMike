@@ -4,7 +4,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 const ChannelDropdown = (props) => {
 
   const channelCreate = (props.server.owner_id === props.currentUser.id) ?
-  <div className='dropdown-index-item' onClick={ props.logout }>
+  <div className='dropdown-index-item' onClick={ props.createChannel }>
     <label className='dropdown-index-title'>Create Channel</label>
   </div> : <div></div>;
 
@@ -14,9 +14,7 @@ const ChannelDropdown = (props) => {
         <div className='dropdown-index-item'>
           <label className='dropdown-index-title'>Invite Users</label>
         </div>
-        <div className='dropdown-index-item' onClick={ props.createChannel }>
-          <label className='dropdown-index-title'>Create Channel</label>
-        </div>
+        { channelCreate }
       </div>
     );
 };
