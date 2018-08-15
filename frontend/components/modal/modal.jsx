@@ -121,7 +121,7 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = (ownProps.location.pathname.split('/')[2]);
   const channel = state.entities.channels[dropdownId] || state.entities.channels[channelId];
   const currentUser = state.session.user;
-  debugger
+  
   return {
     modal,
     server,

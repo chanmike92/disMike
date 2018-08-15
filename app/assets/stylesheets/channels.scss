@@ -123,7 +123,7 @@
 
 .dm-text-channel-name {
   width: 100%;
-  min-height: 25px;
+  min-height: 40px;
   flex-direction: row;
   // flex: 1 1 auto;
   box-sizing: border-box;
@@ -135,7 +135,8 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  padding: 9px 20px;
+  padding-left: 9px;
+  padding-top: 10px;
 }
 
 .text-channel-name:hover {

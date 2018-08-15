@@ -12,7 +12,7 @@ const mapStateToProps = (state, ownProps) => {
   const server = ownProps.server || {};
   const serverId = server.id;
   const currentState = {name: ""};
-  debugger
+  
   return ({
     currentState,
     serverId,

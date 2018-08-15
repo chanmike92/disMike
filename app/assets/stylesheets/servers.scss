@@ -3,6 +3,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+
+.server-index-icon-image {
+  height: 50px;
+  width: 50px;
+  // display: flex;
+  // position: absolute;
+  overflow: hidden;
+  border-radius: 25px;
+}
+
 .server-container {
   min-width: 70px;
   height: 100%;
@@ -218,7 +228,8 @@ border: 0;
 .server-links {
   display: flex;
   overflow: hidden;
-  padding: 25px;
+  height: 50px;
+  width: 50px;
   align-items: center;
   justify-content: center;
   text-align: center;
@@ -233,7 +244,11 @@ border: 0;
 .active-server {
   border-radius: 15px;
   background-color: rgb(114, 137, 218);
+  &.server-links > .server-index-icon-image {
+    border-radius: 15px;
+  }
 }
+
 
 .active-server::before {
   height: 50px;

@@ -18,15 +18,15 @@ class MessageShow extends React.Component {
     this.renderGroupMessages = this.renderGroupMessages.bind(this);
   }
 
-  componentDidMount() {
-    if (this.props.channelId) {
-      // this.props.fetchAChannel(this.props.channelId);
-      // this.subscription = App.cable.subscriptions.create(
-      //   {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
-      //   { received: (data) => { this.props.receiveAMessage(data) }});
-      this.scrollBottom();
-    }
-  }
+  // componentDidMount() {
+  //   if (this.props.channelId) {
+  //     // this.props.fetchAChannel(this.props.channelId);
+  //     // this.subscription = App.cable.subscriptions.create(
+  //     //   {channel: 'ChatChannel', id: this.props.channelId, type: this.props.messageType},
+  //     //   { received: (data) => { this.props.receiveAMessage(data) }});
+  //     this.scrollBottom();
+  //   }
+  // }
 
   // componentWillReceiveProps(nextProps) {
   //

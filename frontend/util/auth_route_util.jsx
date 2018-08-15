@@ -20,10 +20,6 @@ const Auth = ({ component: Component, path, loggedIn, exact, user }) => {
 
 const mapStateToProps = (state, ownProps) => {
 
-  const location = ownProps.location.pathname;
-  const locationsplit = location.split('/');
-  const serverId = locationsplit[1];
-  const channelId = locationsplit[2];
   return {
     loggedIn: Boolean(state.session.user),
     user: state.session.user,

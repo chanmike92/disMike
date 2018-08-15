@@ -22,7 +22,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     @session_user = current_user
-    # debugger
+    # 
     if @session_user
       logout
       user = JSON.parse(render('/api/users/_user.json.jbuilder',
