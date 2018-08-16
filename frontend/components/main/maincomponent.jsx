@@ -73,7 +73,7 @@ class MainComponent extends React.Component{
   // }
 
   handleClick(e) {
-    e.preventDefault();
+    // e.preventDefault();
     if (this.props.dropdown) {
       this.props.closeDropdown();
     }
