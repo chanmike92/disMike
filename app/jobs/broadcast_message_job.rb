@@ -2,7 +2,7 @@ class BroadcastMessageJob < ApplicationJob
   queue_as :default
 
   def perform(user, message)
-    DirectChannel.broadcast_to user, command: 'fetch_message', options: { message: message }
+    DirectChannel.broadcast_to user, command: 'fetch_message', data: message
   end
 
   private

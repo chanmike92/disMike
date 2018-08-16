@@ -22,7 +22,7 @@ class Api::ServersController < ApplicationController
       # @server_channels = @server.channels
       # @server_users = @server.subscribed_users
       server = JSON.parse(render('/api/servers/show.json.jbuilder'))
-      server = JSON.parse(render('/api/servers/show.json.jbuilder'))
+      # server = JSON.parse(render('/api/servers/show.json.jbuilder'))
       @server.subscribed_users.each do |user|
         if user != current_user
       #     @message.broadcast(user)

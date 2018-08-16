@@ -11,7 +11,10 @@ class ApplicationController < ActionController::Base
   end
 
   def login(user)
-    # user.update(online_status: true)
+    if (user.online_status)
+      DirectChannel.broadcast_to user, command: "logout"
+    end
+    user.update(online_status: true)
     session[:session_token] = user.reset_session_token!
   end
 

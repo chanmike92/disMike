@@ -55,6 +55,11 @@ export const addNewFriend = (id) => dispatch => {
   return APIUtil.addNewFriend(id).then((payload) => dispatch(receiveAFriend(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
+export const acceptFriend = (id) => dispatch => {
+
+  return APIUtil.addNewFriend(id).then((payload) => dispatch(receiveAFriend(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+};
+
 
 export const deleteFriend = (id) => dispatch => {
 

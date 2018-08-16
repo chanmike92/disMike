@@ -35,7 +35,7 @@ const FriendShow = (props) => {
         <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
           <i className="fas fa-ban"></i>
         </div>
-        <div className='friend-controls-button' onClick={ () => props.addFriend(props.id) }>
+        <div className='friend-controls-button' onClick={ () => props.acceptFriend(props.id) }>
           <i className="fas fa-plus-circle"></i>
         </div>
       </div>;

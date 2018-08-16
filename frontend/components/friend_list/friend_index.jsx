@@ -31,6 +31,7 @@ class FriendIndex extends React.Component {
           id={ userId }
           key={ i }
           addFriend={ this.props.addFriend }
+          acceptFriend={ this.props.acceptFriend }
           deleteFriend={ this.props.deleteFriend }
           />;
 

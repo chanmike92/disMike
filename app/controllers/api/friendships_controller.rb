@@ -21,11 +21,6 @@ class Api::FriendshipsController < ApplicationController
           @friendship2 = Friendship.new(friend2: current_user.id, friend1: @user.id, friendship_status: "PENDING ACCEPT")
           @friendship1.save && @friendship2.save
           render 'api/users/show'
-        elsif  @friendship1.friendship_status == "PENDING ACCEPT"
-          @friendship2 = Friendship.find_by(friend2: current_user.id, friend1: @user.id)
-          @friendship1.update(friendship_status: "ACCEPTED")
-          @friendship2.update(friendship_status: "ACCEPTED")
-          render 'api/users/show'
         else
           render json: ['Already added as a friend'], status: 402
         end
@@ -39,8 +34,18 @@ class Api::FriendshipsController < ApplicationController
     @user = User.find(params[:id])
     @friendship1 = Friendship.find_by(friend1: current_user.id, friend2: @user.id)
     @friendship2 = Friendship.find_by(friend2: current_user.id, friend1: @user.id)
-    @friendship1.save && @friendship2.save
-    render 'api/users/show'
+    if @friendship1 == nil || @friendship2 == nil
+      render json: ['Not friends']
+    elsif  @friendship1.friendship_status == "PENDING ACCEPT"
+      @friendship2 = Friendship.find_by(friend2: current_user.id, friend1: @user.id)
+      @friendship1.update(friendship_status: "ACCEPTED")
+      @friendship2.update(friendship_status: "ACCEPTED")
+      render 'api/users/show'
+      @friendship1.save && @friendship2.save
+      render 'api/users/show'
+    else
+      render json: ['Already added as a friend'], status: 402
+    end
   end
 
   def show

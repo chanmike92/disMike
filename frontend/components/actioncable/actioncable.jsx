@@ -12,6 +12,7 @@ import { receiveAMessage } from '../../actions/message_actions';
 import { addNewChannel, removeAChannel } from '../../actions/channel_actions';
 import { receiveAServer, removeAServer } from '../../actions/server_actions';
 import { receiveAUser } from '../../actions/user_actions';
+import { deleteCurrentUser } from '../../actions/session_actions';
 
 class ActionCableContainer extends React.Component {
   constructor(props) {
@@ -52,6 +53,9 @@ class ActionCableContainer extends React.Component {
           case 'fetch_dm':
             this.props.removeAChannel(data);
             break;
+          case 'logout':
+            this.props.logout();
+            break;
           default:
             console.log(`${command}`);
         }
@@ -60,7 +64,7 @@ class ActionCableContainer extends React.Component {
   }
 
   componentWillUnmount() {
-
+    this.subscription.unsubscribe();
   }
 
   render() {
@@ -93,6 +97,7 @@ const mapDispatchToProps = dispatch => {
     removeAServer: (payload) => dispatch(removeAServer(payload)),
     receiveAServer: (payload) => dispatch(receiveAServer(payload)),
     receiveAUser: (payload) => dispatch(receiveAUser(payload)),
+    logout: () => dispatch(deleteCurrentUser()),
   });
 };
 
