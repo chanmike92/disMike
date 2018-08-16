@@ -59,6 +59,10 @@ class ActionCableContainer extends React.Component {
     );
   }
 
+  componentWillUnmount() {
+
+  }
+
   render() {
     return (
       <div></div>

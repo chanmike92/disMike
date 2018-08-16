@@ -21,8 +21,19 @@ class Api::ServersController < ApplicationController
 
       # @server_channels = @server.channels
       # @server_users = @server.subscribed_users
+      server = JSON.parse(render('/api/servers/show.json.jbuilder')
+      @server.subscribed_users.each do |user|
+        if user != current_user
+      #     @message.broadcast(user)
 
-      render 'api/servers/show'
+          DirectChannel.broadcast_to(user, {command: 'fetch_server',
+            data: server})
+          # BroadcastMessageJob.perform_now @message, user
+
+        end
+
+      end
+
     else
       render json: {create: ['Server already exists']}, status: 402
     end
@@ -45,7 +56,19 @@ class Api::ServersController < ApplicationController
       if @server && @sub && @sub.save
         @server_channels = @server.channels
         @server_users = @server.subscribed_users
-        render 'api/servers/show'
+        server = JSON.parse(render('/api/servers/show.json.jbuilder')
+        @server.subscribed_users.each do |user|
+          if user != current_user
+        #     @message.broadcast(user)
+
+            DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
+              data: server})
+            # BroadcastMessageJob.perform_now @message, user
+
+          end
+
+        end
+        # render 'api/servers/show'
       elsif @server
         render json: {joinErrors: ['Already joined server']}, status: 402
       else
@@ -82,7 +105,17 @@ class Api::ServersController < ApplicationController
     @server = current_user.owned_servers.find(params[:id])
     @server.image = params[:server][:image]
     if @server.save
-      render 'api/servers/show'
+      @server.subscribed_users.each do |user|
+        if user != current_user
+      #     @message.broadcast(user)
+
+          DirectChannel.broadcast_to(user, {command: 'fetch_server',
+            data: server})
+          # BroadcastMessageJob.perform_now @message, user
+
+        end
+
+      end
     else
       render json: @server.errors.full_messages, status: 402
     end
@@ -92,10 +125,20 @@ class Api::ServersController < ApplicationController
     @server = Server.find(params[:id])
     if @server
       if @server.owner_id == current_user.id
-        @server.destroy!
         # @servers = current_user.subscribed_servers
         # render 'api/servers/index'
-        render json: {}
+        @server.subscribed_users.each do |user|
+          if user != current_user
+        #     @message.broadcast(user)
+
+            DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
+              data: server})
+            # BroadcastMessageJob.perform_now @message, user
+
+          end
+
+        end
+        @server.destroy!
       else
         render json: ['You do not have access'], status: 404
       end
