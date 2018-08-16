@@ -32,11 +32,9 @@ class Api::MessagesController < ApplicationController
       @messagable.subscribers.each do |user|
 
         if user != current_user
-      #     @message.broadcast(user)
-
-          DirectChannel.broadcast_to(user, {command: 'fetch_message',
-            data: message})
-          # BroadcastMessageJob.perform_now message, user
+          # DirectChannel.broadcast_to(user, {command: 'fetch_message',
+          #   data: message})
+          BroadcastMessageJob.perform_now message, user
 
         end
 
