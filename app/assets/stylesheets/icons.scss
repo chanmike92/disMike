@@ -68,10 +68,10 @@
    background-repeat: no-repeat;
    background-size: contain;
    transition: all 0.1s linear ;
-   background-image: url('arrow_down.svg');
+   background-image: url('https://s3.amazonaws.com/dismikechan-app-name-dev/arrow_down.svg');
    &.dropdown-active{
      transform: rotate(-90deg);
-      background-image: url('delete.svg');
+      background-image: url('https://s3.amazonaws.com/dismikechan-app-name-dev/delete.svg');
    }
 }
 
@@ -86,10 +86,10 @@
    background-repeat: no-repeat;
    background-size: contain;
    transition: all 0.1s linear ;
-   background-image: url('arrow_down.svg');
+   background-image: url('https://s3.amazonaws.com/dismikechan-app-name-dev/arrow_down.svg');
    &.dropdown-active{
      transform: rotate(-360deg);
-      background-image: url('arrow_right.svg');
+      background-image: url('https://s3.amazonaws.com/dismikechan-app-name-dev/arrow_right.svg');
    }
 }
 
