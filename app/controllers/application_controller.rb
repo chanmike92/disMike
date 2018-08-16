@@ -11,13 +11,12 @@ class ApplicationController < ActionController::Base
   end
 
   def login(user)
-    user.update(online_status: true)
+    # user.update(online_status: true)
     session[:session_token] = user.reset_session_token!
   end
 
   def logout
     current_user.reset_session_token!
-    current_user.update(online_status: false)
     session[:session_token] = nil
   end
 

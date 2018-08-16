@@ -11,7 +11,13 @@
   // position: absolute;
   overflow: hidden;
   z-index: 0;
-  // border-radius: 25px;
+  transition: border-radius 1s ease, background-color 1s ease;
+  border-radius: 25px;
+  &:hover {
+    border-radius: 15px;
+    background-color: rgb(114, 137, 218);
+    transition: border-radius 1s ease, background-color 1s ease;
+  }
 }
 
 .server-container {
@@ -20,7 +26,7 @@
   background-color: #202225;
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
+  // justify-content: flex-start;
   align-items: center;
   overflow-x: hidden;
   overflow-y: scroll;
@@ -53,7 +59,7 @@
 
 .direct-message-link {
   border-bottom: 1px solid white;
-  margin-bottom: 50px;
+  // margin-bottom: 50px;
 }
 
 .online-friends-count {
@@ -88,7 +94,7 @@ border: 0;
   align-items: center;
   justify-content: center;
   color: white;
-
+  transition: border-radius 1s ease, background-color 1s ease;
 }
 
 .server-icons:focus {
@@ -245,9 +251,7 @@ border: 0;
 .active-server {
   border-radius: 15px;
   background-color: rgb(114, 137, 218);
-  &.server-links > .server-index-icon-image {
-    border-radius: 15px;
-  }
+  transition: border-radius 1s ease, background-color 1s ease;
 }
 
 

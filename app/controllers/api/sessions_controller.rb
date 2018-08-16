@@ -9,8 +9,9 @@ class Api::SessionsController < ApplicationController
         locals: { user: @session_user }))
       @session_user.acquaintances.each do |acquaintance|
         if @session_user != acquaintance
-          DirectChannel.broadcast_to(acquaintance, {command: 'fetch_user',
-              data: user})
+          # DirectChannel.broadcast_to(acquaintance, {command: 'fetch_user',
+          #     data: user})
+          AnnounceOnlineStatusJob.perform_now acquaintance, user
         end
       end
     elsif User.find_by(email: params[:user][:email])
@@ -22,7 +23,7 @@ class Api::SessionsController < ApplicationController
 
   def destroy
     @session_user = current_user
-    # 
+    #
     if @session_user
       logout
       user = JSON.parse(render('/api/users/_user.json.jbuilder',
