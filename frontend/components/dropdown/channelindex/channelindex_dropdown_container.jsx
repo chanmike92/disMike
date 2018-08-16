@@ -7,13 +7,16 @@ import { openModal, closeModal,  } from '../../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
+  const servers = state.entities.servers;
   const serverId = ownProps.serverId;
+  const server = servers[serverId];
   const channels = state.entities.channels;
   const channelId = ownProps.channelId;
   const channel = channels[channelId];
   const currentUser = state.session.user;
   // errors: state.errors.channels,
   return ({
+    server,
     channel,
     serverId,
     channelId,

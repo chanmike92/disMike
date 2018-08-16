@@ -27,7 +27,7 @@ const ServerIndex = (props) => {
     return (
     <li className={ iconClass } draggable="true" onContextMenu={ handleClick }>
       <Link className='server-links' draggable="true" onContextMenu={ handleClick } to={`/${props.server.id}/${firstChannel}`}>
-        { props.server.image_url ? <img className='server-index-icon-image' src={props.server.image_url}></img> : serverNameIcon }
+        { props.server.image_url ? <img className={ iconClass } src={props.server.image_url}></img> : serverNameIcon }
       </Link>
     </li>
   );
