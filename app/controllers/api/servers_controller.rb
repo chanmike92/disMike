@@ -21,7 +21,8 @@ class Api::ServersController < ApplicationController
 
       # @server_channels = @server.channels
       # @server_users = @server.subscribed_users
-      server = JSON.parse(render('/api/servers/show.json.jbuilder')
+      server = JSON.parse(render('/api/servers/show.json.jbuilder'))
+      server = JSON.parse(render('/api/servers/show.json.jbuilder'))
       @server.subscribed_users.each do |user|
         if user != current_user
       #     @message.broadcast(user)
@@ -56,11 +57,10 @@ class Api::ServersController < ApplicationController
       if @server && @sub && @sub.save
         @server_channels = @server.channels
         @server_users = @server.subscribed_users
-        server = JSON.parse(render('/api/servers/show.json.jbuilder')
+        server = JSON.parse(render('/api/servers/show.json.jbuilder'))
         @server.subscribed_users.each do |user|
           if user != current_user
-        #     @message.broadcast(user)
-
+            # need to add server into user array and user into server array
             DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
               data: server})
             # BroadcastMessageJob.perform_now @message, user
@@ -103,8 +103,12 @@ class Api::ServersController < ApplicationController
   def update
 
     @server = current_user.owned_servers.find(params[:id])
+
+    @server.name = params[:server][:name]
     @server.image = params[:server][:image]
     if @server.save
+
+      server = JSON.parse(render('/api/servers/show.json.jbuilder'))
       @server.subscribed_users.each do |user|
         if user != current_user
       #     @message.broadcast(user)
@@ -127,11 +131,12 @@ class Api::ServersController < ApplicationController
       if @server.owner_id == current_user.id
         # @servers = current_user.subscribed_servers
         # render 'api/servers/index'
+        server = JSON.parse(render('/api/servers/show.json.jbuilder'))
         @server.subscribed_users.each do |user|
           if user != current_user
         #     @message.broadcast(user)
 
-            DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
+            DirectChannel.broadcast_to(user, {command: 'delete_server',
               data: server})
             # BroadcastMessageJob.perform_now @message, user
 

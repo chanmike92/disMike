@@ -110,7 +110,7 @@ class MainComponent extends React.Component{
         <LoadingContainer />
 
         <ServerShowContainer
-          serverId={ this.state.serverId }
+          serverId={ this.props.serverId }
           channelId={ this.state.channelId }
           />
         { subComponent }
