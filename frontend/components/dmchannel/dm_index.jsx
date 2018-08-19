@@ -11,7 +11,7 @@ const DmIndex = (props) => {
     return (
       <li className={ channelClass }>
         <Link
-          to={`/@me}/${props.id}`}
+          to={`/@me/${props.id}`}
           className='channel-link-item'>
           <div className={ channelNameClass }>{ props.dm.name }</div>
         </Link>

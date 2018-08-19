@@ -18,12 +18,12 @@ const sessionReducer = (oldState = {}, action) => {
       return Object.assign({}, oldState, { user: action.user });
     case DELETE_CURRENT_USER:
       return Object.assign({}, oldState, { user: action.user });
-    case RECEIVE_CURRENT_USER_SESSION:
-      return Object.assign({}, oldState, { user: action.payload.currentUser });
+    // case RECEIVE_CURRENT_USER_SESSION:
+    //   return Object.assign({}, oldState, { user: action.payload.currentUser });
     case RECEIVE_A_FRIEND:
       newState = merge({}, oldState);
       currentUser = newState.user;
-      friendIds = currentUser.friends_id.concat(action.user.user.id);
+      friendIds = currentUser.friends_id.concat(action.user.id);
       update = Object.assign({}, currentUser, { friends_id: friendIds });
       return Object.assign({}, oldState, {user: update});
     case REMOVE_A_FRIEND:

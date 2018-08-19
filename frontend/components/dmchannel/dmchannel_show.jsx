@@ -1,5 +1,7 @@
 import React from 'react';
 import FriendIndexContainer from '../friend_list/friend_index_container';
+import MessageShowContainer from '../message/message_show_container';
+import EmptyChannelMessages from '../message/empty_channel_message';
 import GreetingContainer from '../greeting/greeting_container';
 import DmIndex from './dm_index';
 
@@ -17,6 +19,16 @@ class DmChannelShow extends React.Component {
         channelId={ this.props.channelId }
         />);}
       );
+
+    const messages = this.props.currentDm ? <MessageShowContainer
+      serverId={ this.props.serverId }
+      channelId={ this.props.channelId }
+      messageType={ "DMChannel" }
+    /> : <FriendIndexContainer
+              friendList={ this.props.friendList }
+              channelId={ this.props.channelId }
+            />;
+
     //make selected for friends-logo and each dm item
     return (
       <div className='subcomponent-container'>
@@ -37,10 +49,7 @@ class DmChannelShow extends React.Component {
           </div>
           <GreetingContainer />
         </div>
-        <FriendIndexContainer
-          friendList={ this.props.friendList }
-          channelId={ this.props.channelId }
-        />
+        { messages }
       </div>
     );
   }

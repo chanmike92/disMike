@@ -59,7 +59,11 @@ class MainComponent extends React.Component{
       }
     } else {
       if (nextProps.serverId === '@me') {
+        if (nextProps.dms[nextProps.channelId]) {
+          this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
+        } else {
 
+        }
       } else {
         this.props.history.replace(`/@me/`);
       }
@@ -90,12 +94,12 @@ class MainComponent extends React.Component{
 
     const subComponent = this.props.serverId === '@me' ?
     <DmChannelShowContainer
-      serverId={ this.state.serverId }
+      serverId={ this.props.serverId }
       channelId={ this.state.channelId }
     />
     :
     <ChannelShowContainer
-      serverId={ this.state.serverId }
+      serverId={ this.props.serverId }
       channelId={ this.state.channelId }
     />;
 

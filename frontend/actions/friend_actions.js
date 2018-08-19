@@ -52,7 +52,7 @@ export const fetchAllFriends = () => dispatch => {
 
 export const addNewFriend = (id) => dispatch => {
 
-  return APIUtil.addNewFriend(id).then((payload) => dispatch(receiveAFriend(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.addNewFriend(id).then((user) => dispatch(receiveAFriend(user)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 export const acceptFriend = (id) => dispatch => {
