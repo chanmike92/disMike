@@ -12,11 +12,13 @@ const mapStateToProps = (state, ownProps) => {
   const messageType = ownProps.messageType || "";
   const currentUser = state.session.currentUser || {};
   const channelId = ownProps.channelId || "";
-  const currentChannel = state.entities.channels[channelId] || {};
+  const currentChannel = messageType === "Channel" ?
+    state.entities.channels[ownProps.channelId] :
+    state.entities.dms[ownProps.channelId];
   const currentServer = state.session.currentServer || {};
   const currentChannelName = currentChannel.name || "";
   const dropdown = state.ui.dropdown.dropdownType;
-
+  const symbol = ownProps.symbol;
   return ({
     dropdown,
     messageType,
@@ -25,6 +27,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser,
     currentChannel,
     currentServer,
+    symbol,
   });
 };
 

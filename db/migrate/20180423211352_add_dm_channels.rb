@@ -1,4 +1,4 @@
-class AddDmChannels < ActiveRecord::Migration[5.1]
+class AddDmchannels < ActiveRecord::Migration[5.1]
   def change
     create_table :dmchannels do |t|
       t.timestamps

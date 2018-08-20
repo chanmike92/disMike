@@ -44,7 +44,7 @@ class Api::UsersController < ApplicationController
 
     if @user.save
       @friendships = @user.friendships.includes(:friend)
-      @dms = @user.dmchannels.includes(:subscribers)
+      @dms = @user.dmchannels.includes(:subscribers, :subscriptions)
 
       @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
       render 'api/users/payload'
@@ -56,7 +56,7 @@ class Api::UsersController < ApplicationController
 
   def payload
     @user = current_user
-    @dms = @user.dmchannels.includes(:subscribers)
+    @dms = @user.dmchannels.includes(:subscribers, :messages)
     @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
 
     @friendships = current_user.friendships.includes(:friend)

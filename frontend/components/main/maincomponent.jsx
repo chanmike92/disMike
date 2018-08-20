@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ChannelShowContainer from '../channel/channel_show_container';
-import DmChannelShowContainer from '../dmchannel/dmchannel_show_container';
+import DmchannelShowContainer from '../dmchannel/dmchannel_show_container';
 import LoadingContainer from '../loading/loading_container';
 import ActionCableContainer from '../actioncable/actioncable';
 import ServerShowContainer from '../server/server_show_container';
@@ -34,28 +34,25 @@ class MainComponent extends React.Component{
       if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
         this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
       } else {
-        if (this.props.serverId === nextProps.serverId) {
           if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.props.channelId))) {
             this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
-        } else if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.state.channelId))) {
-        }
+          }
           else {
             if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
               let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
               this.setState({serverId: nextProps.serverId, channelId: newchannelId});
             } else {
-              this.setState({serverId: nextProps.serverId});
+              this.setState({serverId: nextProps.serverId, channelId: ""});
             }
           }
-        }
-        else {
-          if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
-            let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-            this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-          } else {
-            this.setState({serverId: nextProps.serverId});
-          }
-        }
+        // else {
+        //   if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
+        //     let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+        //     this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+        //   } else {
+        //     this.setState({serverId: nextProps.serverId});
+        //   }
+        // }
       }
     } else {
       if (nextProps.serverId === '@me') {
@@ -93,7 +90,7 @@ class MainComponent extends React.Component{
   render() {
 
     const subComponent = this.props.serverId === '@me' ?
-    <DmChannelShowContainer
+    <DmchannelShowContainer
       serverId={ this.props.serverId }
       channelId={ this.state.channelId }
     />

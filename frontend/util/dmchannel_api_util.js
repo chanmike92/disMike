@@ -1,4 +1,4 @@
-export const fetchAllDmChannels = () => {
+export const fetchAllDmchannels = () => {
 
   return $.ajax({
     method: 'GET',
@@ -6,7 +6,7 @@ export const fetchAllDmChannels = () => {
   });
 };
 
-export const fetchADmChannel = (id) => {
+export const fetchADmchannel = (id) => {
 
   return $.ajax({
     method: 'GET',
@@ -15,7 +15,7 @@ export const fetchADmChannel = (id) => {
   });
 };
 
-export const makeNewDmChannel = (dm, id) => {
+export const makeNewDmchannel = (dm, id) => {
 
   return $.ajax({
     url: 'api/channels',
@@ -24,7 +24,7 @@ export const makeNewDmChannel = (dm, id) => {
   });
 };
 
-export const unsubscribeDmChannel = (id) => {
+export const unsubscribeDmchannel = (id) => {
 
   return $.ajax({
     url: `api/channels/${id}`,

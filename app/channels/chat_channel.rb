@@ -3,7 +3,7 @@ class ChatChannel < ApplicationCable::Channel
     # if params[:type] == "Channel"
     #   channel = Channel.find(params[:id])
     # else
-    #   channel = DmChannel.find(params[:id])
+    #   channel = Dmchannel.find(params[:id])
     # end
     channel = Channel.find(params[:id])
     stream_for channel

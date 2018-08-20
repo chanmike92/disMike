@@ -30,7 +30,7 @@ class ChannelShow extends React.Component {
     for (let i = 0; i < this.props.channels.length; i++) {
 
       let channel = this.props.channels[i];
-      let active = this.props.channelId == channel.id ? true : false;
+      let active = this.props.channelId === channel.id ? true : false;
       let a = <ChannelIndex
       key={ i }
       id={ channel.id }

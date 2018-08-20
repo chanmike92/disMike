@@ -70,3 +70,8 @@ export const updateDm = (dm) => dispatch => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
 };
+
+export const unsubscribeDm = (id) => dispatch => {
+  return APIUtil.unsubscribeDm(id).then((payload) => dispatch(receiveADm(payload)), (errors) => {
+    return dispatch(receiveErrors(errors.responseJSON));});
+};

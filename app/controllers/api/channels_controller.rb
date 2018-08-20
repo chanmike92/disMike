@@ -23,9 +23,9 @@ class Api::ChannelsController < ApplicationController
         if user != current_user
       #     @message.broadcast(user)
 
-          DirectChannel.broadcast_to(user, {command: 'fetch_new_channel',
-            data: channel})
-          # BroadcastMessageJob.perform_now @message, user
+          # DirectChannel.broadcast_to(user, {command: 'fetch_new_channel',
+          #   data: channel})
+          BroadcastMessageJob.perform_now user, channel
 
         end
 

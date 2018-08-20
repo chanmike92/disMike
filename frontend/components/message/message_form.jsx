@@ -72,7 +72,7 @@ class MessageForm extends React.Component {
                   maxRows={6}
                   onChange={this.handleInput('body')}
                   value={this.state.body}
-                  placeholder={`Message #${this.props.currentChannelName}`}>
+                  placeholder={`Message ${this.props.symbol}${this.props.currentChannelName}`}>
               </TextareaAutosize>
             </div>
             <div className="emoji-button-icon">

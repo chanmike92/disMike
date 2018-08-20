@@ -18,11 +18,13 @@ const channelReducer = (oldState = {}, action) => {
     // case RECEIVE_CURRENT_USER:
     //   return merge({}, oldState, action.payload.channels);
     case RECEIVE_A_MESSAGE:
-      const id = action.message.id;
-      const messagableId = action.message.messagable_id;
-      const updatedChannel = {[messagableId]: {message_ids: [...oldState[messagableId].message_ids, id]}};
+      if (action.message.messagable_type === 'Channel') {
+        const id = action.message.id;
+        const messagableId = action.message.messagable_id;
+        const updatedChannel = {[messagableId]: {message_ids: [...oldState[messagableId].message_ids, id]}};
 
-      return merge({}, oldState, updatedChannel);
+        return merge({}, oldState, updatedChannel);
+      }
     case RECEIVE_ALL_CHANNELS:
       return merge({}, oldState, action.channels);
     case RECEIVE_A_SERVER:

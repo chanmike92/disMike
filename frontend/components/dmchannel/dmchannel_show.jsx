@@ -12,13 +12,14 @@ class DmChannelShow extends React.Component {
 
   render() {
     let dms = this.props.dmIds.map((id, i) => {
+      if (this.props.dms[id].subscription === true) {
       return (<DmIndex
         key={ i }
         id={ id }
         dm={ this.props.dms[id] }
         channelId={ this.props.channelId }
         />);}
-      );
+      });
 
     const messages = this.props.currentDm ? <MessageShowContainer
       serverId={ this.props.serverId }

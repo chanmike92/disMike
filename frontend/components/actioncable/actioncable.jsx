@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link, withRouter } from 'react-router-dom';
 import ChannelShowContainer from '../channel/channel_show_container';
-import DmChannelShowContainer from '../dmchannel/dmchannel_show_container';
+import DmchannelShowContainer from '../dmchannel/dmchannel_show_container';
 import LoadingContainer from '../loading/loading_container';
 import ServerShowContainer from '../server/server_show_container';
 import Modal from '../modal/modal';

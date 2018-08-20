@@ -13,7 +13,9 @@ const mapStateToProps = (state, ownProps) => {
   // const users = Object.values(state.entities.users).filter(user => {
   //   return user.serverId === serverId;
   const currentServerId = ownProps.serverId;
-  const currentServer = state.entities.servers[currentServerId] || {};
+  const currentServer = ownProps.messageType === "Channel" ?
+    state.entities.servers[currentServerId] :
+    state.entities.dms[ownProps.channelId];
   const currentUser = state.session.currentUser || {};
   const userIds = currentServer.user_ids || [];
   return ({

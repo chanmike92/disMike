@@ -2,7 +2,7 @@ import React from 'react';
 import ServerIndex from './server_index';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 import ChannelShowContainer from '../channel/channel_show_container';
-import DmChannelShowContainer from '../dmchannel/dmchannel_show_container';
+import DmchannelShowContainer from '../dmchannel/dmchannel_show_container';
 import LoadingContainer from '../loading/loading_container';
 
 class ServerShow extends React.Component {

@@ -121,7 +121,9 @@ class MessageShow extends React.Component {
       <MessageIndexBeginning
         key={"beginning"}
         channelName={this.props.channelName}
-        currentUser={this.props.currentUser} />
+        currentUser={this.props.currentUser}
+        messageType={this.props.messageType}
+      />
     );
      for (let i = 0; i < groupMessages.length; i++) {
        let message = groupMessages[i][0] || {};
@@ -144,7 +146,7 @@ class MessageShow extends React.Component {
           );
         }
         messages.push(<MessageIndex
-          key={ message.id }
+          key={ `message-${message.id}` }
           profilepic={ message.profilepic }
           author={ message.author }
           dateNum={ message.created_at }
@@ -202,11 +204,16 @@ class MessageShow extends React.Component {
   render() {
     let groupMessages = this.renderGroupMessages();
     let messages = this.renderMessages(groupMessages);
-
+    let symbol = this.props.messageType === "Channel" ? '#' : '@';
+    let userComponent = this.props.messageType === "Channel" ? <UserShowContainer
+                    serverId={ this.props.serverId }
+                    channelId={ this.props.channelId }
+                    messageType={ this.props.messageType }
+                  /> : <div></div>;
       return (
           <div className='message-container'>
             <div className='channel-title-name-container'>
-              <div className='channel-title-name'># <div className='channel-actual-name'>{this.props.channelName}</div></div>
+              <div className='channel-title-name'>{symbol} <div className='channel-actual-name'>{this.props.channelName}</div></div>
             </div>
             <div className='bottom-container'>
               <div className='bottom-container-divider'>
@@ -219,11 +226,15 @@ class MessageShow extends React.Component {
                       messageType={ this.props.messageType }
                       channelId={ this.props.channelId }
                       scrollBottom={ this.scrollBottom }
+                      symbol={ symbol }
                       />
                   </div>
                 </div>
-              <UserShowContainer
-                serverId={ this.props.serverId }/>
+                <UserShowContainer
+                  serverId={ this.props.serverId }
+                  channelId={ this.props.channelId }
+                  messageType={ this.props.messageType }
+                />
             </div>
           </div>
           </div>
