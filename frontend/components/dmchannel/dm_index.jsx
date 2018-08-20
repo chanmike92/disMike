@@ -22,23 +22,23 @@ const DmIndex = (props) => {
     //     </button>
     //   </div>;
     // }
-
-    return (
-        <Link
-          to={`/@me/${props.id}`}
-          className={ channelClass }>
-          <div className={ channelNameClass }>{ props.dm.name }</div>
-        </Link>
-    );
-    // return (
-    //   <li className={ channelClass }>
-    //     <Link
-    //       to={`/@me/${props.id}`}
-    //       className='channel-link-item'>
-    //       <div className={ channelNameClass }>{ props.dm.name }</div>
-    //     </Link>
-    //   </li>
-    // );
+    if (props.dmreceivers.length === 1) {
+      return (
+          <Link
+            to={`/@me/${props.id}`}
+            className={ channelClass }>
+            <div className={ channelNameClass }>{ props.dm.name }</div>
+          </Link>
+      );
+    } else {
+      return (
+          <Link
+            to={`/@me/${props.id}`}
+            className='channel-link-item'>
+            <div className={ channelNameClass }>{ props.dm.name }</div>
+          </Link>
+      );
+    }
 };
 
 

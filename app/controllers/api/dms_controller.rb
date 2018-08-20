@@ -33,6 +33,11 @@ class Api::DmsController < ApplicationController
     end
   end
 
+  def destroy
+    @channel = Dmchannel.find(params[:id])
+    @
+  end
+
 
 
   private

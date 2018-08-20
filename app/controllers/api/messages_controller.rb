@@ -44,14 +44,14 @@ class Api::MessagesController < ApplicationController
       #   JSON.parse(render('/api/messages/_message.json.jbuilder',
       #     locals: { message: @message })))
       # head :ok
-      if @message.messagable_type == 'Dmchannel'
-        @messagable = Dmchannel.find(@message.messagable_id).includes(:subscribers)
-        @messagable.subscriber.each do |dmsubscription|
-          dmsubscription.update(subscribed: true)
-        end
+      # if @message.messagable_type == 'Dmchannel'
+      #   @messagable = Dmchannel.find(@message.messagable_id).includes(:subscribers)
+      #   @messagable.subscriber.each do |dmsubscription|
+      #     dmsubscription.update(subscribed: true)
+      #   end
       # else
       #   @messagable = Channel.find(@message.messagable_id).includes(:subscribers)
-      end
+      # end
     else
       render json: @message.errors.full_messages, status: 402
     end

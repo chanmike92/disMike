@@ -59,7 +59,7 @@ class MainComponent extends React.Component{
         if (nextProps.dms[nextProps.channelId]) {
           this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
         } else {
-
+          this.setState({serverId: nextProps.serverId, channelId: null});
         }
       } else {
         this.props.history.replace(`/@me/`);

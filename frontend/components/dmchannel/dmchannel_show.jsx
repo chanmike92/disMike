@@ -11,20 +11,23 @@ class DmChannelShow extends React.Component {
   }
 
   render() {
-    let dms = this.props.dmIds.map((id, i) => {
-      if (this.props.dms[id].subscription === true) {
-      return (<DmIndex
+    let dms = [];
+    for (let i = 0; i < this.props.dms.length; i++) {
+      let dm = this.props.dms[i];
+      if (dm.subscription === true) {
+       dms.push(<DmIndex
         key={ i }
-        id={ id }
-        dm={ this.props.dms[id] }
+        dm={ dm }
+        dmreceiver={ dm.dmreceivers}
         channelId={ this.props.channelId }
-        />);}
-      });
+        />);
+      }
+    }
 
     const messages = this.props.currentDm ? <MessageShowContainer
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
-      messageType={ "DMChannel" }
+      messageType={ "Dmchannel" }
     /> : <FriendIndexContainer
               friendList={ this.props.friendList }
               channelId={ this.props.channelId }
