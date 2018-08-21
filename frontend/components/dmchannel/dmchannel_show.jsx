@@ -1,5 +1,5 @@
 import React from 'react';
-import FriendShowContainer from '../friend_list/friend_index_container';
+import FriendShowContainer from '../friend_list/friend_show_container';
 import MessageShowContainer from '../message/message_show_container';
 import EmptyChannelMessages from '../message/empty_channel_message';
 import GreetingContainer from '../greeting/greeting_container';

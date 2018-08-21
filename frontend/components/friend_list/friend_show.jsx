@@ -1,5 +1,5 @@
 import React from 'react';
-import FriendIndex from './friend_show';
+import FriendIndex from './friend_index';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class FriendShow extends React.Component {
