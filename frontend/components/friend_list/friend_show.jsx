@@ -5,19 +5,8 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class FriendShow extends React.Component {
   constructor(props) {
     super(props);
-    // this.state = {selector: "ALL"};
-    // this.handleSelect = this.handleSelect.bind(this);
     this.renderFriends = this.renderFriends.bind(this);
   }
-
-
-  // handleSelect(selected) {
-  //   return (e) => {
-  //     this.setState({
-  //       selector: selected
-  //     });
-  //   };
-  // }
 
   renderFriends() {
     let friends = [];
