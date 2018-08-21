@@ -3,7 +3,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const DmIndex = (props) => {
 
-    const channelClass = Number(props.channelId) === Number(props.dm.id) ? "channel-item-container active-channel" : "channel-item-container";
+    const channelClass = Number(props.channelId) === Number(props.dm.id) ? "dm-channel-item-container active-channel" : "dm-channel-item-container";
     const channelNameClass = Number(props.channelId) === Number(props.dm.id) ? "active-name-channel channel-name-item" : "channel-name-item";
     if (props.dm.dmreceivers.length === 1) {
       const online = props.user.online_status ? "online-status-icon green-back" : "online-status-icon grey-back";

@@ -226,6 +226,27 @@
   // background-color: #b9bbbe;
 }
 
+.dm-channel-item-container {
+  box-sizing: border-box;
+  display: flex;
+  margin: 2px;
+  color: #72767d;
+  font-size: 16px;
+  width: 100%;
+  padding: 5px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 5px;
+  min-height: 40px;
+}
+
+
+.dm-channel-item-container:hover {
+  background-color: #36393f;
+  cursor: pointer;
+  // background-color: #b9bbbe;
+}
+
 .channel-item-container:hover .channel-controls {
   display: flex;
   // background-color: #b9bbbe;
