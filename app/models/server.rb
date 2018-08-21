@@ -27,5 +27,8 @@ class Server < ApplicationRecord
     through: :subscriptions,
     source: :user
 
+  def iconName
+    self.name.split(' ');
+  end
 
 end

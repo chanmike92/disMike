@@ -18,12 +18,12 @@ class FriendShow extends React.Component {
         let friend = <FriendIndex
           user={ user }
           id={ userId }
+          currentUserServers={ this.props.servers }
           key={ i }
           addFriend={ this.props.addFriend }
           acceptFriend={ this.props.acceptFriend }
           deleteFriend={ this.props.deleteFriend }
           />;
-
 
         switch (this.props.selector) {
           case "ALL":
