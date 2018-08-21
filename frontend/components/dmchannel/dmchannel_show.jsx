@@ -24,6 +24,8 @@ class DmChannelShow extends React.Component {
       }
     }
 
+    debugger
+
     const messages = this.props.currentDm ? <MessageShowContainer
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
