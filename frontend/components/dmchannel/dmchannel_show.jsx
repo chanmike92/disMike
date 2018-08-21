@@ -4,6 +4,7 @@ import MessageShowContainer from '../message/message_show_container';
 import EmptyChannelMessages from '../message/empty_channel_message';
 import GreetingContainer from '../greeting/greeting_container';
 import DmIndex from './dm_index';
+import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class DmChannelShow extends React.Component {
   constructor(props) {
@@ -45,9 +46,9 @@ class DmChannelShow extends React.Component {
           </div>
           <div className='bottom-channels-container'>
             <div className='channel-list-container'>
-              <div className='friends-logo' >
+              <Link className='friends-logo' to={`/@me/`}>
                 Friends
-              </div>
+              </Link>
               <div className='dm-text-channel-name'>DIRECT MESSAGES</div>
                 { dms }
             </div>
