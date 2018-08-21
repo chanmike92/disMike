@@ -9,6 +9,16 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class DmChannelShow extends React.Component {
   constructor(props) {
     super(props);
+    this.state = {selector: "ALL"};
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
+  handleSelect(selected) {
+    return (e) => {
+      this.setState({
+        selector: selected
+      });
+    };
   }
 
   render() {
@@ -33,6 +43,8 @@ class DmChannelShow extends React.Component {
     /> : <FriendIndexContainer
               friendList={ this.props.friendList }
               channelId={ this.props.channelId }
+              selector={ this.state.selector }
+              handleSelect={ this.handleSelect }
             />;
 
     //make selected for friends-logo and each dm item

@@ -21,7 +21,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = currentUser.id || "";
   const currentServerId = ownProps.serverId;
   return ({
-
+    selector: ownProps.selector,
     currentServerName: currentServer.name || "",
     currentServerOwnerId: currentServer.owner_id || "",
     currentUserId,
@@ -35,8 +35,10 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  debugger
   return ({
+    handleSelect: (selector) => ownProps.handleSelect(selector),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
     addNewFriend: () => dispatch(openModal('addFriend')),
     addFriend: (id) => dispatch(addNewFriend(id)),

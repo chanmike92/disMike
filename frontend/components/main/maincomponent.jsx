@@ -29,7 +29,7 @@ class MainComponent extends React.Component{
   //routes all possible edges cases for mistaken url input
   //DO NOT MODIFY UNLESS FULLY TESTED
   componentWillReceiveProps(nextProps) {
-    debugger
+
     // check if server exists
     if (nextProps.servers[nextProps.serverId]) {
       // check if server contains channel id, if true change state

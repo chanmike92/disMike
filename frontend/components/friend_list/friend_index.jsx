@@ -5,19 +5,19 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class FriendIndex extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {selector: "ALL"};
-    this.handleSelect = this.handleSelect.bind(this);
+    // this.state = {selector: "ALL"};
+    // this.handleSelect = this.handleSelect.bind(this);
     this.renderFriends = this.renderFriends.bind(this);
   }
 
 
-  handleSelect(selected) {
-    return (e) => {
-      this.setState({
-        selector: selected
-      });
-    };
-  }
+  // handleSelect(selected) {
+  //   return (e) => {
+  //     this.setState({
+  //       selector: selected
+  //     });
+  //   };
+  // }
 
   renderFriends() {
     let friends = [];
@@ -36,7 +36,7 @@ class FriendIndex extends React.Component {
           />;
 
 
-        switch (this.state.selector) {
+        switch (this.props.selector) {
           case "ALL":
           if (user.friendship_status === "ACCEPTED") {
             friends.push(friend);
@@ -62,16 +62,16 @@ class FriendIndex extends React.Component {
 
   render() {
     let friends = this.renderFriends();
-    const active = (selector) => this.state.selector === selector ? "friend-selector-item friend-active-selector" : "friend-selector-item";
+    const active = (selector) => this.props.selector === selector ? "friend-selector-item friend-active-selector" : "friend-selector-item";
 
     return (
       <div className='message-container'>
         <div className='friend-selector'>
           <div className='add-friend-button purple-back' onClick={ this.props.addNewFriend }>Add Friend</div>
           <div className='verticle-separator'></div>
-          <div className={ active("ALL") } onClick={ this.handleSelect("ALL") }>All</div>
-          <div className={ active("ONLINE") } onClick={ this.handleSelect("ONLINE") }>Online</div>
-          <div className={ active("PENDING") } onClick={ this.handleSelect("PENDING") }>Pending</div>
+          <div className={ active("ALL") } onClick={ this.props.handleSelect("ALL") }>All</div>
+          <div className={ active("ONLINE") } onClick={ this.props.handleSelect("ONLINE") }>Online</div>
+          <div className={ active("PENDING") } onClick={ this.props.handleSelect("PENDING") }>Pending</div>
         </div>
         <div className='friend-list-container'>
           <div className='friend-table-header'>
