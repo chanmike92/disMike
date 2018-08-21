@@ -14,11 +14,11 @@ const mapStateToProps = (state, ownProps) => {
   const friendList = currentUser.friends_id || [];
   const friendCount = friendList.length || "";
   const dms = Object.values(state.entities.dms) || [];
-  // const dmIds = Object.keys(dms);
   const currentDm = state.entities.dms[channelId];
-  debugger
+  const users = state.entities.users;
+
   return ({
-    // dmIds,
+    users,
     dms,
     currentDm,
     currentUser,

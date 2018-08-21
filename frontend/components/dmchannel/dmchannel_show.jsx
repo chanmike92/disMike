@@ -18,13 +18,12 @@ class DmChannelShow extends React.Component {
        dms.push(<DmIndex
         key={ i }
         dm={ dm }
-        dmreceiver={ dm.dmreceivers}
+        user={ this.props.users[dm.dmreceivers[0]] }
         channelId={ this.props.channelId }
         />);
       }
     }
 
-    debugger
 
     const messages = this.props.currentDm ? <MessageShowContainer
       serverId={ this.props.serverId }
