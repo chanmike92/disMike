@@ -1,4 +1,4 @@
-import FriendIndex from './friend_index';
+import FriendShow from './friend_show';
 import React from 'react';
 import { getDMServer } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
@@ -36,7 +36,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
-  debugger
+
   return ({
     handleSelect: (selector) => ownProps.handleSelect(selector),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
@@ -46,4 +46,4 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FriendIndex));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(FriendShow));

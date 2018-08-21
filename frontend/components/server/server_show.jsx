@@ -8,8 +8,10 @@ import LoadingContainer from '../loading/loading_container';
 class ServerShow extends React.Component {
   constructor(props) {
     super(props);
+
     this.handleContextClick = this.handleContextClick.bind(this);
   }
+
 
   handleContextClick(e) {
     e.preventDefault();

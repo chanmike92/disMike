@@ -1,5 +1,5 @@
 import React from 'react';
-import FriendIndexContainer from '../friend_list/friend_index_container';
+import FriendShowContainer from '../friend_list/friend_index_container';
 import MessageShowContainer from '../message/message_show_container';
 import EmptyChannelMessages from '../message/empty_channel_message';
 import GreetingContainer from '../greeting/greeting_container';
@@ -40,7 +40,7 @@ class DmChannelShow extends React.Component {
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
       messageType={ "Dmchannel" }
-    /> : <FriendIndexContainer
+    /> : <FriendShowContainer
               friendList={ this.props.friendList }
               channelId={ this.props.channelId }
               selector={ this.state.selector }

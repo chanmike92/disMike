@@ -1,95 +1,65 @@
 import React from 'react';
-import FriendShow from './friend_show';
-import { withRouter, Link, Redirect } from 'react-router-dom';
+import { withRouter, Link, Redirect, NavLink } from 'react-router-dom';
 
-class FriendIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    // this.state = {selector: "ALL"};
-    // this.handleSelect = this.handleSelect.bind(this);
-    this.renderFriends = this.renderFriends.bind(this);
-  }
+const FriendIndex = (props) => {
 
-
-  // handleSelect(selected) {
-  //   return (e) => {
-  //     this.setState({
-  //       selector: selected
-  //     });
-  //   };
-  // }
-
-  renderFriends() {
-    let friends = [];
-    for (let i = 0; i < this.props.friendList.length; i++) {
-      let userId = this.props.friendList[i];
-      let user = this.props.users[userId];
-
-      if (user) {
-        let friend = <FriendShow
-          user={ user }
-          id={ userId }
-          key={ i }
-          addFriend={ this.props.addFriend }
-          acceptFriend={ this.props.acceptFriend }
-          deleteFriend={ this.props.deleteFriend }
-          />;
-
-
-        switch (this.props.selector) {
-          case "ALL":
-          if (user.friendship_status === "ACCEPTED") {
-            friends.push(friend);
-          }
-          break;
-          case "PENDING":
-          if (user.friendship_status !== "ACCEPTED") {
-            friends.push(friend);
-          }
-          break;
-          case "ONLINE":
-          if (user.online_status && user.friendship_status === "ACCEPTED") {
-            friends.push(friend);
-          }
-          break;
-          default:
-            friends.push(friend);
-        }
+  let statusClassName = "online-status offline";
+  let renderStatus = props.user.online_status ? "Online" : "Offline";
+  let friendControls;
+  switch (props.user.friendship_status) {
+    case ("ACCEPTED"):
+      if (props.user.online_status) {
+        statusClassName = "online-status online";
+        renderStatus = "Online";
+      } else {
+        statusClassName = "online-status offline";
+        renderStatus = "Offline";
       }
-    }
-    return friends;
+      friendControls = <div className='friend-controls-container'>
+        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+          <i className="fas fa-ban"></i>
+        </div>
+      </div>;
+    break;
+    case ("PENDING RECEIVE"):
+      renderStatus = "Outgoing Friend Request";
+      friendControls = <div className='friend-controls-container'>
+        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+          <i className="fas fa-ban"></i>
+        </div>
+      </div>;
+      break;
+    case ("PENDING ACCEPT"):
+      renderStatus = "Incoming Friend Request";
+      friendControls = <div className='friend-controls-container'>
+        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+          <i className="fas fa-ban"></i>
+        </div>
+        <div className='friend-controls-button' onClick={ () => props.acceptFriend(props.id) }>
+          <i className="fas fa-plus-circle"></i>
+        </div>
+      </div>;
+    break;
   }
-
-  render() {
-    let friends = this.renderFriends();
-    const active = (selector) => this.props.selector === selector ? "friend-selector-item friend-active-selector" : "friend-selector-item";
 
     return (
-      <div className='message-container'>
-        <div className='friend-selector'>
-          <div className='add-friend-button purple-back' onClick={ this.props.addNewFriend }>Add Friend</div>
-          <div className='verticle-separator'></div>
-          <div className={ active("ALL") } onClick={ this.props.handleSelect("ALL") }>All</div>
-          <div className={ active("ONLINE") } onClick={ this.props.handleSelect("ONLINE") }>Online</div>
-          <div className={ active("PENDING") } onClick={ this.props.handleSelect("PENDING") }>Pending</div>
+    <li className="friend-item-container">
+      <Link className='friend-link-item'
+        to={`/@me/`}>
+        <div className="friend-name-container">
+          <img className='profile-picture friend-pic' src={ props.user.image_url ? props.user.image_url : ""} />
+          <div className='friend-name'>{ props.user.username }</div>
         </div>
-        <div className='friend-list-container'>
-          <div className='friend-table-header'>
-            <div className='friend-table-tab'>Name</div>
-            <div className='verticle-separator'></div>
-            <div className='friend-table-tab status'>Status</div>
-            <div className='verticle-separator'></div>
-            <div className='friend-table-tab status'>Mutual Servers</div>
-            <div className='verticle-separator'></div>
-          </div>
-          <div className='friend-index-container'>
-            {friends}
-          </div>
+        <div className='status-container'>
+          <div className={ statusClassName }></div>
+          <div className="status-name">{ renderStatus }</div>
         </div>
+        <div className='mutual-servers-container'>
+        </div>
+        { friendControls }
+      </Link>
+    </li>
+  );
+};
 
-      </div>
-    );
-  }
-}
-
-export default FriendIndex;
+export default withRouter(FriendIndex);
