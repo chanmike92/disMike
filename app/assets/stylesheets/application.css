@@ -74,6 +74,15 @@
   align-items: center;
 }
 
+.dm-image-icons {
+  height: 30px;
+  width: 30px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .online-status-icon {
   position: absolute;
   width: 14px;

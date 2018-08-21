@@ -11,7 +11,7 @@ const DmIndex = (props) => {
           <Link
             to={`/@me/${props.dm.id}`}
             className={ channelClass }>
-            <div className='user-image-icons'>
+            <div className='dm-image-icons'>
               <img className='profile-picture' src={ props.user.image_url } />
               <div className={ online }></div>
             </div>
@@ -25,7 +25,9 @@ const DmIndex = (props) => {
           <Link
             to={`/@me/${props.id}`}
             className='channel-link-item'>
-
+            <div className='dm-image-icons'>
+              <img className='profile-picture group-dm-picture'/>
+            </div>
             <div className={ channelNameClass }>{ props.dm.name }</div>
           </Link>
       );

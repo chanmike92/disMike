@@ -29,36 +29,36 @@ class MainComponent extends React.Component{
   //routes all possible edges cases for mistaken url input
   //DO NOT MODIFY UNLESS FULLY TESTED
   componentWillReceiveProps(nextProps) {
+    debugger
+    // check if server exists
     if (nextProps.servers[nextProps.serverId]) {
-
+      // check if server contains channel id, if true change state
       if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(nextProps.channelId))) {
         this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
       } else {
+        // otherwise check if contains previous channel id, if true render previous channel
           if (nextProps.servers[nextProps.serverId].channel_ids.includes(parseInt(this.props.channelId))) {
             this.setState({serverId: nextProps.serverId, channelId: this.props.channelId});
           }
-          else {
-            if (nextProps.servers[this.props.serverId].channel_ids.length > 0) {
-              let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-              this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-            } else {
-              this.setState({serverId: nextProps.serverId, channelId: ""});
-            }
+        else {
+          // if server does not contain channel id, render first channel of server
+          if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
+            let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
+            this.setState({serverId: nextProps.serverId, channelId: newchannelId});
+          } else {
+            // else server does not have any channel
+            this.setState({serverId: nextProps.serverId, channelId: ""});
           }
-        // else {
-        //   if (nextProps.servers[nextProps.serverId].channel_ids.length > 0) {
-        //     let newchannelId = nextProps.servers[nextProps.serverId].channel_ids[0];
-        //     this.setState({serverId: nextProps.serverId, channelId: newchannelId});
-        //   } else {
-        //     this.setState({serverId: nextProps.serverId});
-        //   }
-        // }
+        }
       }
     } else {
+      // if server does not exist, render the dm/friend component
       if (nextProps.serverId === '@me') {
+        // check if dm exists, if it does, render it
         if (nextProps.dms[nextProps.channelId]) {
           this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
         } else {
+          // else render friend list
           this.setState({serverId: nextProps.serverId, channelId: null});
         }
       } else {
