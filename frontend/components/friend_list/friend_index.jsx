@@ -48,8 +48,7 @@ const FriendIndex = (props) => {
   for (let i = 0; i < props.user.server_ids.length; i++) {
     let server = props.currentUserServers[props.user.server_ids[i]];
 
-    if (server) {
-        const firstChannel = server.channel_ids[0] ? server.channel_ids[0] : "";
+    if (server && commonServers.length < 5) {
       commonServers.push(
         <Link key={ i } to={`/${server.id}/`}>
           <img className='profile-picture friend-pic' src={ server.image_url } />
