@@ -19,38 +19,19 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.author_id = current_user.id
 
-
-
-
     if @message.save
+
+      if @message.messagable_type = 'Dmchannel'
+        @messagable = @message.messagable
+        @messagable.subscriptions.each do |subscription|
+          if subscription.subscribed == false
+            subscription.update(subscribed: true)
+          end
+        end
+      end
       message = JSON.parse(render('/api/messages/_message.json.jbuilder',
         locals: { message: @message }))
-      #
-      # @messagable.subscribers.each do |user|
-      #
-      #   if user != current_user
-          # DirectChannel.broadcast_to(user, {command: 'fetch_message',
-          #   data: message})
           BroadcastMessageJob.perform_now current_user, @message
-          # render 'api/messages/message'
-        # end
-
-      # end
-
-      # DirectChannel
-
-      # ChatChannel.broadcast_to(@message.messagable,
-      #   JSON.parse(render('/api/messages/_message.json.jbuilder',
-      #     locals: { message: @message })))
-      # head :ok
-      # if @message.messagable_type == 'Dmchannel'
-      #   @messagable = Dmchannel.find(@message.messagable_id).includes(:subscribers)
-      #   @messagable.subscriber.each do |dmsubscription|
-      #     dmsubscription.update(subscribed: true)
-      #   end
-      # else
-      #   @messagable = Channel.find(@message.messagable_id).includes(:subscribers)
-      # end
     else
       render json: @message.errors.full_messages, status: 402
     end

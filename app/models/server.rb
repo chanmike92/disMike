@@ -28,7 +28,11 @@ class Server < ApplicationRecord
     source: :user
 
   def iconName
-    self.name.split(' ');
+    result = "";
+    self.name.split(' ').each do |word|
+      result += word[0]
+    end
+    return result;
   end
 
 end

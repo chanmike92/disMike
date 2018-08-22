@@ -56,7 +56,12 @@ class MainComponent extends React.Component{
       if (nextProps.serverId === '@me') {
         // check if dm exists, if it does, render it
         if (nextProps.dms[nextProps.channelId]) {
-          this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
+          // check to prevent dms that were closed
+          if (nextProps.dms[nextProps.channelId].subscription === true) {
+            this.setState({serverId: nextProps.serverId, channelId: nextProps.channelId});
+          } else {
+              this.setState({serverId: nextProps.serverId, channelId: null});
+          }
         } else {
           // else render friend list
           this.setState({serverId: nextProps.serverId, channelId: null});

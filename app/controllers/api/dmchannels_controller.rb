@@ -37,7 +37,7 @@ class Api::DmchannelsController < ApplicationController
     @channel = Dmchannel.find(params[:id])
     subscription = @channel.subscriptions.find_by(user_id: current_user.id)
     subscription.update(subscribed: false)
-    debugger
+
   end
 
 

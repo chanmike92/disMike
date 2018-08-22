@@ -258,6 +258,22 @@
   margin-right: 10px;
 }
 
+.server-icon-pic {
+  height: 30px;
+  width: 30px;
+  box-sizing: border-box;
+  border-radius: 50%;
+  color: white;
+  align-items: center;
+  background-color: #2f3136;
+  margin-right: 5px;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
 .friend-name {
   color: hsla(0,0%,100%,.6);
   font-family: Roboto;

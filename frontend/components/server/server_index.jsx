@@ -7,15 +7,6 @@ const ServerIndex = (props) => {
   const iconClass = props.active ? "server-icons active-server" : "server-icons";
   const imageClass = props.active ? "server-index-icon-image active-server" : "server-index-icon-image";
   const firstChannel = props.server.channel_ids[0] ? props.server.channel_ids[0] : "";
-  const nameArr = props.server.name.split(" ");
-  let serverNameIcon = "";
-  if (!props.server.image_url) {
-    nameArr.forEach((word, idx) => {
-      if (word[0]) {
-        serverNameIcon = serverNameIcon + word[0];
-      }
-    });
-  }
 
   const handleClick = (e) => {
     e.preventDefault();
@@ -28,7 +19,7 @@ const ServerIndex = (props) => {
     return (
     <li className={ iconClass } draggable="true" onContextMenu={ handleClick }>
       <Link className='server-links' draggable="true" onContextMenu={ handleClick } to={`/${props.server.id}/${firstChannel}`}>
-        { props.server.image_url ? <img className={ imageClass } src={props.server.image_url}></img> : serverNameIcon }
+        { props.server.image_url ? <img className={ imageClass } src={props.server.image_url}></img> : props.server.display_name }
       </Link>
     </li>
   );

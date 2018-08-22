@@ -2,7 +2,7 @@ import React from 'react';
 import { withRouter, Link, Redirect, NavLink } from 'react-router-dom';
 
 const FriendIndex = (props) => {
-  
+
   let statusClassName = "online-status offline";
   let renderStatus = props.user.online_status ? "Online" : "Offline";
   let friendControls;
@@ -46,10 +46,11 @@ const FriendIndex = (props) => {
   for (let i = 0; i < props.user.server_ids.length; i++) {
     let server = props.currentUserServers[props.user.server_ids[i]];
 
-    if (server && commonServers.length < 5) {
+    if (server && commonServers.length < 6) {
       commonServers.push(
         <Link key={ i } to={`/${server.id}/`}>
-          <img className='profile-picture friend-pic' src={ server.image_url } />
+          { server.image_url? <img className='server-icon-pic' src={ server.image_url } /> :
+          <div className='server-icon-pic'>{ server.display_name }</div> }
         </Link>
       );
     }
