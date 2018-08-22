@@ -2,9 +2,7 @@ import React from 'react';
 import { withRouter, Link, Redirect, NavLink } from 'react-router-dom';
 
 const FriendIndex = (props) => {
-
-
-
+  
   let statusClassName = "online-status offline";
   let renderStatus = props.user.online_status ? "Online" : "Offline";
   let friendControls;

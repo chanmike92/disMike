@@ -17,6 +17,13 @@ time, mark, audio, video {
 	font-size: 100%;
 	font-family: 'Open Sans',Helvetica,Helvetica,Arial,sans-serif;
 	vertical-align: baseline;
+	-webkit-user-select: none; /* Chrome/Safari */
+-moz-user-select: none; /* Firefox */
+-ms-user-select: none; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: none;
+user-select: none;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,

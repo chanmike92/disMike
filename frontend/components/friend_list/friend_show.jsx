@@ -58,9 +58,9 @@ class FriendShow extends React.Component {
         <div className='friend-selector'>
           <div className='add-friend-button purple-back' onClick={ this.props.addNewFriend }>Add Friend</div>
           <div className='verticle-separator'></div>
-          <div className={ active("ALL") } onClick={ this.props.handleSelect("ALL") }>All</div>
-          <div className={ active("ONLINE") } onClick={ this.props.handleSelect("ONLINE") }>Online</div>
-          <div className={ active("PENDING") } onClick={ this.props.handleSelect("PENDING") }>Pending</div>
+          <div className={ active("ALL") } draggable="false" onClick={ this.props.handleSelect("ALL") }>All</div>
+          <div className={ active("ONLINE") } draggable="false" onClick={ this.props.handleSelect("ONLINE") }>Online</div>
+          <div className={ active("PENDING") } draggable="false" onClick={ this.props.handleSelect("PENDING") }>Pending</div>
         </div>
         <div className='friend-list-container'>
           <div className='friend-table-header'>
