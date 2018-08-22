@@ -16,6 +16,8 @@ const DmIndex = (props) => {
               <div className={ online }></div>
             </div>
             <div className={ channelNameClass }>{ props.dm.name }</div>
+            <div className='channel-controls'>
+            </div>
           </Link>
       );
     }
@@ -29,6 +31,8 @@ const DmIndex = (props) => {
               <img className='profile-picture group-dm-picture'/>
             </div>
             <div className={ channelNameClass }>{ props.dm.name }</div>
+            <div className='channel-controls'>
+            </div>
           </Link>
       );
     }

@@ -1,4 +1,4 @@
-class Api::DmsController < ApplicationController
+class Api::DmchannelController < ApplicationController
 
   def index
 
@@ -35,7 +35,8 @@ class Api::DmsController < ApplicationController
 
   def destroy
     @channel = Dmchannel.find(params[:id])
-    @
+    subscription = @channel.subscribers.find_by(user_id: current_user.id)
+    subscription.update(subscription: false)
   end
 
 

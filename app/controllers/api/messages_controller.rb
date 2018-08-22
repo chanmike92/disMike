@@ -23,7 +23,6 @@ class Api::MessagesController < ApplicationController
 
 
     if @message.save
-      #
       message = JSON.parse(render('/api/messages/_message.json.jbuilder',
         locals: { message: @message }))
       #

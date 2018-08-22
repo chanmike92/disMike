@@ -49,6 +49,7 @@ const FriendIndex = (props) => {
     let server = props.currentUserServers[props.user.server_ids[i]];
 
     if (server) {
+        const firstChannel = server.channel_ids[0] ? server.channel_ids[0] : "";
       commonServers.push(
         <Link key={ i } to={`/${server.id}/`}>
           <img className='profile-picture friend-pic' src={ server.image_url } />
@@ -60,8 +61,7 @@ const FriendIndex = (props) => {
 
     return (
     <li className="friend-item-container">
-      <NavLink className='friend-link-item'
-        to={`/@me/`}>
+      <div className='friend-link-item' onClick={ () => { props.history.replace('/@me/');} }>
         <div className="friend-name-container">
           <img className='profile-picture friend-pic' src={ props.user.image_url ? props.user.image_url : ""} />
           <div className='friend-name'>{ props.user.username }</div>
@@ -74,7 +74,7 @@ const FriendIndex = (props) => {
           { commonServers }
         </div>
         { friendControls }
-      </NavLink>
+      </div>
     </li>
   );
 };

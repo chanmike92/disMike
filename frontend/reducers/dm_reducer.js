@@ -20,7 +20,7 @@ const dmReducer = (oldState = {}, action) => {
       if (action.message.messagable_type === 'Dmchannel') {
         const id = action.message.id;
         const messagableId = action.message.messagable_id;
-        const updatedChannel = {[messagableId]: {message_ids: [...oldState[messagableId].message_ids, id]}};
+        const updatedChannel = {[messagableId]: {message_ids: [...oldState[messagableId].message_ids, id], subscription: true}};
 
         return merge({}, oldState, updatedChannel);
       }

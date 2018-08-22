@@ -3,12 +3,10 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const ChannelIndex = (props) => {
 
-
-
     if (props.id) {
     const channelClass = Number(props.channelId) === Number(props.id) ? "channel-item-container active-channel channel-link-item" : "channel-item-container channel-link-item";
     const channelNameClass = Number(props.channelId) === Number(props.id) ? "active-name-channel channel-name-item" : "channel-name-item";
-    // const activeDisplayControls = parseInt(props.channelId) === props.id ? "a"
+
     let iconButtons;
     if (props.currentUserId === props.currentServerOwnerId) {
       iconButtons = <div className='channel-controls'>
