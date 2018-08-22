@@ -15,6 +15,13 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  -webkit-user-select: text; /* Chrome/Safari */
+-moz-user-select: text; /* Firefox */
+-ms-user-select: text; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: text;
+user-select: text;
 }
 
 
@@ -400,6 +407,13 @@
   text-transform: none;
   text-align: center;
   align-items: baseline;
+  -webkit-user-select: text; /* Chrome/Safari */
+-moz-user-select: text; /* Firefox */
+-ms-user-select: text; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: text;
+user-select: text;
 }
 
 .message-content {
@@ -414,6 +428,13 @@
   white-space: pre-wrap;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  -webkit-user-select: text; /* Chrome/Safari */
+-moz-user-select: text; /* Firefox */
+-ms-user-select: text; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: text;
+user-select: text;
 }
 
 .message-header {
@@ -455,6 +476,13 @@
   margin: 0;
   padding: 0;
   vertical-align: baseline;
+  -webkit-user-select: text; /* Chrome/Safari */
+-moz-user-select: text; /* Firefox */
+-ms-user-select: text; /* IE10+ */
+
+/* Rules below not implemented in browsers yet */
+-o-user-select: text;
+user-select: text;
 
 }
 

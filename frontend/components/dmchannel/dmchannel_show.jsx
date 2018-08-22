@@ -31,6 +31,7 @@ class DmChannelShow extends React.Component {
         dm={ dm }
         user={ this.props.users[dm.dmreceivers[0]] }
         channelId={ this.props.channelId }
+        unsubscribeDm={ this.props.unsubscribeDm }
         />);
       }
     }
@@ -53,7 +54,8 @@ class DmChannelShow extends React.Component {
         <div className='channel-container'>
           <div className='server-title-container'>
             <div className='user-search'>
-              <input className='user-search-inner' disabled placeholder="Find or start a conversation"></input>
+              <input className='user-search-inner' onClick={ this.props.searchUsers }
+                disabled placeholder="Find or start a conversation"></input>
             </div>
           </div>
           <div className='bottom-channels-container'>

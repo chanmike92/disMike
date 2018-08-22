@@ -4,6 +4,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { fetchAllFriends } from '../../actions/friend_actions';
 import { fetchAServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
+import { unsubscribeDm } from '../../actions/dm_actions';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
 
@@ -33,6 +34,7 @@ const mapDispatchToProps = dispatch => {
   return ({
     addFriend: () => dispatch(openModal('addFriend')),
     searchUsers: () => dispatch(openModal('searchUsers')),
+    unsubscribeDm: (id) => dispatch(unsubscribeDm(id)),
   });
 };
 

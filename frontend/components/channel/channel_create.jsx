@@ -12,22 +12,11 @@ class ChannelCreate extends React.Component {
     this.goBack = this.goBack.bind(this);
   }
 
-  // componentDidMount() {
-  //
-  //   this.props.clearErrors();
-  // }
-
   handleSubmit(e) {
     e.preventDefault();
     const channel = Object.assign({}, this.state);
 
-
     this.props.processForm(channel, this.props.serverId)
-    // .then(() => this.props.fetchAServer(this.props.serverId))
-    //   .then(() => {
-    //     let newchannel = this.props.server.channel_ids[this.props.server.channel_ids.length - 1];
-    //     return this.props.history.push(`/${this.props.serverId}/${newchannel}`)
-    //   })
         .then(() => {this.props.closeModal();});
   }
 

@@ -238,6 +238,10 @@
   align-items: center;
   border-radius: 5px;
   min-height: 40px;
+  position: relative;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 
@@ -248,6 +252,11 @@
 }
 
 .channel-item-container:hover .channel-controls {
+  display: flex;
+  // background-color: #b9bbbe;
+}
+
+.dm-channel-item-container:hover .channel-controls {
   display: flex;
   // background-color: #b9bbbe;
 }
@@ -330,4 +339,20 @@
   height: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.dm-user-profile {
+  display: flex;
+  max-width: 200px;
+  align-items: center;
+}
+
+.unsubscribe-dm {
+  background-image: url('close.svg');
+  background-size: 18px 18px;
+  color: white;
+  content: " ";
+  // display: none;
+  height: 18px;
+  width: 18px;
 }

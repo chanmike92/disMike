@@ -36,11 +36,11 @@ export const clearState = () => {
   };
 };
 
-export const removeADm = (dmId) => {
+export const removeADm = (id) => {
 
   return {
     type: REMOVE_A_DM,
-    dmId
+    id
   };
 };
 
@@ -72,6 +72,6 @@ export const updateDm = (dm) => dispatch => {
 };
 
 export const unsubscribeDm = (id) => dispatch => {
-  return APIUtil.unsubscribeDm(id).then((payload) => dispatch(receiveADm(payload)), (errors) => {
+  return APIUtil.unsubscribeDm(id).then(() => dispatch(removeADm(id)), (errors) => {
     return dispatch(receiveErrors(errors.responseJSON));});
 };

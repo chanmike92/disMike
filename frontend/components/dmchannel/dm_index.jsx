@@ -11,12 +11,15 @@ const DmIndex = (props) => {
           <Link
             to={`/@me/${props.dm.id}`}
             className={ channelClass }>
-            <div className='dm-image-icons'>
-              <img className='profile-picture' src={ props.user.image_url } />
-              <div className={ online }></div>
+            <div className='dm-user-profile'>
+              <div className='dm-image-icons'>
+                <img className='profile-picture' src={ props.user.image_url } />
+                <div className={ online }></div>
+              </div>
+              <div className={ channelNameClass }>{ props.dm.name }</div>
             </div>
-            <div className={ channelNameClass }>{ props.dm.name }</div>
             <div className='channel-controls'>
+              <div className='unsubscribe-dm' onClick={ () => props.unsubscribeDm(props.dm.id) }></div>
             </div>
           </Link>
       );
@@ -32,6 +35,7 @@ const DmIndex = (props) => {
             </div>
             <div className={ channelNameClass }>{ props.dm.name }</div>
             <div className='channel-controls'>
+              <div className='unsubscribe-dm'></div>
             </div>
           </Link>
       );

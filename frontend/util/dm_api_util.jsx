@@ -2,7 +2,7 @@ export const fetchAllDm = () => {
 
   return $.ajax({
     method: 'GET',
-    url: 'api/dms',
+    url: 'api/dmchannels',
   });
 };
 
@@ -10,7 +10,7 @@ export const fetchADm = (id) => {
 
   return $.ajax({
     method: 'GET',
-    url: `api/dms/${id}`,
+    url: `api/dmchannels/${id}`,
     data: { id }
   });
 };
@@ -18,7 +18,7 @@ export const fetchADm = (id) => {
 export const makeNewDm = (dm, id) => {
 
   return $.ajax({
-    url: 'api/dms',
+    url: 'api/dmchannels',
     method: 'POST',
     data: { dm, id }
   });
@@ -27,7 +27,7 @@ export const makeNewDm = (dm, id) => {
 export const unsubscribeDm = (id) => {
 
   return $.ajax({
-    url: `api/dms/${id}`,
+    url: `api/dmchannels/${id}`,
     method: 'DELETE',
     data: { id }
   });

@@ -1,8 +1,7 @@
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_CURRENT_USER_SESSION } from '../actions/user_actions';
-import { RECEIVE_A_DM } from '../actions/dm_actions';
+import { RECEIVE_A_DM, RECEIVE_ALL_DMS, REMOVE_A_DM } from '../actions/dm_actions';
 import { RECEIVE_A_MESSAGE } from '../actions/message_actions';
-import { RECEIVE_ALL_DMS } from '../actions/dm_actions';
 import { merge } from 'lodash';
 
 
@@ -24,6 +23,11 @@ const dmReducer = (oldState = {}, action) => {
 
         return merge({}, oldState, updatedChannel);
       }
+    case REMOVE_A_DM:
+      let dm = oldState[action.id];
+      dm.subscription = false;
+
+      return merge({}, oldState, { [action.id]: dm });
     default:
       return oldState;
   }
