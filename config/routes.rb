@@ -8,6 +8,7 @@ Rails.application.routes.draw do
     resources :servers, only: [:index, :show, :create, :update, :destroy]
     resources :friendships, only: [:index, :create, :update, :show, :destroy]
     resources :dmchannels, only: [:index, :create, :show, :update, :destroy]
+    post 'users/search', to: 'users#search'
     post 'servers/join', to: 'servers#join'
     post 'servers/leave', to: 'servers#leave'
     post 'users/payload', to: 'users#payload'

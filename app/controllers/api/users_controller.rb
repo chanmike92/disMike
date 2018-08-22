@@ -64,6 +64,13 @@ class Api::UsersController < ApplicationController
     render 'api/users/payload'
   end
 
+  def search
+    query = params[:user][:username].downcase
+    query = '%' + query.split("").join('%') + '%'
+    @users = current_user.acquaintances.where('lower(username) LIKE ?', query)
+    render 'api/users/index'
+  end
+
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)

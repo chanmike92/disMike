@@ -53,8 +53,8 @@ class DmChannelShow extends React.Component {
       <div className='subcomponent-container'>
         <div className='channel-container'>
           <div className='server-title-container'>
-            <div className='user-search'>
-              <input className='user-search-inner' onClick={ this.props.searchUsers }
+            <div className='user-search' onClick={ this.props.searchUsers }>
+              <input className='user-search-inner'
                 disabled placeholder="Find or start a conversation"></input>
             </div>
           </div>

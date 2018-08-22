@@ -45,3 +45,8 @@ export const updateAUser = (formData, id) => dispatch => {
   return APIUtil.updateAUser(formData, id).then((payload) =>
   dispatch(receiveCurrentUserSession(payload)));
 };
+
+export const searchUsers = (username) => dispatch => {
+  return APIUtil.searchUser(username).then((payload) =>
+  dispatch(receiveCurrentUserSession(payload)));
+};
