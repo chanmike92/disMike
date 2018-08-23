@@ -1,5 +1,5 @@
 import { RECEIVE_A_CHANNEL,RECEIVE_NEW_CHANNEL, RECEIVE_ALL_CHANNELS, REMOVE_A_CHANNEL } from '../actions/channel_actions';
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, DELETE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_CURRENT_USER_SESSION } from '../actions/user_actions';
 import { RECEIVE_A_MESSAGE } from '../actions/message_actions';
 import { RECEIVE_A_SERVER } from '../actions/server_actions';
@@ -37,6 +37,8 @@ const channelReducer = (oldState = {}, action) => {
       const newState = merge({}, oldState);
       delete newState[action.payload.id];
       return newState;
+    case DELETE_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }

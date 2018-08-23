@@ -1,5 +1,5 @@
 import { RECEIVE_A_SERVER, REMOVE_A_SERVER, RECEIVE_ALL_SERVERS } from '../actions/server_actions';
-import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_CURRENT_USER, DELETE_CURRENT_USER } from '../actions/session_actions';
 import { REMOVE_A_CHANNEL, RECEIVE_NEW_CHANNEL } from '../actions/channel_actions';
 import { RECEIVE_CURRENT_USER_SESSION } from '../actions/user_actions';
 import { merge } from 'lodash';
@@ -36,6 +36,8 @@ const serverReducer = (oldState = {}, action) => {
       newState = merge({}, oldState);
       delete newState[action.serverId];
       return newState;
+    case DELETE_CURRENT_USER:
+      return {};
     default:
       return oldState;
   }
