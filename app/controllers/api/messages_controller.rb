@@ -19,9 +19,10 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.author_id = current_user.id
 
+
     if @message.save
 
-      if @message.messagable_type = 'Dmchannel'
+      if params[:message][:messagable_type] == 'Dmchannel'
         @messagable = @message.messagable
         @messagable.subscriptions.each do |subscription|
           if subscription.subscribed == false

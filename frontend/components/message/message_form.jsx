@@ -20,6 +20,7 @@ class MessageForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addEmoji = this.addEmoji.bind(this);
+
   }
 
   handleSubmit(e) {

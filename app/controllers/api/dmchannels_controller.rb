@@ -14,9 +14,7 @@ class Api::DmchannelsController < ApplicationController
 
     @dm = Dmchannel.new(dm_params)
     #@dm = Dmchannel.dms
-    if @channel.save
-      Serverchannel.create(server_id: params[:id], channel_id: @channel.id)
-      render 'api/channels/show'
+
     else
       render json: @channel.errors.full_messages, status: 402
     end

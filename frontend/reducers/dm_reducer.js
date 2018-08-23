@@ -19,9 +19,12 @@ const dmReducer = (oldState = {}, action) => {
       if (action.message.messagable_type === 'Dmchannel') {
         const id = action.message.id;
         const messagableId = action.message.messagable_id;
-        const updatedChannel = {[messagableId]: {message_ids: [...oldState[messagableId].message_ids, id], subscription: true}};
+        const resub = Object.assign({}, {message_ids: [...oldState[messagableId].message_ids, id]}, {subscription: true});
+        const updatedChannel = {[messagableId]: resub};
 
         return merge({}, oldState, updatedChannel);
+      } else {
+        return oldState;
       }
     case REMOVE_A_DM:
       let dm = oldState[action.id];
