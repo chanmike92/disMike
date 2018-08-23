@@ -59,7 +59,7 @@ const FriendIndex = (props) => {
 
     return (
     <li className="friend-item-container">
-      <div className='friend-link-item' onClick={ () => { props.history.replace('/@me/');} }>
+      <div className='friend-link-item'>
         <div className="friend-name-container">
           <img className='profile-picture friend-pic' src={ props.user.image_url ? props.user.image_url : ""} />
           <div className='friend-name'>{ props.user.username }</div>
