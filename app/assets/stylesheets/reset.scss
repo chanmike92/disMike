@@ -17,6 +17,11 @@ time, mark, audio, video {
 	font-size: 100%;
 	font-family: 'Open Sans',Helvetica,Helvetica,Arial,sans-serif;
 	vertical-align: baseline;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-o-user-select: none;
+	user-select: none;
 
 }
 /* HTML5 display-role reset for older browsers */
