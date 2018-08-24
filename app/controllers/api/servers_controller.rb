@@ -13,28 +13,25 @@ class Api::ServersController < ApplicationController
   def create
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
+
     if params[:server][:name] == nil
       render json: {create: ['Must enter a name']}, status: 402
     elsif @server.save
       Serversubscription.create(user_id: current_user.id, server_id: @server.id)
       @channel = Channel.create(name: "general", server_id: @server.id)
-
       # @server_channels = @server.channels
       # @server_users = @server.subscribed_users
-      server = JSON.parse(render('/api/servers/show.json.jbuilder'))
       # server = JSON.parse(render('/api/servers/show.json.jbuilder'))
-      @server.subscribed_users.each do |user|
-        if user != current_user
-      #     @message.broadcast(user)
-
-          DirectChannel.broadcast_to(user, {command: 'fetch_server',
-            data: server})
+      # @server.subscribed_users.each do |user|
+      #   if user != current_user
+      # #     @message.broadcast(user)
+      #
+      #     DirectChannel.broadcast_to(user, {command: 'fetch_server',
+      #       data: server})
           # BroadcastMessageJob.perform_now @message, user
 
-        end
-
-      end
-
+        # end
+      render 'api/servers/show'
     else
       render json: {create: ['Server already exists']}, status: 402
     end
@@ -61,7 +58,7 @@ class Api::ServersController < ApplicationController
         @server.subscribed_users.each do |user|
           if user != current_user
             # need to add server into user array and user into server array
-            DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
+            DirectChannel.broadcast_to(user, {command: 'fetch_server',
               data: server})
             # BroadcastMessageJob.perform_now @message, user
 
@@ -78,10 +75,28 @@ class Api::ServersController < ApplicationController
   end
 
   def leave
-
     @sub = Serversubscription.find_by(user_id: current_user.id, server_id: params[:id])
     if @sub
-      @sub.destroy
+      @server = @sub.server
+      server = JSON.parse(render('/api/servers/show.json.jbuilder'))
+      @server.subscribed_users.each do |user|
+        if user != current_user
+          # need to add server into user array and user into server array
+          DirectChannel.broadcast_to(user, {command: 'fetch_server',
+            data: server})
+          # BroadcastMessageJob.perform_now @message, user
+        end
+      end
+      @server.subscribed_users.each do |user|
+        if user != current_user
+          # need to add server into user array and user into server array
+          DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
+            data: server})
+          # BroadcastMessageJob.perform_now @message, user
+
+        end
+
+      end
       render json: {}
     else
       render json: ['You do not have this server'], status: 404
@@ -112,13 +127,10 @@ class Api::ServersController < ApplicationController
       @server.subscribed_users.each do |user|
         if user != current_user
       #     @message.broadcast(user)
-
           DirectChannel.broadcast_to(user, {command: 'fetch_server',
             data: server})
           # BroadcastMessageJob.perform_now @message, user
-
         end
-
       end
     else
       render json: @server.errors.full_messages, status: 402
@@ -135,13 +147,10 @@ class Api::ServersController < ApplicationController
         @server.subscribed_users.each do |user|
           if user != current_user
         #     @message.broadcast(user)
-
             DirectChannel.broadcast_to(user, {command: 'delete_server',
               data: server})
             # BroadcastMessageJob.perform_now @message, user
-
           end
-
         end
         @server.destroy!
       else
@@ -154,6 +163,6 @@ class Api::ServersController < ApplicationController
 
   private
   def server_params
-    params.require(:server).permit(:name, :img_url)
+    params.require(:server).permit(:name)
   end
 end

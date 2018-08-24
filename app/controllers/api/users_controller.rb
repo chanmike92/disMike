@@ -22,8 +22,6 @@ class Api::UsersController < ApplicationController
 
   def create
     @session_user = User.new(user_params)
-    @session_user.online_status = false
-
     if @session_user.save
       login(@session_user)
       render 'api/users/show'
@@ -43,11 +41,14 @@ class Api::UsersController < ApplicationController
     end
 
     if @user.save
-      @friendships = @user.friendships.includes(:friend)
-      @dms = @user.dmchannels.includes(:subscribers, :subscriptions)
+      user = JSON.parse(render('/api/users/_user.json.jbuilder', locals: { user: @user }))
+      @user.acquaintances.each do |acquaintance|
+        if @user != acquaintance
+          DirectChannel.broadcast_to acquaintance, command: 'fetch_user',
+              data: user
+        end
+      end
 
-      @servers = @user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
-      render 'api/users/payload'
     else
       render json: @user.errors.full_messages, status: 402
     end
@@ -56,6 +57,7 @@ class Api::UsersController < ApplicationController
 
   def payload
     @user = current_user
+    @user.update(online_status: true)
     @dms = @user.dmchannels.includes(:subscribers, :messages)
     @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
 

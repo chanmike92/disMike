@@ -36,14 +36,14 @@ export const fetchAllUsers = (id) => dispatch => {
   dispatch(receiveAllUsers(users)));
 };
 
-export const fetchAUser = () => dispatch => {
-  return APIUtil.fetchAUser().then((user) =>
+export const fetchAUser = (id) => dispatch => {
+  return APIUtil.fetchAUser(id).then((user) =>
   dispatch(receiveAUser(user)));
 };
 
 export const updateAUser = (formData, id) => dispatch => {
-  return APIUtil.updateAUser(formData, id).then((payload) =>
-  dispatch(receiveCurrentUserSession(payload)));
+  return APIUtil.updateAUser(formData, id).then((user) =>
+  dispatch(receiveAUser(user)));
 };
 
 export const searchUsers = (username) => dispatch => {

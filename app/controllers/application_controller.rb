@@ -11,14 +11,17 @@ class ApplicationController < ActionController::Base
   end
 
   def login(user)
-    if (user.online_status)
-      DirectChannel.broadcast_to user, command: "logout"
-    end
-    user.update(online_status: true)
+    # if user[:online_status] == true
+    #   DirectChannel.broadcast_to user, command: "logout"
+    # end
+    user[:online_status] = true
+    user.save
     session[:session_token] = user.reset_session_token!
   end
 
   def logout
+    current_user[:online_status] = false
+    current_user.save
     current_user.reset_session_token!
     session[:session_token] = nil
   end

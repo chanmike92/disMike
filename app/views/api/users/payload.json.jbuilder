@@ -13,6 +13,7 @@ if @user
     end
   end
 
+
   if @dms
     json.partial! 'api/dms/dmsindex', dms: @dms
   end

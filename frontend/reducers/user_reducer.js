@@ -32,9 +32,10 @@ const userReducer = (oldState = {}, action) => {
       const removedFriend = merge(newState[action.id], {friendship_status: null});
 
       return merge(newState, { [action.id]: removedFriend });
-    // case RECEIVE_CURRENT_USER:
-    //   return merge({}, oldState, { [action.payload.currentUser.id]: action.payload.currentUser }, action.payload.users, action.payload.friends);
+    case RECEIVE_CURRENT_USER:
+      return merge({}, oldState, { [action.user.id]: action.user });
     case RECEIVE_CURRENT_USER_SESSION:
+
       return merge({}, oldState, action.payload.users, action.payload.dmusers, action.payload.friends);
     case RECEIVE_ALL_USERS:
       return merge({}, oldState, action.users);
