@@ -4,7 +4,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class SearchUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: ''};
+    this.state = {username: '@'};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
@@ -35,7 +35,11 @@ class SearchUser extends React.Component {
     return (
       <div className='user-search-form-container'>
         <div className='input-container'>
-          <input className='search-input-field' autoFocus type='text' onChange={this.handleInput('username')} value={ this.state.username }></input>
+          <input className='search-input-field' autoFocus type='text'
+            onChange={this.handleInput('username')}
+            value={ this.state.username }
+            placeholder="Where would you like to go?">
+          </input>
         </div>
         <div>
 

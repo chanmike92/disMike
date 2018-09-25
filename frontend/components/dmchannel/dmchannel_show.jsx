@@ -13,6 +13,13 @@ class DmChannelShow extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
+  handleIndexContextClick(id, e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.openDropdown({dropdownType: "dmchannel", x: e.clientX,
+      y: e.clientY });
+  }
+
   handleContextClick(e) {
     e.preventDefault();
     e.stopPropagation();
@@ -57,10 +64,11 @@ class DmChannelShow extends React.Component {
 
     //make selected for friends-logo and each dm item
     return (
-      <div className='subcomponent-container'>
+      <div className='subcomponent-container' onContextMenu={ this.props.handleNoContextClick }>
         <div className='channel-container'>
           <div className='server-title-container'>
-            <div className='user-search' onClick={ this.props.searchUsers }>
+            <div className='user-search' onClick={ this.props.searchUsers }
+              onContextMenu={ this.props.searchUsers } >
               <input className='user-search-inner'
                 disabled placeholder="Find or start a conversation"></input>
             </div>
@@ -74,7 +82,8 @@ class DmChannelShow extends React.Component {
                 { dms }
             </div>
           </div>
-          <GreetingContainer />
+          <GreetingContainer
+            handleNoContextClick={ this.props.handleNoContextClick }/>
         </div>
         { messages }
       </div>

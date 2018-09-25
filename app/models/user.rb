@@ -60,6 +60,10 @@ class User < ApplicationRecord
     through: :subscribed_servers,
     source: :subscribed_users
 
+  has_many :subscribed_channels,
+    through: :subscribed_servers,
+    source: :channels
+
   has_many :dmusers,
     through: :dmchannels,
     source: :subscribers
