@@ -23,18 +23,10 @@ const ChannelIndex = (props) => {
       </div>;
     }
 
-     const handleClick = (e) => {
-       e.preventDefault();
-       e.stopPropagation();
-
-       props.openDropdown({dropdownType: "channelindex", x: e.clientX,
-         y: e.clientY, id: props.id});
-     };
-
     return (
         <Link
           to={`/${props.serverId}/${props.id}`}
-          onContextMenu={ handleClick }
+          onContextMenu={ (e) => props.handleIndexContextClick(props.id, e) }
           className={ channelClass }>
           # <div className={ channelNameClass }>{ props.channel.name }</div>
         {iconButtons}

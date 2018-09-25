@@ -13,6 +13,13 @@ class DmChannelShow extends React.Component {
     this.handleSelect = this.handleSelect.bind(this);
   }
 
+  handleContextClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.props.openDropdown({dropdownType: "channel", x: e.clientX,
+      y: e.clientY });
+  }
+
   handleSelect(selected) {
     return (e) => {
       this.setState({

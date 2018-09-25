@@ -15,6 +15,7 @@ class ChannelShow extends React.Component {
     this.renderChannels = this.renderChannels.bind(this);
     this.handleChannelDropdown = this.handleChannelDropdown.bind(this);
     this.handleContextClick = this.handleContextClick.bind(this);
+    this.handleIndexContextClick = this.handleIndexContextClick.bind(this);
   }
 
   handleContextClick(e) {
@@ -22,6 +23,14 @@ class ChannelShow extends React.Component {
     e.stopPropagation();
     this.props.openDropdown({dropdownType: "channel", x: e.clientX,
       y: e.clientY });
+  }
+
+  handleIndexContextClick(id, e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.props.openDropdown({dropdownType: "channelindex", x: e.clientX,
+      y: e.clientY, id: id});
   }
 
 
@@ -38,6 +47,7 @@ class ChannelShow extends React.Component {
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
       channel={ channel }
+      handleIndexContextClick={ this.handleIndexContextClick }
       openDropdown={ this.props.openDropdown }
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
