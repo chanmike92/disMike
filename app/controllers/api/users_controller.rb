@@ -68,14 +68,30 @@ class Api::UsersController < ApplicationController
 
   def search
     query = params[:user][:username].downcase
-    query = '%' + query.split("").join('%') + '%'
-    if query[1] == '@'
-      @servers = current_user.subscribed_servers.where('lower(name) LIKE ?', query)
-      @channels = current_user.subscribed_channels.where('lower(name) LIKE ?', query)
+    # query = '%' + query.split("").join('%') + '%'
+    if query.length > 1
+      if query[0] != '@'
+        query = query[1..-1]
+        @servers = current_user.subscribed_servers.where("similarity(name, ?) > 0.3", query)
+        @channels = current_user.subscribed_channels.where("similarity(name, ?) > 0.3", query)
+      end
+      @users = current_user.acquaintances.where("similarity(name, ?) > 0.3", query)
+      render 'api/users/search'
+    else
+      render json: {}
     end
-    @users = current_user.acquaintances.where('lower(username) LIKE ?', query)
-    render 'api/users/index'
   end
+
+  # def search
+  #   query = params[:user][:username].downcase
+  #   query = '%' + query.split("").join('%') + '%'
+  #   if query[1] != '@'
+  #     @servers = current_user.subscribed_servers.where('lower(name) LIKE ?', query)
+  #     @channels = current_user.subscribed_channels.where('lower(name) LIKE ?', query)
+  #   end
+  #   @users = current_user.acquaintances.where('lower(username) LIKE ?', query)
+  #   render 'api/users/seach'
+  # end
 
   private
   def user_params
