@@ -88,6 +88,7 @@
 }
 
 .user-items {
+  border-radius: 8px;
   height: 40px;
   width: 100%;
   padding-bottom: 5px;
@@ -95,6 +96,10 @@
   display: flex;
   // width: 100%;
   justify-content: space-between;
+  cursor: pointer;
+  &:hover {
+    background-color: #36393f;
+  }
 }
 
 .user-image-name {
