@@ -67,15 +67,19 @@ class Api::UsersController < ApplicationController
   end
 
   def search
-    query = params[:user][:username].downcase
+    debugger
+    query = params[:name].downcase
     # query = '%' + query.split("").join('%') + '%'
-    if query.length > 1
+    if query.length > 0
       if query[0] != '@'
         query = query[1..-1]
         @servers = current_user.subscribed_servers.where("similarity(name, ?) > 0.3", query)
         @channels = current_user.subscribed_channels.where("similarity(name, ?) > 0.3", query)
+        @users = current_user.acquaintances.where("similarity(name, ?) > 0.3", query)
+      else
+        @users = current_user.acquaintances.where("similarity(name, ?) > 0.3", query)
       end
-      @users = current_user.acquaintances.where("similarity(name, ?) > 0.3", query)
+      debugger
       render 'api/users/search'
     else
       render json: {}

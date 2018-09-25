@@ -15,6 +15,15 @@ export const fetchAUser = (id) => {
   });
 };
 
+export const searchUsers = (name) => {
+
+  return $.ajax({
+    method: 'POST',
+    url: `api/users/search`,
+    data: { name }
+  });
+};
+
 export const fetchCurrentUser = (id) => {
 
   return $.ajax({

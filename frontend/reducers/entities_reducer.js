@@ -5,12 +5,13 @@ import messageReducer from './message_reducer';
 import userReducer from './user_reducer';
 import dmReducer from './dm_reducer';
 
+
 const entitiesReducer = combineReducers({
   users: userReducer,
   channels: channelReducer,
   dms: dmReducer,
   servers: serverReducer,
-  messages: messageReducer
+  messages: messageReducer,
 });
 
 export default entitiesReducer;

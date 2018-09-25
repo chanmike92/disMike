@@ -4,18 +4,25 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class SearchUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {username: '@'};
+    this.state = {name: '@'};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.goBack = this.goBack.bind(this);
   }
 
+  componentDidMount() {
+    this.setState({name: '@'});
+  }
+
   handleSubmit(e) {
     e.preventDefault();
-    const id = this.state.id;
-
-    this.props.processForm(id)
-      .then(() => this.props.closeModal());
+    let name = this.state.name;
+    // debugger
+    this.props.processForm(name)
+      .then(() => {
+        debugger
+        return null;
+      });
   }
 
   handleInput(input) {
@@ -34,13 +41,13 @@ class SearchUser extends React.Component {
 
     return (
       <div className='user-search-form-container'>
-        <div className='input-container'>
+        <form className='input-container' onSubmit={ this.handleSubmit }>
           <input className='search-input-field' autoFocus type='text'
-            onChange={this.handleInput('username')}
-            value={ this.state.username }
+            onChange={this.handleInput('name')}
+            value={ this.state.name }
             placeholder="Where would you like to go?">
           </input>
-        </div>
+        </form>
         <div>
 
         </div>
