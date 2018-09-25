@@ -84,6 +84,7 @@ class ChannelShow extends React.Component {
     const messages = this.props.channel ? <MessageShowContainer
       serverId={ this.props.serverId }
       channelId={ this.props.channelId }
+      handleNoContextClick={ this.props.handleNoContextClick }
       messageType={ "Channel" }
     /> : <EmptyChannelMessages />;
 
@@ -124,7 +125,9 @@ class ChannelShow extends React.Component {
               {channels}
             </div>
           </div>
-          <GreetingContainer />
+          <GreetingContainer
+            handleNoContextClick={ this.props.handleNoContextClick }
+          />
         </div>
         { messages}
         </div>

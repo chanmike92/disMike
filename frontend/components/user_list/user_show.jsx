@@ -37,7 +37,8 @@ class UserShow extends React.Component {
     });
 
     return (
-      <div style={ {padding: '2px', height: '100%',  width: '240px'} }>
+      <div style={ {padding: '2px', height: '100%',  width: '240px'} }
+        onContextMenu={ this.props.handleNoContextClick }>
         <div className='user-container'>
           <div className='user-counter'>
             Online - { onlineUsers.length }

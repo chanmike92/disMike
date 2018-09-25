@@ -14,7 +14,7 @@ class Greeting extends React.Component {
     const dropdownActive = this.props.dropdown === "user" ? "active-spin" : "";
     const online = this.props.currentUser.online_status ? "online-status-icon green-back" : "online-status-icon grey-back";
       return (
-        <div className='greeting-container'>
+        <div className='greeting-container' onContextMenu={ this.props.handleNoContextClick }>
           <UserDropdownContainer
             currentUser={ this.props.currentUser }
             active={ this.props.dropdown }
@@ -29,7 +29,10 @@ class Greeting extends React.Component {
               <div className='user-info-id'>#{ this.props.currentUser.id }</div>
             </div>
           </div>
-          <button className={`fafaicons-container ${dropdownActive}`} onClick={ this.props.dropdown === 'user' ? this.props.closeDropdown : this.props.openDropdown }>
+          <button className={`fafaicons-container ${dropdownActive}`}
+            onClick={ this.props.dropdown === 'user' ? this.props.closeDropdown : this.props.openDropdown }
+            onContextMenu={ this.props.dropdown === 'user' ? this.props.closeDropdown : this.props.openDropdown }
+          >
 
             <i className="fas fa-cog"></i>
           </button>

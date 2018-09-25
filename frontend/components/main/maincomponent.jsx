@@ -16,6 +16,7 @@ class MainComponent extends React.Component{
       serverId: "",
       channelId: ""
     };
+    this.handleNoContextClick = this.handleNoContextClick.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
   }
@@ -78,6 +79,11 @@ class MainComponent extends React.Component{
   //       }
   // }
 
+  handleNoContextClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
+  }
+
   handleClick(e) {
     // e.preventDefault();
     if (this.props.dropdown) {
@@ -96,11 +102,13 @@ class MainComponent extends React.Component{
 
     const subComponent = this.props.serverId === '@me' ?
     <DmchannelShowContainer
+      handleNoContextClick={ this.handleNoContextClick }
       serverId={ this.props.serverId }
       channelId={ this.state.channelId }
     />
     :
     <ChannelShowContainer
+      handleNoContextClick={ this.handleNoContextClick }
       serverId={ this.props.serverId }
       channelId={ this.state.channelId }
     />;
@@ -113,9 +121,12 @@ class MainComponent extends React.Component{
         <ActionCableContainer />
         <Modal />
         <Dropdown />
-        <LoadingContainer />
+        <LoadingContainer
+          handleNoContextClick={ this.handleNoContextClick }
+        />
 
         <ServerShowContainer
+          handleNoContextClick={ this.handleNoContextClick }
           serverId={ this.props.serverId }
           channelId={ this.state.channelId }
           />

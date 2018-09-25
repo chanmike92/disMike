@@ -212,13 +212,14 @@ class MessageShow extends React.Component {
                   /> : <div></div>;
       return (
           <div className='message-container'>
-            <div className='channel-title-name-container'>
+            <div className='channel-title-name-container' onContextMenu={ this.props.handleNoContextClick }>
               <div className='channel-title-name'>{symbol} <div className='channel-actual-name'>{this.props.channelName}</div></div>
             </div>
             <div className='bottom-container'>
               <div className='bottom-container-divider'>
                 <div className='bottom-message-container'>
-                  <ul id='messages' ref='messageList' className='message-list-container'>
+                  <ul id='messages' ref='messageList' className='message-list-container'
+                    onContextMenu={ this.props.handleNoContextClick }>
                     {messages}
                   </ul>
                   <div className='message-form'>
@@ -234,6 +235,7 @@ class MessageShow extends React.Component {
                   serverId={ this.props.serverId }
                   channelId={ this.props.channelId }
                   messageType={ this.props.messageType }
+                  handleNoContextClick={ this.props.handleNoContextClick }
                 />
             </div>
           </div>

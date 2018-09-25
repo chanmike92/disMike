@@ -24,12 +24,14 @@ const mapDispatchToProps = dispatch => {
       dispatch(openModal('logout'));
     },
     openDropdown: (e) => {
+      e.preventDefault();
       e.stopPropagation();
       dispatch(openDropdown({dropdownType: "user"}));
     },
     closeDropdown: (e) => {
-    e.stopPropagation();
-    dispatch(closeDropdown()); },
+      e.preventDefault();
+      e.stopPropagation();
+      dispatch(closeDropdown()); },
   });
 };
 

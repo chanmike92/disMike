@@ -14,7 +14,7 @@ const Loading = (props) => {
   const loadingContainer = props.loaded ? "loading-container loaded" : "loading-container";
 
   return (
-    <div className={ loadingContainer }>
+    <div className={ loadingContainer } onContextMenu={ props.handleNoContextClick }>
       <video className='loading-logo' loop autoPlay>
           <source src='https://s3.amazonaws.com/dismikechan-app-name-dev/discord-load2.webm' type='video/webm'></source>
           <source src='https://s3.amazonaws.com/dismikechan-app-name-dev/discord-load1.mp4' type='video/mp4'></source>

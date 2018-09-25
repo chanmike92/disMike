@@ -13,6 +13,8 @@ class ServerShow extends React.Component {
     this.handleIndexContextClick = this.handleIndexContextClick.bind(this);
   }
 
+
+
   handleIndexContextClick(id, e) {
     e.preventDefault();
     e.stopPropagation();
@@ -48,14 +50,14 @@ class ServerShow extends React.Component {
     const activeServer = this.props.serverId === '@me' ? "server-icons active-server" : "server-icons";
 
     return (
-      <div className='server-container'>
+      <div className='server-container' onContextMenu={ this.props.handleNoContextClick }>
         <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
           <i className="fas fa-users"></i>
         </Link>
         <div className='online-friends-count'>{ this.props.onlineFriends.length } Online</div>
         <div className='separator'></div>
           {servers}
-        <button id='create-server-form' onClick={this.props.createForm} onContextMenu={ this.handleContextClick }>
+        <button id='create-server-form' onClick={this.props.createForm} onContextMenu={ this.props.handleContextClick }>
           <span className='create-sign'>+</span>
         </button>
         <div className='separator'></div>
