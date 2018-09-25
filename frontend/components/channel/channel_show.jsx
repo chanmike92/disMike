@@ -48,7 +48,6 @@ class ChannelShow extends React.Component {
       channelId={ this.props.channelId }
       channel={ channel }
       handleIndexContextClick={ this.handleIndexContextClick }
-      openDropdown={ this.props.openDropdown }
       updateForm={this.props.updateForm}
       deleteChannel={this.props.deleteChannel}
       currentServerOwnerId={this.props.currentServerOwnerId}

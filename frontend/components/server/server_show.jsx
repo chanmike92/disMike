@@ -10,8 +10,16 @@ class ServerShow extends React.Component {
     super(props);
 
     this.handleContextClick = this.handleContextClick.bind(this);
+    this.handleIndexContextClick = this.handleIndexContextClick.bind(this);
   }
 
+  handleIndexContextClick(id, e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.props.openDropdown({dropdownType: "channelindex", x: e.clientX,
+      y: e.clientY, id: id});
+  }
 
   handleContextClick(e) {
     e.preventDefault();
@@ -28,6 +36,7 @@ class ServerShow extends React.Component {
       server={this.props.servers[id]}
       key={ idx }
       id={ id }
+      handleIndexContextClick={ this.handleIndexContextClick }
       openDropdown={ this.props.openDropdown }
       currentUser={this.props.currentUser}
       fetchAServer={this.props.fetchAServer}
