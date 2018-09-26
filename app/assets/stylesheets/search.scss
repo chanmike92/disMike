@@ -48,7 +48,7 @@
   border-color: rgba(79,84,92,.3);
   color: #72767d;
   box-sizing: border-box;
-  border-top: 1px solid white;
+  border-top: 1px solid rgba(79,84,92,.3);
   display: flex;
   font-size: 12px;
   overflow: hidden;
@@ -121,4 +121,20 @@
 
 .search-results {
 
+}
+
+.empty-search-result {
+  background: no-repeat 50% 20px;
+  font-weight: 500;
+  padding-bottom: 20px;
+  padding-top: 150px;
+  text-align: center;
+  box-sizing: border-box;
+  background-image: url('https://s3.amazonaws.com/dismikechan-app-name-dev/empty-search.svg')
+}
+
+.empty-search-note {
+  font-size: 16px;
+  line-height: 20px;
+  color: #72767d;
 }

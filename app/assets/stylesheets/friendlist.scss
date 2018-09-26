@@ -5,7 +5,8 @@
   align-self: center;
   min-height: 35px;
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  // justify-content: center;
   box-sizing: border-box;
   font-size: 14px;
   font-weight: 500;
@@ -13,6 +14,29 @@
   align-items: center;
   margin-top: 10px;
   border-radius: 5px;
+  padding: 8px;
+}
+
+.personwaving {
+  height: 24px;
+  margin-right: 18px;
+  opacity: .6;
+  transition: opacity .05s;
+  width: 24px;
+}
+
+.friends-name {
+  -webkit-box-flex: 1;
+      color: #f6f6f7;
+      flex-grow: 1;
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 20px;
+      // opacity: .3;
+      overflow: hidden;
+      padding-right: 5px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
 }
 
 .mutual-servers-container {

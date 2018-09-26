@@ -9,6 +9,10 @@ class SearchUser extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleUserSearch = this.handleUserSearch.bind(this);
+    this.handleChannelSearch = this.handleChannelSearch.bind(this);
+    this.handleServerSearch = this.handleServerSearch.bind(this);
+    this.renderSearchResults = this.renderSearchResults.bind(this);
   }
 
   componentDidMount() {
@@ -28,7 +32,7 @@ class SearchUser extends React.Component {
       this.setState({
         [input]: e.currentTarget.value,
         index: 0
-      }, () => {this.handleSubmit(e);});
+      }, () => {this.renderSearchResults();});
     };
   }
 
@@ -52,29 +56,65 @@ class SearchUser extends React.Component {
     }
   }
 
-  handleUserSearch() {
-
+  handleUserSearch(query) {
+    let options = {
+      shouldSort: true,
+      threshold: 0.6,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "username"
+    ]};
+    let fuse = new Fuse(this.props.users, options);
+    return fuse.search(query);
   }
 
-  handleServerSearch() {
-
-
+  handleServerSearch(query) {
+    let options = {
+      shouldSort: true,
+      threshold: 0.6,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "name"
+    ]};
+    let fuse = new Fuse(this.props.servers, options);
+    return fuse.search(query);
   }
 
-  handleChannelSearch() {
-
+  handleChannelSearch(query) {
+    let options = {
+      shouldSort: true,
+      threshold: 0.6,
+      location: 0,
+      distance: 100,
+      maxPatternLength: 32,
+      minMatchCharLength: 1,
+      keys: [
+        "name"
+    ]};
+    let fuse = new Fuse(this.props.channels, options);
+    return fuse.search(query);
   }
 
   renderSearchResults() {
+    let query = this.state.name;
     switch(this.state.name[0]) {
       case '@':
-        break;
+        query = query.substring(1);
+        return this.handleUserSearch(query);
       case '*':
+        query = query.substring(1);
         break;
       case '#':
+        query = query.substring(1);
         break;
       default:
-
+        return null;
     }
 
   }
@@ -93,7 +133,8 @@ class SearchUser extends React.Component {
             placeholder="Where would you like to go?"
             onKeyDown={ this.handleKeyPress }>
           </input>
-          <div className="search-results">
+          <div className="search-results empty-search-result">
+            <div className="empty-search-note">Can’t seem to find what you’re looking for?</div>
           </div>
           <div className='tips-nav-bar'>
             <div className='tips-nav-controls'>
