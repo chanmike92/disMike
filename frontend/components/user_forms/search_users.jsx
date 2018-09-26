@@ -7,7 +7,7 @@ class SearchUser extends React.Component {
     this.state = {name: '@'};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.handleEscape = this.handleEscape.bind(this);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
   }
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class SearchUser extends React.Component {
     };
   }
 
-  handleEscape(e) {
+  handleKeyPress(e) {
     if (e.which === 27) {
       let currentValue = this.state.name;
       if (currentValue.length > 0) {
@@ -44,20 +44,26 @@ class SearchUser extends React.Component {
     }
   }
 
+  renderSearchResults() {
+
+  }
+
 
 
   render() {
 
     return (
-      <div className='user-search-form-container' onKeyDown={ this.handleEscape }>
+      <div className='user-search-form-container' onKeyDown={ this.handleKeyPress }>
         <div className='search-input-container'
-          onKeyDown={ this.handleEscape }>
+          onKeyDown={ this.handleKeyPress }>
           <input className='search-input-field' autoFocus type='text'
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"
-            onKeyDown={ this.handleEscape }>
+            onKeyDown={ this.handleKeyPress }>
           </input>
+          <div className="search-results">
+          </div>
           <div className='tips-nav-bar'>
             <div className='tips-nav-controls'>
               <div className='keybind-controls'>

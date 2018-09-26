@@ -70,16 +70,17 @@ class Api::UsersController < ApplicationController
 
     query = params[:name].downcase
     if query.length > 0
-      if query[0] != '@'
+      if query[0] = '@'
         query = query[1..-1]
-
-        # @current_user = current_user
+        @users = User.where("similarity(username, ?) > 0.1", query)
+      elsif query[0] = '#'
+        @channels = Channel.where("similarity(name, ?) > 0.1", query)
+      elsif query[0] = '*'
+        @servers = Server.where("similarity(name, ?) > 0.1", query)
+      else
         @servers = Server.where("similarity(name, ?) > 0.1", query)
         @channels = Channel.where("similarity(name, ?) > 0.1", query)
         @users = User.where("similarity(name, ?) > 0.1", query)
-      else
-
-        @users = User.where("similarity(username, ?) > 0.3", query)
       end
 
       render 'api/users/search'
