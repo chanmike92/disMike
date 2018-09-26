@@ -18,18 +18,18 @@ class Api::ChannelsController < ApplicationController
       channel = JSON.parse(render('/api/channels/show.json.jbuilder',
         locals: { channel: @channel }))
 
-      @channel.subscribers.each do |user|
+      # @channel.subscribers.each do |user|
 
-        if user != current_user
+        # if user != current_user
       #     @message.broadcast(user)
 
           # DirectChannel.broadcast_to(user, {command: 'fetch_new_channel',
           #   data: channel})
-          BroadcastMessageJob.perform_now user, channel
+          BroadcastChannelJob.perform_now current_user, @channel
 
-        end
+        # end
 
-      end
+      # end
     else
       render json: @channel.errors.full_messages, status: 402
     end

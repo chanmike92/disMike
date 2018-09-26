@@ -9,7 +9,7 @@ export default function modalReducer(state = {}, action) {
 
   switch (action.type) {
     case OPEN_MODAL:
-      return { modalType: action.modalType };
+      return { modalType: action.modalType, id: action.id };
     case CLOSE_MODAL:
       return {};
     case OPEN_DROPDOWN:

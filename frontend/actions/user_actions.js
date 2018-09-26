@@ -20,7 +20,7 @@ export const receiveAllUsers = (users) => {
 };
 
 export const receiveSearches = (payload) => {
-  debugger
+
   return {
     type: RECEIVE_SEARCHES,
     payload
