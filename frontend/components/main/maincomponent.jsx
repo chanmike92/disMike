@@ -117,7 +117,8 @@ class MainComponent extends React.Component{
   // const dropdown = this.props.dropdown === false ? () => console.log() : this.props.closeDropdown;
  // onClick={ dropdown }
     return (
-      <div className='maincomponent-container' onClick={ this.handleClick } onContextMenu={ this.handleClick } onKeyDown={ this.handleEscape }>
+      <div className='maincomponent-container' onClick={ this.handleClick }
+        onContextMenu={ this.handleClick } onKeyDown={ this.handleEscape }>
         <ActionCableContainer />
         <Modal />
         <Dropdown />

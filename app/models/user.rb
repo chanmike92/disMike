@@ -124,6 +124,10 @@ class User < ApplicationRecord
     self.update(image: img)
   end
 
+  def search
+
+  end
+
   private
   def ensure_session_token
     self.session_token ||= User.generate_session_token

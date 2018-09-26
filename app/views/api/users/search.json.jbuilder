@@ -1,41 +1,31 @@
-debugger
 if @users
-  json.user do
-    @users.pluck(:id)
-  end
-else
-  json.user do
-    []
+  json.users do
+    json.partial! 'api/users/userindex', users: @users
   end
 end
 
 if @channels
-  json.channel do
-    @channels.pluck(:id)
-  end
-else
-  json.user do
-    []
+  json.channels do
+    json.partial! 'api/channels/channelindex', channels: @server.channels
   end
 end
 
 if @servers
-  json.channel do
-    json.partial! 'api/servers/serverindex', server: @servers
-  end
-else
-  json.user do
-    []
+  json.servers do
+    @servers.each do |server|
+      json.set! server.id do
+        json.partial! 'api/servers/server', server: server
+      end
+    end
   end
 end
 
 if @dms
-  json.channel do
-    json.partial! 'api/servers/serverindex', server: @servers
-  end
-else
-  json.user do
-    []
+  json.dms do
+    @dms.each do |dm|
+      json.set! dm.id do
+        json.partial! 'api/dms/dm', dm: dm
+      end
+    end
   end
 end
-debugger

@@ -19,7 +19,7 @@ class ServerShow extends React.Component {
     e.preventDefault();
     e.stopPropagation();
 
-    this.props.openDropdown({dropdownType: "channelindex", x: e.clientX,
+    this.props.openDropdown({dropdownType: "serverindex", x: e.clientX,
       y: e.clientY, id: id});
   }
 
