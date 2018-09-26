@@ -15,6 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   const channel = messageType === "Channel" ?
     state.entities.channels[ownProps.channelId] :
     state.entities.dms[ownProps.channelId];
+  const users = state.entities.users;
   const channelName = channel.name || "";
   const currentUser = state.session.user || {};
   const serverId = ownProps.serverId;
@@ -32,6 +33,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser,
     channel,
     messages,
+    users,
     // currentChannel,
     channelName,
     serverId,

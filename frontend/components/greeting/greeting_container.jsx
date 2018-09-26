@@ -7,11 +7,13 @@ import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-
+  const currentUserId = state.session.user.id;
+  const users = state.entities.users;
+  const currentUser = users[currentUserId] || state.session.user;
   return ({
     dropdown: state.ui.dropdown.dropdownType,
-    users: state.entities.users,
-    currentUser: state.session.user
+    users,
+    currentUser,
   });
 };
 

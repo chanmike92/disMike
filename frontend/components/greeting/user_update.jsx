@@ -44,7 +44,8 @@ class UserUpdate extends React.Component {
       const formData = new FormData();
       formData.append("user[username]", this.props.currentUser.username);
       formData.append("user[image]",file);
-      this.props.updateUser(formData, this.props.currentUser.id);
+      this.props.updateUser(formData, this.props.currentUser.id)
+        .then(() => this.props.closeModal());
     } else {
       this.props.closeModal();
     }

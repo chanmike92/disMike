@@ -8,12 +8,11 @@ if @server
   end
 
   json.messages do
-    json.partial! 'api/messages/message', message: @server.messages
+    json.partial! 'api/messages/messageindex', messages: @server.messages
 
   end
 
-
   json.users do
-    json.partial! 'api/users/userindex', user: @server.subscribed_users
+    json.partial! 'api/users/userindex', users: @server.subscribed_users
   end
 end

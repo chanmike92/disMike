@@ -33,10 +33,11 @@ class ServerUpdate extends React.Component {
   handleSubmit() {
     const file = this.state.imageFile;
     const formData = new FormData();
-    formData.append("server[name]", this.state.name)
+    formData.append("server[name]", this.state.name);
     if (file) {
       formData.append("server[image]",file);
-      this.props.processForm(formData, this.props.serverId);
+      this.props.processForm(formData, this.props.serverId)
+        .then(() => this.props.closeModal());
     }
   }
 

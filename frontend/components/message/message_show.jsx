@@ -147,8 +147,8 @@ class MessageShow extends React.Component {
         }
         messages.push(<MessageIndex
           key={ `message-${message.id}` }
-          profilepic={ message.profilepic }
-          author={ message.author }
+          profilepic={ this.props.users[message.author_id].image_url }
+          author={ this.props.users[message.author_id].username }
           dateNum={ message.created_at }
           date={ this.generateDate(new Date(message.created_at)) }
           messages={ groupMessages[i] }
@@ -181,7 +181,7 @@ class MessageShow extends React.Component {
           groupedMessages.push(message);
         }
         else if ((thisDate.getTime() > prevDate.getTime() + 120000)
-           || (message.author !== prevMessage.author)) {
+           || (message.author_id !== prevMessage.author_id)) {
            if (groupedMessages.length > 0) {
              messages.push(groupedMessages);
            }
