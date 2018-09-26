@@ -14,7 +14,9 @@ const mapStateToProps = (state, ownProps) => {
   const friendCount = friendList.length || "";
   const dms = Object.values(state.entities.dms) || [];
   const currentDm = state.entities.dms[channelId];
-  const users = state.entities.users;
+  const users = Object.values(state.entities.users) || [];
+  const servers = Object.values(state.entities.servers) || [];
+  const channels = Object.values(state.entities.channels) || [];
 
   return ({
     users,

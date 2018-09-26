@@ -1,10 +1,11 @@
 import React from 'react';
+import Fuse from 'fuse.js';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class SearchUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: '@'};
+    this.state = {name: '@', index: 0};
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -25,7 +26,8 @@ class SearchUser extends React.Component {
   handleInput(input) {
     return (e) => {
       this.setState({
-        [input]: e.currentTarget.value
+        [input]: e.currentTarget.value,
+        index: 0
       }, () => {this.handleSubmit(e);});
     };
   }
@@ -41,10 +43,39 @@ class SearchUser extends React.Component {
       } else {
         this.props.closeModal();
       }
+    } else if (e.which === 9 || e.which === 40) {
+
+    } else if (e.which === 38) {
+
+    } else if (e.which === 13) {
+
     }
   }
 
+  handleUserSearch() {
+
+  }
+
+  handleServerSearch() {
+
+
+  }
+
+  handleChannelSearch() {
+
+  }
+
   renderSearchResults() {
+    switch(this.state.name[0]) {
+      case '@':
+        break;
+      case '*':
+        break;
+      case '#':
+        break;
+      default:
+
+    }
 
   }
 
