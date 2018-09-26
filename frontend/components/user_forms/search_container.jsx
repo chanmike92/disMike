@@ -1,7 +1,6 @@
 import SearchUser from './search_users';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-
 import { searchUsers } from '../../actions/user_actions';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
@@ -33,6 +32,9 @@ const mapDispatchToProps = dispatch => {
   return ({
     processForm: (name) => {
       dispatch(searchUsers(name));
+    },
+    closeModal: () => {
+      dispatch(closeModal());
     }
   });
 };

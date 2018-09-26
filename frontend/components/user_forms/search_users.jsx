@@ -15,39 +15,42 @@ class SearchUser extends React.Component {
   }
 
   handleSubmit(e) {
-    e.preventDefault();
     let name = this.state.name;
-    // debugger
-    this.props.processForm(name);
+    if ((name.length > 0 && name[0] !== '@') || (
+      name[0] === '@' && name.length > 1)) {
+        this.props.processForm(name);
+      }
   }
 
   handleInput(input) {
     return (e) => {
       this.setState({
         [input]: e.currentTarget.value
-      });
+      }, () => {this.handleSubmit(e);});
     };
   }
 
   handleEscape(e) {
-    e.preventDefault();
     if (e.which === 27) {
       let currentValue = this.state.name;
-      if (currentValue !== "") {
+      if (currentValue.length > 0) {
         this.setState({
           name: ""
         });
+        // $(e.target).focus()
       } else {
         this.props.closeModal();
       }
     }
   }
 
+
+
   render() {
 
     return (
       <div className='user-search-form-container' onKeyDown={ this.handleEscape }>
-        <form className='input-container' onSubmit={ this.handleSubmit }
+        <div className='search-input-container'
           onKeyDown={ this.handleEscape }>
           <input className='search-input-field' autoFocus type='text'
             onChange={this.handleInput('name')}
@@ -55,9 +58,32 @@ class SearchUser extends React.Component {
             placeholder="Where would you like to go?"
             onKeyDown={ this.handleEscape }>
           </input>
-        </form>
-        <div>
+          <div className='tips-nav-bar'>
+            <div className='tips-nav-controls'>
+              <div className='keybind-controls'>
+                <span>Tab</span>
+              </div>
+               or
+               <div className='keybind-controls'>
+                 <span><i className="fas fa-arrow-down"></i></span>
+               </div>
+               <div className='keybind-controls'>
+                 <span><i className="fas fa-arrow-up"></i></span>
+               </div>
+            </div>
 
+            <div className='tips-command-controls'>
+              <div className='keybind-controls'>
+                <span>Enter</span>
+              </div>
+               to select
+               <div className='keybind-controls keybind-esc'>
+                 <span>Esc</span>
+               </div>
+               to dismiss
+            </div>
+
+          </div>
         </div>
       </div>
     );

@@ -74,9 +74,9 @@ class Api::UsersController < ApplicationController
         query = query[1..-1]
 
         # @current_user = current_user
-        @servers = Server.where("similarity(name, ?) > 0.3", query)
-        @channels = Channel.where("similarity(name, ?) > 0.3", query)
-        @users = User.where("similarity(name, ?) > 0.3", query)
+        @servers = Server.where("similarity(name, ?) > 0.1", query)
+        @channels = Channel.where("similarity(name, ?) > 0.1", query)
+        @users = User.where("similarity(name, ?) > 0.1", query)
       else
 
         @users = User.where("similarity(username, ?) > 0.3", query)
@@ -90,7 +90,7 @@ class Api::UsersController < ApplicationController
 
   # def search
   #   query = params[:user][:username].downcase
-  #   query = '%' + query.split("").join('%') + '%'
+  #   query = '%' + query.split("").uniq.join('%') + '%'
   #   if query[1] != '@'
   #     @servers = current_user.subscribed_servers.where('lower(name) LIKE ?', query)
   #     @channels = current_user.subscribed_channels.where('lower(name) LIKE ?', query)
