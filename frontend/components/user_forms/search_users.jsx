@@ -211,6 +211,7 @@ class SearchUser extends React.Component {
           key={ i }
           name={ currentSearch.name || currentSearch.username }
           image={ currentSearch.image_url }
+          displayName={ currentSearch.display_name || ""}
           type={ currentSearch.type }
           handleHover={ this.handleHover }
           index={ i }
@@ -230,6 +231,7 @@ class SearchUser extends React.Component {
       return (
         <div className="search-results">
           <div className="search-scroller">
+          <div style={ {width: '100%', height: '15px'}}></div>
             { searchClassName }
             { searchResult }
           </div>
