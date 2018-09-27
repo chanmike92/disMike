@@ -8,7 +8,6 @@ class SearchUser extends React.Component {
     super(props);
     this.state = {name: '@', index: 0, searches: []};
     this.handleInput = this.handleInput.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleUserSearch = this.handleUserSearch.bind(this);
     this.handleChannelSearch = this.handleChannelSearch.bind(this);
@@ -17,18 +16,6 @@ class SearchUser extends React.Component {
     this.handleSearchClass = this.handleSearchClass.bind(this);
     this.renderSearchIndex = this.renderSearchIndex.bind(this);
     this.handleHover = this.handleHover.bind(this);
-  }
-
-  componentDidMount() {
-    this.setState({name: '@'});
-  }
-
-  handleSubmit(e) {
-    let name = this.state.name;
-    if ((name.length > 0 && name[0] !== '@') || (
-      name[0] === '@' && name.length > 1)) {
-        this.props.processForm(name);
-      }
   }
 
   handleInput(input) {
@@ -156,13 +143,7 @@ class SearchUser extends React.Component {
         let servers = this.handleServerSearch(query);
         return [].concat.apply(users, channels, servers);
       }
-
-      // ;
-      // return [];
-
     }
-
-
   }
 
   handleSearchClass() {
