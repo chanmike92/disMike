@@ -20,6 +20,8 @@ const mapStateToProps = (state, ownProps) => {
 
   return ({
     users,
+    servers,
+    channels,
     dms,
     currentDm,
     currentUser,

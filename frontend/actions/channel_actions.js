@@ -15,7 +15,7 @@ export const receiveAllChannels = (channels) => {
 };
 
 export const receiveAChannel = (payload) => {
-  debugger
+
   return {
     type: RECEIVE_A_CHANNEL,
     payload
@@ -23,7 +23,7 @@ export const receiveAChannel = (payload) => {
 };
 
 export const addNewChannel = (payload) => {
-  debugger
+
   return {
     type: RECEIVE_NEW_CHANNEL,
     payload

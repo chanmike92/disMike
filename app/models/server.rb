@@ -27,6 +27,10 @@ class Server < ApplicationRecord
     through: :subscriptions,
     source: :user
 
+  def self.search(query)
+    self.where("similarity(name, ?) > 0.3 AND ", query)
+  end
+
   def iconName
     result = "";
     self.name.split(' ').each do |word|
@@ -34,5 +38,6 @@ class Server < ApplicationRecord
     end
     return result;
   end
+
 
 end
