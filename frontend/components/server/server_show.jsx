@@ -52,7 +52,7 @@ class ServerShow extends React.Component {
     return (
       <div className='server-container' onContextMenu={ this.props.handleNoContextClick }>
         <Link className={`direct-message-link ${activeServer}`} to={`/@me/`}>
-          <i className="fas fa-users"></i>
+          <div className='discord-logo-svg'></div>
         </Link>
         <div className='online-friends-count'>{ this.props.onlineFriends.length } Online</div>
         <div className='separator'></div>

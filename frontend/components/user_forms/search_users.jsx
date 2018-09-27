@@ -43,6 +43,7 @@ class SearchUser extends React.Component {
         this.props.closeModal();
       }
     } else if (e.which === 9 || e.which === 40) {
+        e.preventDefault();
         let index = this.state.index;
         if (this.state.index >= this.state.searches.length) {
           index = 0;
@@ -234,7 +235,8 @@ class SearchUser extends React.Component {
       <div className='user-search-form-container' onKeyDown={ this.handleKeyPress }>
         <div className='search-input-container'
           onKeyDown={ this.handleKeyPress }>
-          <input className='search-input-field' autoFocus type='text'
+          <input ref={input => input && input.focus()}
+            className='search-input-field' autoFocus type='text'
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"

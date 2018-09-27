@@ -27,16 +27,16 @@
 
 .friends-name {
   -webkit-box-flex: 1;
-      color: #f6f6f7;
-      flex-grow: 1;
-      font-size: 15px;
-      font-weight: 500;
-      line-height: 20px;
-      // opacity: .3;
-      overflow: hidden;
-      padding-right: 5px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+  color: #f6f6f7;
+  flex-grow: 1;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 20px;
+  // opacity: .3;
+  overflow: hidden;
+  padding-right: 5px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .mutual-servers-container {
@@ -258,6 +258,8 @@
 
 .friend-item-container {
   height: 62px;
+  // display: none;
+
   padding-left: 10px;
   padding-right: 10px;
   box-sizing: border-box;
@@ -282,6 +284,16 @@
   margin-right: 10px;
 }
 
+.friend-transition-enter.friend-transition-enter-active {
+  transition: height 2s ease-in;
+  height: 62px
+}
+
+.friend-transition-leave.friend-transition-leave-active {
+  height: 0px;
+  transition: height 2s ease-in;
+}
+
 .server-icon-pic {
   height: 30px;
   width: 30px;
@@ -296,6 +308,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  font-size: 15px;
 }
 
 .friend-name {
