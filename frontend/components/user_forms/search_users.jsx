@@ -19,10 +19,10 @@ class SearchUser extends React.Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  componentDidMount() {
-    const searchInput = this.refs.searchInput;
-    ReactDOM.findDOMNode(searchInput).focus();
-  }
+  // componentDidMount() {
+  //   const searchInput = this.refs.searchInput;
+  //   ReactDOM.findDOMNode(searchInput).focus();
+  // }
 
   handleInput(input) {
     return (e) => {
@@ -260,7 +260,11 @@ class SearchUser extends React.Component {
       <div className='user-search-form-container' onKeyDown={ this.handleKeyPress }>
         <div className='search-input-container'
           onKeyDown={ this.handleKeyPress }>
-          <input className='search-input-field' ref='searchInput' autoFocus type='text'
+          <input className='search-input-field' ref='searchInput' type='text'
+            autoFocus
+            onFocus={ function(e) { let val = e.currentTarget.value;
+            e.currentTarget.value = "";
+            e.currentTarget.value = val;}}
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"

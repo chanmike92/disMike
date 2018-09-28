@@ -12,7 +12,7 @@ const SearchIndex = (props) => {
     </div>;
 
   return (
-    <div className={ active } onMouseOver={ props.handleHover(props.index) }>
+    <div ref={ props.index } className={ active } onMouseOver={ props.handleHover(props.index) }>
       <div className='search-content'>
         <div className='search-result-icon-container'>
           { icon }
