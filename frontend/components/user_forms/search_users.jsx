@@ -1,5 +1,6 @@
 import React from 'react';
 import Fuse from 'fuse.js';
+import * as ReactDOM from 'react-dom';
 import SearchIndex from './search_index';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
@@ -16,6 +17,11 @@ class SearchUser extends React.Component {
     this.handleSearchClass = this.handleSearchClass.bind(this);
     this.renderSearchIndex = this.renderSearchIndex.bind(this);
     this.handleHover = this.handleHover.bind(this);
+  }
+
+  componentDidMount() {
+    const searchInput = this.refs.searchInput;
+    ReactDOM.findDOMNode(searchInput).focus();
   }
 
   handleInput(input) {
@@ -254,7 +260,7 @@ class SearchUser extends React.Component {
       <div className='user-search-form-container' onKeyDown={ this.handleKeyPress }>
         <div className='search-input-container'
           onKeyDown={ this.handleKeyPress }>
-          <input className='search-input-field' autoFocus type='text'
+          <input className='search-input-field' ref='searchInput' autoFocus type='text'
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"
