@@ -7,7 +7,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class SearchUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: '@', index: 0, searches: []};
+    this.state = {name: '', index: 0, searches: []};
     this.handleInput = this.handleInput.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.handleUserSearch = this.handleUserSearch.bind(this);
@@ -19,10 +19,13 @@ class SearchUser extends React.Component {
     this.handleHover = this.handleHover.bind(this);
   }
 
-  // componentDidMount() {
-  //   const searchInput = this.refs.searchInput;
-  //   ReactDOM.findDOMNode(searchInput).focus();
-  // }
+  componentDidMount() {
+    // const searchInput = this.refs.searchInput;
+    // let search = ReactDOM.findDOMNode(searchInput);
+    // debugger
+    // search.focus();
+    this.setState({name: '@'});
+  }
 
   handleInput(input) {
     return (e) => {
@@ -252,6 +255,9 @@ class SearchUser extends React.Component {
     }
   }
 
+  // onFocus={ function(e) { let val = e.currentTarget.value;
+  // e.currentTarget.value = "";
+  // e.currentTarget.value = val;}}
 
   render() {
     let searchContainer = this.renderSearchContainer();
@@ -262,9 +268,7 @@ class SearchUser extends React.Component {
           onKeyDown={ this.handleKeyPress }>
           <input className='search-input-field' ref='searchInput' type='text'
             autoFocus
-            onFocus={ function(e) { let val = e.currentTarget.value;
-            e.currentTarget.value = "";
-            e.currentTarget.value = val;}}
+
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"
