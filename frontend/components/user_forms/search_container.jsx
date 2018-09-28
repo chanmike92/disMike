@@ -32,7 +32,7 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     processForm: (name) => {
       dispatch(searchUsers(name));

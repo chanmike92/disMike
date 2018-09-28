@@ -64,6 +64,25 @@ class SearchUser extends React.Component {
         index
       });
     } else if (e.which === 13) {
+      if (this.state.searches.length > 0) {
+        let currentSearch = this.state.searches[this.state.index];
+        e.preventDefault();
+        switch(currentSearch.type) {
+          case "server":
+              this.props.closeModal();
+              this.props.history.replace(`/${currentSearch.id}/`);
+            break;
+          case "channel":
+            this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
+            this.props.closeModal();
+            break;
+          // case "user":
+
+          default:
+            e.preventDefault();
+            console.log("default acquired");
+        }
+      }
 
     }
   }
@@ -235,8 +254,7 @@ class SearchUser extends React.Component {
       <div className='user-search-form-container' onKeyDown={ this.handleKeyPress }>
         <div className='search-input-container'
           onKeyDown={ this.handleKeyPress }>
-          <input ref={input => input && input.focus()}
-            className='search-input-field' autoFocus type='text'
+          <input className='search-input-field' autoFocus type='text'
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"
