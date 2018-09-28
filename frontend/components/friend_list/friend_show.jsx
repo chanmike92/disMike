@@ -1,5 +1,7 @@
 import React from 'react';
 import FriendIndex from './friend_index';
+
+import { CSSTransitionGroup } from 'react-transition-group';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 class FriendShow extends React.Component {
