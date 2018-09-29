@@ -30,7 +30,6 @@ class SearchUser extends React.Component {
   handleInput(input) {
     return (e) => {
       let searchResult = this.renderSearchResults(e.currentTarget.value);
-      console.log(searchResult);
       this.setState({
         [input]: e.currentTarget.value,
         index: 0,
@@ -108,7 +107,6 @@ class SearchUser extends React.Component {
       keys: [
         "username"
     ]};
-    console.log(query);
     let fuse = new Fuse(this.props.users, options);
     return fuse.search(query) || [];
   }
