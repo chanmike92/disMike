@@ -17,6 +17,8 @@ class SearchUser extends React.Component {
     this.handleSearchClass = this.handleSearchClass.bind(this);
     this.renderSearchIndex = this.renderSearchIndex.bind(this);
     this.handleHover = this.handleHover.bind(this);
+    this.handleScroll = this.handleScroll.bind(this);
+    this.currentSearch = React.createRef();
   }
 
   componentDidMount() {
@@ -26,6 +28,10 @@ class SearchUser extends React.Component {
     // search.focus();
     this.setState({name: '@'});
   }
+
+  // setNode() {
+  //   this.selected =
+  // }
 
   handleInput(input) {
     return (e) => {
@@ -39,59 +45,57 @@ class SearchUser extends React.Component {
   }
 
   handleKeyPress(e) {
-    if (e.which === 27) {
-      let currentValue = this.state.name;
-      if (currentValue.length > 0) {
-        this.setState({
-          name: "",
-          index: 0,
-          searches: [],
-        });
-      } else {
-        this.props.closeModal();
-      }
-    } else if (e.which === 9 || e.which === 40) {
-        e.preventDefault();
-        let index = this.state.index;
-        if (this.state.index >= this.state.searches.length) {
-          index = 0;
+    if (this.state.searches.length > 0) {
+
+      if (e.which === 27) {
+        let currentValue = this.state.name;
+        if (currentValue.length > 0) {
+          this.setState({
+            name: "",
+            index: 0,
+            searches: [],
+          });
         } else {
+          this.props.closeModal();
+        }
+      } else if (e.which === 9 || e.which === 40) {
+          e.preventDefault();
+          let index = this.state.index;
           index++;
+          if (index >= this.state.searches.length) {
+            index = 0;
+          }
+          this.setState({
+            index
+          }, () => {this.handleScroll();});
+      } else if (e.which === 38) {
+        let index = this.state.index;
+        index--;
+        if (index < 0) {
+          index = this.state.searches.length - 1;
         }
         this.setState({
           index
-        });
-    } else if (e.which === 38) {
-      let index = this.state.index;
-      if (this.state.index < 0) {
-        index = this.state.searches.length - 1;
-      } else {
-        index--;
-      }
-      this.setState({
-        index
-      });
-    } else if (e.which === 13) {
-      if (this.state.searches.length > 0) {
-        let currentSearch = this.state.searches[this.state.index];
-        e.preventDefault();
-        switch(currentSearch.type) {
-          case "server":
+        }, () => {this.handleScroll();});
+      } else if (e.which === 13) {
+          let currentSearch = this.state.searches[this.state.index];
+          e.preventDefault();
+          switch(currentSearch.type) {
+            case "server":
+                this.props.closeModal();
+                this.props.history.replace(`/${currentSearch.id}/`);
+              break;
+            case "channel":
+              this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
               this.props.closeModal();
-              this.props.history.replace(`/${currentSearch.id}/`);
-            break;
-          case "channel":
-            this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
-            this.props.closeModal();
-            break;
-          // case "user":
+              break;
+            // case "user":
 
-          default:
-            e.preventDefault();
-            console.log("default acquired");
+            default:
+              e.preventDefault();
+              console.log("default acquired");
         }
       }
-
     }
   }
 
@@ -125,6 +129,38 @@ class SearchUser extends React.Component {
     ]};
     let fuse = new Fuse(this.props.servers, options);
     return fuse.search(query) || [];
+  }
+
+  handleScroll() {
+    let searchResult = this.refs.searchResults;
+
+    let maxHeight = searchResult.clientHeight;
+    let currentScrollHeight = searchResult.scrollTop;
+    // let newCurrentScrollHeight = (Math.floor(currentScrollHeight / searchIndexHeight) * searchIndexHeight);
+    // let lowerScrollHeight = newCurrentScrollHeight + maxHeight;
+    let lowerScrollHeight = currentScrollHeight + maxHeight;
+    // let newLowerScrollHeight = (Math.floor(lowerScrollHeight / searchIndexHeight) * searchIndexHeight);
+
+    let searchIndex = searchResult.children.item(this.state.index);
+    let searchIndexHeight = searchIndex.clientHeight; //34.5
+    let currentHeight = ((this.state.index) * searchIndexHeight);
+
+    // if ((currentHeight >= newCurrentScrollHeight) && ((currentHeight + searchIndexHeight) <= newLowerScrollHeight)) {
+    //   currentHeight = newCurrentScrollHeight;
+    // } else if ((currentHeight + searchIndexHeight) > newLowerScrollHeight) {
+    //     currentHeight = newLowerScrollHeight - currentHeight;
+    //    // - lowerScrollHeight + searchIndexHeight;
+    // } else if (currentHeight < newCurrentScrollHeight) {
+    //   currentHeight = currentHeight;
+    // }
+
+
+    // if (currentHeight > lowerScrollHeight) {
+    //   currentHeight = currentHeight;
+    // } else {
+    //   currentHeight = currentHeight;
+    // }
+    ReactDOM.findDOMNode(searchResult).scrollTop = currentHeight;
   }
 
   handleChannelSearch(query) {
@@ -209,14 +245,17 @@ class SearchUser extends React.Component {
     let searchResults = [];
     for (let i = 0; i < this.state.searches.length; i++) {
       let active = false;
+      let currentSearchIndex = i;
       let currentSearch = this.state.searches[i];
       if (this.state.index === i) {
+        currentSearchIndex = "currentSearchIndex";
         active = true;
       }
 
       searchResults.push(
         <SearchIndex
           key={ i }
+          currentSearchIndex={ currentSearchIndex }
           name={ currentSearch.name || currentSearch.username }
           image={ currentSearch.image_url }
           displayName={ currentSearch.display_name || ""}
@@ -238,9 +277,8 @@ class SearchUser extends React.Component {
       let searchResult = this.renderSearchIndex();
       return (
         <div className="search-results">
-          <div className="search-scroller">
-          <div style={ {width: '100%', height: '15px'}}></div>
             { searchClassName }
+          <div ref="searchResults" className="search-scroller">
             { searchResult }
           </div>
         </div>);
@@ -266,7 +304,6 @@ class SearchUser extends React.Component {
           onKeyDown={ this.handleKeyPress }>
           <input className='search-input-field' ref='searchInput' type='text'
             autoFocus
-
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"

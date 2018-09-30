@@ -13,7 +13,7 @@ class Api::DmchannelsController < ApplicationController
   def create
 
     @dm = Dmchannel.new(dm_params)
-
+    # Dmsubscriber.find_by()
     if @dm.save
 
     else
