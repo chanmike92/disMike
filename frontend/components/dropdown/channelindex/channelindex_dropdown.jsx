@@ -10,14 +10,12 @@ const ChannelIndexDropdown = (props) => {
         <label className='dropdown-index-title'>Clone Channel</label>
       </div>
       <div className='dropdown-index-item' onClick={() => {
-          props.history.push(`/${props.serverId}/${props.channelId}`);
-          props.updateChannel();} }>
+          props.updateChannel(props.channel.id);} }>
         <label className='dropdown-index-title'>Edit Channel</label>
       </div>
       <div className='dropdown-divider'></div>
       <div className='dropdown-index-item' onClick={() => {
-          props.history.push(`/${props.serverId}/${props.channelId}`);
-          props.deleteChannel();} }>
+          props.deleteChannel(props.channel.id);} }>
         <label className='dropdown-index-title'>Delete Channel</label>
       </div>
     </div> : <div></div>;

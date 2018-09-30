@@ -4,24 +4,23 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 const ChannelIndex = (props) => {
 
     if (props.id) {
-    const channelClass = Number(props.channelId) === Number(props.id) ? "channel-item-container active-channel channel-link-item" : "channel-item-container channel-link-item";
-    const channelNameClass = Number(props.channelId) === Number(props.id) ? "active-name-channel channel-name-item" : "channel-name-item";
+    const channelClass = props.active ? "channel-item-container active-channel channel-link-item" : "channel-item-container channel-link-item";
+    const channelNameClass = props.active ? "active-name-channel channel-name-item" : "channel-name-item";
 
     let iconButtons;
     if (props.currentUserId === props.currentServerOwnerId) {
       iconButtons = <div className='channel-controls'>
         <button className='fafaicons-container channel-edit' onClick={() => {
-            props.history.push(`/${props.serverId}/${props.id}`);
-            props.updateForm();} }>
+            props.updateForm(props.id);} }>
           <i className="fas fa-edit"></i>
         </button>
         <button className='fafaicons-container channel-delete' onClick={() => {
-            props.history.push(`/${props.serverId}/${props.id}`);
-            props.deleteChannel();} }>
+            props.deleteChannel(props.id);} }>
           <i className="far fa-trash-alt"></i>
         </button>
       </div>;
     }
+
 
     return (
         <Link

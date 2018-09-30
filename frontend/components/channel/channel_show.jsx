@@ -40,12 +40,12 @@ class ChannelShow extends React.Component {
 
       let channel = this.props.channels[i];
       let active = this.props.channelId === channel.id ? true : false;
+      debugger
       let a = <ChannelIndex
       key={ i }
       id={ channel.id }
       currentUserId={ this.props.currentUserId }
       serverId={ this.props.serverId }
-      channelId={ this.props.channelId }
       channel={ channel }
       handleIndexContextClick={ this.handleIndexContextClick }
       updateForm={this.props.updateForm}
