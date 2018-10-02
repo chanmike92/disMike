@@ -20,7 +20,6 @@ class SearchUser extends React.Component {
     this.renderSearchIndex = this.renderSearchIndex.bind(this);
     this.handleHover = this.handleHover.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
-    this.currentSearch = React.createRef();
   }
 
   componentDidMount() {
