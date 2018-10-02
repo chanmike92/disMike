@@ -284,11 +284,12 @@ class SearchUser extends React.Component {
     let searchClassName = this.handleSearchClass();
     if (this.state.searches.length > 0) {
       let searchResult = this.renderSearchIndex();
+      // { searchResult }
       return (
         <div className="search-results">
             { searchClassName }
           <div ref="searchResults" className="search-scroller">
-            { searchResult }
+
           </div>
         </div>);
     } else {
@@ -311,7 +312,7 @@ class SearchUser extends React.Component {
       <div className='user-search-form-container' onKeyDown={ this.handleKeyDown } onKeyUp={ this.resetEnterKey }>
         <div className='search-input-container'
           onKeyDown={ this.handleKeyDown }>
-          <input className='search-input-field' ref='searchInput' type='text'
+          <input className='search-input-field' type='text'
             autoFocus
             onChange={this.handleInput('name')}
             value={ this.state.name }
