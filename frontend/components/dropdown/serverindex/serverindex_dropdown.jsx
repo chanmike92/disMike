@@ -5,8 +5,7 @@ const ServerIndexDropdown = (props) => {
 
   const channelCreate = props.server.owner_id === props.currentUserId ?
   <div className='dropdown-index-item' onClick={ () => {
-      props.history.push(`/${props.serverId}/${props.channelId}`);
-      props.createChannel(); } }>
+      props.createChannel(props.serverId); } }>
     <div className='dropdown-icon create-channel-icon'></div>
     <label className='dropdown-index-title'>Create Channel</label>
   </div>
@@ -15,8 +14,7 @@ const ServerIndexDropdown = (props) => {
 
   const serverUpdate = props.server.owner_id === props.currentUserId ?
   <div className='dropdown-index-item' onClick={ () => {
-      props.history.push(`/${props.serverId}/${props.channelId}`);
-      props.updateServer(); } }>
+      props.updateServer(props.serverId); } }>
     <div className='dropdown-icon edit-server-icon'></div>
     <label className='dropdown-index-title'>Edit Server</label>
   </div>
@@ -25,8 +23,7 @@ const ServerIndexDropdown = (props) => {
 
   const deleteServer = props.server.owner_id === props.currentUserId ?
   <div className='dropdown-index-item' onClick={ () => {
-      props.history.push(`/${props.serverId}/${props.channelId}`);
-      props.deleteServer();
+      props.deleteServer(props.serverId);
     } }>
     <div className='dropdown-icon delete-server-icon'></div>
     <label className='dropdown-index-title'>Delete Server</label>
@@ -45,8 +42,7 @@ const ServerIndexDropdown = (props) => {
         { channelCreate }
         { serverUpdate }
         <div className='dropdown-index-item' onClick={ () => {
-              props.history.push(`/${props.serverId}/${props.channelId}`);
-              props.leaveServer(); } }>
+              props.leaveServer(props.serverId); } }>
           <div className='dropdown-icon leave-server-icon'></div>
           <label className='dropdown-index-title'>Leave Server</label>
         </div>

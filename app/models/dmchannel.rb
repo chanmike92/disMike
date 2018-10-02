@@ -12,36 +12,47 @@ class Dmchannel < ApplicationRecord
   has_many :messages, as: :messagable, dependent: :destroy
 
 
-  def channel_name?(current_user)
-    name = []
+  def channel_name?(user)
+    names = []
     self.subscribers.each do |subscriber|
-      if subscriber.username != current_user.username
-        name << subscriber.username
+      if subscriber.username != user.username
+        names << subscriber.username
       end
     end
-    name.join(", ")
+    names.join(", ")
   end
 
-  def receivers?(current_user)
+  def receivers(user)
     ids = []
     self.subscribers.each do |subscriber|
-      if subscriber.id != current_user.id
+      if subscriber.id != user.id
         ids << subscriber.id
       end
     end
     ids
+    # subscribers = self.subscribers.pluck(:id)
+    # subscribers.delete(user.id)
+    # subscribers
   end
 
-  def subscribed?(current_user)
-    self.subscriptions.find_by(user_id: current_user.id).subscribed
+  def find_subscriptions(user)
+    self.subscriptions.find_by(user_id: user.id)
   end
 
-  def subscribe
-
+  def self.find_direct_dm(user)
+    current_user.dmchannels.find {|dm| ((dm.subscribers.map(&:id)) & [user.id, current_user.id]).length == 2}
   end
 
-  def unsubscribe
+  def subscribed?(user)
+    self.find_subscriptions(user).subscribed
+  end
 
+  def subscribe(user)
+    self.find_subscriptions(user).update(subscribed: true)
+  end
+
+  def unsubscribe(user)
+   self.find_subscriptions(user).update(subscribed: false)
   end
 
 end

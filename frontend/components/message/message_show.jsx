@@ -210,6 +210,7 @@ class MessageShow extends React.Component {
                     channelId={ this.props.channelId }
                     messageType={ this.props.messageType }
                   /> : <div></div>;
+    // let status = this.props.messageType === "Channel"
       return (
           <div className='message-container'>
             <div className='channel-title-name-container' onContextMenu={ this.props.handleNoContextClick }>

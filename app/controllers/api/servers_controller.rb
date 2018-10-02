@@ -45,15 +45,17 @@ class Api::ServersController < ApplicationController
       render json: {joinErrors: ['Please Enter ID > 0']}, status: 402
     else
 
-      @server = Server.includes(:channels, :subscribed_users, :messages).find_by(id: params[:id])
+      @server = Server.find(params[:id])
       if @server
         @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
       end
 
 
       if @server && @sub && @sub.save
-        @server_channels = @server.channels
-        @server_users = @server.subscribed_users
+        @server = Server.find(params[:id]).includes(:channels, :subscribed_users, :messages)
+        # @server_channels = @server.channels
+        # @server_users = @server.subscribed_users
+        debugger
         server = JSON.parse(render('/api/servers/show.json.jbuilder'))
         @server.subscribed_users.each do |user|
           if user != current_user
@@ -87,16 +89,15 @@ class Api::ServersController < ApplicationController
           # BroadcastMessageJob.perform_now @message, user
         end
       end
-      @server.subscribed_users.each do |user|
-        if user != current_user
-          # need to add server into user array and user into server array
-          DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
-            data: server})
-          # BroadcastMessageJob.perform_now @message, user
-
-        end
-
-      end
+      # @server.subscribed_users.each do |user|
+      #   if user != current_user
+      #     # need to add server into user array and user into server array
+      #     DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
+      #       data: server})
+      #     # BroadcastMessageJob.perform_now @message, user
+      #
+      #   end
+      # end
       render json: {}
     else
       render json: ['You do not have this server'], status: 404
@@ -135,6 +136,10 @@ class Api::ServersController < ApplicationController
     else
       render json: @server.errors.full_messages, status: 402
     end
+  end
+
+  def invite
+
   end
 
   def destroy

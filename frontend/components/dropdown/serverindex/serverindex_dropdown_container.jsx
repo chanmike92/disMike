@@ -15,7 +15,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = currentUser.id;
 
   // errors: state.errors.channels,
-  
+
   return ({
     serverId,
     server,
@@ -27,10 +27,10 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
 
-    leaveServer: () => dispatch(openModal('leaveServer')),
-    updateServer: () => dispatch(openModal('updateServer')),
-    deleteServer: () => dispatch(openModal('deleteServer')),
-    createChannel: () => dispatch(openModal('createChannel')),
+    leaveServer: (id) => dispatch(openModal('leaveServer', id)),
+    updateServer: (id) => dispatch(openModal('updateServer', id)),
+    deleteServer: (id) => dispatch(openModal('deleteServer', id)),
+    createChannel: (id) => dispatch(openModal('createChannel', id)),
     closeModal: () => dispatch(closeModal())
   });
 };

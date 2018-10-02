@@ -12,12 +12,19 @@ class Api::DmchannelsController < ApplicationController
 
   def create
 
-    @dm = Dmchannel.new()
-    Dmsubscriber.find_by(s)
-    if @dm.save
-
+    @dm = Dmchannel.find_direct_dm(params[:id])
+    if @dm
+      @dm.subscribe(current_user)
+      render 'api/dms/show'
     else
-      render json: @channel.errors.full_messages, status: 402
+      @dm = Dmchannel.new()
+      Dmsubscriber.new(dm_id: @dm.id, user_id: current_user.id, subscribed: true);
+      Dmsubscriber.new(dm_id: @dm.id, user_id: params[:id], subscribed: false);
+      if @dm.save
+        render 'api/dms/show'
+      else
+        render json: {errors: ['Something went wrong with Dm']}, status: 402
+      end
     end
   end
 
@@ -26,18 +33,22 @@ class Api::DmchannelsController < ApplicationController
     @channel = Dmchannel.find(params[:id])
     @channel_messages = @channel.messages
     if @channel
-      render 'api/channels/show'
+      render 'api/dms/show'
     else
-      render json: {errors: ['Channel does not exist']}, status: 402
+      render json: {errors: ['Dm does not exist']}, status: 402
     end
+  end
+
+  def add
+
   end
 
   def destroy
     @channel = Dmchannel.find(params[:id])
-    subscription = @channel.subscriptions.find_by(user_id: current_user.id)
-    subscription.update(subscribed: false)
+    @channel.unsubscribe(current_user)
 
   end
+
 
 
 

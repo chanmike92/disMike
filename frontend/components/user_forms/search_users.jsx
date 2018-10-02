@@ -8,8 +8,10 @@ class SearchUser extends React.Component {
   constructor(props) {
     super(props);
     this.state = {name: '', index: 0, searches: []};
+    this.firedEnterKey = false;
+    this.resetEnterKey = this.resetEnterKey.bind(this);
     this.handleInput = this.handleInput.bind(this);
-    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
     this.handleUserSearch = this.handleUserSearch.bind(this);
     this.handleChannelSearch = this.handleChannelSearch.bind(this);
     this.handleServerSearch = this.handleServerSearch.bind(this);
@@ -44,7 +46,7 @@ class SearchUser extends React.Component {
     };
   }
 
-  handleKeyPress(e) {
+  handleKeyDown(e) {
     if (this.state.searches.length > 0) {
 
       if (e.which === 27) {
@@ -78,22 +80,25 @@ class SearchUser extends React.Component {
           index
         }, () => {this.handleScroll();});
       } else if (e.which === 13) {
-          let currentSearch = this.state.searches[this.state.index];
-          e.preventDefault();
-          switch(currentSearch.type) {
-            case "server":
+          if (!this.firedEnterKey) {
+            let currentSearch = this.state.searches[this.state.index];
+            e.preventDefault();
+            switch(currentSearch.type) {
+              case "server":
+                  this.props.closeModal();
+                  this.props.history.replace(`/${currentSearch.id}/`);
+                break;
+              case "channel":
+                this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
                 this.props.closeModal();
-                this.props.history.replace(`/${currentSearch.id}/`);
-              break;
-            case "channel":
-              this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
-              this.props.closeModal();
-              break;
-            // case "user":
+                break;
+              // case "user":
 
-            default:
-              e.preventDefault();
-              console.log("default acquired");
+              default:
+                e.preventDefault();
+                console.log("default acquired");
+          }
+          this.firedEnterKey = true;
         }
       }
     }
@@ -161,6 +166,10 @@ class SearchUser extends React.Component {
     //   currentHeight = currentHeight;
     // }
     ReactDOM.findDOMNode(searchResult).scrollTop = currentHeight;
+  }
+
+  resetEnterKey(e) {
+    this.firedEnterKey = false;
   }
 
   handleChannelSearch(query) {
@@ -299,15 +308,15 @@ class SearchUser extends React.Component {
     let searchContainer = this.renderSearchContainer();
 
     return (
-      <div className='user-search-form-container' onKeyDown={ this.handleKeyPress }>
+      <div className='user-search-form-container' onKeyDown={ this.handleKeyDown } onKeyUp={ this.resetEnterKey }>
         <div className='search-input-container'
-          onKeyDown={ this.handleKeyPress }>
+          onKeyDown={ this.handleKeyDown }>
           <input className='search-input-field' ref='searchInput' type='text'
             autoFocus
             onChange={this.handleInput('name')}
             value={ this.state.name }
             placeholder="Where would you like to go?"
-            onKeyDown={ this.handleKeyPress }>
+            onKeyDown={ this.handleKeyDown }>
           </input>
           { searchContainer }
           <div className='tips-nav-bar'>

@@ -19,7 +19,6 @@ class Api::MessagesController < ApplicationController
     @message = Message.new(message_params)
     @message.author_id = current_user.id
 
-
     if @message.save
 
       if params[:message][:messagable_type] == 'Dmchannel'
