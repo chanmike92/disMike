@@ -283,12 +283,11 @@ class SearchUser extends React.Component {
     let searchClassName = this.handleSearchClass();
     if (this.state.searches.length > 0) {
       let searchResult = this.renderSearchIndex();
-      // { searchResult }
       return (
         <div className="search-results">
             { searchClassName }
           <div ref="searchResults" className="search-scroller">
-
+            { searchResult }
           </div>
         </div>);
     } else {
