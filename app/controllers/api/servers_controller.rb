@@ -139,6 +139,8 @@ class Api::ServersController < ApplicationController
   end
 
   def invite
+    @subscription = Serversubscription.find_by(user_id: params[:userId], server_id: params[:serverId])
+    if @subscription
 
   end
 

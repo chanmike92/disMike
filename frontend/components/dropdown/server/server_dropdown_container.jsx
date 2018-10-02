@@ -29,11 +29,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     closeModal: () => dispatch(closeModal()),
-    createChannel: () => dispatch(openModal('createChannel')),
-    updateServer: () => dispatch(openModal('updateServer')),
-    deleteServer: () => dispatch(openModal('deleteServer')),
-    leaveServer: () => dispatch(openModal('leaveServer')),
-    inviteUsers: () => dispatch(openModal('inviteUsers')),
+    createChannel: (id) => dispatch(openModal('createChannel', id)),
+    updateServer: (id) => dispatch(openModal('updateServer', id)),
+    deleteServer: (id) => dispatch(openModal('deleteServer', id)),
+    leaveServer: (id) => dispatch(openModal('leaveServer', id)),
+    inviteUsers: (id) => dispatch(openModal('inviteUsers', id)),
   });
 };
 

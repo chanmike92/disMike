@@ -21,9 +21,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-    createChannel: (e) => {
+    createChannel: (e, id) => {
       e.stopPropagation();
-      dispatch(openModal('createChannel'));
+      dispatch(openModal('createChannel', id));
     },
     closeModal: () => dispatch(closeModal())
   });

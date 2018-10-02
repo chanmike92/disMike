@@ -53,13 +53,13 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
       case 'updateChannel':
         component =
         <div className='modal-container'>
-          <ChannelUpdateContainer server={ server } channel={ channel }/>
+          <ChannelUpdateContainer channel={ channel }/>
         </div>;
       break;
       case 'deleteChannel':
         component =
         <div className='modal-container'>
-          <ChannelDeleteContainer server={ server } channel={ channel }/>
+          <ChannelDeleteContainer channel={ channel }/>
         </div>;
       break;
       case 'addDM':
@@ -115,7 +115,7 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
 
 const mapStateToProps = (state, ownProps) => {
   const modal = state.ui.modal.modalType;
-  const id = ownProps.id;
+  const id = state.ui.modal.id;
   const server = state.entities.servers[id];
   const channel = state.entities.channels[id];
   const currentUser = state.session.user;

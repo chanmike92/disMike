@@ -40,7 +40,6 @@ class ChannelShow extends React.Component {
 
       let channel = this.props.channels[i];
       let active = this.props.channelId === channel.id ? true : false;
-      debugger
       let a = <ChannelIndex
       key={ i }
       id={ channel.id }
@@ -109,6 +108,7 @@ class ChannelShow extends React.Component {
             </button>
           </div>
           <ServerDropdownContainer
+            id={ this.props.serverId }
             server={ this.props.currentServer }
             currentUser={ this.props.currentUser }
             active={ this.props.dropdown }
