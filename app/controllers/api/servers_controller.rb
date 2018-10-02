@@ -55,7 +55,7 @@ class Api::ServersController < ApplicationController
         @server = Server.find(params[:id]).includes(:channels, :subscribed_users, :messages)
         # @server_channels = @server.channels
         # @server_users = @server.subscribed_users
-        debugger
+
         server = JSON.parse(render('/api/servers/show.json.jbuilder'))
         @server.subscribed_users.each do |user|
           if user != current_user
@@ -140,7 +140,29 @@ class Api::ServersController < ApplicationController
 
   def invite
     @subscription = Serversubscription.find_by(user_id: params[:userId], server_id: params[:serverId])
-    # if @subscription
+    if @subscription
+      render json: ['User is already in the server'], status: 402
+    else
+      @user = User.find(params[:userId])
+      @server = Server.find(params[:serverId])
+      @subscription = Serversubscription.new(user_id: params[:userId], server_id: params[:serverId])
+      if @user && @server && @subscription.save
+        @server = Server.find(params[:serverId]).includes(:channels, :subscribed_users, :messages)
+        server = JSON.parse(render('/api/servers/show.json.jbuilder'))
+        @server.subscribed_users.each do |user|
+          if user != current_user
+            # need to add server into user array and user into server array
+            DirectChannel.broadcast_to(user, {command: 'fetch_server',
+              data: server})
+            # BroadcastMessageJob.perform_now @message, user
+          end
+        end
+      elsif @user
+        render json: ['User does not exist'], status: 404
+      else
+        render json: ['Server does not exist'], status: 404
+      end
+    end
 
   end
 

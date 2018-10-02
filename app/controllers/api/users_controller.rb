@@ -67,40 +67,6 @@ class Api::UsersController < ApplicationController
     render 'api/users/payload'
   end
 
-  def search
-
-    query = params[:name].downcase
-    if query.length > 0
-      if query[0] = '@'
-        query = query[1..-1]
-        @users = User.where("similarity(username, ?) > 0.1", query)
-      elsif query[0] = '#'
-        @channels = Channel.where("similarity(name, ?) > 0.1", query)
-      elsif query[0] = '*'
-        @servers = Server.where("similarity(name, ?) > 0.1", query)
-      else
-        @servers = Server.where("similarity(name, ?) > 0.1", query)
-        @channels = Channel.where("similarity(name, ?) > 0.1", query)
-        @users = User.where("similarity(name, ?) > 0.1", query)
-      end
-
-      render 'api/users/search'
-    else
-      render json: {}
-    end
-  end
-
-  # def search
-  #   query = params[:user][:username].downcase
-  #   query = '%' + query.split("").uniq.join('%') + '%'
-  #   if query[1] != '@'
-  #     @servers = current_user.subscribed_servers.where('lower(name) LIKE ?', query)
-  #     @channels = current_user.subscribed_channels.where('lower(name) LIKE ?', query)
-  #   end
-  #   @users = current_user.acquaintances.where('lower(username) LIKE ?', query)
-  #   render 'api/users/seach'
-  # end
-
   private
   def user_params
     params.require(:user).permit(:username, :email, :password)
