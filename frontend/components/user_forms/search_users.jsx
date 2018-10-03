@@ -43,7 +43,6 @@ class SearchUser extends React.Component {
   }
 
   handleKeyDown(e) {
-    if (this.state.searches.length > 0) {
 
       if (e.which === 27) {
         let currentValue = this.state.name;
@@ -81,7 +80,6 @@ class SearchUser extends React.Component {
           }
           this.firedEnterKey = true;
         }
-    }
   }
 
   handleIndexAction(e) {
