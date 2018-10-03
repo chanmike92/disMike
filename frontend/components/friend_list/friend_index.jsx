@@ -43,7 +43,7 @@ const FriendIndex = (props) => {
 
   let makeDm = (props.user.dmId && props.dm.subscription) ? () => props.history.push(`/@me/${props.user.dmId}`)
   : () => { props.createDm(props.id)
-    .then((payload) => { debugger
+    .then((payload) => {
       props.history.push(`/@me/${payload.payload.dm.id}`); }); };
 
 

@@ -20,7 +20,7 @@ class SearchUser extends React.Component {
     this.renderSearchIndex = this.renderSearchIndex.bind(this);
     this.handleHover = this.handleHover.bind(this);
     this.handleScroll = this.handleScroll.bind(this);
-    this.handleIndexClick = this.handleIndexClick.bind(this);
+    this.handleIndexAction = this.handleIndexAction.bind(this);
   }
 
   componentDidMount() {
@@ -77,40 +77,14 @@ class SearchUser extends React.Component {
         }, () => {this.handleScroll();});
       } else if (e.which === 13) {
           if (!this.firedEnterKey) {
-            let currentSearch = this.state.searches[this.state.index];
-            e.preventDefault();
-            switch(currentSearch.type) {
-              case "server":
-                  this.props.closeModal();
-                  this.props.history.replace(`/${currentSearch.id}/`);
-                break;
-              case "channel":
-                this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
-                this.props.closeModal();
-                break;
-              case "user":
-                let dmId = currentSearch.dmId;
-                let dm = this.props.dms[dmId];
-                if (dmId && dm.subscription) {
-                  this.props.history.replace(`/@me/${dmId}`);
-                  this.props.closeModal();
-                } else {
-                  e.preventDefault();
-                  console.log("default acquired");
-                }
-                break;
-
-              default:
-                e.preventDefault();
-                console.log("default acquired");
+            this.handleIndexAction(e);
           }
           this.firedEnterKey = true;
         }
-      }
     }
   }
 
-  handleIndexClick(e) {
+  handleIndexAction(e) {
     let currentSearch = this.state.searches[this.state.index];
     e.preventDefault();
     switch(currentSearch.type) {
@@ -129,10 +103,12 @@ class SearchUser extends React.Component {
           this.props.history.replace(`/@me/${dmId}`);
           this.props.closeModal();
         } else {
-          e.preventDefault();
-          console.log("default acquired");
+          this.props.createDm(currentSearch.id).then((payload) => {
+              this.props.history.push(`/@me/${payload.payload.dm.id}`); });
         }
         break;
+      default:
+        console.log("default acquired");
       }
   }
 
@@ -302,7 +278,7 @@ class SearchUser extends React.Component {
           displayName={ currentSearch.display_name || ""}
           type={ currentSearch.type }
           handleHover={ this.handleHover }
-          handleClick= { this.handleIndexClick }
+          handleClick= { this.handleIndexAction }
           index={ i }
           active={ active }
         />
