@@ -89,7 +89,8 @@ class SearchUser extends React.Component {
                 break;
               case "user":
                 let dmId = currentSearch.dmId;
-                if (dmId) {
+                let dm = this.props.dms[dmId];
+                if (dmId && dm.subscription) {
                   this.props.history.replace(`/@me/${dmId}`);
                   this.props.closeModal();
                 } else {

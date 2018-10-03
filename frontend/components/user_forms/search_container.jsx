@@ -12,9 +12,10 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = currentUser.id;
   const friendList = currentUser.friends_id || [];
   const friendCount = friendList.length || "";
-  const dms = Object.values(state.entities.dms) || [];
+  const dms = state.entities.dms;
+  // const dms = Object.values(state.entities.dms) || [];
   const currentDm = state.entities.dms[channelId];
-  const users = Object.values(state.entities.users) || [];
+  const users = Object.values(state.entities.users).filter(user => user.id !== currentUserId) || [];
   const servers = Object.values(state.entities.servers) || [];
   const channels = Object.values(state.entities.channels) || [];
 

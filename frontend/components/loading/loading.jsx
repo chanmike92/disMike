@@ -7,7 +7,15 @@ const Loading = (props) => {
     "Get over here!", "Good luck, have fun!", "Loading new loading messages", "ERROR ERROR ERROR!",
     "404 Not Found", "Fire in the Hole!", "Requesting Backup!", "MEDIC! MEDICCCC!",
     "Doing a barrel roll", " I KNO DA WEY", "YOU ARE NOT PREPARED!", "FOR THE HORDE!",
-    "FOR THE ALLIANCE!", "Frostmourne Hungers"
+    "FOR THE ALLIANCE!", "Frostmourne Hungers", "Switching sides", "Preparing Final Form",
+    "ULTIMATE IS READY!", "Insert Coin to Continue", "SPARTAN RAGE", "Cheat Code Activated",
+    "Entering cheat codes", "Wubba Lubba Dub Dub", "LEEEROY JENKINS", "At least I got chicken",
+    "Patching code", "GTG FISH DROWNING!", "Procedurally generating buttons..", "PK THUNDER!",
+    "GOD OF BOI", "BOI OF WAR", "Error 404: Joke Not Found", "ITS TIME D-D-D-DUEL",
+    "Gotta catch \'em all, POKEMAN", "THANK YOU MARIO, BUT THE PRINCESS IS IN ANOTHER CASTLE",
+    "GIVE ME A JOB", "Jobs Done!", "Zug-zug dabu", "SCV Reporting", 'STILL TOO SOON',
+    "OBJECTION!!!!!", "Activate: Nuclear Ghandi", "Would you kindly..?", "Activating Tactical Visor",
+    "RYU GA WAGA TEKI WO KURAU", "Setting Clocks to High Noon", "Mischief managed"
   ];
   let currentMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
 
