@@ -12,7 +12,7 @@ class Api::DmchannelsController < ApplicationController
 
   def create
 
-    @dm = Dmchannel.find_direct_dm(params[:id])
+    @dm = current_user.find_direct_dm(params[:id])
     if @dm
       @dm.subscribe(current_user)
       render 'api/dms/show'
@@ -21,6 +21,8 @@ class Api::DmchannelsController < ApplicationController
       @dmsub1 = Dmsubscriber.new(dm_id: @dm.id, user_id: current_user.id, subscribed: true);
       @dmsub2 = Dmsubscriber.new(dm_id: @dm.id, user_id: params[:id], subscribed: false);
       if @dm.save && @dmsub1.save && @dmsub2.save
+        dm = JSON.parse(render('/api/dms/show.json.jbuilder',
+          locals: { dm: @dm }))
         render 'api/dms/show'
       else
         render json: {errors: ['Something went wrong with Dm']}, status: 402
@@ -40,7 +42,7 @@ class Api::DmchannelsController < ApplicationController
   end
 
   def add
-    
+
   end
 
   def destroy

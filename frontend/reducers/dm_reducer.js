@@ -22,7 +22,6 @@ const dmReducer = (oldState = {}, action) => {
           const messagableId = action.message.messagable_id;
           const resub = Object.assign({}, {message_ids: [...oldState[messagableId].message_ids, id]}, {subscription: true});
           const updatedChannel = {[messagableId]: resub};
-
           return merge({}, oldState, updatedChannel);
         default:
           return oldState;

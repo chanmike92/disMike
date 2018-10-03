@@ -7,7 +7,7 @@ class BroadcastMessageJob < ApplicationJob
     message.messagable.subscribers.each do |reader|
       if current_user != reader
         DirectChannel.broadcast_to reader, command: 'fetch_message',
-            data: new_message
+            data: render_message(message)
       end
     end
 

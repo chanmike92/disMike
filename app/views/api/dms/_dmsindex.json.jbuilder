@@ -1,7 +1,7 @@
 json.dms do
   @dms.each do |dm|
     json.set! dm.id do
-      json.partial! 'api/dms/dm', dm: dm
+      json.partial! 'api/dms/dm', dm: dm, user: current_user
     end
   end
 end

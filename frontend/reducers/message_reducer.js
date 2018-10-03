@@ -23,7 +23,6 @@ const messageReducer = (oldState = {}, action) => {
     case RECEIVE_A_SERVER:
       return merge({}, oldState, action.payload.messages );
     case RECEIVE_A_MESSAGE:
-      debugger
       return merge({}, oldState, { [action.message.id]: action.message });
     case RECEIVE_A_CHANNEL:
       return merge({}, oldState, action.payload.messages);
