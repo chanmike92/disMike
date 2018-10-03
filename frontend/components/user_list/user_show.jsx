@@ -39,7 +39,7 @@ class UserShow extends React.Component {
     let active = this.props.userListToggle ? "" : "user-show-inactive";
 
     return (
-      <div class={`user-list ${active}`}
+      <div className={`user-list ${active}`}
         onContextMenu={ this.props.handleNoContextClick }>
         <div className='user-container'>
           <div className='user-counter'>

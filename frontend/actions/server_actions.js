@@ -14,7 +14,7 @@ export const receiveAllServers = (payload) => {
 };
 
 export const receiveAServer = (payload) => {
-  debugger
+  
   return {
     type: RECEIVE_A_SERVER,
     payload

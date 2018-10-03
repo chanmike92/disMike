@@ -44,10 +44,12 @@ class Dmchannel < ApplicationRecord
   end
 
   def subscribed?(user)
+
     self.find_subscriptions(user).subscribed
   end
 
   def subscribe(user)
+
     self.find_subscriptions(user).update(subscribed: true)
   end
 

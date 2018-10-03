@@ -14,7 +14,7 @@ const dmReducer = (oldState = {}, action) => {
     case RECEIVE_ALL_DMS:
       return merge({}, oldState, action.dms);
     case RECEIVE_A_DM:
-      return merge({}, oldState, action.payload.dms);
+      return merge({}, oldState, { [action.payload.dm.id]: action.payload.dm });
     case RECEIVE_A_MESSAGE:
       switch(action.message.messagable_type) {
         case 'Dmchannel':

@@ -41,11 +41,14 @@ const FriendIndex = (props) => {
     }
   }
 
-  // let makeDm = props.user.dmId ? props.history.replace(`/@me/${props.user.dmId}`) : props.
+  let makeDm = (props.user.dmId && props.dm.subscription) ? () => props.history.push(`/@me/${props.user.dmId}`)
+  : () => { props.createDm(props.id)
+    .then((payload) => { debugger
+      props.history.push(`/@me/${payload.payload.dm.id}`); }); };
 
 
     return (
-    <li className="friend-item-container" onClick={ () => props.createDm(props.id)}>
+    <li className="friend-item-container" onClick={ makeDm }>
       <div className='friend-link-item'>
         <div className="friend-name-container">
           <img className='profile-picture friend-pic' src={ props.user.image_url ? props.user.image_url : ""} />

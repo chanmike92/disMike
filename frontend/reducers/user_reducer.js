@@ -49,7 +49,7 @@ const userReducer = (oldState = {}, action) => {
       return merge({}, oldState, action.payload.users);
     case RECEIVE_A_DM:
       // if (action.dm)
-      debugger
+
       return merge({}, oldState, action.payload.users);
     case CLEAR_STATE:
       return {};

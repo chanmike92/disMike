@@ -17,11 +17,14 @@ class FriendShow extends React.Component {
       let user = this.props.users[userId];
 
       if (user) {
+        let dmId = user.dmId;
+        let dm = this.props.dms[dmId] || {};
         let friend = <FriendIndex
           user={ user }
-          id={ parseInt(userId) }
+          id={ userId }
           currentUserServers={ this.props.servers }
           key={ i }
+          dm={ dm }
           createDm={ this.props.createDm }
           addFriend={ this.props.addFriend }
           acceptFriend={ this.props.acceptFriend }

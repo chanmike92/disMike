@@ -14,6 +14,7 @@ class Api::DmchannelsController < ApplicationController
     @user = User.find(params[:id])
     @dm = current_user.find_direct_dm(@user)
     if @dm
+
       @dm.subscribe(current_user)
       render 'api/dms/show'
     else
@@ -26,7 +27,7 @@ class Api::DmchannelsController < ApplicationController
             DirectChannel.broadcast_to subscriber, command: 'fetch_dm', data: @dm.id
           end
         end
-        render 'api/dms/dm'
+        render 'api/dms/show'
       else
         render json: {errors: ['Something went wrong with Dm']}, status: 402
       end
@@ -51,7 +52,7 @@ class Api::DmchannelsController < ApplicationController
   def destroy
     @channel = Dmchannel.find(params[:id])
     @channel.unsubscribe(current_user)
-
+    render
   end
 
 

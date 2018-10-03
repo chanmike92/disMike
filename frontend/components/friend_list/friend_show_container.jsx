@@ -19,8 +19,10 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.channelId;
   const currentUserId = currentUser.id || "";
   const currentServerId = ownProps.serverId;
+  const dms = state.entities.dms;
   return ({
     servers,
+    dms,
     selector: ownProps.selector,
     currentUserId,
     currentServerId,

@@ -25,7 +25,7 @@ class SearchUser extends React.Component {
   componentDidMount() {
     // const searchInput = this.refs.searchInput;
     // let search = ReactDOM.findDOMNode(searchInput);
-    // debugger
+    //
     // search.focus();
     this.setState({name: '@'});
   }

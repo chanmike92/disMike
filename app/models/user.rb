@@ -115,13 +115,22 @@ class User < ApplicationRecord
     self.update(image: img)
   end
 
+
   def acquaintances
     (self.friends + self.dmusers + self.companions).uniq
   end
 
   def find_direct_dm(user)
     dm = self.dmchannels.find {|dm| ((dm.subscribers.map(&:id)) & [user.id, self.id]).length == 2}
-    debugger
+    if dm
+      return dm
+    else
+      nil
+    end
+  end
+
+  def find_direct_dm_id(user)
+    dm = self.dmchannels.find {|dm| ((dm.subscribers.map(&:id)) & [user.id, self.id]).length == 2}
     if dm
       return dm.id
     else
