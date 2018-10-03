@@ -20,13 +20,24 @@ class MessageForm extends React.Component {
     this.handleInput = this.handleInput.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.addEmoji = this.addEmoji.bind(this);
+  }
 
+  componentWillReceiveProps(nextProps) {
+    if ((nextProps.channelId !== this.props.channelId) ||
+    (nextProps.messageType !== this.props.messageType)) {
+      this.setState({
+          body: '',
+          messagable_id: nextProps.channelId,
+          messagable_type: nextProps.messageType,
+          currentEmoji: ":grinning:"
+      });
+    }
   }
 
   handleSubmit(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
       const message = Object.assign({}, this.state);
-
       this.props.processForm(message).then(this.props.scrollBottom);
       setTimeout(() => {
         this.setState({ body: ""});

@@ -138,6 +138,7 @@ class MessageShow extends React.Component {
          || thisDate.getMonth() !== prevDate.getMonth()
          || thisDate.getYear() !== prevDate.getYear()) {
           let date = this.generateFullDate(thisDate);
+
           messages.push(
             <div className="message-index-divider" key={ `divider-${i}` }>
               <div></div>

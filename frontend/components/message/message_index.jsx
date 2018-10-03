@@ -18,7 +18,6 @@ const MessageIndex = ({author, messages, date, profilepic, dateNum }) => {
     });
   const time = moment(dateNum).format('hh:mm A');
   const dateShown = date === ('Today' || 'Yesterday') ? `${date} at ${time}` : moment(dateNum).format("MM/DD/YYYY");
-
   return (
       <li className="message-item-container">
         <div className='user-image-icons'>
