@@ -18,9 +18,9 @@ class Api::DmchannelsController < ApplicationController
       render 'api/dms/show'
     else
       @dm = Dmchannel.new()
-      Dmsubscriber.new(dm_id: @dm.id, user_id: current_user.id, subscribed: true);
-      Dmsubscriber.new(dm_id: @dm.id, user_id: params[:id], subscribed: false);
-      if @dm.save
+      @dmsub1 = Dmsubscriber.new(dm_id: @dm.id, user_id: current_user.id, subscribed: true);
+      @dmsub2 = Dmsubscriber.new(dm_id: @dm.id, user_id: params[:id], subscribed: false);
+      if @dm.save && @dmsub1.save && @dmsub2.save
         render 'api/dms/show'
       else
         render json: {errors: ['Something went wrong with Dm']}, status: 402

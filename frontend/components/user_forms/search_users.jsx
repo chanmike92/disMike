@@ -30,10 +30,6 @@ class SearchUser extends React.Component {
     this.setState({name: '@'});
   }
 
-  // setNode() {
-  //   this.selected =
-  // }
-
   handleInput(input) {
     return (e) => {
       let searchResult = this.renderSearchResults(e.currentTarget.value);
