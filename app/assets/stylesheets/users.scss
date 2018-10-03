@@ -169,7 +169,9 @@
   align-items: center;
   box-sizing: border-box;
   color: #fff;
-  display: flex;
+  text-overflow: clip;
+  overflow: hidden;
+  // display: flex;
   color: #72767d;
   font-size: 14px;
   font-weight: 500;
