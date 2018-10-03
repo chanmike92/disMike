@@ -248,7 +248,6 @@ user-select: text;
   display: flex;
   right: 6px;
   top: 11px;
-  opacity: .6;
 }
 
 .emoji-inner-icon {
@@ -256,8 +255,6 @@ user-select: text;
   display: block;
   height: 40px;
   width: 40px;
-  filter: grayscale(100%);
-  opacity: .5;
 }
 
 .message-file-upload-icon-wrapper {
