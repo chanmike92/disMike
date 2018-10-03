@@ -10,10 +10,7 @@ import * as ReactDOM from 'react-dom';
 class MessageShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      toggleUserList: true
-    };
-    this.handleUserListToggle = this.handleUserListToggle.bind(this);
+
     this.scrollBottom = this.scrollBottom.bind(this);
     this.scrollByPosition = this.scrollByPosition.bind(this);
     this.renderMessages = this.renderMessages.bind(this);
@@ -92,11 +89,7 @@ class MessageShow extends React.Component {
     ReactDOM.findDOMNode(messageList).scrollTop = maxScrollTop - currentHeight === 20 ? maxScrollTop : currentHeight;
   }
 
-  handleUserListToggle(e) {
-    e.preventDefault();
-    e.stopPropagation();
-    this.setState({toggleUserList: !this.state.toggleUserList});
-  }
+
 
   generateDate(date) {
 
@@ -221,12 +214,12 @@ class MessageShow extends React.Component {
                     channelId={ this.props.channelId }
                     messageType={ this.props.messageType }
                   /> : <div></div>;
-    let chatSize = this.state.toggleUserList ? "" : "message-list-full";
+    let chatSize = this.props.userListToggle ? "" : "message-list-full";
       return (
           <div className='message-container'>
             <div className='channel-title-name-container' onContextMenu={ this.props.handleNoContextClick }>
               <div className='channel-title-name'>{symbol} <div className='channel-actual-name'>{this.props.channelName}</div></div>
-              <div className='user-list-toggle-container' onClick={ this.handleUserListToggle }>{userListToggle}</div>
+              <div className='user-list-toggle-container' onClick={ this.props.handleUserListToggle }>{userListToggle}</div>
             </div>
             <div className='bottom-container'>
               <div className='bottom-container-divider'>
@@ -240,7 +233,7 @@ class MessageShow extends React.Component {
                       messageType={ this.props.messageType }
                       channelId={ this.props.channelId }
                       scrollBottom={ this.scrollBottom }
-                      symbol={ symbol }
+                      symbol={ this.props.messageType === "Channel" ? "#" : "@" }
                       />
                   </div>
                 </div>
@@ -249,7 +242,7 @@ class MessageShow extends React.Component {
                   channelId={ this.props.channelId }
                   messageType={ this.props.messageType }
                   handleNoContextClick={ this.props.handleNoContextClick }
-                  active={ this.state.toggleUserList }
+                  userListToggle={ this.props.userListToggle }
                 />
             </div>
           </div>

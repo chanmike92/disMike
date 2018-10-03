@@ -9,11 +9,7 @@ import ServerDropdownContainer from '../dropdown/server/server_dropdown_containe
 class ChannelShow extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      toggleChannelDropdown: true,
-    };
     this.renderChannels = this.renderChannels.bind(this);
-    this.handleChannelDropdown = this.handleChannelDropdown.bind(this);
     this.handleContextClick = this.handleContextClick.bind(this);
     this.handleIndexContextClick = this.handleIndexContextClick.bind(this);
   }
@@ -53,7 +49,7 @@ class ChannelShow extends React.Component {
       currentUserId={this.props.currentUserId}
       active={ active }
       />;
-      if (this.state.toggleChannelDropdown) {
+    if (this.props.channelDropdownToggle) {
         channels.push(a);
       } else {
         if (active) {
@@ -64,9 +60,7 @@ class ChannelShow extends React.Component {
     return channels;
   }
 
-  handleChannelDropdown() {
-    this.setState({ toggleChannelDropdown: !this.state.toggleChannelDropdown});
-  }
+
 
 
   render() {
@@ -85,6 +79,8 @@ class ChannelShow extends React.Component {
       channelId={ this.props.channelId }
       handleNoContextClick={ this.props.handleNoContextClick }
       messageType={ "Channel" }
+      handleUserListToggle={ this.props.handleUserListToggle }
+      userListToggle={ this.props.userListToggle }
     /> : <EmptyChannelMessages />;
 
   const serverDropdown = this.props.dropdown === "server" ? <ServerDropdownContainer
@@ -94,7 +90,7 @@ class ChannelShow extends React.Component {
 
     const dropdownImg = this.props.dropdown === "server" ? "exit.svg" : "arrow_down.svg";
     const dropdownActive = this.props.dropdown === "server" ? "server-dropdown-image dropdown-active" : "server-dropdown-image";
-    const channelDropdown = this.state.toggleChannelDropdown ? "channel-dropdown-image dropdown-active" : "channel-dropdown-image";
+    const channelDropdown = this.props.channelDropdownToggle ? "channel-dropdown-image dropdown-active" : "channel-dropdown-image";
 
     return (
       <div className='subcomponent-container'>
@@ -116,7 +112,7 @@ class ChannelShow extends React.Component {
           <div className='bottom-channels-container' onContextMenu={ this.handleContextClick }>
             <div className='channel-list-container'>
               <div className='text-channel-item-container'>
-                <div className='text-channel-name' onClick={ this.handleChannelDropdown }>
+                <div className='text-channel-name' onClick={ this.props.handleChannelDropdown }>
                   <div className={ channelDropdown }></div>
                   TEXT CHANNELS
                 </div>

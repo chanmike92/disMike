@@ -14,9 +14,13 @@ class MainComponent extends React.Component{
     super(props);
     this.state = {
       serverId: "",
-      channelId: ""
+      channelId: "",
+      toggleUserList: true,
+      toggleChannelDropdown: true,
     };
     this.handleNoContextClick = this.handleNoContextClick.bind(this);
+    this.handleUserListToggle = this.handleUserListToggle.bind(this);
+    this.handleChannelDropdown = this.handleChannelDropdown.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
   }
@@ -84,6 +88,18 @@ class MainComponent extends React.Component{
     e.stopPropagation();
   }
 
+  handleUserListToggle(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({toggleUserList: !this.state.toggleUserList});
+  }
+
+  handleChannelDropdown(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    this.setState({ toggleChannelDropdown: !this.state.toggleChannelDropdown});
+  }
+
   handleClick(e) {
     // e.preventDefault();
     if (this.props.dropdown) {
@@ -105,12 +121,18 @@ class MainComponent extends React.Component{
       handleNoContextClick={ this.handleNoContextClick }
       serverId={ this.props.serverId }
       channelId={ this.state.channelId }
+      handleUserListToggle={ this.handleUserListToggle }
+      userListToggle={ this.state.toggleUserList }
     />
     :
     <ChannelShowContainer
       handleNoContextClick={ this.handleNoContextClick }
       serverId={ this.props.serverId }
       channelId={ this.state.channelId }
+      channelDropdownToggle={ this.state.toggleChannelDropdown }
+      handleChannelDropdown={ this.handleChannelDropdown }
+      handleUserListToggle={ this.handleUserListToggle }
+      userListToggle={ this.state.toggleUserList }
     />;
 
 

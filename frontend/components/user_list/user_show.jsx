@@ -36,7 +36,7 @@ class UserShow extends React.Component {
       }
     });
 
-    let active = this.props.active ? "" : "user-show-inactive";
+    let active = this.props.userListToggle ? "" : "user-show-inactive";
 
     return (
       <div class={`user-list ${active}`}
