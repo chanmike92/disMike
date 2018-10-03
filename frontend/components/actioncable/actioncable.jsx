@@ -64,7 +64,7 @@ class ActionCableContainer extends React.Component {
   }
 
   componentWillUnmount() {
-    this.subscription.unsubscribe();
+    this.props.logout().then(() => this.subscription.unsubscribe());
   }
 
   render() {
