@@ -144,6 +144,10 @@ user-select: text;
   outline: 0;
   border: 0;
   width: calc(100% - 240px);
+  -webkit-transition: all  0.5s linear;
+  -moz-transition: all 0.5s linear;
+  -o-transition: all 0.5s linear;
+  transition: all 0.5s linear;
   &.message-list-full {
     width: 100%;
   }

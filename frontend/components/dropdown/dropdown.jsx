@@ -9,7 +9,7 @@ import ChannelDropdownContainer from './channel/channel_dropdown_container';
 import ServerButtonDropdownContainer from './serverbutton/serverbutton_dropdown_container';
 
 
-const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId, channel, currentUser, closeDropdown }) => {
+const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId, channel, currentUser, closeDropdown, handleNoContextClick }) => {
 
   if (!dropdownType) {
     return null;
@@ -59,7 +59,7 @@ const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId,
 
   return (
 
-      <div className='dropdown-child' style={ {left: x, top: y } } onClick={ e => e.stopPropagation() }>
+      <div className='dropdown-child' style={ {left: x, top: y } } onClick={ e => e.stopPropagation() } onContextMenu={ handleNoContextClick }>
         { component }
       </div>
 

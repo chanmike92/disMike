@@ -15,7 +15,7 @@ import ServerJoinContainer from '../server/server_join_container';
 import FriendAddContainer from '../friend_list/friend_add_container';
 import LogoutConfirmationContainer from '../user_forms/logout_container';
 
-const Modal = ({ modal, serverId, server, channelId, channel, closeModal, currentUser }) => {
+const Modal = ({ modal, serverId, server, channelId, channel, closeModal, currentUser, handleNoContextClick }) => {
 
   if (!modal) {
     return null;
@@ -105,8 +105,8 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
   }
 
   return (
-    <div className="modal-background" onClick={ closeModal }>
-      <div className='modal-child' onClick={ e => e.stopPropagation() }>
+    <div className="modal-background" onClick={ closeModal } onContextMenu={ handleNoContextClick }>
+      <div className='modal-child' onClick={ e => e.stopPropagation() } onContextMenu={ handleNoContextClick }>
         { component }
       </div>
     </div>

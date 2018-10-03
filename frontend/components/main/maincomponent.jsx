@@ -148,8 +148,12 @@ class MainComponent extends React.Component{
       <div className='maincomponent-container' onClick={ this.handleClick }
         onContextMenu={ this.handleClick } onKeyDown={ this.handleEscape }>
         <ActionCableContainer />
-        <Modal />
-        <Dropdown />
+        <Modal
+          handleNoContextClick={ this.handleNoContextClick }
+        />
+        <Dropdown
+          handleNoContextClick={ this.handleNoContextClick }
+        />
         <LoadingContainer
           handleNoContextClick={ this.handleNoContextClick }
         />
