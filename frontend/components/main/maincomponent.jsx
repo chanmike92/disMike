@@ -17,12 +17,14 @@ class MainComponent extends React.Component{
       channelId: "",
       toggleUserList: true,
       toggleChannelDropdown: true,
+      friendSelector: "ALL"
     };
     this.handleNoContextClick = this.handleNoContextClick.bind(this);
     this.handleUserListToggle = this.handleUserListToggle.bind(this);
     this.handleChannelDropdown = this.handleChannelDropdown.bind(this);
     this.handleClick = this.handleClick.bind(this);
     this.handleEscape = this.handleEscape.bind(this);
+    this.handleSelect = this.handleSelect.bind(this);
   }
 
   componentDidMount() {
@@ -82,6 +84,13 @@ class MainComponent extends React.Component{
   //         this.subscription.unsubscribe();
   //       }
   // }
+  handleSelect(selected) {
+    return (e) => {
+      this.setState({
+        friendSelector: selected
+      });
+    };
+  }
 
   handleNoContextClick(e) {
     e.preventDefault();
@@ -118,6 +127,8 @@ class MainComponent extends React.Component{
 
     const subComponent = this.props.serverId === '@me' ?
     <DmchannelShowContainer
+      selector={ this.state.friendSelector }
+      handleSelect={ this.handleSelect }
       handleNoContextClick={ this.handleNoContextClick }
       serverId={ this.props.serverId }
       channelId={ this.state.channelId }
