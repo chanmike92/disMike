@@ -45,14 +45,17 @@ class Api::DmchannelsController < ApplicationController
     end
   end
 
-  def add
-
+  def update
+    @sub = Dmsubscriber.find_by(dm_id: params[:id], user_id: current_user.id)
+    @sub.update(subscribed: true)
+    @dm = @sub.dmchannel
+    render 'api/dms/show'
   end
 
   def destroy
     @channel = Dmchannel.find(params[:id])
     @channel.unsubscribe(current_user)
-    render
+    render json: {}
   end
 
 

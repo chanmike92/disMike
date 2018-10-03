@@ -81,7 +81,7 @@ class SearchUser extends React.Component {
 
   handleIndexAction(e) {
     let currentSearch = this.state.searches[this.state.index];
-    e.preventDefault();
+    // e.preventDefault();
     e.stopPropagation();
     switch(currentSearch.type) {
       case "server":
@@ -98,9 +98,15 @@ class SearchUser extends React.Component {
         if (dmId && dm.subscription) {
           this.props.history.push(`/@me/${dmId}`);
           this.props.closeModal();
+        }
+        else if (dmId) {
+          this.props.updateDm(dmId);
+          this.props.history.push(`/@me/${dmId}`);
+          this.props.closeModal();
         } else {
           this.props.createDm(currentSearch.id).then((payload) => {
-              this.props.history.push(`/@me/${payload.payload.dm.id}`); });
+              this.props.history.push(`/@me/${payload.payload.dm.id}`); })
+                .then(() => this.props.closeModal());
         }
         break;
       default:

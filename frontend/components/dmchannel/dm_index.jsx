@@ -19,7 +19,7 @@ const DmIndex = (props) => {
               <div className={ channelNameClass }>{ props.dm.name }</div>
             </div>
             <div className='channel-controls'>
-              <div className='unsubscribe-dm' onClick={ () => props.unsubscribeDm(props.dm.id) }></div>
+              <div className='unsubscribe-dm' onClick={ (e) => props.unsubscribeDm(e, props.dm.id) }></div>
             </div>
           </Link>
       );

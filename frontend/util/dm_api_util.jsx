@@ -24,6 +24,15 @@ export const makeNewDm = (id) => {
   });
 };
 
+export const updateDm = (id) => {
+
+  return $.ajax({
+    url: `api/dmchannels/${id}`,
+    method: 'PATCH',
+    data: { id }
+  });
+};
+
 export const unsubscribeDm = (id) => {
 
   return $.ajax({

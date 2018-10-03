@@ -34,7 +34,11 @@ const mapDispatchToProps = dispatch => {
   return ({
     addFriend: () => dispatch(openModal('addFriend')),
     searchUsers: () => dispatch(openModal('searchUsers')),
-    unsubscribeDm: (id) => dispatch(unsubscribeDm(id)),
+    unsubscribeDm: (e, id) => {
+      e.preventDefault();
+      e.stopPropagation();
+      dispatch(unsubscribeDm(id));
+    }
   });
 };
 
