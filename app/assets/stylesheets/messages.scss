@@ -72,6 +72,7 @@ user-select: text;
   box-sizing: border-box;
   color: #fff;
   display: flex;
+  flex-direction: row;
   font-family: 'Roboto', sans-serif;
   font-weight: 500;
   height: 48px;
@@ -94,6 +95,7 @@ user-select: text;
 }
 
 .channel-title-name {
+  align-items: center;
   width: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-box-flex: 1;
@@ -117,6 +119,18 @@ user-select: text;
   display: inline-flex;
 }
 
+.user-list-toggle-container {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.user-list-toggle-button {
+  cursor: pointer;
+  height: 24px;
+  width: 24px;
+}
+
 .bottom-message-container {
   box-sizing: border-box;
   display: flex;
@@ -130,6 +144,9 @@ user-select: text;
   outline: 0;
   border: 0;
   width: calc(100% - 240px);
+  &.message-list-full {
+    width: 100%;
+  }
 }
 
 .message-list-container {

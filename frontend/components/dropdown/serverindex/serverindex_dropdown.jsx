@@ -29,7 +29,11 @@ const ServerIndexDropdown = (props) => {
     <label className='dropdown-index-title'>Delete Server</label>
   </div>
   :
-  "";
+  <div className='dropdown-index-item' onClick={ () => {
+        props.leaveServer(props.serverId); } }>
+    <div className='dropdown-icon leave-server-icon'></div>
+    <label className='dropdown-index-title'>Leave Server</label>
+  </div>;
 
 
   return (
@@ -41,11 +45,7 @@ const ServerIndexDropdown = (props) => {
         <div className='dropdown-divider'></div>
         { channelCreate }
         { serverUpdate }
-        <div className='dropdown-index-item' onClick={ () => {
-              props.leaveServer(props.serverId); } }>
-          <div className='dropdown-icon leave-server-icon'></div>
-          <label className='dropdown-index-title'>Leave Server</label>
-        </div>
+        { deleteServer }
     </div>
   );
 };

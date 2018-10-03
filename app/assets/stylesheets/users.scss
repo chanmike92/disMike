@@ -2,6 +2,16 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.user-list {
+  padding-left: 2px;
+  padding-right: 2px;
+  height: 100%;
+  width: 240px;
+  &.user-show-inactive {
+    width: 0px;
+  }
+}
+
 .user-info-container {
   display: flex;
   flex-direction: column;
@@ -41,7 +51,7 @@
   box-sizing: border-box;
   padding-left: 10px;
   padding-right: 10px;
-  width: 240px;
+  width: 100%;
   background-color: #2F3136;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 2px 0 rgba(0, 0, 0, 0.06);
   overflow-x: hidden;
