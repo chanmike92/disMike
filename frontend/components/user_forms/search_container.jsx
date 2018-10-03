@@ -1,7 +1,7 @@
 import SearchUser from './search_users';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { searchUsers } from '../../actions/user_actions';
+import { makeNewDm } from '../../actions/dm_actions';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -35,8 +35,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
-    processForm: (name) => {
-      dispatch(searchUsers(name));
+    createDm: (id) => {
+      dispatch(makeNewDm(id));
     },
     closeModal: () => {
       dispatch(closeModal());

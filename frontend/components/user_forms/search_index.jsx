@@ -16,7 +16,8 @@ class SearchIndex extends React.Component {
         { this.props.displayName }
       </div>;
     return (
-      <div className={ active } onMouseOver={ this.props.handleHover(this.props.index) }>
+      <div className={ active } onClick={ this.props.handleClick }
+        onMouseOver={ this.props.handleHover(this.props.index) }>
         <div className='search-content'>
           <div className='search-result-icon-container'>
             { icon }
