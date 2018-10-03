@@ -15,12 +15,12 @@ export const fetchADm = (id) => {
   });
 };
 
-export const makeNewDm = (dm, id) => {
+export const makeNewDm = (id) => {
 
   return $.ajax({
     url: 'api/dmchannels',
     method: 'POST',
-    data: { dm, id }
+    data: { id }
   });
 };
 

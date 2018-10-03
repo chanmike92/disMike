@@ -5,6 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
 import { fetchAllFriends, addNewFriend, deleteFriend } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
+import { makeNewDm } from '../../actions/dm_actions';
 import { openModal } from '../../actions/modal_actions';
 
 
@@ -35,7 +36,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     handleSelect: (selector) => ownProps.handleSelect(selector),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
-    addNewFriend: () => dispatch(openModal('addFriend')),
+    createDm: (id) => dispatch(makeNewDm(id)),
+    addNewFriend: (id) => dispatch(openModal('addFriend', id)),
     addFriend: (id) => dispatch(addNewFriend(id)),
     deleteFriend: (id) => dispatch(deleteFriend(id)),
   });

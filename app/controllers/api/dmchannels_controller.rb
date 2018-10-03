@@ -40,7 +40,7 @@ class Api::DmchannelsController < ApplicationController
   end
 
   def add
-
+    
   end
 
   def destroy

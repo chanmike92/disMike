@@ -119,6 +119,15 @@ class User < ApplicationRecord
     (self.friends + self.dmusers + self.companions).uniq
   end
 
+  def find_direct_dm(user)
+    dm = self.dmchannels.find {|dm| ((dm.subscribers.map(&:id)) & [user.id, self.id]).length == 2}
+    if dm
+      return dm.id
+    else
+      nil
+    end
+  end
+
   def reset_profile_picture
     img = File.open(File.join(Rails.root, "app/assets/images/discord-user-icon-1.png"))
     self.update(image: img)

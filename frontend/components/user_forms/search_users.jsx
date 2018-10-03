@@ -87,7 +87,16 @@ class SearchUser extends React.Component {
                 this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
                 this.props.closeModal();
                 break;
-              // case "user":
+              case "user":
+                let dmId = currentSearch.dmId;
+                if (dmId) {
+                  this.props.history.replace(`/@me/${dmId}`);
+                  this.props.closeModal();
+                } else {
+                  e.preventDefault();
+                  console.log("default acquired");
+                }
+                break;
 
               default:
                 e.preventDefault();

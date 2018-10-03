@@ -5,7 +5,7 @@ const FriendIndex = (props) => {
 
   let statusClassName = "online-status offline";
   let renderStatus = props.user.online_status ? "Online" : "Offline";
-  let friendControls;
+  let friendAccept;
   switch (props.user.friendship_status) {
     case ("ACCEPTED"):
       if (props.user.online_status) {
@@ -15,30 +15,15 @@ const FriendIndex = (props) => {
         statusClassName = "online-status offline";
         renderStatus = "Offline";
       }
-      friendControls = <div className='friend-controls-container'>
-        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
-          <i className="fas fa-ban"></i>
-        </div>
-      </div>;
     break;
     case ("PENDING RECEIVE"):
       renderStatus = "Outgoing Friend Request";
-      friendControls = <div className='friend-controls-container'>
-        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
-          <i className="fas fa-ban"></i>
-        </div>
-      </div>;
       break;
     case ("PENDING ACCEPT"):
       renderStatus = "Incoming Friend Request";
-      friendControls = <div className='friend-controls-container'>
-        <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
-          <i className="fas fa-ban"></i>
-        </div>
-        <div className='friend-controls-button' onClick={ () => props.acceptFriend(props.id) }>
+      friendAccept = <div className='friend-controls-button' onClick={ () => props.acceptFriend(props.id) }>
           <i className="fas fa-plus-circle"></i>
-        </div>
-      </div>;
+        </div>;
     break;
   }
 
@@ -56,6 +41,8 @@ const FriendIndex = (props) => {
     }
   }
 
+  // let makeDm = props.user.dmId ? props.history.replace(`/@me/${props.user.dmId}`) : props.
+
 
     return (
     <li className="friend-item-container">
@@ -71,7 +58,12 @@ const FriendIndex = (props) => {
         <div className='mutual-servers-container'>
           { commonServers }
         </div>
-        { friendControls }
+        <div className='friend-controls-container'>
+          <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+            <i className="fas fa-ban"></i>
+          </div>
+          { friendAccept }
+        </div>
       </div>
     </li>
   );
