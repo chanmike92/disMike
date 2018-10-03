@@ -3,7 +3,7 @@ import React from 'react';
 import { getDMServer } from '../../reducers/selectors.jsx';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
-import { fetchAllFriends, addNewFriend, deleteFriend } from '../../actions/friend_actions';
+import { fetchAllFriends, addNewFriend, deleteFriend, acceptFriend } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
 import { makeNewDm } from '../../actions/dm_actions';
 import { openModal } from '../../actions/modal_actions';
@@ -38,10 +38,26 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     handleSelect: (selector) => ownProps.handleSelect(selector),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
-    createDm: (id) => dispatch(makeNewDm(id)),
+    createDm: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+      dispatch(makeNewDm(id));},
     addNewFriend: (id) => dispatch(openModal('addFriend', id)),
-    addFriend: (id) => dispatch(addNewFriend(id)),
-    deleteFriend: (id) => dispatch(deleteFriend(id)),
+    addFriend: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+       dispatch(addNewFriend(id));
+     },
+    acceptFriend: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+       dispatch(acceptFriend(id));
+     },
+    deleteFriend: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+      dispatch(deleteFriend(id));
+    },
   });
 };
 

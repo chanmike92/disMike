@@ -21,7 +21,7 @@ const FriendIndex = (props) => {
       break;
     case ("PENDING ACCEPT"):
       renderStatus = "Incoming Friend Request";
-      friendAccept = <div className='friend-controls-button' onClick={ () => props.acceptFriend(props.id) }>
+      friendAccept = <div className='friend-controls-button' onClick={ (e) => props.acceptFriend(e, props.id) }>
           <i className="fas fa-plus-circle"></i>
         </div>;
     break;
@@ -33,7 +33,8 @@ const FriendIndex = (props) => {
 
     if (server && commonServers.length < 6) {
       commonServers.push(
-        <Link key={ i } to={`/${server.id}/`}>
+        <Link key={ i } className='mutual-server-index' onClick={ (e) => { e.preventDefault(); e.stopPropagation();
+            props.history.push(`/${props.user.server_ids[i]}`); return false;} } to={`/${server.id}/`}>
           { server.image_url? <img className='server-icon-pic' src={ server.image_url } /> :
           <div className='server-icon-pic'>{ server.display_name }</div> }
         </Link>
@@ -41,8 +42,11 @@ const FriendIndex = (props) => {
     }
   }
 
-  let makeDm = (props.user.dmId && props.dm.subscription) ? () => props.history.push(`/@me/${props.user.dmId}`)
-  : () => { props.createDm(props.id)
+  let makeDm = (props.user.dmId && props.dm.subscription) ? (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    props.history.push(`/@me/${props.user.dmId}`);}
+  : (e) => { props.createDm(e, props.id)
     .then((payload) => {
       props.history.push(`/@me/${payload.payload.dm.id}`); }); };
 
@@ -62,7 +66,7 @@ const FriendIndex = (props) => {
           { commonServers }
         </div>
         <div className='friend-controls-container'>
-          <div className='friend-controls-button' onClick={ () => props.deleteFriend(props.id) }>
+          <div className='friend-controls-button' onClick={ (e) => props.deleteFriend(e, props.id) }>
             <i className="fas fa-ban"></i>
           </div>
           { friendAccept }

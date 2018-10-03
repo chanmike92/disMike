@@ -9,6 +9,7 @@ class SearchUser extends React.Component {
     super(props);
     this.state = {name: '', index: 0, searches: []};
     this.firedEnterKey = false;
+    this.handleFocusClick = this.handleFocusClick.bind(this);
     this.resetEnterKey = this.resetEnterKey.bind(this);
     this.handleInput = this.handleInput.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
@@ -24,10 +25,6 @@ class SearchUser extends React.Component {
   }
 
   componentDidMount() {
-    // const searchInput = this.refs.searchInput;
-    // let search = ReactDOM.findDOMNode(searchInput);
-    //
-    // search.focus();
     this.setState({name: '@'});
   }
 
@@ -85,20 +82,21 @@ class SearchUser extends React.Component {
   handleIndexAction(e) {
     let currentSearch = this.state.searches[this.state.index];
     e.preventDefault();
+    e.stopPropagation();
     switch(currentSearch.type) {
       case "server":
           this.props.closeModal();
-          this.props.history.replace(`/${currentSearch.id}/`);
+          this.props.history.push(`/${currentSearch.id}/`);
         break;
       case "channel":
-        this.props.history.replace(`/${currentSearch.server_id}/${currentSearch.id}`);
+        this.props.history.push(`/${currentSearch.server_id}/${currentSearch.id}`);
         this.props.closeModal();
         break;
       case "user":
         let dmId = currentSearch.dmId;
         let dm = this.props.dms[dmId];
         if (dmId && dm.subscription) {
-          this.props.history.replace(`/@me/${dmId}`);
+          this.props.history.push(`/@me/${dmId}`);
           this.props.closeModal();
         } else {
           this.props.createDm(currentSearch.id).then((payload) => {
@@ -224,6 +222,13 @@ class SearchUser extends React.Component {
     }
   }
 
+  handleFocusClick(e) {
+    e.preventDefault();
+    const searchInput = this.refs.searchInput;
+    // let search = ReactDOM.findDOMNode(searchInput);
+    searchInput.focus();
+  }
+
   handleSearchClass() {
     let className = "Searching all names";
     if (this.state.name.length > 0) {
@@ -294,7 +299,7 @@ class SearchUser extends React.Component {
       return (
         <div className="search-results">
             { searchClassName }
-          <div ref="searchResults" className="search-scroller">
+          <div ref="searchResults" autoFocus onBlur={ this.handleFocusClick } className="search-scroller">
             { searchResult }
           </div>
         </div>);

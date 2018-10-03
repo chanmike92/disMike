@@ -15,6 +15,15 @@ export const addNewFriend = (id) => {
   });
 };
 
+export const updateFriend = (id) => {
+
+  return $.ajax({
+    url: `api/friendships/${id}`,
+    method: 'PATCH',
+    data: { id }
+  });
+};
+
 export const deleteFriend = (id) => {
 
   return $.ajax({

@@ -57,7 +57,7 @@ export const addNewFriend = (id) => dispatch => {
 
 export const acceptFriend = (id) => dispatch => {
 
-  return APIUtil.addNewFriend(id).then((payload) => dispatch(receiveAFriend(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
+  return APIUtil.updateFriend(id).then((payload) => dispatch(receiveAFriend(payload)), (errors) => dispatch(receiveErrors(errors.responseJSON)));
 };
 
 
