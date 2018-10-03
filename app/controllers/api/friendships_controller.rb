@@ -19,9 +19,12 @@ class Api::FriendshipsController < ApplicationController
         if @friendship1 == nil
           @friendship1 = Friendship.new(friend1: current_user.id, friend2: @user.id, friendship_status: "PENDING RECEIVE")
           @friendship2 = Friendship.new(friend2: current_user.id, friend1: @user.id, friendship_status: "PENDING ACCEPT")
-          @friendship1.save && @friendship2.save
-          JSON.parse(render('/api/users/_user.json.jbuilder',
-            locals: { user: @user }))
+          if @friendship1.save && @friendship2.save
+            JSON.parse(render('/api/users/_user.json.jbuilder',
+              locals: { user: @user }))
+          else
+            render json: ['Something terrible happened while making friends'], status: 402
+          end
         else
           render json: ['Already added as a friend'], status: 402
         end

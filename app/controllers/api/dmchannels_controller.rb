@@ -11,19 +11,22 @@ class Api::DmchannelsController < ApplicationController
   end
 
   def create
-
-    @dm = current_user.find_direct_dm(params[:id])
+    @user = User.find(params[:id])
+    @dm = current_user.find_direct_dm(@user)
     if @dm
       @dm.subscribe(current_user)
       render 'api/dms/show'
     else
-      @dm = Dmchannel.new()
+      @dm = Dmchannel.create()
       @dmsub1 = Dmsubscriber.new(dm_id: @dm.id, user_id: current_user.id, subscribed: true);
       @dmsub2 = Dmsubscriber.new(dm_id: @dm.id, user_id: params[:id], subscribed: false);
       if @dm.save && @dmsub1.save && @dmsub2.save
-        dm = JSON.parse(render('/api/dms/show.json.jbuilder',
-          locals: { dm: @dm }))
-        render 'api/dms/show'
+        @dm.subscribers.each do |subscriber|
+          if subscriber != current_user
+            DirectChannel.broadcast_to subscriber, command: 'fetch_dm', data: @dm.id
+          end
+        end
+        render 'api/dms/dm'
       else
         render json: {errors: ['Something went wrong with Dm']}, status: 402
       end
@@ -54,8 +57,8 @@ class Api::DmchannelsController < ApplicationController
 
 
 
-  private
-  def dm_params
-    params.require(:dmchannel).permit(:name)
-  end
+  # private
+  # def dm_params
+  #   params.require(:dmchannel).permit(:name)
+  # end
 end

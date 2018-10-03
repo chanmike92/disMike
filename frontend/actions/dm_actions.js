@@ -13,11 +13,11 @@ export const receiveAllDms = (dms) => {
   };
 };
 
-export const receiveADm = (payload) => {
-
+export const receiveADm = (dm) => {
+  debugger
   return {
     type: RECEIVE_A_DM,
-    payload
+    dm
   };
 };
 
@@ -58,9 +58,9 @@ export const fetchADm = (id) => dispatch => {
     return dispatch(receiveErrors(errors.responseJSON));});
 };
 
-export const makeNewDm = (dm, id) => dispatch => {
+export const makeNewDm = (id) => dispatch => {
 
-  return APIUtil.makeNewDm(dm, id).then((payload) => dispatch(receiveADm(payload)), (errors) => {
+  return APIUtil.makeNewDm(id).then((dm) => dispatch(receiveADm(dm)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
 };

@@ -1,6 +1,7 @@
 import { RECEIVE_A_USER, RECEIVE_ALL_USERS,  RECEIVE_CURRENT_USER_SESSION } from '../actions/user_actions';
 import { RECEIVE_A_FRIEND, RECEIVE_ALL_FRIENDS, REMOVE_A_FRIEND, INVITE_A_FRIEND, UPDATE_A_FRIEND } from '../actions/friend_actions';
 import { RECEIVE_A_SERVER, RECEIVE_ALL_SERVERS } from '../actions/server_actions';
+import { RECEIVE_A_DM } from '../actions/dm_actions';
 import { RECEIVE_CURRENT_USER, DELETE_CURRENT_USER } from '../actions/session_actions';
 import { CLEAR_STATE } from '../actions/channel_actions';
 import { merge } from 'lodash';
@@ -45,6 +46,10 @@ const userReducer = (oldState = {}, action) => {
       return merge({}, oldState, action.payload.users);
     case RECEIVE_ALL_SERVERS:
 
+      return merge({}, oldState, action.payload.users);
+    case RECEIVE_A_DM:
+      // if (action.dm)
+      debugger
       return merge({}, oldState, action.payload.users);
     case CLEAR_STATE:
       return {};

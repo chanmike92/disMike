@@ -45,7 +45,7 @@ const FriendIndex = (props) => {
 
 
     return (
-    <li className="friend-item-container">
+    <li className="friend-item-container" onClick={ () => props.createDm(props.id)}>
       <div className='friend-link-item'>
         <div className="friend-name-container">
           <img className='profile-picture friend-pic' src={ props.user.image_url ? props.user.image_url : ""} />

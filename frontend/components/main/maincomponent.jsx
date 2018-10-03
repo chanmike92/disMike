@@ -79,11 +79,6 @@ class MainComponent extends React.Component{
     }
   }
 
-  // componentWillUnmount() {
-  //       if (this.subscription) {
-  //         this.subscription.unsubscribe();
-  //       }
-  // }
   handleSelect(selected) {
     return (e) => {
       this.setState({

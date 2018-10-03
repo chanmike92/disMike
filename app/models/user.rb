@@ -121,6 +121,7 @@ class User < ApplicationRecord
 
   def find_direct_dm(user)
     dm = self.dmchannels.find {|dm| ((dm.subscribers.map(&:id)) & [user.id, self.id]).length == 2}
+    debugger
     if dm
       return dm.id
     else
