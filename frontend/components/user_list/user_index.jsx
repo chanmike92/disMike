@@ -9,14 +9,15 @@ const UserIndex = (props) => {
     :
   "";
 
-  const online = props.user.online_status ? "online-status-icon green-back" : "online-status-icon grey-back";
+  const onlineStatus = props.user.online_status ? "online-status-icon green-back" : "online-status-icon grey-back";
+  const onlineImage = props.user.online_status ? "" : "offline-grey";
 
   return (
     <li className="user-items">
       <div className='user-image-name'>
         <div className='user-image-icons'>
-          <img className='profile-picture' src={ props.user.image_url } />
-          <div className={ online }></div>
+          <img className={`profile-picture ${onlineImage}`} src={ props.user.image_url } />
+          <div className={ onlineStatus }></div>
         </div>
         <div className='user-name'>
           { props.user.username }

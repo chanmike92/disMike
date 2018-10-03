@@ -40,6 +40,9 @@
   box-sizing: border-box;
   border-radius: 50%;
   background: #7289da;
+  &.offline-grey {
+    filter: grayscale(100%);
+  }
 }
 
 .group-dm-picture {
