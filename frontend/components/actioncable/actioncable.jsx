@@ -53,11 +53,9 @@ class ActionCableContainer extends React.Component {
             this.props.removeAChannel(data);
             break;
           case 'fetch_friend':
-
             this.props.fetchAFriend(data);
             break;
           case 'remove_friend':
-
             this.props.removeAFriend(data);
             break;
           case 'fetch_dm':

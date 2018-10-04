@@ -12,10 +12,11 @@ class UserUpdate extends React.Component {
     this.handleFileUpload = this.handleFileUpload.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleRemove = this.handleRemove.bind(this);
+    this.handleDefault = this.handleDefault.bind(this);
   }
 
   componentDidMount() {
-    this.setState(this.props.currentUser);
+    this.setState({image_url: this.props.imageUrl});
   }
 
 
@@ -35,6 +36,10 @@ class UserUpdate extends React.Component {
   }
 
   handleRemove() {
+    this.setState({image_url: this.props.imageUrl, imageFile: null, type: true});
+  }
+
+  handleDefault() {
     this.setState({image_url: "https://s3.amazonaws.com/dismikechan-app-name-dev/discord-user-icon-1.png", imageFile: null, type: true});
   }
 
@@ -65,7 +70,8 @@ class UserUpdate extends React.Component {
                <div className='profile-picture-hint'>Change Avatar</div>
             </div>
           </div>
-          <button className='remove-avatar-button' onClick={ this.handleRemove }>Remove</button>
+          <div className='remove-avatar-button' onClick={ this.handleRemove }>Revert</div>
+          <div className='remove-avatar-button' onClick={ this.handleDefault }>Remove</div>
         </div>
         <div className='yes-no-option channel-delete-yes-no'>
           <button className='submit-button green-back' style={ {color: "white"}} onClick={ this.handleSubmit }>Save</button>

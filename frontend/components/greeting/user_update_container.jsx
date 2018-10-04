@@ -8,9 +8,10 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   const currentUser = ownProps.currentUser;
-
+  const imageUrl = currentUser.image_url;
   return ({
-    currentUser
+    currentUser,
+    imageUrl,
   });
 };
 

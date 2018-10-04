@@ -1,5 +1,6 @@
 import * as APIUtil from '../util/user_api_util';
 export const RECEIVE_CURRENT_USER_SESSION = 'RECEIVE_CURRENT_USER_SESSION';
+export const RECEIVE_CURRENT_USER = 'RECEIVE_CURRENT_USER';
 export const RECEIVE_ALL_USERS = 'RECEIVE_ALL_USERS';
 export const RECEIVE_A_USER = 'RECEIVE_A_USER';
 export const RECEIVE_SEARCHES = 'RECEIVE_SEARCHES';
@@ -7,6 +8,13 @@ export const RECEIVE_SEARCHES = 'RECEIVE_SEARCHES';
 export const receiveAUser = (user) => {
   return {
     type: RECEIVE_A_USER,
+    user
+  };
+};
+
+export const receiveCurrentUser = (user) => {
+  return {
+    type: RECEIVE_CURRENT_USER,
     user
   };
 };
@@ -52,7 +60,7 @@ export const fetchAUser = (id) => dispatch => {
 
 export const updateAUser = (formData, id) => dispatch => {
   return APIUtil.updateAUser(formData, id).then((user) =>
-  dispatch(receiveAUser(user)));
+  dispatch(receiveCurrentUser(user)));
 };
 
 export const searchUsers = (name) => dispatch => {

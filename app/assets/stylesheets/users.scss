@@ -22,6 +22,23 @@
   }
 }
 
+.remove-avatar-button {
+  cursor: pointer;
+  outline: 0;
+  margin: 3px;
+  color: #b9bbbe;
+  font-size: 14px;
+  font-weight: 600;
+  text-decoration: none;
+  background: transparent;
+  transition: opacity .5s,color .5s;
+
+  &:hover {
+    color: #72767d;
+    text-decoration: underline;
+  }
+}
+
 .user-info-container {
   display: flex;
   flex-direction: column;
