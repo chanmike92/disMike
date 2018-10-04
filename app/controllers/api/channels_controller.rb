@@ -18,18 +18,13 @@ class Api::ChannelsController < ApplicationController
       channel = JSON.parse(render('/api/channels/show.json.jbuilder',
         locals: { channel: @channel }))
 
-      # @channel.subscribers.each do |user|
-
-        # if user != current_user
-      #     @message.broadcast(user)
-
-          # DirectChannel.broadcast_to(user, {command: 'fetch_new_channel',
-          #   data: channel})
-          BroadcastChannelJob.perform_now current_user, @channel
-
-        # end
-
-      # end
+      @channel.subscribers.each do |user|
+        if user != current_user
+          DirectChannel.broadcast_to(user, {command: 'fetch_new_channel',
+            data: channel})
+          # BroadcastChannelJob.perform_now current_user, @channel
+        end
+      end
     else
       render json: @channel.errors.full_messages, status: 402
     end
@@ -52,7 +47,15 @@ class Api::ChannelsController < ApplicationController
     @channel = Channel.find(params[:id])
 
     if @channel.update(channel_params)
-      render 'api/channels/show'
+      channel = JSON.parse(render('/api/channels/show.json.jbuilder',
+        locals: { channel: @channel }))
+
+      @channel.subscribers.each do |user|
+        if user != current_user
+          DirectChannel.broadcast_to(user, {command: 'fetch_new_channel',
+            data: channel})
+        end
+      end
     else
       render json: @channel.errors.full_messages, status: 402
     end

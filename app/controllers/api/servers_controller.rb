@@ -52,7 +52,7 @@ class Api::ServersController < ApplicationController
 
 
       if @server && @sub && @sub.save
-        @server = Server.find(params[:id]).includes(:channels, :subscribed_users, :messages)
+        @server = Server.includes(:channels, :subscribed_users, :messages).find(params[:id])
         # @server_channels = @server.channels
         # @server_users = @server.subscribed_users
 
@@ -80,6 +80,7 @@ class Api::ServersController < ApplicationController
     @sub = Serversubscription.find_by(user_id: current_user.id, server_id: params[:id])
     if @sub
       @server = @sub.server
+      @sub.destroy!
       server = JSON.parse(render('/api/servers/show.json.jbuilder'))
       @server.subscribed_users.each do |user|
         if user != current_user
@@ -98,7 +99,7 @@ class Api::ServersController < ApplicationController
       #
       #   end
       # end
-      render json: {}
+      # render json: {}
     else
       render json: ['You do not have this server'], status: 404
     end

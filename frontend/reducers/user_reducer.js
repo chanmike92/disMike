@@ -17,16 +17,17 @@ const userReducer = (oldState = {}, action) => {
     case RECEIVE_A_FRIEND:
       newState = merge({}, oldState);
 
-      newFriend = merge({}, oldState[action.user.id], action.user, {friendship_status: 'PENDING RECEIVE'});
-      return merge({}, oldState, newState, { [newFriend.id]: newFriend } );
+      newFriend = merge({}, action.user);
+      return merge({}, oldState, newState, newFriend );
     case INVITE_A_FRIEND:
       newState = merge({}, oldState);
       newFriend = merge({}, oldState[action.user.id], action.user, {friendship_status: 'PENDING ACCEPT'});
       return merge({}, oldState, newState, { [newFriend.id]: newFriend } );
     case UPDATE_A_FRIEND:
-      newState = merge({}, oldState);
-      newFriend = merge({}, oldState[action.user.id], action.user, {friendship_status: 'ACCEPTED'});
-      return merge({}, oldState, newState, { [newFriend.id]: newFriend } );
+    newState = merge({}, oldState);
+
+    newFriend = merge({}, action.user);
+    return merge({}, oldState, newState, newFriend );
     case REMOVE_A_FRIEND:
       newState = merge({}, oldState);
 

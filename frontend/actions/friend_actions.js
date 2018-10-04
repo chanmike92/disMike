@@ -36,9 +36,9 @@ export const removeAFriend = (id) => {
   };
 };
 
-export const fetchAFriend = () => dispatch => {
+export const fetchAFriend = (id) => dispatch => {
 
-  return APIUtil.fetchAllFriends().then((users) => dispatch(receiveAllFriends(users)), (errors) => {
+  return APIUtil.fetchAFriend(id).then((user) => dispatch(receiveAFriend(user)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
 };

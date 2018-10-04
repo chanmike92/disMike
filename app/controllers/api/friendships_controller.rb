@@ -20,8 +20,11 @@ class Api::FriendshipsController < ApplicationController
           @friendship1 = Friendship.new(friend1: current_user.id, friend2: @user.id, friendship_status: "PENDING RECEIVE")
           @friendship2 = Friendship.new(friend2: current_user.id, friend1: @user.id, friendship_status: "PENDING ACCEPT")
           if @friendship1.save && @friendship2.save
-            JSON.parse(render('/api/users/_user.json.jbuilder',
-              locals: { user: @user }))
+                DirectChannel.broadcast_to(@user, {command: 'fetch_friend',
+                  data: @friendship2.id})
+
+            JSON.parse(render('/api/users/_friend.json.jbuilder',
+              locals: { friendship: @friendship1 }))
           else
             render json: ['Something terrible happened while making friends'], status: 402
           end
@@ -45,10 +48,11 @@ class Api::FriendshipsController < ApplicationController
       @friendship1.update(friendship_status: "ACCEPTED")
       @friendship2.update(friendship_status: "ACCEPTED")
       @friendship1.save && @friendship2.save
-      user1 = JSON.parse(render('/api/users/_user.json.jbuilder',
-        locals: { user: @user }))
-      user2 = JSON.parse(render('/api/users/_user.json.jbuilder',
-        locals: { user: current_user }))
+      DirectChannel.broadcast_to(@user, {command: 'fetch_friend',
+        data: @friendship2.id})
+
+      JSON.parse(render('/api/users/_friend.json.jbuilder',
+      locals: { friendship: @friendship1 }))
     else
       render json: ['Already added as a friend'], status: 402
     end

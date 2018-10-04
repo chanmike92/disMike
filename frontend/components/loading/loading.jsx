@@ -15,7 +15,9 @@ const Loading = (props) => {
     "Gotta catch \'em all, POKEMAN", "THANK YOU MARIO, BUT THE PRINCESS IS IN ANOTHER CASTLE",
     "GIVE ME A JOB", "Jobs Done!", "Zug-zug dabu", "SCV Reporting", 'STILL TOO SOON',
     "OBJECTION!!!!!", "Activate: Nuclear Ghandi", "Would you kindly..?", "Activating Tactical Visor",
-    "RYU GA WAGA TEKI WO KURAU", "Setting Clocks to High Noon", "Mischief managed", "Well met!"
+    "RYU GA WAGA TEKI WO KURAU", "Setting Clocks to High Noon", "Mischief managed", "Well met!",
+    "Traveling to Hanamura", "Gotta get swifty", "Sending out resumes..", "Opening gateway to Onsites",
+    "Contact recruiters.."
   ];
   let currentMessage = loadingMessages[Math.floor(Math.random() * loadingMessages.length)];
 

@@ -6,6 +6,14 @@ export const fetchAllFriends = () => {
   });
 };
 
+export const fetchAFriend = (id) => {
+
+  return $.ajax({
+    method: 'GET',
+    url: `api/friendships/${id}`,
+  });
+};
+
 export const addNewFriend = (id) => {
 
   return $.ajax({

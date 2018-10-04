@@ -9,6 +9,7 @@ import Modal from '../modal/modal';
 import Dropdown from '../dropdown/dropdown';
 import ActionCable from 'actioncable';
 import { receiveAMessage } from '../../actions/message_actions';
+import { fetchADm } from '../../actions/dm_actions';
 import { addNewChannel, removeAChannel } from '../../actions/channel_actions';
 import { receiveAServer, removeAServer } from '../../actions/server_actions';
 import { receiveAUser } from '../../actions/user_actions';
@@ -50,8 +51,11 @@ class ActionCableContainer extends React.Component {
           case 'update_user':
             this.props.removeAChannel(data);
             break;
+          case 'fetch_friend':
+            this.props.fetchAFriend(data);
+            break;
           case 'fetch_dm':
-            this.props.removeAChannel(data);
+            this.props.fetchADm(data);
             break;
           case 'logout':
             this.props.logout();
