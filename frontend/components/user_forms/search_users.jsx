@@ -104,9 +104,10 @@ class SearchUser extends React.Component {
           this.props.history.push(`/@me/${dmId}`);
           this.props.closeModal();
         } else {
-          this.props.createDm(currentSearch.id).then((payload) => {
-              this.props.history.push(`/@me/${payload.payload.dm.id}`); })
-                .then(() => this.props.closeModal());
+          this.props.createDm(currentSearch.id)
+          .then((payload) => {
+              this.props.history.push(`/@me/${payload.payload.dm.id}`); });
+                this.props.closeModal();
         }
         break;
       default:
