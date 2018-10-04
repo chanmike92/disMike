@@ -4,6 +4,7 @@ import channelReducer from './channel_reducer';
 import messageReducer from './message_reducer';
 import userReducer from './user_reducer';
 import dmReducer from './dm_reducer';
+import friendReducer from './friend_reducer';
 
 
 const entitiesReducer = combineReducers({

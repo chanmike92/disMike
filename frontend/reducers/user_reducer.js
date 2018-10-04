@@ -30,9 +30,7 @@ const userReducer = (oldState = {}, action) => {
     return merge({}, oldState, newState, newFriend );
     case REMOVE_A_FRIEND:
       newState = merge({}, oldState);
-
-      const removedFriend = merge(newState[action.id], {friendship_status: null});
-
+      const removedFriend = merge({}, newState[action.id], {friendship_status: null});
       return merge(newState, { [action.id]: removedFriend });
     case RECEIVE_CURRENT_USER:
       return merge({}, oldState, { [action.user.id]: action.user });

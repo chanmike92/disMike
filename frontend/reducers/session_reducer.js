@@ -23,12 +23,14 @@ const sessionReducer = (oldState = {}, action) => {
     case RECEIVE_A_FRIEND:
       newState = merge({}, oldState);
       currentUser = newState.user;
-      friendIds = currentUser.friends_id.concat(action.user.id);
+      let user = Object.values(action.user)[0];
+      friendIds = currentUser.friends_id.concat(user.id);
       update = Object.assign({}, currentUser, { friends_id: friendIds });
       return Object.assign({}, oldState, {user: update});
     case REMOVE_A_FRIEND:
       newState = merge({}, oldState);
       currentUser = newState.user;
+
       friendIds = currentUser.friends_id.filter(id => id !== action.id);
       update = Object.assign({}, currentUser, { friends_id: friendIds });
       return Object.assign({}, oldState, {user: update});

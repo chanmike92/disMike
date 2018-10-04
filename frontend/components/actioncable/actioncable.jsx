@@ -13,6 +13,7 @@ import { fetchADm } from '../../actions/dm_actions';
 import { addNewChannel, removeAChannel } from '../../actions/channel_actions';
 import { receiveAServer, removeAServer } from '../../actions/server_actions';
 import { receiveAUser } from '../../actions/user_actions';
+import { fetchAFriend, removeAFriend } from '../../actions/friend_actions';
 import { deleteCurrentUser } from '../../actions/session_actions';
 
 class ActionCableContainer extends React.Component {
@@ -52,7 +53,12 @@ class ActionCableContainer extends React.Component {
             this.props.removeAChannel(data);
             break;
           case 'fetch_friend':
+
             this.props.fetchAFriend(data);
+            break;
+          case 'remove_friend':
+
+            this.props.removeAFriend(data);
             break;
           case 'fetch_dm':
             this.props.fetchADm(data);
@@ -98,7 +104,10 @@ const mapDispatchToProps = dispatch => {
   return ({
     receiveAMessage: (message) => dispatch(receiveAMessage(message)),
     receiveNewChannel: (payload) => dispatch(addNewChannel(payload)),
+    fetchADm: (id) => dispatch(fetchADm(id)),
+    fetchAFriend: (id) => dispatch(fetchAFriend(id)),
     removeAChannel: (payload) => dispatch(removeAChannel(payload)),
+    removeAFriend: (id) => dispatch(removeAFriend(id)),
     removeAServer: (payload) => dispatch(removeAServer(payload)),
     receiveAServer: (payload) => dispatch(receiveAServer(payload)),
     receiveAUser: (payload) => dispatch(receiveAUser(payload)),

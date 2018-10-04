@@ -20,6 +20,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = currentUser.id || "";
   const currentServerId = ownProps.serverId;
   const dms = state.entities.dms;
+
   return ({
     servers,
     dms,

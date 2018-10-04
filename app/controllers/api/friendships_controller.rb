@@ -21,7 +21,7 @@ class Api::FriendshipsController < ApplicationController
           @friendship2 = Friendship.new(friend2: current_user.id, friend1: @user.id, friendship_status: "PENDING ACCEPT")
           if @friendship1.save && @friendship2.save
                 DirectChannel.broadcast_to(@user, {command: 'fetch_friend',
-                  data: @friendship2.id})
+                  data: current_user.id})
 
             JSON.parse(render('/api/users/_friend.json.jbuilder',
               locals: { friendship: @friendship1 }))
@@ -49,7 +49,7 @@ class Api::FriendshipsController < ApplicationController
       @friendship2.update(friendship_status: "ACCEPTED")
       @friendship1.save && @friendship2.save
       DirectChannel.broadcast_to(@user, {command: 'fetch_friend',
-        data: @friendship2.id})
+        data: current_user.id})
 
       JSON.parse(render('/api/users/_friend.json.jbuilder',
       locals: { friendship: @friendship1 }))
@@ -59,14 +59,22 @@ class Api::FriendshipsController < ApplicationController
   end
 
   def show
+
+    @friendship = Friendship.find_by(friend1: current_user.id, friend2: params[:id])
+
+    JSON.parse(render('/api/users/_friend.json.jbuilder',
+    locals: { friendship: @friendship }))
   end
 
   def destroy
+    @user = User.find(params[:id])
     @friendship1 = Friendship.find_by(friend1: current_user.id, friend2: params[:id])
     @friendship2 = Friendship.find_by(friend2: current_user.id, friend1: params[:id])
     if @friendship1 && @friendship2
       @friendship1.destroy!
       @friendship2.destroy!
+      DirectChannel.broadcast_to(@user, {command: 'remove_friend',
+        data: @friendship1.friend1})
       render json: {}
     else
       render json: ['Not friends with this user']

@@ -11,6 +11,7 @@ export const fetchAFriend = (id) => {
   return $.ajax({
     method: 'GET',
     url: `api/friendships/${id}`,
+    data: { id },
   });
 };
 
