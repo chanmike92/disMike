@@ -39,7 +39,7 @@ class FriendShow extends React.Component {
           break;
           case "PENDING":
           if (user.friendship_status !== "ACCEPTED") {
-            debugger
+
             friends.push(friend);
           }
           break;
