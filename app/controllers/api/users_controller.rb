@@ -60,7 +60,7 @@ class Api::UsersController < ApplicationController
     @user = current_user
     @user.update(online_status: true)
     @dms = @user.dmchannels.includes(:subscribers, :messages)
-    @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :messages)
+    @servers = current_user.subscribed_servers.includes(:channels, :subscribed_users, :subscriptions, :messages)
 
     @friendships = current_user.friendships.includes(:friend)
 
