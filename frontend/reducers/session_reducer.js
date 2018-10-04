@@ -26,7 +26,6 @@ const sessionReducer = (oldState = {}, action) => {
       let newuser = Object.values(action.user)[0];
       friendIds = currentUser.friends_id;
       friendIds.push(newuser.id);
-
       friendIds = friendIds.filter(function (value, index, self) {
           return self.indexOf(value) === index;
         });

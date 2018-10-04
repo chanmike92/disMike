@@ -23,7 +23,6 @@ class ChannelUpdate extends React.Component {
     const channel = Object.assign({}, this.state);
 
     this.props.processForm(channel)
-    .then(() => this.props.fetchAServer(this.props.serverId))
         .then(() => {this.props.closeModal();});
   }
 
