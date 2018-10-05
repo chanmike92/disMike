@@ -4,7 +4,8 @@ import { Link, withRouter } from 'react-router-dom';
 import { fetchAllUsers } from '../../actions/user_actions';
 import { fetchAServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
-import { openModal } from '../../actions/modal_actions';
+import { openModal, closeModal } from '../../actions/modal_actions';
+import { makeNewDm, updateDm } from '../../actions/dm_actions';
 
 
 
@@ -30,7 +31,11 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
-    fetchAllUsers: (id) => dispatch(fetchAllUsers(id))
+    fetchAllUsers: (id) => dispatch(fetchAllUsers(id)),
+    makeNewDm: (id) => dispatch(makeNewDm(id)),
+    closeModal: () => {
+      dispatch(closeModal());
+    }
   });
 };
 

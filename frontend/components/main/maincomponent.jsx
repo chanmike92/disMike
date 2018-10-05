@@ -78,7 +78,7 @@ class MainComponent extends React.Component{
       }
     }
 
-    console.log(`serverId: ${nextProps.serverId}, channelId: ${nextProps.channelId}`);
+    // console.log(`serverId: ${nextProps.serverId}, channelId: ${nextProps.channelId}`);
   }
 
   handleSelect(selected) {

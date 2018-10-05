@@ -21,6 +21,8 @@ class UserShow extends React.Component {
             userId={ userId }
             id= { userId }
             key={ idx }
+            closeModal={ this.props.closeModal }
+            makeNewDm={ this.props.makeNewDm }
             currentServerOwnerId={this.props.currentServerOwnerId}
           />);
         } else {
@@ -30,6 +32,8 @@ class UserShow extends React.Component {
             userId={ userId }
             id= { userId }
             key={ idx }
+            closeModal={ this.props.closeModal }
+            makeNewDm={ this.props.makeNewDm }
             currentServerOwnerId={this.props.currentServerOwnerId}
           />);
         }
