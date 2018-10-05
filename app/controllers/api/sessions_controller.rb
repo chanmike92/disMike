@@ -2,8 +2,8 @@ class Api::SessionsController < ApplicationController
 
   def create
     @session_user = User.find_by_credentials(params[:user][:email], params[:user][:password])
-
     if @session_user
+      DirectChannel.broadcast_to(@session_user, {command: 'logout'})
       login(@session_user)
       user = JSON.parse(render('/api/users/_user.json.jbuilder',
         locals: { user: @session_user }))
