@@ -14,7 +14,7 @@ export const receiveAllServers = (payload) => {
 };
 
 export const receiveAServer = (payload) => {
-  
+
   return {
     type: RECEIVE_A_SERVER,
     payload
@@ -70,6 +70,13 @@ export const makeNewServer = (server) => dispatch => {
 export const updateServer = (formData, id) => dispatch => {
 
   return APIUtil.updateAServer(formData, id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
+
+    return dispatch(receiveErrors(errors.responseJSON));});
+  };
+
+export const updateServerName = (server, id) => dispatch => {
+
+  return APIUtil.updateAServerName(server, id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
   };

@@ -83,9 +83,7 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
       case 'updateServer':
         component =
         <div className='modal-container'>
-          <div className='channel-update-form-container'>
             <ServerUpdateContainer server={ server }/>
-          </div>
         </div>;
       break;
       case 'searchUsers':
@@ -119,7 +117,6 @@ const mapStateToProps = (state, ownProps) => {
   const server = state.entities.servers[id];
   const channel = state.entities.channels[id];
   const currentUser = state.session.user;
-
   return {
     id,
     modal,

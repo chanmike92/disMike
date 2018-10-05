@@ -24,13 +24,14 @@ const ServerIndexDropdown = (props) => {
   const deleteServer = props.server.owner_id === props.currentUserId ?
   <div className='dropdown-index-item' onClick={ () => {
       props.deleteServer(props.serverId);
+      props.history.push('/@me');
     } }>
     <div className='dropdown-icon delete-server-icon'></div>
     <label className='dropdown-index-title'>Delete Server</label>
   </div>
   :
   <div className='dropdown-index-item' onClick={ () => {
-        props.leaveServer(props.serverId); } }>
+        props.leaveServer(props.serverId).then(() => props.history.push('/@me')); } }>
     <div className='dropdown-icon leave-server-icon'></div>
     <label className='dropdown-index-title'>Leave Server</label>
   </div>;

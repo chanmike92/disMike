@@ -15,7 +15,7 @@ class ServerUpdate extends React.Component {
 
   componentDidMount() {
     // this.props.clearErrors();
-    this.setState(this.props.server);
+    this.setState({name: this.props.server.name, image_url: this.props.server.image_url});
   }
 
   handleFileUpload(e) {
@@ -32,12 +32,18 @@ class ServerUpdate extends React.Component {
 
   handleSubmit() {
     const file = this.state.imageFile;
-    const formData = new FormData();
-    formData.append("server[name]", this.state.name);
+
+
     if (file) {
+      const formData = new FormData();
+      formData.append("server[name]", this.state.name);
       formData.append("server[image]",file);
-      this.props.processForm(formData, this.props.serverId)
+      this.props.updateServer(formData, this.props.serverId)
         .then(() => this.props.closeModal());
+    } else if (this.state.name !== this.props.server.name) {
+      this.props.updateServerName({name: this.state.name}, this.props.serverId).then(() => this.props.closeModal());
+    } else {
+      this.props.closeModal();
     }
   }
 

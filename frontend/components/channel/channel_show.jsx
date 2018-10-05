@@ -68,7 +68,7 @@ class ChannelShow extends React.Component {
     let channels = this.renderChannels();
 
     const createButton = (this.props.currentUserId === this.props.currentServerOwnerId) ?
-      <button className='fafaplus' onClick={ this.props.createForm }>
+      <button className='fafaplus' onClick={ () => this.props.createForm(this.props.serverId) }>
         +
       </button>
       :
@@ -104,9 +104,7 @@ class ChannelShow extends React.Component {
             </button>
           </div>
           <ServerDropdownContainer
-            id={ this.props.serverId }
             server={ this.props.currentServer }
-            currentUser={ this.props.currentUser }
             active={ this.props.dropdown }
             />
           <div className='bottom-channels-container' onContextMenu={ this.handleContextClick }>

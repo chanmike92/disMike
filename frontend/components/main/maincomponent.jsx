@@ -77,6 +77,8 @@ class MainComponent extends React.Component{
         this.props.history.replace(`/@me/`);
       }
     }
+
+    console.log(`serverId: ${nextProps.serverId}, channelId: ${nextProps.channelId}`);
   }
 
   handleSelect(selected) {

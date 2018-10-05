@@ -1,7 +1,7 @@
 import ServerUpdate from './server_update';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { updateServer, receiveErrors, fetchAServer } from '../../actions/server_actions';
+import { updateServer, receiveErrors, fetchAServer, updateServerName } from '../../actions/server_actions';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 
@@ -22,7 +22,8 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = dispatch => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
-    processForm: (formData, id) => dispatch(updateServer(formData, id)),
+    updateServer: (formData, id) => dispatch(updateServer(formData, id)),
+    updateServerName: (server, id) => dispatch(updateServerName(server, id)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });

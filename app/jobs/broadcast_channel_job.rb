@@ -14,7 +14,7 @@ class BroadcastChannelJob < ApplicationJob
 
   # private
   def render_channel(channel)
-    JSON.parse(ApplicationController.renderer.render('/api/channels/_channel.json.jbuilder', locals: { channel: channel }))
+    JSON.parse(ApplicationController.renderer.render('/api/channels/show.json.jbuilder', locals: { channel: channel }))
   end
 
 end

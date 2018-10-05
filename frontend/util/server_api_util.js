@@ -25,6 +25,15 @@ export const updateAServer = (formData, id) => {
   });
 };
 
+export const updateAServerName = (server, id) => {
+
+  return $.ajax({
+    method: 'PATCH',
+    url: `api/servers/${ id }`,
+    data: { server }
+  });
+};
+
 export const makeNewServer = (server) => {
 
   return $.ajax({
@@ -49,6 +58,7 @@ export const deleteServer = (id) => {
   return $.ajax({
     url: `api/servers/${id}`,
     method: 'DELETE',
+    data: {id}
   });
 };
 

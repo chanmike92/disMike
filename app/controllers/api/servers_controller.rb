@@ -118,11 +118,13 @@ class Api::ServersController < ApplicationController
   end
 
   def update
-
     @server = current_user.owned_servers.find(params[:id])
-
+    debugger
     @server.name = params[:server][:name]
-    @server.image = params[:server][:image]
+    if params[:server][:image]
+      @server.image = params[:server][:image]
+    end
+
     if @server.save
 
       server = JSON.parse(render('/api/servers/show.json.jbuilder'))
@@ -173,12 +175,11 @@ class Api::ServersController < ApplicationController
       if @server.owner_id == current_user.id
         # @servers = current_user.subscribed_servers
         # render 'api/servers/index'
-        server = JSON.parse(render('/api/servers/show.json.jbuilder'))
         @server.subscribed_users.each do |user|
           if user != current_user
         #     @message.broadcast(user)
             DirectChannel.broadcast_to(user, {command: 'delete_server',
-              data: server})
+              data: @server.id})
             # BroadcastMessageJob.perform_now @message, user
           end
         end
