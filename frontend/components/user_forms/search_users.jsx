@@ -83,6 +83,7 @@ class SearchUser extends React.Component {
     let currentSearch = this.state.searches[this.state.index];
     // e.preventDefault();
     e.stopPropagation();
+
     switch(currentSearch.type) {
       case "server":
           this.props.closeModal();
@@ -99,15 +100,16 @@ class SearchUser extends React.Component {
           this.props.history.push(`/@me/${dmId}`);
           this.props.closeModal();
         }
-        else if (dmId) {
-          this.props.updateDm(dmId);
-          this.props.history.push(`/@me/${dmId}`);
-          this.props.closeModal();
+        else if (dmId ) {
+          this.props.updateDm(dmId).then(() => {
+            this.props.history.push(`/@me/${dmId}`);
+            this.props.closeModal();
+          });
         } else {
-          this.props.createDm(currentSearch.id);
-          // .then((payload) => {
-          //     this.props.history.push(`/@me/${payload.payload.dm.id}`); });
-                this.props.closeModal();
+          this.props.createDm(currentSearch.id).then((payload) => {
+              this.props.history.push(`/@me/${payload.payload.dm.id}`);
+              this.props.closeModal();
+            });
         }
         break;
       default:
@@ -288,7 +290,9 @@ class SearchUser extends React.Component {
           displayName={ currentSearch.display_name || ""}
           type={ currentSearch.type }
           handleHover={ this.handleHover }
-          handleClick= { this.handleIndexAction }
+          createDm={ this.props.createDm }
+          closeModal={ this.props.closeModal }
+          handleIndexAction={ this.handleIndexAction }
           index={ i }
           active={ active }
         />

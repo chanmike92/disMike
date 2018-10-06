@@ -46,9 +46,6 @@ class ActionCableContainer extends React.Component {
           case 'fetch_user':
             this.props.receiveAUser(data);
             break;
-          case 'remove_user':
-            this.props.removeAChannel(data);
-            break;
           case 'update_user':
             this.props.removeAChannel(data);
             break;

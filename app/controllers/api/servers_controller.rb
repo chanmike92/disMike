@@ -119,7 +119,7 @@ class Api::ServersController < ApplicationController
 
   def update
     @server = current_user.owned_servers.find(params[:id])
-    debugger
+
     @server.name = params[:server][:name]
     if params[:server][:image]
       @server.image = params[:server][:image]

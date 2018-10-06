@@ -11,18 +11,30 @@ class Api::DmchannelsController < ApplicationController
   end
 
   def create
-    @dm = Dmchannel.create()
-    @dmsub1 = Dmsubscriber.new(dm_id: @dm.id, user_id: current_user.id, subscribed: true);
-    @dmsub2 = Dmsubscriber.new(dm_id: @dm.id, user_id: params[:id], subscribed: false);
-    if @dm.save && @dmsub1.save && @dmsub2.save
-      @dm.subscribers.each do |subscriber|
-        if subscriber != current_user
-          DirectChannel.broadcast_to subscriber, command: 'fetch_dm', data: @dm.id
+
+    @user = User.find(params[:id])
+    if @user
+      @dm = current_user.find_direct_dm(@user)
+      if @dm
+        render 'api/dms/show'
+      else
+        @dm = Dmchannel.create()
+        @dmsub1 = Dmsubscriber.new(dm_id: @dm.id, user_id: current_user.id, subscribed: true);
+        @dmsub2 = Dmsubscriber.new(dm_id: @dm.id, user_id: params[:id], subscribed: false);
+
+        if @dm.save && @dmsub1.save && @dmsub2.save
+          @dm.subscribers.each do |subscriber|
+            if subscriber != current_user
+              DirectChannel.broadcast_to subscriber, command: 'fetch_dm', data: @dm.id
+            end
+          end
+          render 'api/dms/show'
+        else
+          render json: {errors: ['Something went wrong with Dm']}, status: 402
         end
       end
-      render 'api/dms/show'
     else
-      render json: {errors: ['Something went wrong with Dm']}, status: 402
+      render json: {errors: ['User not found']}, status: 404
     end
   end
 

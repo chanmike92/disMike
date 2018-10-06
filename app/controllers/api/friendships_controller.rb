@@ -9,7 +9,7 @@ class Api::FriendshipsController < ApplicationController
   def create
     # if @friendship1.save && @friendship2.save
       # render 'api/users/show'
-    @user = params[:id][0] == '#' ? User.find_by(username: params[:id][1..-1]) : User.find_by(id: params[:id])
+    @user = params[:id][0] == '@' ? User.where('lower(username) = ?', params[:id][1..-1]).first : User.find_by(id: params[:id])
 
     if @user
       if @user == current_user
