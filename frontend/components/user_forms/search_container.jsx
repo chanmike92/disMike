@@ -10,11 +10,11 @@ const mapStateToProps = (state, ownProps) => {
   const channelId = ownProps.channelId;
   const currentUser = state.session.user || {};
   const currentUserId = currentUser.id;
-  const friendList = currentUser.friends_id || [];
-  const friendCount = friendList.length || "";
+  // const friendList = currentUser.friends_id || [];
+  // const friendCount = friendList.length || "";
   const dms = state.entities.dms;
   // const dms = Object.values(state.entities.dms) || [];
-  const currentDm = state.entities.dms[channelId];
+  // const currentDm = state.entities.dms[channelId];
   const users = Object.values(state.entities.users).filter(user => user.id !== currentUserId) || [];
   const servers = Object.values(state.entities.servers) || [];
   const channels = Object.values(state.entities.channels) || [];
@@ -24,10 +24,7 @@ const mapStateToProps = (state, ownProps) => {
     servers,
     channels,
     dms,
-    currentDm,
     currentUser,
-    friendList,
-    friendCount,
     channelId,
 
   });
@@ -36,14 +33,23 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     createDm: (id) => {
-      dispatch(makeNewDm(id));
+      dispatch(makeNewDm(id)).then((payload) => {
+        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+        dispatch(closeModal());
+      });
     },
     updateDm: (id) => {
-      dispatch(updateDm(id));
+      dispatch(updateDm(id)).then((payload) => {
+        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+        dispatch(closeModal());
+      });
     },
     closeModal: () => {
       dispatch(closeModal());
-    }
+    },
+    openModal: (id) => {
+      dispatch(openModal('deleteServer', id));
+    },
   });
 };
 

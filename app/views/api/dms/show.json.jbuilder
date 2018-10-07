@@ -3,5 +3,5 @@ json.dm do
 end
 
 json.users do
-  json.partial 'api/users/userindex', users: @dm.subscribers
+  json.partial! 'api/users/userindex', users: @dm.subscribers
 end

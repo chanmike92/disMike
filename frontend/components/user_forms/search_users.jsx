@@ -7,7 +7,7 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class SearchUser extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {name: '', index: 0, searches: []};
+    this.state = {name: '', index: 0, searches: [], users: [], channels: [], servers: []};
     this.firedEnterKey = false;
     this.handleFocusClick = this.handleFocusClick.bind(this);
     this.resetEnterKey = this.resetEnterKey.bind(this);
@@ -25,7 +25,25 @@ class SearchUser extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({name: '@'});
+    this.setState({
+      name: '@',
+      users: this.props.users,
+      channels: this.props.channels,
+      servers: this.props.servers,
+    });
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps !== this.props) {
+      this.setState({
+        users: nextProps.users,
+        channels: nextProps.channels,
+        servers: nextProps.servers,
+      }, () => this.setState({
+        searches: this.renderSearchResults(this.state.name),
+        index: this.state.index
+      }));
+    }
   }
 
   handleInput(input) {
@@ -101,15 +119,16 @@ class SearchUser extends React.Component {
           this.props.closeModal();
         }
         else if (dmId ) {
-          this.props.updateDm(dmId).then(() => {
-            this.props.history.push(`/@me/${dmId}`);
-            this.props.closeModal();
-          });
+          this.props.updateDm(dmId);
+          // .then(() => {
+          //   this.props.history.push(`/@me/${dmId}`);
+          //   this.props.closeModal();
+          // });
         } else {
-          this.props.createDm(currentSearch.id).then((payload) => {
-              this.props.history.push(`/@me/${payload.payload.dm.id}`);
-              this.props.closeModal();
-            });
+
+          this.props.createDm(currentSearch.id);
+              // this.props.history.push(`/@me/${payload.payload.dm.id}`);
+            // });
         }
         break;
       default:
@@ -129,7 +148,7 @@ class SearchUser extends React.Component {
       keys: [
         "username"
     ]};
-    let fuse = new Fuse(this.props.users, options);
+    let fuse = new Fuse(this.state.users, options);
     return fuse.search(query) || [];
   }
 
@@ -145,7 +164,7 @@ class SearchUser extends React.Component {
       keys: [
         "name"
     ]};
-    let fuse = new Fuse(this.props.servers, options);
+    let fuse = new Fuse(this.state.servers, options);
     return fuse.search(query) || [];
   }
 
@@ -197,7 +216,7 @@ class SearchUser extends React.Component {
       keys: [
         "name"
     ]};
-    let fuse = new Fuse(this.props.channels, options);
+    let fuse = new Fuse(this.state.channels, options);
     return fuse.search(query) || [];
   }
 

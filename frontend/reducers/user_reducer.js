@@ -24,10 +24,9 @@ const userReducer = (oldState = {}, action) => {
       newFriend = merge({}, oldState[action.user.id], action.user, {friendship_status: 'PENDING ACCEPT'});
       return merge({}, oldState, newState, { [newFriend.id]: newFriend } );
     case UPDATE_A_FRIEND:
-    newState = merge({}, oldState);
-
-    newFriend = merge({}, action.user);
-    return merge({}, oldState, newState, newFriend );
+      newState = merge({}, oldState);
+      newFriend = merge({}, action.user);
+      return merge({}, oldState, newState, newFriend );
     case REMOVE_A_FRIEND:
       newState = merge({}, oldState);
       const removedFriend = merge({}, newState[action.id], {friendship_status: null});

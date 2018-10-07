@@ -62,7 +62,8 @@ export const makeNewDm = (id) => dispatch => {
 
   return APIUtil.makeNewDm(id).then((payload) => dispatch(receiveADm(payload)), (errors) => {
 
-    return dispatch(receiveErrors(errors.responseJSON));});
+    return dispatch(receiveErrors(errors.responseJSON));
+    });
 };
 
 export const updateDm = (dm) => dispatch => {

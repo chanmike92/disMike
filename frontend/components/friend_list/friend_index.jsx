@@ -33,10 +33,17 @@ const FriendIndex = (props) => {
 
     if (server && commonServers.length < 6) {
       commonServers.push(
-        <Link key={ i } className='mutual-server-index' onClick={ (e) => { e.preventDefault(); e.stopPropagation();
-            props.history.push(`/${props.user.server_ids[i]}`); return false;} } to={`/${server.id}/`}>
-          { server.image_url? <img className='server-icon-pic' src={ server.image_url } /> :
-          <div className='server-icon-pic'>{ server.display_name }</div> }
+        <Link key={ i } className='mutual-server-index' onClick={ (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            props.history.push(`/${props.user.server_ids[i]}`);
+            return false;} }
+            to={`/${server.id}/`}>
+          { server.image_url ? 
+            <img className='server-icon-pic' src={ server.image_url } />
+            :
+            <div className='server-icon-pic'>{ server.display_name }</div>
+          }
         </Link>
       );
     }

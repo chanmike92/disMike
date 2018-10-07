@@ -3,9 +3,11 @@ json.extract! user, :id, :username, :email, :online_status
 json.image_url asset_path(user.image.url)
 json.server_ids user.subscribed_servers.pluck(:id).sort!
 json.friends_id user.friends.pluck(:id).sort!
-if user == current_user
+if user != current_user
+  print "hello"
   json.dmId user.find_direct_dm_id(current_user) || nil
 else
+  print "bye"
   json.dmId nil
 end
 json.type "user"
