@@ -28,11 +28,15 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     fetchAllUsers: (id) => dispatch(fetchAllUsers(id)),
-    makeNewDm: (id) => dispatch(makeNewDm(id)),
+    makeNewDm: (id) => {
+      dispatch(makeNewDm(id)).then((payload) => {
+        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+        });
+      },
     closeModal: () => {
       dispatch(closeModal());
     }

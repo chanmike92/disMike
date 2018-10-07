@@ -7,23 +7,29 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
-  const currentServer = ownProps.server || {};
-  const currentServerId = currentServer.id;
-  const serverName = currentServer.name || "";
+  const server = ownProps.server || {};
+  const serverId = server.id;
+  const serverName = server.name || "";
 
   // errors: state.errors.channels,
 
   return ({
-    currentServer,
-    currentServerId,
+    server,
+    serverId,
     serverName,
   });
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     leaveServer: (id) => dispatch(leaveServer(id)),
+    leaveCurrentServer: (id) => {
+      dispatch(leaveServer(id)).then((payload) => {
+        ownProps.history.push(`/@me/`);
+        dispatch(closeModal());
+      });
+    },
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });

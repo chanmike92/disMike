@@ -2,15 +2,8 @@ import React from 'react';
 import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const ServerLeave = (props) => {
-  const leaveServer = () => {
-    props.leaveServer(props.currentServerId)
-    .then(() => {
-        props.history.push(`/@me/`);
-      })
-      .then(() => {
-          props.closeModal();
-        });
-  };
+  const leaveServer = props.currentServer.id === props.server.id ?
+    () => props.leaveCurrentServer(props.server.id) : () => props.leaveServer(props.server.id);
 
   const goBack = () => {
     props.closeModal();
@@ -22,7 +15,7 @@ const ServerLeave = (props) => {
           <label className='modal-title'>Leaving?</label>
           <div className='channel-delete-message'>
             <label className='server-label'>Are you sure you want to leave {props.serverName}?</label>
-          </div>
+          </div> props.
         </div>
         <div className="yes-no-option channel-delete-yes-no">
           <button className='submit-button yes' onClick={ leaveServer }>Yes</button>

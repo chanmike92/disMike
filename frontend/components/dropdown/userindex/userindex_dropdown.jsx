@@ -3,32 +3,44 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const UserIndexDropdown = (props) => {
 
-    const channelOptions = props.server.owner_id === props.currentUser.id ?
-    <div>
+  const serverOptions = props.server.owner_id === props.currentUser.id ?
+    <div className='dropdown-index-item' onClick={() => {
+        props.deleteChannel(props.channel.id);} }>
+      <label className='dropdown-index-title'>Kick</label>
+    </div>
+  :
+  <div></div>;
+
+  const friendAction = props.currentUser.friends_id.includes?(props.user.id) ?
+    <div className='dropdown-index-item' onClick={() => {
+        props.deleteChannel(props.channel.id);} }>
+      <label className='dropdown-index-title'>Remove Friend</label>
+    </div>
+    :
+    <div className='dropdown-index-item' onClick={() => {
+        props.deleteChannel(props.channel.id);} }>
+      <label className='dropdown-index-title'>Add Friend</label>
+    </div>
+
+  return (
+    <div className='server-index-dropdown-container'>
       <div className='dropdown-index-item' onClick={() => {
           props.cloneChannel(props.channel, props.serverId);}}>
-        <label className='dropdown-index-title'>Clone Channel</label>
+        <label className='dropdown-index-title'>Profile</label>
       </div>
       <div className='dropdown-index-item' onClick={() => {
           props.updateChannel(props.channel.id);} }>
-        <label className='dropdown-index-title'>Edit Channel</label>
+        <label className='dropdown-index-title'>Message</label>
       </div>
       <div className='dropdown-divider'></div>
       <div className='dropdown-index-item' onClick={() => {
           props.deleteChannel(props.channel.id);} }>
-        <label className='dropdown-index-title'>Delete Channel</label>
+        <label className='dropdown-index-title'>Invite to Server</label>
       </div>
-    </div> : <div></div>;
-
-    return (
-      <div className='server-index-dropdown-container'>
-        <div className='dropdown-index-item'>
-          <label className='dropdown-index-title'>Instant Invite</label>
-        </div>
-        <div className='dropdown-divider'></div>
-        { channelOptions }
-      </div>
-    );
+      <div className='dropdown-divider'></div>
+      { serverOptions }
+    </div>
+  );
 };
 
 export default withRouter(UserIndexDropdown);

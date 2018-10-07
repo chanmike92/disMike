@@ -39,7 +39,7 @@ const FriendIndex = (props) => {
             props.history.push(`/${props.user.server_ids[i]}`);
             return false;} }
             to={`/${server.id}/`}>
-          { server.image_url ? 
+          { server.image_url ?
             <img className='server-icon-pic' src={ server.image_url } />
             :
             <div className='server-icon-pic'>{ server.display_name }</div>
@@ -49,13 +49,16 @@ const FriendIndex = (props) => {
     }
   }
 
-  let makeDm = (props.user.dmId && props.dm.subscription) ? (e) => {
+  let makeDm = (props.user.dmId) ? (e) => {
     e.stopPropagation();
     e.preventDefault();
-    props.history.push(`/@me/${props.user.dmId}`);}
-  : (e) => { props.createDm(e, props.id)
-    .then((payload) => {
-      props.history.push(`/@me/${payload.payload.dm.id}`); }); };
+    props.updateDm(props.user.dmId);
+  }
+  : (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+    props.createDm(props.id);
+  };
 
 
     return (

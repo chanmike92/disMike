@@ -26,6 +26,7 @@ class FriendShow extends React.Component {
           key={ i }
           dm={ dm }
           createDm={ this.props.createDm }
+          updateDm={ this.props.updateDm }
           addFriend={ this.props.addFriend }
           acceptFriend={ this.props.acceptFriend }
           deleteFriend={ this.props.deleteFriend }

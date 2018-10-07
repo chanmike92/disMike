@@ -5,7 +5,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { fetchAllServers, fetchAServer, deleteServer } from '../../actions/server_actions';
 import { fetchAllFriends, addNewFriend, deleteFriend, acceptFriend } from '../../actions/friend_actions';
 import { connect } from 'react-redux';
-import { makeNewDm } from '../../actions/dm_actions';
+import { makeNewDm, updateDm } from '../../actions/dm_actions';
 import { openModal } from '../../actions/modal_actions';
 
 
@@ -39,10 +39,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     handleSelect: (selector) => ownProps.handleSelect(selector),
     fetchAllFriends: () => dispatch(fetchAllFriends()),
-    createDm: (e, id) => {
-      e.stopPropagation();
-      e.preventDefault();
-      dispatch(makeNewDm(id));},
+    createDm: (id) => {
+        dispatch(makeNewDm(id)).then((payload) => {
+          ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+        });
+      },
+    updateDm: (id) => {
+      dispatch(updateDm(id)).then((payload) => {
+        console.log(id);
+        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+      });
+    },
     addNewFriend: (id) => dispatch(openModal('addFriend', id)),
     addFriend: (e, id) => {
       e.stopPropagation();

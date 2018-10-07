@@ -20,10 +20,16 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     deleteServer: (id) => dispatch(deleteServer(id)),
+    deleteCurrentServer: (id) => {
+      dispatch(deleteServer(id)).then((payload) => {
+        ownProps.history.push(`/@me/`);
+        dispatch(closeModal());
+      });
+    },
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });

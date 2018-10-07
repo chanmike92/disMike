@@ -1,7 +1,9 @@
-import ChannelIndexDropdown from './channelindex_dropdown';
+import UserIndexDropdown from './userindex_dropdown';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { updateChannel, receiveErrors, makeNewChannel } from '../../../actions/channel_actions';
+import { makeNewDm, updateDm } from '../../../actions/dm_actions';
+import { fetchAllFriends, addNewFriend, deleteFriend, acceptFriend } from '../../../actions/friend_actions';
 import { connect } from 'react-redux';
 import { openModal, closeModal,  } from '../../../actions/modal_actions';
 
@@ -25,8 +27,30 @@ const mapStateToProps = (state, ownProps) => {
   });
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
+    createDm: (id) => {
+      dispatch(makeNewDm(id)).then((payload) => {
+        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+        dispatch(closeModal());
+      });
+    },
+    updateDm: (id) => {
+      dispatch(updateDm(id)).then((payload) => {
+        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+        dispatch(closeModal());
+      });
+    },
+    deleteFriend: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+      dispatch(deleteFriend(id));
+    },
+    addFriend: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+       dispatch(addNewFriend(id));
+     },
     cloneChannel: (channel, id) => dispatch(makeNewChannel(channel, id)),
     updateChannel: (id) => dispatch(openModal('updateChannel', id)),
     deleteChannel: (id) => dispatch(openModal('deleteChannel', id)),

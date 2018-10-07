@@ -12,12 +12,8 @@ const UserIndex = (props) => {
 
   const onlineStatus = props.user.online_status ? "online-status-icon green-back" : "online-status-icon grey-back";
   const onlineImage = props.user.online_status ? "" : "offline-grey";
-
   return (
-    <li className="user-items" onClick={ () => props.makeNewDm(props.userId).then((payload) => {
-        props.history.push(`/@me/${payload.payload.dm.id}`);
-        props.closeModal();
-      }) }>
+    <li className="user-items" >
       <div className='user-image-name'>
         <div className='user-image-icons'>
           <img className={`profile-picture ${onlineImage}`} src={ props.user.image_url } />

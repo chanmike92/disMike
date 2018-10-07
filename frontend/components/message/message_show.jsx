@@ -226,7 +226,7 @@ class MessageShow extends React.Component {
               <div className='bottom-container-divider'>
                 <div className={`bottom-message-container ${chatSize}`}>
                   <ul id='messages' ref='messageList' className='message-list-container'
-                    onContextMenu={ this.props.handleNoContextClick }>
+                    onContextMenu={ this.props.dropdownType ? (e) => this.props.closeDropdown(e) : this.props.handleNoContextClick }>
                     {messages}
                   </ul>
                   <div className='message-form'>
