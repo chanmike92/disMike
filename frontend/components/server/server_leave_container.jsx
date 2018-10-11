@@ -10,10 +10,11 @@ const mapStateToProps = (state, ownProps) => {
   const server = ownProps.server || {};
   const serverId = server.id;
   const serverName = server.name || "";
+  const currentServer = ownProps.currentServer;
 
   // errors: state.errors.channels,
-
   return ({
+    currentServer,
     server,
     serverId,
     serverName,
@@ -23,12 +24,14 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
-    leaveServer: (id) => dispatch(leaveServer(id)),
+    leaveServer: (id) => dispatch(leaveServer(id)).then(() =>
+      dispatch(closeModal())
+      ),
     leaveCurrentServer: (id) => {
-      dispatch(leaveServer(id)).then((payload) => {
-        ownProps.history.push(`/@me/`);
-        dispatch(closeModal());
-      });
+      ownProps.history.replace(`/@me/`);
+      dispatch(leaveServer(id)).then(() =>
+        dispatch(closeModal())
+      );
     },
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())

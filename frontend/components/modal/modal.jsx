@@ -15,8 +15,7 @@ import ServerJoinContainer from '../server/server_join_container';
 import FriendAddContainer from '../friend_list/friend_add_container';
 import LogoutConfirmationContainer from '../user_forms/logout_container';
 
-const Modal = ({ modal, serverId, server, channelId, channel, closeModal,
-  currentUser, handleNoContextClick, currentServer }) => {
+const Modal = ({ modal, serverId, server, channelId, channel, closeModal, currentUser, handleNoContextClick, currentServer }) => {
 
   if (!modal) {
     return null;
@@ -119,14 +118,15 @@ const mapStateToProps = (state, ownProps) => {
   const server = servers[id];
   const channel = state.entities.channels[id];
   const currentUser = state.session.user;
-  const currentServerId = (ownProps.location.pathname.split('/')[1]);
+  const currentServerId = parseInt(ownProps.location.pathname.split('/')[1]);
   const currentServer = servers[currentServerId] || {};
   return {
     id,
     modal,
     server,
     channel,
-    currentUser
+    currentUser,
+    currentServer,
   };
 };
 

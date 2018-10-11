@@ -25,8 +25,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     deleteServer: (id) => dispatch(deleteServer(id)),
     deleteCurrentServer: (id) => {
-      dispatch(deleteServer(id)).then((payload) => {
-        ownProps.history.push(`/@me/`);
+      ownProps.history.push(`/@me/`);
+      dispatch(deleteServer(id)).then(() => {
         dispatch(closeModal());
       });
     },

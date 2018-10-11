@@ -39,7 +39,7 @@ class MainComponent extends React.Component{
 
     // check if server exists
     if (nextProps.servers[nextProps.serverId]) {
-      debugger
+      // debugger
       // if (nextProps.servers[nextProps.serverId].user_ids &&
       //   nextProps.servers[nextProps.serverId].user_ids.includes(this.props.currentUser.id)) {
         // check if server contains channel id, if true change state
