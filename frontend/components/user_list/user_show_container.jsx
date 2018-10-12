@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentServer = ownProps.messageType === "Channel" ?
     state.entities.servers[currentServerId] :
     state.entities.dms[ownProps.channelId];
-  const currentUser = state.session.currentUser || {};
+  const currentUser = state.session.user || {};
   const userIds = currentServer.user_ids || [];
   return ({
     users,
@@ -32,11 +32,17 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return ({
     fetchAServer: (id) => dispatch(fetchAServer(id)),
     fetchAllUsers: (id) => dispatch(fetchAllUsers(id)),
-    makeNewDm: (id) => {
-      dispatch(makeNewDm(id)).then((payload) => {
-        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+    createDm: (id) => {
+        dispatch(makeNewDm(id)).then((payload) => {
+          ownProps.history.push(`/@me/${payload.payload.dm.id}`);
         });
       },
+    updateDm: (id) => {
+      dispatch(updateDm(id)).then((payload) => {
+        console.log(id);
+        ownProps.history.push(`/@me/${payload.payload.dm.id}`);
+      });
+    },
     closeModal: () => {
       dispatch(closeModal());
     }

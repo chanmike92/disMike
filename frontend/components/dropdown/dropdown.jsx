@@ -51,12 +51,6 @@ const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId,
         <div className='dropdown-context-container'>
           <ChannelIndexDropdownContainer serverId={ serverId } channelId={ dropdownId }/>
         </div>;
-      case 'usercontextindex':
-        component =
-        <div className='dropdown-context-container'>
-          <ChannelIndexDropdownContainer serverId={ serverId } channelId={ dropdownId }/>
-        </div>;
-      break;
       // case 'userindex':
       //   component =
       //   <div className='dropdown-context-container'>

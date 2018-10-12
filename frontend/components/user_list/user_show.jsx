@@ -21,8 +21,11 @@ class UserShow extends React.Component {
             userId={ userId }
             id= { userId }
             key={ idx }
+            createDm={ this.props.createDm }
+            updateDm={ this.props.updateDm }
             closeModal={ this.props.closeModal }
             currentServerOwnerId={this.props.currentServerOwnerId}
+            currentUserId={ this.props.currentUserId }
           />);
         } else {
           offlineUsers.push(
@@ -32,8 +35,10 @@ class UserShow extends React.Component {
             id= { userId }
             key={ idx }
             closeModal={ this.props.closeModal }
-            makeNewDm={ this.props.makeNewDm }
+            createDm={ this.props.createDm }
+            updateDm={ this.props.updateDm }
             currentServerOwnerId={this.props.currentServerOwnerId}
+            currentUserId={ this.props.currentUserId }
           />);
         }
       }
