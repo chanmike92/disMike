@@ -11,7 +11,7 @@ const ChannelDropdown = (props) => {
 
     return (
       <div className='context-dropdown-index-container'>
-        <div className='dropdown-index-item'>
+        <div className='dropdown-index-item' onClick={ (e) => props.inviteUser(e, props.server.id) }>
           <label className='dropdown-index-title'>Invite Users</label>
         </div>
         { channelCreate }

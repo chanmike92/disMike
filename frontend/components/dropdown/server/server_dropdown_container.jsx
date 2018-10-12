@@ -33,7 +33,7 @@ const mapDispatchToProps = dispatch => {
     updateServer: (id) => dispatch(openModal('updateServer', id)),
     deleteServer: (id) => dispatch(openModal('deleteServer', id)),
     leaveServer: (id) => dispatch(openModal('leaveServer', id)),
-    inviteUsers: (id) => dispatch(openModal('inviteUsers', id)),
+    inviteUser: (id) => dispatch(openModal('userInvite', id)),
   });
 };
 

@@ -26,7 +26,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
-
+    inviteUser: (id) => {
+      dispatch(openModal('userInvite', id));
+    },
     leaveServer: (id) => dispatch(openModal('leaveServer', id)),
     updateServer: (id) => dispatch(openModal('updateServer', id)),
     deleteServer: (id) => dispatch(openModal('deleteServer', id)),

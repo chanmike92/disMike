@@ -22,7 +22,8 @@ const ChannelIndexDropdown = (props) => {
 
     return (
       <div className='server-index-dropdown-container'>
-        <div className='dropdown-index-item'>
+        <div className='dropdown-index-item' onClick={() => {
+            props.inviteUser(props.server.id);} }>
           <label className='dropdown-index-title'>Instant Invite</label>
         </div>
         <div className='dropdown-divider'></div>

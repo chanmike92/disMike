@@ -11,6 +11,7 @@ import ServerUpdateContainer from '../server/server_update_container';
 import ChannelCreateContainer from '../channel/channel_create_container';
 import ChannelUpdateContainer from '../channel/channel_update_container';
 import ChannelDeleteContainer from '../channel/channel_delete_container';
+import UserInviteContainer from '../user_forms/user_invite_container';
 import ServerJoinContainer from '../server/server_join_container';
 import FriendAddContainer from '../friend_list/friend_add_container';
 import LogoutConfirmationContainer from '../user_forms/logout_container';
@@ -90,6 +91,12 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
         component =
         <div className='modal-container'>
             <SearchContainer currentUser={ currentUser }/>
+        </div>;
+      break;
+      case 'userInvite':
+        component =
+        <div className='modal-container'>
+            <UserInviteContainer server={ server }/>
         </div>;
       break;
       case 'logout':

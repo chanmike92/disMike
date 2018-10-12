@@ -36,7 +36,7 @@ const ServerDropdown = (props) => {
 
   return (
     <div className={ `server-dropdown-container ${active}` }>
-        <div className='dropdown-index-item' onClick={ () => props.inviteUsers(props.serverId) }>
+        <div className='dropdown-index-item' onClick={ () => props.inviteUser(props.serverId) }>
           <div className='dropdown-icon invite-users-icon'></div>
           <label className='dropdown-index-title'>Invite People</label>
         </div>

@@ -25,6 +25,10 @@ const mapDispatchToProps = dispatch => {
       e.stopPropagation();
       dispatch(openModal('createChannel', id));
     },
+    inviteUser: (e, id) => {
+      e.stopPropagation();
+      dispatch(openModal('userInvite', id));
+    },
     closeModal: () => dispatch(closeModal())
   });
 };

@@ -27,6 +27,9 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return ({
+    inviteUser: (id) => {
+      dispatch(openModal('userInvite', id));
+    },
     cloneChannel: (channel, id) => dispatch(makeNewChannel(channel, id)),
     updateChannel: (id) => dispatch(openModal('updateChannel', id)),
     deleteChannel: (id) => dispatch(openModal('deleteChannel', id)),
