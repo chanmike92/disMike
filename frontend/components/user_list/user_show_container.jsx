@@ -6,6 +6,7 @@ import { fetchAServer } from '../../actions/server_actions';
 import { connect } from 'react-redux';
 import { openModal, closeModal } from '../../actions/modal_actions';
 import { makeNewDm, updateDm } from '../../actions/dm_actions';
+import { openDropdown, closeDropdown } from '../../actions/dropdown_actions';
 
 
 
@@ -45,7 +46,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     },
     closeModal: () => {
       dispatch(closeModal());
-    }
+    },
+    closeDropdown: (e) => {
+      e.stopPropagation();
+      dispatch(closeDropdown());
+    },
+    openDropdown: (payload) => dispatch(openDropdown(payload)),
   });
 };
 

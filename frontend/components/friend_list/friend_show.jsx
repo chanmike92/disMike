@@ -34,7 +34,7 @@ class FriendShow extends React.Component {
 
         switch (this.props.selector) {
           case "ALL":
-          if (user.friendship_status === "ACCEPTED") {
+          if (user.friendship_status === "ACCEPTED" || user.friendship_status === "PENDING ACCEPT" ) {
             friends.push(friend);
           }
           break;

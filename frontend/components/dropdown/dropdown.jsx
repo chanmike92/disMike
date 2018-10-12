@@ -5,11 +5,12 @@ import { connect } from 'react-redux';
 import ServerIndexDropdownContainer from './serverindex/serverindex_dropdown_container';
 // import UserIndexDropdownContainer from './userindex/userindex_dropdown_container';
 import ChannelIndexDropdownContainer from './channelindex/channelindex_dropdown_container';
+import UserIndexDropdownContainer from './userindex/userindex_dropdown_container';
 import ChannelDropdownContainer from './channel/channel_dropdown_container';
 import ServerButtonDropdownContainer from './serverbutton/serverbutton_dropdown_container';
 
 
-const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId, channel, currentUser, closeDropdown, handleNoContextClick }) => {
+const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId, channel, currentUser, closeDropdown, handleNoContextClick, user }) => {
 
   if (!dropdownType) {
     return null;
@@ -49,14 +50,9 @@ const Dropdown = ({ dropdownType, dropdownId, x, y, serverId, server, channelId,
       case 'userindex':
         component =
         <div className='dropdown-context-container'>
-          <ChannelIndexDropdownContainer serverId={ serverId } channelId={ dropdownId }/>
+          <UserIndexDropdownContainer serverId={ serverId } userId={ dropdownId }/>
         </div>;
-      // case 'userindex':
-      //   component =
-      //   <div className='dropdown-context-container'>
-      //     <UserIndexDropdownContainer userId={ dropdownId }/>
-      //   </div>;
-      //   break;
+        break;
     default:
       return null;
   }

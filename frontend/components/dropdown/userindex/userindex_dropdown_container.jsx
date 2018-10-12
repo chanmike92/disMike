@@ -12,17 +12,16 @@ const mapStateToProps = (state, ownProps) => {
   const servers = state.entities.servers;
   const serverId = ownProps.serverId;
   const server = servers[serverId];
-  const channels = state.entities.channels;
-  const channelId = ownProps.channelId;
-  const channel = channels[channelId];
+  const users = state.entities.users;
+  const userId = ownProps.userId;
+  const user = users[userId];
   const currentUser = state.session.user;
-
   // errors: state.errors.channels,
   return ({
     server,
-    channel,
     serverId,
-    channelId,
+    user,
+    userId,
     currentUser
   });
 };
@@ -51,9 +50,12 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       e.preventDefault();
        dispatch(addNewFriend(id));
      },
-    cloneChannel: (channel, id) => dispatch(makeNewChannel(channel, id)),
-    updateChannel: (id) => dispatch(openModal('updateChannel', id)),
-    deleteChannel: (id) => dispatch(openModal('deleteChannel', id)),
+    acceptFriend: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+       dispatch(acceptFriend(id));
+     },
+
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });

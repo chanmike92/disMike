@@ -5,6 +5,15 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 class UserShow extends React.Component {
   constructor(props) {
     super(props);
+    this.handleIndexContextClick = this.handleIndexContextClick.bind(this);
+  }
+
+  handleIndexContextClick(id, e) {
+    e.preventDefault();
+    e.stopPropagation();
+
+    this.props.openDropdown({dropdownType: "userindex", x: e.clientX,
+      y: e.clientY, id: id});
   }
 
   render() {
@@ -21,6 +30,7 @@ class UserShow extends React.Component {
             userId={ userId }
             id= { userId }
             key={ idx }
+            handleIndexContextClick={ this.handleIndexContextClick }
             createDm={ this.props.createDm }
             updateDm={ this.props.updateDm }
             closeModal={ this.props.closeModal }
@@ -34,6 +44,7 @@ class UserShow extends React.Component {
             userId={ userId }
             id= { userId }
             key={ idx }
+            handleIndexContextClick={ this.handleIndexContextClick }
             closeModal={ this.props.closeModal }
             createDm={ this.props.createDm }
             updateDm={ this.props.updateDm }
