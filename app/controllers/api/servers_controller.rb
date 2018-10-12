@@ -38,6 +38,7 @@ class Api::ServersController < ApplicationController
   end
 
   def join
+    
     if params[:userId] == "" || params[:serverId] == ""
       render json: {joinErrors: ['Must enter an ID']}, status: 402
     elsif params[:userId].to_i == 0 || params[:serverId] == ""

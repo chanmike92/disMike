@@ -11,16 +11,16 @@ const UserIndexDropdown = (props) => {
   :
   <div></div>;
 
-  const friendAction = props.currentUser.friends_id.includes?(props.user.id) ?
+  const friendAction = props.currentUser.friends_id.includes(props.user.id) ?
     <div className='dropdown-index-item' onClick={() => {
-        props.deleteChannel(props.channel.id);} }>
+        props.deleteFriend(props.user.id);} }>
       <label className='dropdown-index-title'>Remove Friend</label>
     </div>
     :
     <div className='dropdown-index-item' onClick={() => {
-        props.deleteChannel(props.channel.id);} }>
+        props.addFriend(props.user.id);} }>
       <label className='dropdown-index-title'>Add Friend</label>
-    </div>
+    </div>;
 
   return (
     <div className='server-index-dropdown-container'>
@@ -33,14 +33,18 @@ const UserIndexDropdown = (props) => {
         <label className='dropdown-index-title'>Message</label>
       </div>
       <div className='dropdown-divider'></div>
-      <div className='dropdown-index-item' onClick={() => {
-          props.deleteChannel(props.channel.id);} }>
-        <label className='dropdown-index-title'>Invite to Server</label>
-      </div>
-      <div className='dropdown-divider'></div>
+
       { serverOptions }
     </div>
   );
 };
+
+
+// TODO:
+// <div className='dropdown-index-item' onClick={() => {
+//     props.deleteChannel(props.channel.id);} }>
+//   <label className='dropdown-index-title'>Invite to Server</label>
+// </div>
+// <div className='dropdown-divider'></div>
 
 export default withRouter(UserIndexDropdown);
