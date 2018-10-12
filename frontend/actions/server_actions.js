@@ -81,9 +81,9 @@ export const updateServerName = (server, id) => dispatch => {
     return dispatch(receiveErrors(errors.responseJSON));});
   };
 
-export const joinServer = (id) => dispatch => {
+export const joinServer = (userId, serverId) => dispatch => {
 
-  return APIUtil.joinServer(id).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
+  return APIUtil.joinServer(userId, serverId).then((payload) => dispatch(receiveAServer(payload)), (errors) => {
 
     return dispatch(receiveErrors(errors.responseJSON));});
   };

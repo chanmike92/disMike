@@ -38,40 +38,33 @@ class Api::ServersController < ApplicationController
   end
 
   def join
-
-    if params[:id] == ""
+    if params[:userId] == "" || params[:serverId] == ""
       render json: {joinErrors: ['Must enter an ID']}, status: 402
-    elsif params[:id].to_i == 0
+    elsif params[:userId].to_i == 0 || params[:serverId] == ""
       render json: {joinErrors: ['Please Enter ID > 0']}, status: 402
     else
-
-      @server = Server.find(params[:id])
+      @server = Server.find(params[:serverId])
       if @server
-        @sub = Serversubscription.new(user_id: current_user.id, server_id: @server.id)
-      end
-
-
-      if @server && @sub && @sub.save
-        @server = Server.includes(:channels, :subscribed_users, :messages).find(params[:id])
-        # @server_channels = @server.channels
-        # @server_users = @server.subscribed_users
-
-        server = JSON.parse(render('/api/servers/show.json.jbuilder'))
-        @server.subscribed_users.each do |user|
-          if user != current_user
-            # need to add server into user array and user into server array
-            DirectChannel.broadcast_to(user, {command: 'fetch_server',
-              data: server})
-            # BroadcastMessageJob.perform_now @message, user
-
+        @sub = Serversubscription.find_by(user_id: params[:userId], server_id: params[:serverId])
+        if @sub
+          render json: {joinErrors: ['Already joined server']}, status: 402
+        else
+          @sub = Serversubscription.new(user_id: params[:userId], server_id: params[:serverId])
+          if @server && @sub && @sub.save
+            @server = Server.includes(:channels, :subscribed_users, :messages).find(params[:serverId])
+            server = JSON.parse(render('/api/servers/show.json.jbuilder'))
+            @server.subscribed_users.each do |user|
+              if user != current_user
+                DirectChannel.broadcast_to(user, {command: 'fetch_server',
+                  data: server})
+              end
+            end
+          else
+            render @sub.errors.full_messages, status: 402
           end
-
         end
-        # render 'api/servers/show'
-      elsif @server
-        render json: {joinErrors: ['Already joined server']}, status: 402
       else
-        render json: {joinErrors: ['Server does not exist']}, status: 402
+        render json: {joinErrors: ['Server does not exist']}, status: 404
       end
     end
   end
@@ -84,22 +77,10 @@ class Api::ServersController < ApplicationController
       server = JSON.parse(render('/api/servers/show.json.jbuilder'))
       @server.subscribed_users.each do |user|
         if user != current_user
-          # need to add server into user array and user into server array
           DirectChannel.broadcast_to(user, {command: 'fetch_server',
             data: server})
-          # BroadcastMessageJob.perform_now @message, user
         end
       end
-      # @server.subscribed_users.each do |user|
-      #   if user != current_user
-      #     # need to add server into user array and user into server array
-      #     DirectChannel.broadcast_to(user, {command: 'new_server_subscriber',
-      #       data: server})
-      #     # BroadcastMessageJob.perform_now @message, user
-      #
-      #   end
-      # end
-      # render json: {}
     else
       render json: ['You do not have this server'], status: 404
     end

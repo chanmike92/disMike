@@ -43,12 +43,13 @@ export const makeNewServer = (server) => {
   });
 };
 
-export const joinServer = (id) => {
+export const joinServer = (userId, serverId) => {
 
   return $.ajax({
     url: 'api/servers/join',
     method: 'POST',
-    data: {id}
+    data: {userId,
+      serverId}
   });
 };
 

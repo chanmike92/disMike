@@ -9,16 +9,17 @@ import { openModal, closeModal } from '../../actions/modal_actions';
 const mapStateToProps = state => {
   const serverErrors = state.errors.servers || {};
   const joinErrors = serverErrors.joinErrors || [];
-
+  const currentUser = state.session.user;
   return ({
     formType: 'joinServer',
     errors: joinErrors,
+    currentUserId: currentUser.id,
   });
 };
 
 const mapDispatchToProps = dispatch => {
   return ({
-    processForm: (id) => dispatch(joinServer(id)),
+    processForm: (userId, serverId) => dispatch(joinServer(userId, serverId)),
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())
   });

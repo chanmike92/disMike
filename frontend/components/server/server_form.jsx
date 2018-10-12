@@ -18,10 +18,14 @@ class ServerForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-    const formInputs = this.props.formType === 'createServer' ? Object.assign({}, this.state) : this.state.id
-    // const server = Object.assign({}, this.state);
-    this.props.processForm(formInputs).
-    then(() => this.props.closeModal());
+    if (this.props.formType === 'createServer') {
+      const formInputs = Object.assign({}, this.state);
+      this.props.processForm(formInputs).
+      then(() => this.props.closeModal());
+    } else {
+      this.props.processForm(this.props.currentUserId, this.state.id).
+      then(() => this.props.closeModal());
+    }
   }
 
   handleInput(input) {
