@@ -70,9 +70,9 @@ class Api::ServersController < ApplicationController
   end
 
   def leave
-    @sub = Serversubscription.find_by(user_id: current_user.id, server_id: params[:id])
+    @sub = Serversubscription.find_by(user_id: params[:userId], server_id: params[:serverId])
     if @sub
-      @server = @sub.server
+      @server = Server.includes(:channels, :subscribed_users, :messages).find(params[:serverId])
       @sub.destroy!
       server = JSON.parse(render('/api/servers/show.json.jbuilder'))
       @server.subscribed_users.each do |user|

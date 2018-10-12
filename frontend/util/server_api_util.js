@@ -63,11 +63,11 @@ export const deleteServer = (id) => {
   });
 };
 
-export const leaveServer = (id) => {
+export const leaveServer = (userId, serverId) => {
 
   return $.ajax({
     url: 'api/servers/leave',
     method: 'POST',
-    data: { id }
+    data: { userId, serverId }
   });
 };

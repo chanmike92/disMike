@@ -3,7 +3,8 @@ import { withRouter, Link, Redirect } from 'react-router-dom';
 
 const ServerLeave = (props) => {
   const leaveServer = props.currentServer.id === props.server.id ?
-    () => props.leaveCurrentServer(props.server.id) : () => props.leaveServer(props.server.id);
+    () => props.leaveCurrentServer(props.currentUser.id, props.server.id) :
+    () => props.leaveServer(props.currentUser.id, props.server.id);
   // debugger
   const goBack = () => {
     props.closeModal();
