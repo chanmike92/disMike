@@ -63,6 +63,11 @@ class MessageForm extends React.Component {
     };
   }
 
+  // TODO: Message file upload
+  // <div className='message-file-upload-icon-wrapper'>
+  //   <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" className="message-file-upload-icon" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
+  // </div>
+  // <div className='message-icon-separator'></div>
 
 
   render() {
@@ -70,10 +75,7 @@ class MessageForm extends React.Component {
         <div className='message-text-area'>
           <form className='message-form-input' onKeyPress={this.handleSubmit}>
             <div className="message-file-upload">
-              <div className='message-file-upload-icon-wrapper'>
-                <svg width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" className="message-file-upload-icon" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm5 11h-4v4h-2v-4H7v-2h4V7h2v4h4v2z"></path></svg>
-              </div>
-              <div className='message-icon-separator'></div>
+
             </div>
             <div className='message-input-field-wrapper'>
               <TextareaAutosize type='text'
