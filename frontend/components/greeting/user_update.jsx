@@ -24,7 +24,7 @@ class UserUpdate extends React.Component {
     const reader = new FileReader();
     const file = e.currentTarget.files[0];
     let prevImg = this.state.image_url;
-    let prevFile = this.state.image_url;
+    let prevFile = this.state.imageFile;
     let prevType = this.state.type;
     reader.onloadend = () =>{
       this.setState({image_url: reader.result, imageFile: file, type: true});};
@@ -36,7 +36,7 @@ class UserUpdate extends React.Component {
   }
 
   handleRemove() {
-    this.setState({image_url: this.props.imageUrl, imageFile: null, type: true});
+    this.setState({image_url: this.props.imageUrl, imageFile: null, type: false});
   }
 
   handleDefault() {
