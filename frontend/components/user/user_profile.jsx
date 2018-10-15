@@ -56,4 +56,4 @@ class UserProfile extends React.Component {
   }
 }
 
-export default withRouter(UserInvite);
+export default withRouter(UserProfile);

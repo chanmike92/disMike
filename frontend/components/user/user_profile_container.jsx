@@ -1,4 +1,4 @@
-import UserInvite from './user_invite';
+import UserProfile from './user_profile';
 import React from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { fetchAServer } from '../../actions/server_actions';
