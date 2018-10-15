@@ -6,6 +6,7 @@ import ServerCreateContainer from '../server/server_create_container';
 import ServerDeleteContainer from '../server/server_delete_container';
 import ServerLeaveContainer from '../server/server_leave_container';
 import UserUpdateContainer from '../greeting/user_update_container';
+import UserProfileContainer from '../user/user_profile_container';
 import SearchContainer from '../user_forms/search_container';
 import ServerUpdateContainer from '../server/server_update_container';
 import ChannelCreateContainer from '../channel/channel_create_container';
@@ -16,7 +17,7 @@ import ServerJoinContainer from '../server/server_join_container';
 import FriendAddContainer from '../friend_list/friend_add_container';
 import LogoutConfirmationContainer from '../user_forms/logout_container';
 
-const Modal = ({ modal, serverId, server, channelId, channel, closeModal, currentUser, handleNoContextClick, currentServer }) => {
+const Modal = ({ modal, serverId, server, user, channelId, channel, closeModal, currentUser, handleNoContextClick, currentServer }) => {
 
   if (!modal) {
     return null;
@@ -99,6 +100,12 @@ const Modal = ({ modal, serverId, server, channelId, channel, closeModal, curren
             <UserInviteContainer server={ server }/>
         </div>;
       break;
+      case 'userProfile':
+        component =
+        <div className='modal-container'>
+            <UserProfileContainer user={ user }/>
+        </div>;
+      break;
       case 'logout':
         component =
         <div className='modal-container'>
@@ -122,6 +129,8 @@ const mapStateToProps = (state, ownProps) => {
   const modal = state.ui.modal.modalType;
   const id = state.ui.modal.id;
   const servers = state.entities.servers;
+  const users = state.entities.users;
+  const user = users[id];
   const server = servers[id];
   const channel = state.entities.channels[id];
   const currentUser = state.session.user;
@@ -134,6 +143,7 @@ const mapStateToProps = (state, ownProps) => {
     channel,
     currentUser,
     currentServer,
+    user,
   };
 };
 

@@ -55,6 +55,11 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       e.preventDefault();
        dispatch(acceptFriend(id));
      },
+    openProfile: (e, id) => {
+      e.stopPropagation();
+      e.preventDefault();
+       dispatch(openModal('userProfile', id));
+     },
 
     clearErrors: () => dispatch(receiveErrors([])),
     closeModal: () => dispatch(closeModal())

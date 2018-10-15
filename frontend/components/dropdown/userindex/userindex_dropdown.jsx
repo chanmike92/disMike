@@ -75,12 +75,13 @@ const UserIndexDropdown = (props) => {
   }
 
     // TODO: Profile
-    // onClick={() => { props.cloneChannel(props.channel, props.serverId);}  }
+    // <div className='dropdown-index-item' onClick={ (e) => {
+    //     props.openProfile(e, props.user.id);} }>
+    //   <label className='dropdown-index-title'>Profile</label>
+    // </div>
   return (
     <div className='server-index-dropdown-container'>
-      <div className='dropdown-index-item'>
-        <label className='dropdown-index-title'>Profile</label>
-      </div>
+
       { divider }
       { message }
       { serverOptions }
