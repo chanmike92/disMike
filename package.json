@@ -2,18 +2,24 @@
   "name": "converse",
   "private": true,
   "dependencies": {
+    "actioncable": "^5.2.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.4",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "emoji-mart": "^2.6.1",
+    "fuse.js": "^3.2.1",
     "moment": "^2.21.0",
     "react": "^16.2.0",
+    "react-addons-transition-group": "^15.6.2",
+    "react-autosize-textarea": "^4.0.0",
     "react-dom": "^16.2.0",
     "react-easy-emoji": "^1.2.0",
     "react-emojione": "^5.0.0",
     "react-redux": "^5.0.7",
     "react-router-dom": "^4.2.2",
     "react-transition-group": "^2.5.0",
+     "react-twemoji": "0.0.8",
     "redux": "^3.7.2",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
@@ -31,6 +37,7 @@
     "redux-logger": "^3.0.6"
   },
   "scripts": {
+    "postinstall": "webpack",
     "start": "webpack --watch",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
