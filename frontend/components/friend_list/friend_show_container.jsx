@@ -46,7 +46,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
       },
     updateDm: (id) => {
       dispatch(updateDm(id)).then((payload) => {
-        console.log(id);
         ownProps.history.push(`/@me/${payload.payload.dm.id}`);
       });
     },
