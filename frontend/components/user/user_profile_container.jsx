@@ -25,4 +25,4 @@ const mapDispatchToProps = dispatch => {
   });
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserInvite));
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(UserProfile));
