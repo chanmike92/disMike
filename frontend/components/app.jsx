@@ -16,14 +16,12 @@ import Modal from './modal/modal';
 
 const App = () => (
   <div className='app'>
-
-    <AuthRoute exact path='/' component={ SessionFormContainer } />
-    <AuthRoute exact path='/signup' component={ SignupFormContainer } />
-    <AuthRoute exact path='/login' component={ SessionFormContainer }/>
-
-    <ProtectedRoute component={ MainComponentContainer} />
-
-
+    <Switch>
+      <AuthRoute exact path='/' component={ SessionFormContainer } />
+      <AuthRoute exact path='/signup' component={ SignupFormContainer } />
+      <AuthRoute exact path='/login' component={ SessionFormContainer }/>
+      <ProtectedRoute component={ MainComponentContainer} />
+    </Switch>
   </div>
 );
 
